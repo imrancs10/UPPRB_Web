@@ -1,0 +1,176 @@
+﻿@using UPPRB_Web.Global
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Patient Portal Management system</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="~/Content/App/Common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/Menu.css" rel="stylesheet" />
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/Scripts/App/Global/Utility.js"></script>
+
+</head>
+<body>
+    <div class="navbar-wrapper">
+        <div class="container-fluid">
+            <nav class="navbar navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Patient Portal</a>
+                    </div>
+                    @if (UserData.UserId!=0 && !string.IsNullOrEmpty(Convert.ToString(UserData.UserId)))
+                    {
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="~/Masters/AddDoctors" class="">Home</a></li>
+                                <li class=" dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Department <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="~/Masters/AddDepartments"><i></i>Add New Department</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doctor<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Masters/AddDoctors"><i></i>Add New Doctor</a></li>
+                                        <li><a href="/Admin/DoctorType"><i></i>Set Doctor Type</a></li>
+                                        <li><a href="/Masters/AddSchedule"><i></i>Doctor Schedule</a></li>
+                                        <li><a href="/Masters/AddDoctorLeave"><i></i>Doctor Leave</a></li>
+                                        <li><a href="/Masters/AppointmentSetting"><i></i>Appointment Setting</a></li>
+                                    </ul>
+                                </li>
+                                <li class=" dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Masters <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Masters/HospitalDetail"><i></i>Hospital Detail</a></li>
+                                        <li><a href="/Masters/SyncHISFailedTransaction"><i></i>Sync To HIS</a></li>
+                                        <li><a href="/Masters/AddMasterLookup"><i></i>Master Data</a></li>
+                                    </ul>
+                                </li>
+                                <li class="active"><a href="~/Masters/SendMessageToPatient" class="">Send Message</a></li>
+                                <li class="hidden dropdown">
+                                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="~/Admin/PatientLabReport">Patient Lab Report</a></li>
+                                        <li><a href="~/Admin/PatientBillReport">Billing Report</a></li>
+                                        <li><a href="~/Masters/LabReport"><i></i>Upload Bulk Report</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav pull-right">
+                                <li class=" dropdown">
+                                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @*<li><a href="#">Change Password</a></li>*@
+                                        @*<li><a href="#">My Profile</a></li>*@
+                                        <li class=""><a href="~/Masters/Logout">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    <hr class="text-center navbar-fixed-bottom" />
+    <footer class="text-center navbar-fixed-bottom">
+        <div class="col-md-9">
+            <p>
+                Powered by Uptron Powertronics Limited (Undertaking of Government) &copy; @DateTime.Now.Year - Patient Portal || Total Number of visitors: @ApplicationInstance.Application["Totaluser"]
+                <!--Online Visitors:<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/433806/t/5"></script>-->
+            </p>
+        </div>
+        <div class="col-md-3">
+            <table width="235" border="0" cellpadding="1" cellspacing="0" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
+                <tr>
+                    <td width="235" align="center" valign="top">
+                        <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=www.drrmlimsonline.in&amp;size=M&amp;use_flash=NO&amp;use_transparent=Yes&amp;lang=en"></script><br /><a href="https://www.websecurity.symantec.com/ssl-certificate" target="_blank" style="color:#000000; text-decoration:none; font:bold 10px verdana,sans-serif; letter-spacing:.5px;text-align:center; margin:0px; padding:0px;"> ABOUT SSL CERTIFICATES</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </footer>
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+
+
+    @*Alert*@
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script>
+        $(function () {
+
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+    @*Ajax Loader*@
+
+    <div class="ajaxloader">
+        <img src="~/img/ajax-loader.gif" />
+    </div>
+    <style>
+        .ajaxloader {
+            background: #808080a3;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+            .ajaxloader img {
+                width: 80px;
+                height: 80px;
+                position: absolute;
+                top: 43%;
+                left: 45%;
+            }
+    </style>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@using DataLayer
+@using System.Configuration;
+@using UPPRB_Web.Global;
+
+@{
+    ViewBag.Title = "My Message";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+<div class="" style="padding-top:20px;">
+    <div class="col-sm-12 col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">My Message</div>
+            <div class="panel-body">
+                @{
+                    var patients = ViewData["PatientMessage"] as List<PatientMessage>;
+                    int index = 1;
+                    if (patients != null && patients.Any())
+                    {
+                        <div class="table table-responsive">
+                            <table class="table table-bordered table-hover table-responsive text-center" id="patientTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:10%">Sr. No.</th>
+                                        <th style="width:20%">Date</th>
+                                        <th style="width:70%">Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var patient in patients)
+                                    {
+                                        <tr>
+                                            <td style="text-align:left;">@index</td>
+                                            <td style="text-align:left;">@patient.CreatedDate.Value.ToString("dd/MM/yyyy")</td>
+                                            <td style="text-align:left;">@patient.Message</td>
+                                        </tr>
+                                        index = index + 1;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <span>No Message found</span>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

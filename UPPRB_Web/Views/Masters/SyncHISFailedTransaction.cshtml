@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "LabReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using DataLayer
+<script src="~/Scripts/App/Masters/SyncHISData.js"></script>
+<div class="row" style="margin-top:50px;">
+    <div class="col-sm-12 col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Sync HIS Failed Transaction 
+                <div style="float:right;">Status Flag : [S = Success, R = PatientAlreadyregisterd, E = Some Exception, N = NO Record]</div>
+            </div>
+            <div class="panel-body" style="overflow: auto;">
+                @{
+                    var patients = ViewData["PatientInfo"] as List<PatientInfo>;
+                    int index = 1;
+                    if (patients != null && patients.Any())
+                    {
+                <div class="table table-responsive">
+                    <table class="table table-bordered table-hover table-responsive text-center" id="doctorTable">
+                        <thead>
+                            <tr>
+                                <th class="hidden"></th>
+                                <th>Action</th>
+                                <th style="width:6%">Sr. No.</th>
+                                <th>Registration No</th>
+                                <th>Registration Status</th>
+                                <th>Renewal Status</th>
+                                <th>Name</th>
+                                <th>Father/Husband</th>
+                                <th>Deaprtment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var patient in patients)
+                            {
+                                <tr>
+                                    <td class="hidden">@patient.PatientId</td>
+                                    <td>
+                                        @if (patient.RenewalStatusHIS != "S")
+                                        {
+                                            <a class="btn" onclick="synHISData.SyncHISRenewal(this)" name="btnSyncRenewal"
+                                               style="padding:0;cursor:pointer;color:blue;">Sync Renewal |</a>
+                                        }
+                                        @if (patient.RegistrationStatusHIS != "S")
+                                        {
+                                            <a class="btn" onclick="synHISData.SyncHISRegistration(this)" name="btnSyncRegistration"
+                                               style="padding:0;cursor:pointer;color:blue;">Sync Registration |</a>
+                                        }
+                                        <a class="btn" onclick="synHISData.SyncAlready(this)" name="btnSyncAlready"
+                                           style="padding:0;cursor:pointer;color:blue;">Already In Sync</a>
+                                    </td>
+                                    <td>@index</td>
+                                    <td>@patient.RegistrationNumber</td>
+                                    <td>@patient.RegistrationStatusHIS</td>
+                                    <td>@patient.RenewalStatusHIS</td>
+                                    <td>@patient.FirstName @patient.MiddleName @patient.LastName</td>
+                                    <td>@patient.FatherOrHusbandName</td>
+                                    <td>@patient.Department.DepartmentName</td>
+                                </tr>
+                                index = index + 1;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                    }
+                    else
+                    {
+                        <span>No record found</span>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #doctorTable th {
+        white-space: nowrap;
+    }
+</style>

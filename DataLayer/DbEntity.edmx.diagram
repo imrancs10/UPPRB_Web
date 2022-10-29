@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d25c6a93510442fac667406150cd371" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="UPPRB_WebModel.AppointmentInfo" Width="1.5" PointX="13.5" PointY="12.625" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.AppointmentSetting" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.City" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.DayMaster" Width="1.5" PointX="14.25" PointY="3.375" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.Department" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.Doctor" Width="1.5" PointX="11.25" PointY="8.75" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.DoctorLeave" Width="1.5" PointX="13.5" PointY="18" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.DoctorSchedule" Width="1.5" PointX="16.5" PointY="8.875" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.Gbl_Master_Login" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.Gbl_Master_User" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.HospitalDetail" Width="1.5" PointX="2.75" PointY="6" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.LabReport" Width="1.5" PointX="10.5" PointY="22.5" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.LabreportPdf" Width="1.5" PointX="13.5" PointY="6.625" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.MeridiemMaster" Width="1.5" PointX="14.25" PointY="0.75" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PateintLeadger" Width="1.5" PointX="15.75" PointY="13" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientInfo" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientInfoCRClone" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientLoginEntry" Width="1.5" PointX="10.5" PointY="13.125" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientLoginHistory" Width="1.5" PointX="10.5" PointY="16.125" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientTransaction" Width="1.5" PointX="10.5" PointY="18.875" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.State" Width="1.5" PointX="0.75" PointY="13.5" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_AppointmentInfo_Doctor" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_AppointmentInfo_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_City_State" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfo_City" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoCRClone_City" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_DoctorScheduleDay_DayMaster1" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_Doctor_Doctor" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfo_Department" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoCRClone_Department" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_DoctorLeave_Doctor" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_DoctorScheduleDay_DoctorSchedule" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_LabreportPdf_Doctor" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_DoctorScheduleDay_MeridiemMaster" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_DoctorScheduleDay_MeridiemMaster1" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_Gbl_Master_Login_Gbl_Master_User" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_LabReport_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfo_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfo_State" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientLoginEntry_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientLoginHistory_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientTransaction_PatientInfo" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoCRClone_PatientInfoCRClone" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoCRClone_State" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.MasterLookup" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientMessage" Width="1.5" PointX="10.5" PointY="5.75" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientMessage_PatientInfo" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.DoctorType" Width="1.5" PointX="8.375" PointY="0.875" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_Doctor_DoctorType" />
+        <EntityTypeShape EntityType="UPPRB_WebModel.PatientInfoTemporary" Width="1.5" PointX="17.25" PointY="0.75" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoTemporary_City" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoTemporary_Department" />
+        <AssociationConnector Association="UPPRB_WebModel.FK_PatientInfoTemporary_State" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+config
+Debug
+bin
+/.vs/PatientPortal/v15/Server/sqlite3
+/PatientPortal/bin/DataLayer.dll.config
+*.CopyComplete
+/.vs/PatientPortal/DesignTimeBuild/.dtbcache
+packages/*
+/PatientPortal/Properties/PublishProfiles
+/PatientPortal/obj/Release/TransformWebConfig
+/PatientPortal/obj/Release/TempPE
+/.vs/PatientPortal/v15
+/DataLayer/obj/Release/edmxResourcesToEmbed
+/DataLayer/obj/Release
+/PatientPortal/obj/Release
+*.user
+/PatientPortal/LabReports
+/PatientPortal/Reports/Bill/2018/October/23487238974.pdf
+/PatientPortal/Reports/Bill/2018/November
+/PatientPortal/Reports

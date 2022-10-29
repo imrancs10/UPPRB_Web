@@ -1,0 +1,181 @@
+﻿@using DataLayer
+@using System.Configuration;
+@using UPPRB_Web.Global;
+@using UPPRB_Web.Models;
+@model DischargeSummaryModel
+@{
+    ViewBag.Title = "Discharge Summary";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+<script>
+    $(document).ready(function () {
+
+        $(this).bind("contextmenu", function (e) {
+
+            e.preventDefault();
+
+        });
+
+
+    });
+
+</script>
+<div class="" style="padding-top:20px; -moz-user-select: none;" onselectstart="return false;">
+    <div class="col-sm-12 col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Discharge Summary
+                @*<div style="margin-top:-7px;" class="pull-right"><input class="btn btn-info" type="button" value="Print" id="btnPrint" /> </div>*@
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-4" style="display:table;">
+                                    <div style="display:table-cell;vertical-align:middle;">
+                                        <img src="~/img/hospital-logo.png" alt="logo" style="float:left;width:80px;height:80px;" />
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <p style="font-size:14px;"><b>Dr. Ram Manohar Lohia Institute of Medical Sciences</b></p>
+                                    <p style="font-size:12px;">Vibhuti Khand, Gomti Nagar, Lucknow - 226010</p>
+                                    <p style="font-size:12px;">Ph. No: 0522 - 4918555,504 Fax No. 0522-4918506</p>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <p style="font-size:14px; text-align:center;"><b>Department of Medicine</b></p>
+                        <p style="font-size:12px; text-align:center;"><b>Discharge Summary</b></p>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    IP No :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.ipno
+                                </div>
+                                <div class="col-md-3">
+                                    Patient No :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.CRNumber
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Patient's Name :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.Name
+                                </div>
+                                <div class="col-md-3">
+                                    Admission Date :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.AdmitDate
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Age/Sex :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.iage/@Model.Gender
+                                </div>
+                                <div class="col-md-3">
+                                    Discharge Date :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.DischargeDate
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Address :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.Address
+                                </div>
+                                <div class="col-md-3">
+                                    Phone No :
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    City :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.City
+                                </div>
+                                <div class="col-md-3">
+                                    Mobile No :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.MobileNumber
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Discharge Doctor :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.DoctorName
+                                </div>
+                                <div class="col-md-3">
+                                    Bed No :
+                                </div>
+                                <div class="col-md-3">
+                                    @Model.BedNo
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Raw(@Model.Matter);
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                           <p style="font-size:12px; "><strong>Discharge disclaimer:</strong></p>
+                            <p style="font-size:10px; font-style:italic; color:red;">-> This is only for view purpose. Get the authorised signed copy from hospital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('click', '#btnPrint', function () {
+        var pageTitle = 'Discharge Summary Report';
+        stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
+            win = window.open('', 'Print', 'width=500,height=300');
+        var dd = $('.panel-body').clone();
+
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '</head><body style="font-size=11px;"><div>' + dd.html() + '</div></body ></html > ');
+
+        //win.document.close();
+        //win.print();
+        //win.close();
+        return false;
+    });
+
+</script>
+
+
+

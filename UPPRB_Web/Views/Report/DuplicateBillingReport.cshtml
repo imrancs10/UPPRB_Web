@@ -1,0 +1,162 @@
+﻿@using DataLayer
+
+@using UPPRB_Web.Global
+@model List<PateintLeadger>
+@{
+    ViewBag.Title = "Duplicate Billing Report";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<form action="/Report/DownloadReportFile" method="post" id="_form">
+    <input type="hidden" id="hdnHospitalLogo" value="@WebSession.HospitalLogo" />
+    <input type="hidden" id="hdnRegNo" value="@WebSession.PatientRegNo" />
+    <input type="hidden" id="hdnName" value="@WebSession.PatientName" />
+    <input type="hidden" id="hdnAge" value="@WebSession.PatientAge" />
+    <input type="hidden" id="hdnMobile" value="@WebSession.PatientMobile" />
+    <input type="hidden" id="hdnDob" value="@WebSession.PatientDOB" />
+    <input type="hidden" id="hdnGender" value="@WebSession.PatientGender" />
+    <div class="" style="padding-top:20px;">
+        <div class="col-sm-12 col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Duplicate Billing Reports</div>
+                <div class="panel-body">
+                    <input type="hidden" name="fileurl" id="_fileurl" value="" />
+                    <div class="table table-responsive">
+                        <table class="table table-bordered table-hover table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Bill Date</th>
+                                    <th>Bill No</th>
+                                    <th>Bill Type</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@item.billdate.ToShortDateString()</td>
+                                            <td>@item.billno</td>
+                                            <td title="'+javascript:getBillType(@item.vtype)+'">@item.vtype</td>
+                                            <td>@item.netamt</td>
+                                            <td>
+                                                <button type="button" onclick="printReport(this)" class="btn btn-primary">Duplicate Receipt</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    *SV-Procedure/Diagnostic Billing,
+                    *PH-Pharmacy Billing-Refund,
+                    *GP-Patient Payment,
+                    *GR-Receipt from Patient,
+                    *PHR-Pharmacy Return,
+                    *SR-Sales Return
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script>
+    var _billType = {
+        SV: 'Procedure/Diagnostic Billing',
+        PH: 'Pharmacy Billing-Refund',
+        GP: 'Patient Payment',
+        GR: 'Receipt from Patient',
+        PHR: 'Pharmacy Return',
+        SR: 'Sales Return'
+    }
+    function getBillType(_type) {
+        var billType = _billType[_type];
+        return billType === undefined ? 'Not Define' : billType;
+    }
+    $(document).on('click', '[id*="_download"]', function () {
+        $('#_form').attr('action', '/Report/DownloadReportFile');
+        $('#_fileurl').val($(this).data('url'));
+        $('#_form').submit();
+    });
+
+    $(document).on('click', '[id*="view"]', function () {
+        $('#_form').attr('action', '/Report/ViewReportFile');
+        $('#_fileurl').val($(this).data('url'));
+        // $('#_form').submit();
+    });
+
+    function printReport(btn) {
+        var tr = $(btn).parent().parent();
+        var tablePatient = '<div style="text-align:right;margin-left:60px;">' +
+            '<table table-bordered>' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;">Patient Name :</td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnName').val() + '</td>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;"><b>Registration No. :</b></td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnRegNo').val() + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;"><b>Age :</b></td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnAge').val() + '</td>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;"><b>Gender :</b></td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnGender').val() + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;"><b>Date of Birth :</b></td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnDob').val() + '</td>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;border:2px solid #ddd;padding:10px;height:30px;"><b>Mobile No. :</b></td>' +
+            '<td style="width:300px;margin-left:30px;color:#000;font-weight:300;border:2px solid #ddd;padding:10px;height:30px;">' + $('#hdnMobile').val() + '</td>' +
+            '</tr>' +
+            '</table >';
+        var table =
+            '<table style="border:2px solid #ddd;">' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;padding:10px;border:2px solid #ddd;height:30px;">Bill Date :</td>' +
+            '<td style="width:800px;margin-left:30px;color:#000;font-weight:300;padding:10px;border:2px solid #ddd;height:30px;">' + $(tr).find('td:eq(0)').text() + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;padding:10px;border:2px solid #ddd;height:30px;">Bill Number :</td>' +
+            '<td style="width:800px;margin-left:30px;color:#000;font-weight:300;padding:10px;border:2px solid #ddd;height:30px;">' + $(tr).find('td:eq(1)').text() + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;padding:10px;border:2px solid #ddd;height:30px;">Bill Type :</td>' +
+            '<td style="width:800px;margin-left:30px;color:#000;font-weight:300;padding:10px;border:2px solid #ddd;height:30px;">' + getBillType($(tr).find('td:eq(2)').text()) + '</td>' +
+            '</tr>' +
+
+            '<tr>' +
+            '<td style="width:300px;margin-right:30px;color:#b83638;font-weight:700;padding:10px;border:2px solid #ddd;height:30px;">Bill Amount :</td>' +
+            '<td style="width:800px;margin-left:30px;color:#000;font-weight:300;padding:10px;border:2px solid #ddd;height:30px;">' + $(tr).find('td:eq(3)').text() + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td style="text-align:right;width:900px;margin-right:30px;color:#b83638;font-weight:750;padding:10px;border:2px solid #ddd;height:30px;">Total Amount :</td>' +
+            '<td style="width:800px;margin-left:30px;color:#000;font-weight:750;padding:10px;border:2px solid #ddd;height:30px;">' + '<b>' + 'Rs.' + '</b>' + $(tr).find('td:eq(3)').text() + '</td>' +
+            '</tr>' +
+            '</table >';
+        
+                '</div>'
+        var pageTitle = 'Duplicate Bill Receipt';
+        stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
+            win = window.open('', 'Print', 'width=500,height=300');
+
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '</head><body style="font-size=11px;">' +
+            '<hr/>' +
+            '<div style="text-align:center;"><img src="' + $('#hdnHospitalLogo').val() + '"/></div><br/>' +
+            '<div style="text-align:center;font-size:18px;font-weight:700;">Patient Bill Information</div ><hr/>' +
+
+            tablePatient +
+            '<br/><div style="text-align:left;color:#000;font-weight:800;font-size:20px;">Bill Summary</div ><hr/>'
+            + table +
+            '<hr/><hr/></body></html>');
+        //win.document.close();
+        //win.print();
+        //win.close();
+        return false;
+    }
+</script>

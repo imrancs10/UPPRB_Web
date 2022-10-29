@@ -1,0 +1,301 @@
+﻿@using UPPRB_Web.Models.Patient
+@using UPPRB_Web.Global
+@model List<PatientLedgerModel>
+@{
+    ViewBag.Title = "PatientLedger";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+
+<input type="hidden" value="@WebSession.HospitalLogo" id="hdnHospitalLogo" />
+@*<form id="form" autocomplete="off">
+*@
+<div class="" style="padding-top:20px;padding-bottom: 50px;">
+    <div class="col-sm-12 col-lg-12">
+        <div class="form-group">
+            <label for="title" class="control-label col-md-2 col-sm-2 col-xs-2">Report Duration</label>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <input type="text" id="DateFrom" class="form-control" name="DateFrom"
+                       required maxlength="6" placeholder="dd/mm/yyyy" autocomplete="off" />
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <input type="text" id="DateTo" class="form-control" name="DateTo"
+                       required maxlength="6" placeholder="dd/mm/yyyy" autocomplete="off" />
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <input type="button" name="FilterButton" id="FilterButton" class="btn btn-primary btn-blue btn-block btn-lg" value="Filter">
+            </div>
+        </div>
+    </div>
+</div>
+@*
+    </form>*@
+<form action="/Report/DownloadReportFile" method="post" id="_form">
+    <div class="" style="padding-top:20px;">
+        <div class="col-sm-12 col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Patient Leadger (Payment Receipts & Payment Given)
+                    <div style="margin-top:-7px;" class="pull-right"><input class="btn btn-info" type="button" value="Print" id="btnPrint" /> </div>
+                </div>
+                <div class="panel-body">
+                    <input type="hidden" name="fileurl" id="_fileurl" value="" />
+                    <div class="table table-responsive">
+                        <table class="table table-bordered table-hover table-responsive table-striped" id="PaymentLedgerReport"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Patient Leadger (Procedure & Medicine)</div>
+                <div class="panel-body">
+                    <input type="hidden" name="fileurl" id="_fileurl" value="" />
+                    <div class="table table-responsive">
+                        <table class="table table-bordered table-hover table-responsive table-striped" id="MedicinLedgerReport"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<script>
+    $(document).on('click', '#btnPrint', function () {
+        var pageTitle = 'Patient Ledger Report';
+        stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
+            win = window.open('', 'Print', 'width=500,height=300');
+        $('.dataTables_length').addClass('hidden');
+        $('.dataTables_info').addClass('hidden');
+        $('.dataTables_paginate').addClass('hidden');
+        debugger
+        var rows = $('#PaymentLedgerReport tr td');
+        var index = 6
+        var rowCount = $('#PaymentLedgerReport tr td').length / 7;
+        for (var i = 0; i < rowCount; i++) {
+            if ($(rows[index]).text() > 0) {
+                $(rows[index]).parent().addClass('hidden');
+            }
+            index += 7;
+        }
+        var dd = $('#PaymentLedgerReport').clone();
+        //dd.find('tbody').append($('.table:eq(1) tbody tr').clone());
+
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '</head><body style="font-size=11px;"><hr/><div style="text-align:center;"><img src="' + $('#hdnHospitalLogo').val() + '"/></div><hr/> <table class="table table-bordered table-hover table-responsive table-striped">' + dd.html() + '</table></body ></html > ');
+
+        index = 6
+        for (var i = 0; i < rowCount; i++) {
+            if ($(rows[index]).text() > 0) {
+                $(rows[index]).parent().removeClass('hidden');
+            }
+            index += 7;
+        }
+        //win.document.close();
+        //win.print();
+        //win.close();
+        $('.dataTables_length').removeClass('hidden');
+        $('.dataTables_info').removeClass('hidden');
+        $('.dataTables_paginate').removeClass('hidden');
+        return false;
+    });
+
+    $(document).ready(function () {
+        $('#DateFrom').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            stepMonths: true,
+            yearRange: "-100:+0",
+            dateFormat: 'dd/mm/yy',
+            maxDate: 0
+        });
+        $('#DateTo').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            stepMonths: true,
+            yearRange: "-100:+0",
+            dateFormat: 'dd/mm/yy',
+            maxDate: 0
+        });
+    });
+</script>
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts
+    {
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Payment report
+            var paymentTable = $("#PaymentLedgerReport").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ordering": false,
+                "pageLength": 50,
+                "ajax": {
+                    "url": "/Report/PatientLedgerPaymentReport",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Date", "name": "Date", "autoWidth": true, "title": "Date" },
+                    { "data": "IPNo", "name": "I.P. No", "autoWidth": true, "title": "I.P. No" },
+                    { "data": "VNo", "name": "V. No", "autoWidth": true, "title": "V. No" },
+                    { "data": "Description", "name": "Description", "autoWidth": true, "title": "Description" },
+                    { "data": "Payment", "name": "Payment", "autoWidth": true, "title": "Payment" },
+                    { "data": "Receipt", "name": "Receipt", "autoWidth": true, "title": "Receipt" },
+                    { "data": "schemeid", "name": "schemeid", "autoWidth": true, "title": "schemeid" }
+                ],
+                "drawCallback": function (settings) {
+                    $('#PaymentLedgerReport').find('th').eq(6).addClass('hidden');
+                    var rows = $('#PaymentLedgerReport').find('tr');
+                    $.each(rows, function (i, row) {
+                        $(row).find('td').eq(6).addClass('hidden');
+                    });
+                }
+            });
+
+            $("#PaymentLedgerReport_filter input")
+                .unbind() // Unbind previous default bindings
+                .bind("input", function (e) { // Bind our desired behavior
+                    // If the length is 2 or more characters, or the user pressed ENTER, search
+                    if (this.value.length >= 2 || e.keyCode == 13) {
+                        // Call the API search function
+                        paymentTable.search(this.value).draw();
+                    }
+                    // Ensure we clear the search if they backspace far enough
+                    if (this.value == "") {
+                        paymentTable.search("").draw();
+                    }
+                    return;
+                });
+
+            //formacy report
+            var formacyTable = $("#MedicinLedgerReport").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ordering": false,
+                "pageLength": 50,
+                "ajax": {
+                    "url": "/Report/PatientLedgerFormacyReport",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Date", "name": "Date", "autoWidth": true, "title": "Date" },
+                    { "data": "IPNo", "name": "I.P. No", "autoWidth": true, "title": "I.P. No" },
+                    { "data": "VNo", "name": "V. No", "autoWidth": true, "title": "V. No" },
+                    { "data": "Description", "name": "Description", "autoWidth": true, "title": "Description" },
+                    { "data": "Payment", "name": "Payment", "autoWidth": true, "title": "Payment" },
+                    { "data": "Receipt", "name": "Receipt", "autoWidth": true, "title": "Receipt" },
+                    { "data": "schemeid", "name": "schemeid", "autoWidth": true, "title": "schemeid" }
+                ],
+                "drawCallback": function (settings) {
+                    $('#MedicinLedgerReport').find('th').eq(6).addClass('hidden');
+                    var rows = $('#MedicinLedgerReport').find('tr');
+                    $.each(rows, function (i, row) {
+                        $(row).find('td').eq(6).addClass('hidden');
+                    });
+                }
+            });
+
+            $("#MedicinLedgerReport_filter input")
+                .unbind() // Unbind previous default bindings
+                .bind("input", function (e) { // Bind our desired behavior
+                    // If the length is 2 or more characters, or the user pressed ENTER, search
+                    if (this.value.length >= 2 || e.keyCode == 13) {
+                        // Call the API search function
+                        formacyTable.search(this.value).draw();
+                    }
+                    // Ensure we clear the search if they backspace far enough
+                    if (this.value == "") {
+                        formacyTable.search("").draw();
+                    }
+                    return;
+                });
+
+            $("#FilterButton").click(function () {
+                var fromDate = $("#DateFrom").val().formatMMDDYYYY();
+                var toDate = $("#DateTo").val().formatMMDDYYYY();
+                fromDate = new Date(fromDate);
+                toDate = new Date(toDate);
+                fromDate = fromDate.formatMMDDYYYY();
+                toDate = toDate.formatMMDDYYYY();
+                var fromDateYear = fromDate.getUTCFullYear(),
+                    toDateYear = toDate.getUTCFullYear(),
+                    fromDateMonth = fromDate.getUTCMonth(),
+                    toDateMonth = toDate.getUTCMonth();
+
+                var monthsApart = 12 * (fromDateYear - toDateYear) + (fromDateMonth - toDateMonth);
+                var diff = Math.abs(monthsApart);
+                if (diff > 6) {
+                    utility.alert.setAlert("Leadger Report", "Date Duration should between 6 month");
+                    return false;
+                }
+                else {
+                    paymentTable
+                        .column(0)
+                        .search(fromDate + "#" + toDate)
+                        .draw();
+                    formacyTable
+                        .column(0)
+                        .search(fromDate + "#" + toDate)
+                        .draw();
+                }
+            });
+            //$('#MedicinLedgerReport_filter').addClass('hidden');
+            //$('#PaymentLedgerReport_filter').addClass('hidden');
+
+        });
+
+
+
+        Date.prototype.formatMMDDYYYY = function () {
+            var dd = this.getDate();
+            var mm = this.getMonth() + 1; //January is 0!
+            var yyyy = this.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            return (mm +
+                "/" + dd +
+                "/" + yyyy);
+        }
+
+        String.prototype.formatMMDDYYYY = function () {
+            var dd = this.substring(0, 2);
+            var mm = this.substring(this.indexOf("/") + 1, this.lastIndexOf("/"));
+            var yyyy = this.substring(this.lastIndexOf("/") + 1, 10);
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            return (mm +
+                "/" + dd +
+                "/" + yyyy);
+        }
+
+        String.prototype.getUTCFullYear = function () {
+            return this.substring(this.lastIndexOf("/") + 1, 10);
+        }
+        String.prototype.getUTCMonth = function () {
+            return this.substring(0, this.indexOf("/"));
+        }
+    </script>
+}
+
+<style>
+    #PaymentLedgerReport td, #PaymentLedgerReport th, #MedicinLedgerReport td, #MedicinLedgerReport th {
+        border-bottom: 0px;
+        border-right: 0px;
+    }
+</style>

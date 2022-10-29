@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Registration Renewal";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<div class="" style="margin-top:0px;padding-top:20px;">
+    <div class="col-sm-12 col-lg-12">
+        <div class="panel panel-primary" style="width:50%;margin:0 auto">
+            <div class="panel-heading">
+                Pay Bill
+            </div>
+            <div class="panel-body">
+                <form id="form" action="/Home/PaymentTransactionBillAmount" method="post" autocomplete="off">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-12">
+                            <div class="col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="title" class="control-label col-md-6 col-sm-6 col-xs-6">Enter Amount to be Pay</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <input type="text" id="amount" class="form-control" name="amount" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label></label>
+                                    <div>
+                                        <div>
+                                            <input type="submit" class="btn btn-success" style="float:left;width:100px" value="Pay" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

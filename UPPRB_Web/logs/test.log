@@ -1,0 +1,419 @@
+2018-11-13 21:24:54,279 [10] DEBUG UPPRB_Web.Controllers.HomeController applcaition started
+2018-11-14 21:06:24,820 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-14 21:06:29,941 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-14 21:06:29,941 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-14 21:06:30,601 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-15 02:53:02,560 [13] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-15 02:53:12,377 [13] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-15 02:53:12,377 [13] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-15 02:53:12,803 [13] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-15 03:08:17,703 [11] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-15 03:08:22,206 [11] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-15 03:08:22,206 [11] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-15 03:08:22,493 [11] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-15 04:32:32,063 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.<Open>b__2()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20
+2018-11-15 04:39:50,407 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.<Open>b__2()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20
+2018-11-15 12:36:02,256 [5] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-15 12:36:07,620 [5] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-15 12:36:07,620 [5] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-15 12:36:08,362 [5] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-17 04:32:43,422 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-17 04:32:50,311 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-17 04:32:50,311 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-17 04:32:51,020 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-17 05:00:38,612 [7] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-17 05:00:44,947 [7] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-17 05:00:44,947 [7] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-17 05:00:45,223 [7] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-17 05:14:52,169 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-17 05:14:57,950 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-17 05:14:57,950 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-17 05:14:58,261 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-17 10:04:08,580 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-17 10:04:16,148 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-17 10:04:16,148 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-17 10:04:16,514 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-17 14:15:05,835 [15] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-17 15:41:29,172 [29] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-17 15:41:39,485 [29] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-17 15:41:39,485 [29] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-17 15:41:39,830 [29] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-20 12:22:04,377 [12] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 12:33:31,540 [18] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 13:10:51,278 [7] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 13:17:39,763 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 13:38:33,619 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 15:08:40,339 [7] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 15:24:35,182 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-20 15:41:21,069 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-21 08:38:40,201 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-21 08:41:38,884 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-21 08:42:53,992 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-21 08:49:59,838 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-21 12:07:21,182 [16] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 02:22:28,262 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 02:27:51,679 [28] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 02:41:09,688 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 03:03:51,081 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 03:34:34,469 [11] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-22 03:34:43,530 [11] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-22 03:34:43,531 [11] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-22 03:34:44,494 [11] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-22 04:03:51,398 [7] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:13:42,694 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:28:09,794 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:28:34,576 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:29:45,837 [7] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:50:11,402 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:53:14,265 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-22 04:57:22,251 [7] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-24 04:52:01,142 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-24 05:59:59,260 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-24 06:00:08,839 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-24 06:00:08,840 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-24 06:00:09,761 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-24 06:46:50,593 [12] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-24 06:46:59,611 [12] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-24 06:46:59,611 [12] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-24 06:46:59,905 [12] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-24 06:47:57,609 [10] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 05:09:09,582 [14] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-27 05:09:17,462 [14] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-27 05:09:17,462 [14] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-27 05:09:18,185 [14] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-27 10:09:20,442 [23] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 12:47:33,949 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 13:12:12,815 [17] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 13:14:46,702 [16] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 14:05:30,534 [62] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 14:09:46,181 [62] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 14:17:16,748 [67] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 15:15:49,200 [65] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 15:15:58,534 [61] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 15:17:52,195 [65] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 15:41:57,144 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 16:22:28,220 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-27 16:22:33,326 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-27 16:22:33,326 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-27 16:22:34,004 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-27 16:32:02,204 [27] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-27 16:32:05,768 [27] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-27 16:32:05,768 [27] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-27 16:32:05,890 [27] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-27 16:42:46,467 [13] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 16:43:40,892 [12] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-27 17:41:57,727 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-11-28 13:17:04,821 [14] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-11-28 13:17:10,093 [14] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-11-28 13:17:10,093 [14] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-11-28 13:17:10,463 [14] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-11-30 22:40:46,289 [8] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-01 20:12:50,806 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:12:57,254 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:12:57,255 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:12:58,262 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-01 20:27:58,271 [18] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:28:02,700 [18] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:28:02,700 [18] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:28:03,361 [18] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-01 20:30:30,806 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:30:34,435 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:30:34,435 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:30:34,845 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-01 20:32:01,439 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:32:06,038 [16] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:32:06,038 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:32:06,313 [16] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-01 20:42:23,439 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:42:27,071 [8] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:42:27,071 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:42:27,353 [8] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-01 20:56:21,623 [18] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2018-12-01 20:56:25,600 [18] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2018-12-01 20:56:25,600 [18] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2018-12-01 20:56:26,400 [18] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2018-12-27 01:24:54,628 [73] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-27 01:24:59,366 [51] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-27 22:07:49,264 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-27 23:15:17,671 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-27 23:29:36,754 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-27 23:30:51,711 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-28 00:35:50,348 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-28 00:47:24,685 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\Personnal\UPPRB_Web\WorkingCode\PatientPotal\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\Personnal\UPPRB_Web\WorkingCode\PatientPotal\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-28 00:48:00,928 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:31:52,221 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:35:17,039 [18] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:36:14,263 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:36:34,006 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:38:08,707 [12] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:38:29,249 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:39:34,803 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:41:03,590 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-29 12:42:55,730 [32] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-31 16:03:54,870 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:07:34,095 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:09:40,167 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:11:24,814 [12] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:12:45,861 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:13:31,015 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:14:30,688 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:17:19,078 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:17:52,774 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:18:08,103 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:20:32,763 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:25:47,914 [17] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2018-12-31 16:31:43,400 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:32:29,755 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:32:36,008 [7] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:34:27,211 [7] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2018-12-31 16:36:05,046 [14] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 20
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 82
+2019-02-15 15:23:17,633 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'dbo.MasterLookup'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+ClientConnectionId:78c6e271-89a5-45fd-9c59-0cce13b4b139
+Error Number:208,State:1,Class:16
+2019-02-25 18:10:29,014 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=1481; handshake=936; [Login] initialization=20; authentication=216; [Post-Login] complete=11889;  ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.<Open>b__2()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+ClientConnectionId:47766247-3bc0-4860-a4ac-7ac15d1f5bb3
+Error Number:-2,State:0,Class:11
+2019-02-25 19:07:11,701 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:13:27,395 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:18:55,454 [13] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:19:26,540 [8] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:22:30,274 [13] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:24:11,030 [13] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:24:30,101 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:25:26,073 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:27:12,667 [13] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:27:54,731 [10] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:34:49,744 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:36:20,473 [8] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-25 19:40:30,466 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:43:14,705 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:46:21,380 [12] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:46:52,752 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:47:45,331 [12] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:48:14,649 [17] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-25 19:57:05,403 [10] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)
+   at UPPRB_Web.Infrastructure.Utility.Serializer.Deserialize[T](String input, String rootElementName) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Utility\Serializer.cs:line 22
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in D:\AllProjectsMVC\LatestUptronProjects\UPPRB_Web\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 83
+2019-02-26 09:48:08,392 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   at System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-02-26 10:13:20,090 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email Started
+2019-02-26 10:13:26,037 [6] DEBUG UPPRB_Web.Controllers.HomeController Send Email sucessed
+2019-02-26 10:13:26,037 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS started
+2019-02-26 10:13:27,310 [6] DEBUG UPPRB_Web.Controllers.HomeController Send SMS sucessed
+2019-03-13 14:33:31,907 [6] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   at System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse(WebRequest request)
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
+2019-07-02 15:53:15,507 [10] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2019-07-10 21:36:34,230 [5] ERROR UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   at UPPRB_Web.OPDWebReference.GetPatOpdDetails.GetPatientOPDDetails(String crno, String sptype) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Web References\OPDWebReference\Reference.cs:line 78
+   at UPPRB_Web.Infrastructure.Adapter.WebService.WebServiceIntegration.GetPatientOPDDetail(String crNumber, String type) in B:\UPPRB_Web\PatientPotal\UPPRB_Web\Infrastructure\Adapter\WebService\WebServiceIntegration.cs:line 78
