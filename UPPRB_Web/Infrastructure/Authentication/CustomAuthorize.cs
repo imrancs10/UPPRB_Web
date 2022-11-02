@@ -11,11 +11,11 @@ namespace UPPRB_Web.Infrastructure.Authentication
     {
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
-            {
-                filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Home/AccessDenied" }));
-            }
+            //if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            //{
+            //    filterContext.Result = new RedirectToRouteResult(new
+            //        RouteValueDictionary(new { controller = "Home/AccessDenied" }));
+            //}
         }
     }
 }

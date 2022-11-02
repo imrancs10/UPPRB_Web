@@ -1,0 +1,422 @@
+﻿
+@{
+    ViewBag.Title = "Notice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-slider"><div class="pr-15 pl-15">
+    <div class="row">
+        <div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
+            <h2 class="w-bgph ">UPPRPB</h2>
+            <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
+                <ul class="nav flex-column flex-nowrap overflow-hidden">
+                    <li class="nav-item"><a class="nav-link text-truncate" href="notices.html">Notices</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">General Notices</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Sub Inspector Notices</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Constable Civil Police</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">P.A.C.</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Radio Police</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Fire Police</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Jail Police</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Computer Cadre</a></li>
+                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Ministrial Cadre</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="w_content">
+                <div id="DivContent">
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidCurrentPageNo" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidCurrentPageNo" />
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidRecordStartIndex" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidRecordStartIndex" value="1" />
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidRecordEndIndex" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidRecordEndIndex" value="20" />
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidTotalRecord" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidTotalRecord" value="154" />
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidPages" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidPages" value="10" />
+                    <input type="hidden" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$hidPageName" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_hidPageName" value="whatsnew" />
+
+
+
+                    <div id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_Panel1" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_btnSearch&#39;)">
+
+                        <div id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_divSearch" style="display:block;">
+                            <div class="border_line hidden-xs">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <label class="sr-only">Email</label>
+                                            <p class="form-control-static">Display</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$ddlShowPerPage" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$ddlShowPerPage\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_ddlShowPerPage" tabindex="1" class="form-control">
+                                                <option selected="selected" value="20">20</option>
+                                                <option value="24">24</option>
+                                                <option value="28">28</option>
+                                                <option value="32">32</option>
+
+                                            </select>
+                                        </div>
+                                        <p class="form-control-static">Per Page</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 text_alain_r">
+                                    <div class="form-inline">
+                                        <div class="form-group">
+
+
+                                            <p class="form-control-static">
+                                                Category
+                                            </p>
+                                            <select name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$cmbCatogory" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_cmbCatogory" class="form-control">
+                                                <option selected="selected" value="0">All</option>
+                                                <option value="Tender">Tender</option>
+                                                <option value="1">Notice Board</option>
+                                                <option value="5">Press Release</option>
+                                                <option value="2">Download</option>
+                                                <option value="3">Budget</option>
+                                                <option value="4">Circular</option>
+                                                <option value="8">Recruitment</option>
+
+                                            </select>
+                                        </div>
+                                        <input type="submit" name="ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$btnSearch" value="Search" id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_btnSearch" tabindex="3" title="Click Here" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dynamic_update pageheight">
+                                <ul>
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl01_spnLink">
+                                    <li>
+                                        <a href='https://youtu.be/KLF_9L6UD8U' title='Click to view more' target='_blank'>Welcome speech by the Organizing Secretary, Dr.Amita Singh during the inaugural function of one day workshop on topic "Basic Research Techniques and Practices of Laboratory Animal Care”  <span class='whatsnew'>[ Notice Board ]</span></a></span>
+                                        <p class="date">
+                                            Date :
+                                            29/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl02_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Dr_anju_verma.pdf' title='Click here to view more' target='_blank'>Dr. Anuj Varma has joined this university as Assistant Professor in Dept. of Pediatric Surgery. <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 255 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            26/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl03_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/COMM22102022.jpg' title='Click here to view more' target='_blank'>Office Order regarding website Updation <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/imgFile.png' title='Image File' alt='Image File'> Size: 52 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            22/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl04_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/UG20221022.pdf' title='Click here to view more' target='_blank'>Instructions for MBBS Admission 2022 <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 280 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            22/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl05_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/LIST_Rec.pdf' title='Click here to view more' target='_blank'>List of Eligible/Provisionally Eligible/Not Eligible candidates against advt. 21 dated; 27-07-2022. <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 1 MB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            18/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl06_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/List_Can_31Oct2022.pdf' title='Click here to view more' target='_blank'>Schedule of Interview for the post of Asstt. Professor, Faculty of Nursing. <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 2 MB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            18/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl07_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/LTC_3289.pdf' title='Click here to view more' target='_blank'>संकायी सदस्यों तथा गैर संकायी अधिकारीयों एवं कर्मचारियों के L.T.C  के  सम्बन्ध में कार्यालय आदेश। <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 4 MB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            18/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl08_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Nursing_428.pdf' title='Click here to view more' target='_blank'>जी०एन०एम० एवं  ए०एन०एम० सत्र 2022 -23 के सम्बन्ध में कार्यालय आदेश।  <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 658 KB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            18/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl09_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/animal23.pdf' title='Click here to view more' target='_blank'>Basic Research Techniques and Practices of Animal Care <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 417 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            18/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl10_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/55_17OCT2022.pdf' title='Click here to view more' target='_blank'>आवास वरिष्ठता सूची के सम्बन्ध में सूचना। <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 2 MB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            17/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl11_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/3232_14Oct2022_1.pdf' title='Click here to view more' target='_blank'>दिनांक 30 जून, 2022 तक पदोन्नति हेतु अर्ह के सम्बन्ध में सूचना।  <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 1 MB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            15/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl12_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Social_media_incharge_14102022.pdf' title='Click here to view more' target='_blank'>विश्वविद्यालय के सोशल मीडिया प्रभारी नामित किये जाने के सम्बन्ध में।  <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 368 KB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            14/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl13_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Notice_Reg_Classes_14102022.pdf' title='Click here to view more' target='_blank'>जी०एन०एम० एवं ए०एन०एम० पाठ्यक्रम सत्र 2022-23 के कक्षाएं प्रारम्भ होने के सम्बन्ध मैं सुचना।  <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 224 KB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            14/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl14_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/fpExam.pdf' title='Click here to view more' target='_blank'>Examination Scheme Oct 2022 <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 490 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            14/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl15_spnLink">
+                                    <li>
+                                        <a href='https://youtu.be/0Maa8DaJIq4' title='Click to view more' target='_blank'>Click here to see the Lecturer on “General Biology and Taxonomy of Laboratory animals”  by Dr. Amita Singh   <span class='whatsnew'>[ Notice Board ]</span></a></span>
+                                        <p class="date">
+                                            Date :
+                                            13/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl16_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/neurosc.pdf' title='Click here to view more' target='_blank'>             चिकित्सा विश्व विद्यालय सैफई में न्यूरोसाइन्सेज विभाग द्वारा विश्व अल्जाइमर्स दिवस दिनांक 21 सितम्बर पर "Know dementia know Alzheimers" विषय पर कार्यशाला का आयोजन  <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 359 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            13/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl17_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/expproject12102022.pdf' title='Click here to view more' target='_blank'>Guidelines for expenditure to carry out different Funded Research Project  <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 457 KB</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            13/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl18_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Notice_reg_Computer_07102022.jpg' title='Click here to view more' target='_blank'>कंप्यूटर प्रोग्रामर एवं  सह० कंप्यूटर प्रोग्रामर के संबंध में कार्यालय आदेश। <span class='whatsnew'>[ Download ]</span></a><br /><span class='size'><img src='../Images/imgFile.png' title='Image File' alt='Image File'> Size: 98 KB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            07/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl19_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/B_pharma_Notice_07102022.jpg' title='Click here to view more' target='_blank'>बी-फॉर्मेसी पाठ्यक्रम की द्वितीय एवं चतुर्थ सेमेस्टर की मुख्य / कैरी परीक्षा अक्टूबर, 2022 हेतु पात्र छात्रों की सूची उपलब्ध कराने के सम्बन्ध में। <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/imgFile.png' title='Image File' alt='Image File'> Size: 3 MB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            07/10/2022
+                                        </p>
+
+                                    </li>
+
+
+
+                                    <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptWhatsnewpage_ctl20_spnLink">
+                                    <li>
+                                        <a href='../MediaGallery/Information_reg_restarting_classes_07102022.pdf' title='Click here to view more' target='_blank'>Information regarding restarting of MBBS classes <span class='whatsnew'>[ Notice Board ]</span></a><br /><span class='size'><img src='../Images/pdf.png' title='PDF File' alt='PDF File'> Size: 577 KB | Lang: Hindi</span><br /><br /></span>
+                                        <p class="date">
+                                            Date :
+                                            07/10/2022
+                                        </p>
+
+                                    </li>
+
+
+                                </ul>
+
+                            </div>
+
+                            <div id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_divPager" class="border_line hidden-xs top_gap bott_margin">
+                                <div class="col-md-6 col-sm-6">
+                                    <p class="form-control-static">
+                                        Displaying <strong>
+                                            1-20
+                                        </strong> of <strong>
+                                            154
+                                        </strong> Records
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 text_alain_r">
+                                    <nav>
+                                        <ul class="pagination pagination-sm">
+
+                                            <li class=''>
+
+                                                <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl01_lblText">Page </span>
+                                            </li>
+
+                                            <li class='active'>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl02_lnkButton" title="Page:1" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl02$lnkButton&#39;,&#39;&#39;)">1</a>
+
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl03_lnkButton" title="Page:2" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl03$lnkButton&#39;,&#39;&#39;)">2</a>
+
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl04_lnkButton" title="Page:3" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl04$lnkButton&#39;,&#39;&#39;)">3</a>
+
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl05_lnkButton" title="Page:4" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl05$lnkButton&#39;,&#39;&#39;)">4</a>
+
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl06_lnkButton" title="Page:5" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl06$lnkButton&#39;,&#39;&#39;)">5</a>
+
+                                            </li>
+
+                                            <li class='active'>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl07_lnkButton" title="More..." href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl07$lnkButton&#39;,&#39;&#39;)">...</a>
+
+                                            </li>
+
+                                            <li class=''>
+
+                                                <span id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl08_lblText"> of 8 </span>
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl09_lnkButton" title="Next" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl09$lnkButton&#39;,&#39;&#39;)">&raquo;</a>
+
+                                            </li>
+
+                                            <li class=''>
+                                                <a id="ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_ucg1_rptPager_ctl10_lnkButton" title="Last" href="javascript:__doPostBack(&#39;ctl00$ctl00$ContentPlaceHolder1$ContentPlaceHolder1$ucg1$rptPager$ctl10$lnkButton&#39;,&#39;&#39;)">&raquo;|</a>
+
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+
+
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/Notice"]').parent().addClass('active')
+    });
+</script>

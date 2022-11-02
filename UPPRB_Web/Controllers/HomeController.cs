@@ -1,5 +1,4 @@
-﻿using com.awl.MerchantToolKit;
-using DataLayer;
+﻿using DataLayer;
 using log4net;
 using UPPRB_Web.BAL.Lookup;
 using UPPRB_Web.BAL.Masters;
@@ -29,16 +28,46 @@ namespace UPPRB_Web.Controllers
         //Declaring Log4Net
         ILog logger = LogManager.GetLogger(typeof(HomeController));
         [CustomAuthorize]
-        public ActionResult Dashboard()
-        {
-            PatientDetails _detail = new PatientDetails();
-            ViewData["MessageCount"] = _detail.GetPatientMessageCount(User.Id);
-            return View();
-        }
         public ActionResult Index()
         {
             //LookupDetails _details = new LookupDetails();
             //ViewData["Lookup"] = _details.GetLookupDetail();
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Notice()
+        {
+            return View();
+        }
+        public ActionResult DirectRecruitment()
+        {
+            return View();
+        }
+        public ActionResult Promotion()
+        {
+            return View();
+        }
+        public ActionResult GovernmentOrders()
+        {
+            return View();
+        }
+        public ActionResult SelectionProcedure()
+        {
+            return View();
+        }
+        public ActionResult Administration()
+        {
+            return View();
+        }
+        public ActionResult PhotoGallery()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
             return View();
         }
 
@@ -297,42 +326,43 @@ namespace UPPRB_Web.Controllers
             string ResponseUrl = Convert.ToString(ConfigurationManager.AppSettings["ResponseUrl"]);
             string baseUrl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
             baseUrl = baseUrl.Replace(":82", "");
-            try
-            {
-                ReqMsgDTO objReqMsgDTO;
-                objReqMsgDTO = new ReqMsgDTO();
-                objReqMsgDTO.OrderId = VerificationCodeGeneration.GenerateDeviceVerificationCode();
-                objReqMsgDTO.Mid = MerchantId;
-                objReqMsgDTO.Enckey = EncryptKey;
-                objReqMsgDTO.MeTransReqType = "S";
-                objReqMsgDTO.TrnAmt = TransactionAmount;
-                objReqMsgDTO.RecurrPeriod = "";
-                objReqMsgDTO.RecurrDay = "";
-                objReqMsgDTO.ResponseUrl = baseUrl + ResponseUrl;
-                objReqMsgDTO.TrnRemarks = "Test";
-                objReqMsgDTO.TrnCurrency = "INR";
-                objReqMsgDTO.AddField1 = "";
-                objReqMsgDTO.AddField2 = "";
-                objReqMsgDTO.AddField3 = "";
-                objReqMsgDTO.AddField4 = "";
-                objReqMsgDTO.AddField5 = "";
-                objReqMsgDTO.AddField6 = "";
-                objReqMsgDTO.AddField7 = "";
-                objReqMsgDTO.AddField8 = "";
-                string Message;
-                AWLMEAPI objawlmerchantkit = new AWLMEAPI();
-                objawlmerchantkit.generateTrnReqMsg(objReqMsgDTO);
-                Message = objReqMsgDTO.ReqMsg;
-                Session["Message"] = Message;
-                Session["MID"] = objReqMsgDTO.Mid;
-                TempData["TransactionAmount"] = TransactionAmount;
-                return RedirectToAction("TransactionPay");
-            }
-            catch (Exception ex)
-            {
-                SetAlertMessage("There Was Some Error Processing.....Please Check The Data you have Entered", "Transaction");
-                return RedirectToAction("Register");
-            }
+            return View();
+            //try
+            //{
+            //    ReqMsgDTO objReqMsgDTO;
+            //    objReqMsgDTO = new ReqMsgDTO();
+            //    objReqMsgDTO.OrderId = VerificationCodeGeneration.GenerateDeviceVerificationCode();
+            //    objReqMsgDTO.Mid = MerchantId;
+            //    objReqMsgDTO.Enckey = EncryptKey;
+            //    objReqMsgDTO.MeTransReqType = "S";
+            //    objReqMsgDTO.TrnAmt = TransactionAmount;
+            //    objReqMsgDTO.RecurrPeriod = "";
+            //    objReqMsgDTO.RecurrDay = "";
+            //    objReqMsgDTO.ResponseUrl = baseUrl + ResponseUrl;
+            //    objReqMsgDTO.TrnRemarks = "Test";
+            //    objReqMsgDTO.TrnCurrency = "INR";
+            //    objReqMsgDTO.AddField1 = "";
+            //    objReqMsgDTO.AddField2 = "";
+            //    objReqMsgDTO.AddField3 = "";
+            //    objReqMsgDTO.AddField4 = "";
+            //    objReqMsgDTO.AddField5 = "";
+            //    objReqMsgDTO.AddField6 = "";
+            //    objReqMsgDTO.AddField7 = "";
+            //    objReqMsgDTO.AddField8 = "";
+            //    string Message;
+            //    AWLMEAPI objawlmerchantkit = new AWLMEAPI();
+            //    objawlmerchantkit.generateTrnReqMsg(objReqMsgDTO);
+            //    Message = objReqMsgDTO.ReqMsg;
+            //    Session["Message"] = Message;
+            //    Session["MID"] = objReqMsgDTO.Mid;
+            //    TempData["TransactionAmount"] = TransactionAmount;
+            //    return RedirectToAction("TransactionPay");
+            //}
+            //catch (Exception ex)
+            //{
+            //    SetAlertMessage("There Was Some Error Processing.....Please Check The Data you have Entered", "Transaction");
+            //    return RedirectToAction("Register");
+            //}
         }
 
         public ActionResult TransactionPay()
@@ -453,181 +483,182 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult TransactionResponse()
         {
+            return View();
             string EncryptKey = Convert.ToString(ConfigurationManager.AppSettings["EncryptKey"]);
-            ResMsgDTO objResMsgDTO = new ResMsgDTO();
-            if (Request.Form["merchantResponse"] != null)
-            {
-                string merchantResponse = Request.Form["merchantResponse"];
-                AWLMEAPI transact = new AWLMEAPI();
-                objResMsgDTO = transact.parseTrnResMsg(merchantResponse, EncryptKey);
+            //ResMsgDTO objResMsgDTO = new ResMsgDTO();
+            //if (Request.Form["merchantResponse"] != null)
+            //{
+            //    string merchantResponse = Request.Form["merchantResponse"];
+            //    AWLMEAPI transact = new AWLMEAPI();
+            //    objResMsgDTO = transact.parseTrnResMsg(merchantResponse, EncryptKey);
 
-                if (objResMsgDTO.ResponseCode == Convert.ToString(ConfigurationManager.AppSettings["TransactionFailedResponseCode"]) || objResMsgDTO.StatusCode != "S")
-                {
-                    ViewData["FailTransaction"] = true;
-                    return View();
-                }
-                //renewal 
-                if (Session["PatientInfoRenewal"] != null)
-                {
-                    var info = (PatientInfo)Session["PatientInfoRenewal"];
-                    PatientDetails _details = new PatientDetails();
-                    info = _details.UpdatePatientValidity(info);
-                    PatientTransaction transaction = new PatientTransaction()
-                    {
-                        PatientId = info.PatientId,
-                        Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
-                        OrderId = objResMsgDTO.OrderId,
-                        ResponseCode = objResMsgDTO.ResponseCode,
-                        StatusCode = objResMsgDTO.StatusCode,
-                        TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
-                        TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
-                        Type = TransactionType.Renewal.ToString()
-                    };
-                    var transactionData = _details.SavePatientTransaction(transaction);
-                    info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
-                    SendMailTransactionResponseRegistrationRenewal(info.RegistrationNumber, info, transaction);
-                    transaction.OrderId = info.RegistrationNumber;
-                    Session["PatientInfoRenewal"] = null;
-                    TempData["transaction"] = transaction;
-                    //send patient data to HIS portal
-                    HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
-                    insertModel.Type = Convert.ToInt32(TransactionType.Renewal);
-                    //WebServiceIntegration service = new WebServiceIntegration();
-                    //string serviceResult = service.GetPatientInfoinsert(insertModel);
+            //    if (objResMsgDTO.ResponseCode == Convert.ToString(ConfigurationManager.AppSettings["TransactionFailedResponseCode"]) || objResMsgDTO.StatusCode != "S")
+            //    {
+            //        ViewData["FailTransaction"] = true;
+            //        return View();
+            //    }
+            //    //renewal 
+            //    if (Session["PatientInfoRenewal"] != null)
+            //    {
+            //        var info = (PatientInfo)Session["PatientInfoRenewal"];
+            //        PatientDetails _details = new PatientDetails();
+            //        info = _details.UpdatePatientValidity(info);
+            //        PatientTransaction transaction = new PatientTransaction()
+            //        {
+            //            PatientId = info.PatientId,
+            //            Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
+            //            OrderId = objResMsgDTO.OrderId,
+            //            ResponseCode = objResMsgDTO.ResponseCode,
+            //            StatusCode = objResMsgDTO.StatusCode,
+            //            TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
+            //            TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
+            //            Type = TransactionType.Renewal.ToString()
+            //        };
+            //        var transactionData = _details.SavePatientTransaction(transaction);
+            //        info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
+            //        SendMailTransactionResponseRegistrationRenewal(info.RegistrationNumber, info, transaction);
+            //        transaction.OrderId = info.RegistrationNumber;
+            //        Session["PatientInfoRenewal"] = null;
+            //        TempData["transaction"] = transaction;
+            //        //send patient data to HIS portal
+            //        HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
+            //        insertModel.Type = Convert.ToInt32(TransactionType.Renewal);
+            //        //WebServiceIntegration service = new WebServiceIntegration();
+            //        //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                    ////save status to DB
-                    //PatientInfo user = new PatientInfo()
-                    //{
-                    //    PatientId = info.PatientId,
-                    //    RenewalStatusHIS = serviceResult
-                    //};
-                    //_details.UpdatePatientHISSyncStatus(info);
+            //        ////save status to DB
+            //        //PatientInfo user = new PatientInfo()
+            //        //{
+            //        //    PatientId = info.PatientId,
+            //        //    RenewalStatusHIS = serviceResult
+            //        //};
+            //        //_details.UpdatePatientHISSyncStatus(info);
 
-                    if (Convert.ToBoolean(TempData["Expired"]) == true)
-                    {
-                        return RedirectToAction("TransactionResponseRenewalExpired");
-                    }
-                    else if (Convert.ToBoolean(TempData["Expired"]) == false)
-                    {
-                        return RedirectToAction("TransactionResponseRenewal");
-                    }
-                }
-                else if (Session["PatientInfoBill"] != null)
-                {
-                    var info = (PatientInfo)Session["PatientInfoBill"];
-                    PatientDetails _details = new PatientDetails();
-                    PatientTransaction transaction = new PatientTransaction()
-                    {
-                        PatientId = info.PatientId,
-                        Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
-                        OrderId = objResMsgDTO.OrderId,
-                        ResponseCode = objResMsgDTO.ResponseCode,
-                        StatusCode = objResMsgDTO.StatusCode,
-                        TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
-                        TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
-                        Type = TransactionType.PayBill.ToString()
-                    };
-                    var transactionData = _details.SavePatientTransaction(transaction);
-                    info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
-                    SendMailTransactionResponsePayBill(info.RegistrationNumber, info, transaction);
-                    transaction.OrderId = info.RegistrationNumber;
-                    Session["PatientInfoBill"] = null;
-                    TempData["transaction"] = transaction;
-                    //send patient data to HIS portal
-                    //HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
-                    //insertModel.Type = Convert.ToInt32(TransactionType.PayBill);
-                    //WebServiceIntegration service = new WebServiceIntegration();
-                    //string serviceResult = service.GetPatientInfoinsert(insertModel);
+            //        if (Convert.ToBoolean(TempData["Expired"]) == true)
+            //        {
+            //            return RedirectToAction("TransactionResponseRenewalExpired");
+            //        }
+            //        else if (Convert.ToBoolean(TempData["Expired"]) == false)
+            //        {
+            //            return RedirectToAction("TransactionResponseRenewal");
+            //        }
+            //    }
+            //    else if (Session["PatientInfoBill"] != null)
+            //    {
+            //        var info = (PatientInfo)Session["PatientInfoBill"];
+            //        PatientDetails _details = new PatientDetails();
+            //        PatientTransaction transaction = new PatientTransaction()
+            //        {
+            //            PatientId = info.PatientId,
+            //            Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
+            //            OrderId = objResMsgDTO.OrderId,
+            //            ResponseCode = objResMsgDTO.ResponseCode,
+            //            StatusCode = objResMsgDTO.StatusCode,
+            //            TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
+            //            TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
+            //            Type = TransactionType.PayBill.ToString()
+            //        };
+            //        var transactionData = _details.SavePatientTransaction(transaction);
+            //        info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
+            //        SendMailTransactionResponsePayBill(info.RegistrationNumber, info, transaction);
+            //        transaction.OrderId = info.RegistrationNumber;
+            //        Session["PatientInfoBill"] = null;
+            //        TempData["transaction"] = transaction;
+            //        //send patient data to HIS portal
+            //        //HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
+            //        //insertModel.Type = Convert.ToInt32(TransactionType.PayBill);
+            //        //WebServiceIntegration service = new WebServiceIntegration();
+            //        //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                    ////save status to DB
-                    //PatientInfo user = new PatientInfo()
-                    //{
-                    //    PatientId = info.PatientId,
-                    //    RenewalStatusHIS = serviceResult
-                    //};
-                    _details.UpdatePatientHISSyncStatus(info);
+            //        ////save status to DB
+            //        //PatientInfo user = new PatientInfo()
+            //        //{
+            //        //    PatientId = info.PatientId,
+            //        //    RenewalStatusHIS = serviceResult
+            //        //};
+            //        _details.UpdatePatientHISSyncStatus(info);
 
-                    return RedirectToAction("TransactionResponseBill");
-                }
-                else
-                {
-                    PatientDetails _details = new PatientDetails();
-                    string serialNumber = VerificationCodeGeneration.GetSerialNumber();
-                    if (Session["PatientInfo"] != null)
-                    {
-                        PatientInfoModel model = Session["PatientInfo"] as PatientInfoModel;
-                        Dictionary<string, object> result = SavePatientInfo(model.MaritalStatus, model.Title, model.FirstName, model.MiddleName, model.LastName, model.DOB.ToString(), model.Gender, model.MobileNumber, model.Email, model.Address, model.CityId, model.Country, model.PinCode.ToString(), model.Religion, model.DepartmentId.ToString(), "", model.StateId, model.FatherOrHusbandName, 0, null, model.AadharNumber);
-                        if (result["status"].ToString() == CrudStatus.Saved.ToString())
-                        {
-                            int patientId = ((PatientInfo)result["data"]).PatientId;
-                            PatientInfo info = new PatientInfo()
-                            {
-                                RegistrationNumber = serialNumber,
-                                PatientId = patientId
-                            };
-                            info = _details.UpdatePatientDetail(info);
-                            PatientTransaction transaction = new PatientTransaction()
-                            {
-                                PatientId = patientId,
-                                Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
-                                OrderId = objResMsgDTO.OrderId,
-                                ResponseCode = objResMsgDTO.ResponseCode,
-                                StatusCode = objResMsgDTO.StatusCode,
-                                TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
-                                TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
-                                Type = TransactionType.Registration.ToString()
-                            };
-                            var transactionData = _details.SavePatientTransaction(transaction);
-                            info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
-                            SendMailTransactionResponse(serialNumber, ((PatientInfo)result["data"]));
-                            transaction.OrderId = serialNumber;
-                            ViewData["TransactionSuccessResult"] = transaction;
-                            Session["PatientInfo"] = null;
-                            //send patient data to HIS portal
-                            HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
-                            insertModel.Type = Convert.ToInt32(TransactionType.Registration);
-                            //WebServiceIntegration service = new WebServiceIntegration();
-                            //string serviceResult = service.GetPatientInfoinsert(insertModel);
+            //        return RedirectToAction("TransactionResponseBill");
+            //    }
+            //    else
+            //    {
+            //        PatientDetails _details = new PatientDetails();
+            //        string serialNumber = VerificationCodeGeneration.GetSerialNumber();
+            //        if (Session["PatientInfo"] != null)
+            //        {
+            //            PatientInfoModel model = Session["PatientInfo"] as PatientInfoModel;
+            //            Dictionary<string, object> result = SavePatientInfo(model.MaritalStatus, model.Title, model.FirstName, model.MiddleName, model.LastName, model.DOB.ToString(), model.Gender, model.MobileNumber, model.Email, model.Address, model.CityId, model.Country, model.PinCode.ToString(), model.Religion, model.DepartmentId.ToString(), "", model.StateId, model.FatherOrHusbandName, 0, null, model.AadharNumber);
+            //            if (result["status"].ToString() == CrudStatus.Saved.ToString())
+            //            {
+            //                int patientId = ((PatientInfo)result["data"]).PatientId;
+            //                PatientInfo info = new PatientInfo()
+            //                {
+            //                    RegistrationNumber = serialNumber,
+            //                    PatientId = patientId
+            //                };
+            //                info = _details.UpdatePatientDetail(info);
+            //                PatientTransaction transaction = new PatientTransaction()
+            //                {
+            //                    PatientId = patientId,
+            //                    Amount = Convert.ToInt32(objResMsgDTO.TrnAmt),
+            //                    OrderId = objResMsgDTO.OrderId,
+            //                    ResponseCode = objResMsgDTO.ResponseCode,
+            //                    StatusCode = objResMsgDTO.StatusCode,
+            //                    TransactionDate = Convert.ToDateTime(objResMsgDTO.TrnReqDate),
+            //                    TransactionNumber = objResMsgDTO.PgMeTrnRefNo,
+            //                    Type = TransactionType.Registration.ToString()
+            //                };
+            //                var transactionData = _details.SavePatientTransaction(transaction);
+            //                info.PatientTransactions.Add((PatientTransaction)transactionData["data"]);
+            //                SendMailTransactionResponse(serialNumber, ((PatientInfo)result["data"]));
+            //                transaction.OrderId = serialNumber;
+            //                ViewData["TransactionSuccessResult"] = transaction;
+            //                Session["PatientInfo"] = null;
+            //                //send patient data to HIS portal
+            //                HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
+            //                insertModel.Type = Convert.ToInt32(TransactionType.Registration);
+            //                //WebServiceIntegration service = new WebServiceIntegration();
+            //                //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                            //if (serviceResult.Contains("-"))
-                            //{
-                            //    var pidLocation = serviceResult.Split('-');
-                            //    if (pidLocation.Length == 2)
-                            //    {
-                            //        int pId = Convert.ToInt32(pidLocation[0]);
-                            //        string location = Convert.ToString(pidLocation[1]);
-                            //        PatientInfo infoPatient = new PatientInfo()
-                            //        {
-                            //            pid = pId,
-                            //            Location = location,
-                            //            PatientId = patientId
-                            //        };
-                            //        info = _details.UpdatePatientDetail(infoPatient);
-                            //    }
-                            //}
+            //                //if (serviceResult.Contains("-"))
+            //                //{
+            //                //    var pidLocation = serviceResult.Split('-');
+            //                //    if (pidLocation.Length == 2)
+            //                //    {
+            //                //        int pId = Convert.ToInt32(pidLocation[0]);
+            //                //        string location = Convert.ToString(pidLocation[1]);
+            //                //        PatientInfo infoPatient = new PatientInfo()
+            //                //        {
+            //                //            pid = pId,
+            //                //            Location = location,
+            //                //            PatientId = patientId
+            //                //        };
+            //                //        info = _details.UpdatePatientDetail(infoPatient);
+            //                //    }
+            //                //}
 
-                            ////save status to DB
-                            //PatientInfo user = new PatientInfo()
-                            //{
-                            //    PatientId = patientId,
-                            //    RegistrationStatusHIS = serviceResult.Contains("-") ? "S" : serviceResult,
+            //                ////save status to DB
+            //                //PatientInfo user = new PatientInfo()
+            //                //{
+            //                //    PatientId = patientId,
+            //                //    RegistrationStatusHIS = serviceResult.Contains("-") ? "S" : serviceResult,
 
 
-                            //};
-                            _details.UpdatePatientHISSyncStatus(info);
-                        }
-                    }
-                    else
-                    {
-                        SetAlertMessage("There Was Some Error in transaction Processing.....Please Check The Data you have Entered", "Transaction");
-                    }
-                }
-                return View();
-            }
-            else
-            {
-                return View();
-            }
+            //                //};
+            //                _details.UpdatePatientHISSyncStatus(info);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            SetAlertMessage("There Was Some Error in transaction Processing.....Please Check The Data you have Entered", "Transaction");
+            //        }
+            //    }
+            //    return View();
+            //}
+            //else
+            //{
+            //    return View();
+            //}
         }
         public ActionResult TransactionResponseRenewal()
         {

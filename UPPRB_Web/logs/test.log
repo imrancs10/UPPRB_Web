@@ -443,3 +443,5 @@ Error Number:53,State:0,Class:20
 2022-11-02 23:16:19,032 [5] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
 2022-11-02 23:17:14,018 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
 2022-11-02 23:20:01,064 [12] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-11-02 23:39:51,122 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-11-02 23:40:21,697 [11] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PhotoGallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-slider">
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/PhotoGallery"]').parent().addClass('active')
+    });
+</script>
