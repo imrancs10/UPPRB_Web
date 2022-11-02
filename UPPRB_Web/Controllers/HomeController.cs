@@ -6,7 +6,6 @@ using UPPRB_Web.BAL.Masters;
 using UPPRB_Web.BAL.Patient;
 using UPPRB_Web.Global;
 using UPPRB_Web.Infrastructure;
-using UPPRB_Web.Infrastructure.Adapter.WebService;
 using UPPRB_Web.Infrastructure.Authentication;
 using UPPRB_Web.Infrastructure.Utility;
 using UPPRB_Web.Models;
@@ -38,8 +37,8 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult Index()
         {
-            LookupDetails _details = new LookupDetails();
-            ViewData["Lookup"] = _details.GetLookupDetail();
+            //LookupDetails _details = new LookupDetails();
+            //ViewData["Lookup"] = _details.GetLookupDetail();
             return View();
         }
 
@@ -493,16 +492,16 @@ namespace UPPRB_Web.Controllers
                     //send patient data to HIS portal
                     HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
                     insertModel.Type = Convert.ToInt32(TransactionType.Renewal);
-                    WebServiceIntegration service = new WebServiceIntegration();
-                    string serviceResult = service.GetPatientInfoinsert(insertModel);
+                    //WebServiceIntegration service = new WebServiceIntegration();
+                    //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                    //save status to DB
-                    PatientInfo user = new PatientInfo()
-                    {
-                        PatientId = info.PatientId,
-                        RenewalStatusHIS = serviceResult
-                    };
-                    _details.UpdatePatientHISSyncStatus(info);
+                    ////save status to DB
+                    //PatientInfo user = new PatientInfo()
+                    //{
+                    //    PatientId = info.PatientId,
+                    //    RenewalStatusHIS = serviceResult
+                    //};
+                    //_details.UpdatePatientHISSyncStatus(info);
 
                     if (Convert.ToBoolean(TempData["Expired"]) == true)
                     {
@@ -535,17 +534,17 @@ namespace UPPRB_Web.Controllers
                     Session["PatientInfoBill"] = null;
                     TempData["transaction"] = transaction;
                     //send patient data to HIS portal
-                    HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
-                    insertModel.Type = Convert.ToInt32(TransactionType.PayBill);
-                    WebServiceIntegration service = new WebServiceIntegration();
-                    string serviceResult = service.GetPatientInfoinsert(insertModel);
+                    //HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
+                    //insertModel.Type = Convert.ToInt32(TransactionType.PayBill);
+                    //WebServiceIntegration service = new WebServiceIntegration();
+                    //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                    //save status to DB
-                    PatientInfo user = new PatientInfo()
-                    {
-                        PatientId = info.PatientId,
-                        RenewalStatusHIS = serviceResult
-                    };
+                    ////save status to DB
+                    //PatientInfo user = new PatientInfo()
+                    //{
+                    //    PatientId = info.PatientId,
+                    //    RenewalStatusHIS = serviceResult
+                    //};
                     _details.UpdatePatientHISSyncStatus(info);
 
                     return RedirectToAction("TransactionResponseBill");
@@ -587,34 +586,34 @@ namespace UPPRB_Web.Controllers
                             //send patient data to HIS portal
                             HISPatientInfoInsertModel insertModel = setregistrationModelForHISPortal(info);
                             insertModel.Type = Convert.ToInt32(TransactionType.Registration);
-                            WebServiceIntegration service = new WebServiceIntegration();
-                            string serviceResult = service.GetPatientInfoinsert(insertModel);
+                            //WebServiceIntegration service = new WebServiceIntegration();
+                            //string serviceResult = service.GetPatientInfoinsert(insertModel);
 
-                            if (serviceResult.Contains("-"))
-                            {
-                                var pidLocation = serviceResult.Split('-');
-                                if (pidLocation.Length == 2)
-                                {
-                                    int pId = Convert.ToInt32(pidLocation[0]);
-                                    string location = Convert.ToString(pidLocation[1]);
-                                    PatientInfo infoPatient = new PatientInfo()
-                                    {
-                                        pid = pId,
-                                        Location = location,
-                                        PatientId = patientId
-                                    };
-                                    info = _details.UpdatePatientDetail(infoPatient);
-                                }
-                            }
+                            //if (serviceResult.Contains("-"))
+                            //{
+                            //    var pidLocation = serviceResult.Split('-');
+                            //    if (pidLocation.Length == 2)
+                            //    {
+                            //        int pId = Convert.ToInt32(pidLocation[0]);
+                            //        string location = Convert.ToString(pidLocation[1]);
+                            //        PatientInfo infoPatient = new PatientInfo()
+                            //        {
+                            //            pid = pId,
+                            //            Location = location,
+                            //            PatientId = patientId
+                            //        };
+                            //        info = _details.UpdatePatientDetail(infoPatient);
+                            //    }
+                            //}
 
-                            //save status to DB
-                            PatientInfo user = new PatientInfo()
-                            {
-                                PatientId = patientId,
-                                RegistrationStatusHIS = serviceResult.Contains("-") ? "S" : serviceResult,
+                            ////save status to DB
+                            //PatientInfo user = new PatientInfo()
+                            //{
+                            //    PatientId = patientId,
+                            //    RegistrationStatusHIS = serviceResult.Contains("-") ? "S" : serviceResult,
 
 
-                            };
+                            //};
                             _details.UpdatePatientHISSyncStatus(info);
                         }
                     }
@@ -1244,47 +1243,47 @@ namespace UPPRB_Web.Controllers
             //}
             else
             {
-                WebServiceIntegration service = new WebServiceIntegration();
-                var patient = service.GetPatientInfoBYCRNumber(CRNumber);
-                if (patient != null)
-                {
-                    PatientInfoModel crData = GetPatientInfoModel(patient);
+                //WebServiceIntegration service = new WebServiceIntegration();
+                //var patient = service.GetPatientInfoBYCRNumber(CRNumber);
+                //if (patient != null)
+                //{
+                //    PatientInfoModel crData = GetPatientInfoModel(patient);
 
-                    TimeSpan ageDiff = DateTime.Now.Subtract(Convert.ToDateTime(patient.DoR));
-                    crData.DOB = crData.DOB.Value.Add(ageDiff);
-                    if (crData.LastName == string.Empty && !string.IsNullOrEmpty(crData.MiddleName))
-                    {
-                        crData.LastName = crData.MiddleName;
-                        crData.MiddleName = string.Empty;
-                    }
-                    ViewData["CRData"] = crData;
-                    Session["crData"] = crData;
+                //    TimeSpan ageDiff = DateTime.Now.Subtract(Convert.ToDateTime(patient.DoR));
+                //    crData.DOB = crData.DOB.Value.Add(ageDiff);
+                //    if (crData.LastName == string.Empty && !string.IsNullOrEmpty(crData.MiddleName))
+                //    {
+                //        crData.LastName = crData.MiddleName;
+                //        crData.MiddleName = string.Empty;
+                //    }
+                //    ViewData["CRData"] = crData;
+                //    Session["crData"] = crData;
 
-                    //Save CR Patient Data to Patient Clone table when data comes from web service
-                    Dictionary<string, object> result = SavePatientInfo(crData.MaritalStatus, crData.Title, crData.FirstName, crData.MiddleName, crData.LastName, Convert.ToDateTime(crData.DOB).ToShortDateString(), crData.Gender, crData.MobileNumber, crData.Email, crData.Address, crData.CityId, crData.Country, Convert.ToString(crData.PinCode), crData.Religion, Convert.ToString(crData.DepartmentId), "", crData.StateId, crData.FatherOrHusbandName, 0, null, crData.AadharNumber, true, crData.Pid, crData.Location);
-                    if (result["status"].ToString() == CrudStatus.Saved.ToString())
-                    {
-                        string serialNumber = VerificationCodeGeneration.GetSerialNumber();
-                        PatientInfoCRClone info = new PatientInfoCRClone()
-                        {
-                            RegistrationNumber = serialNumber,
-                            CRNumber = !string.IsNullOrEmpty(Convert.ToString(crData.CRNumber)) ? Convert.ToString(crData.CRNumber) : string.Empty,
-                            PatientId = ((PatientInfoCRClone)result["data"]).PatientId,
-                            ValidUpto = crData.ValidUpto
-                        };
-                        PatientDetails _details = new PatientDetails();
-                        info = _details.UpdatePatientDetailClone(info);
-                    }
-                    else if (result["status"].ToString() == CrudStatus.DataAlreadyExist.ToString())
-                    {
-                        ViewData["CRData"] = null;
-                        Session["crData"] = null;
-                        SetAlertMessage("Email Id is already used for other account.", "CR Integrate");
-                        return View();
-                    }
-                    return View();
-                }
-                else
+                //    //Save CR Patient Data to Patient Clone table when data comes from web service
+                //    Dictionary<string, object> result = SavePatientInfo(crData.MaritalStatus, crData.Title, crData.FirstName, crData.MiddleName, crData.LastName, Convert.ToDateTime(crData.DOB).ToShortDateString(), crData.Gender, crData.MobileNumber, crData.Email, crData.Address, crData.CityId, crData.Country, Convert.ToString(crData.PinCode), crData.Religion, Convert.ToString(crData.DepartmentId), "", crData.StateId, crData.FatherOrHusbandName, 0, null, crData.AadharNumber, true, crData.Pid, crData.Location);
+                //    if (result["status"].ToString() == CrudStatus.Saved.ToString())
+                //    {
+                //        string serialNumber = VerificationCodeGeneration.GetSerialNumber();
+                //        PatientInfoCRClone info = new PatientInfoCRClone()
+                //        {
+                //            RegistrationNumber = serialNumber,
+                //            CRNumber = !string.IsNullOrEmpty(Convert.ToString(crData.CRNumber)) ? Convert.ToString(crData.CRNumber) : string.Empty,
+                //            PatientId = ((PatientInfoCRClone)result["data"]).PatientId,
+                //            ValidUpto = crData.ValidUpto
+                //        };
+                //        PatientDetails _details = new PatientDetails();
+                //        info = _details.UpdatePatientDetailClone(info);
+                //    }
+                //    else if (result["status"].ToString() == CrudStatus.DataAlreadyExist.ToString())
+                //    {
+                //        ViewData["CRData"] = null;
+                //        Session["crData"] = null;
+                //        SetAlertMessage("Email Id is already used for other account.", "CR Integrate");
+                //        return View();
+                //    }
+                //    return View();
+                //}
+                //else
                 {
                     SetAlertMessage("CR Number not found or expire, Kindly contact to hospital.", "CR Integrate");
                     return View();
@@ -1453,11 +1452,11 @@ namespace UPPRB_Web.Controllers
         {
             DepartmentDetails _details = new DepartmentDetails();
             var result = _details.DepartmentList();
-            var opdDetail = (new WebServiceIntegration()).GetPatientOPDDetail("0", (Convert.ToInt32(OPDTypeEnum.OPD)).ToString());
+            //var opdDetail = (new WebServiceIntegration()).GetPatientOPDDetail("0", (Convert.ToInt32(OPDTypeEnum.OPD)).ToString());
             DepartmentOPDModel model = new DepartmentOPDModel()
             {
                 Departments = result,
-                OPDModel = opdDetail
+                //OPDModel = opdDetail
             };
             return Json(model);
         }

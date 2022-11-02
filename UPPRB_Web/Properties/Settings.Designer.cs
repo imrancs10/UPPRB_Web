@@ -22,35 +22,5 @@ namespace UPPRB_Web.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://103.78.201.146/PateintPortalWebservice/GetPatientDetails.asmx")]
-        public string UPPRB_Web_HISWebReference_GetPatientDetails {
-            get {
-                return ((string)(this["UPPRB_Web_HISWebReference_GetPatientDetails"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://103.78.201.146/PateintPortalWebservice/GetPatient_Info_insert.asmx")]
-        public string UPPRB_Web_PateintInfoService_GetPatient_Info_insert {
-            get {
-                return ((string)(this["UPPRB_Web_PateintInfoService_GetPatient_Info_insert"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://103.78.201.146/PateintPortalWebservice/GetPatOpdDetails.asmx")]
-        public string UPPRB_Web_OPDWebReference_GetPatOpdDetails {
-            get {
-                return ((string)(this["UPPRB_Web_OPDWebReference_GetPatOpdDetails"]));
-            }
-        }
     }
 }

@@ -16,7 +16,6 @@ namespace UPPRB_Web.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            ViewData["LoginPage"] = true;
             return View();
         }
 
