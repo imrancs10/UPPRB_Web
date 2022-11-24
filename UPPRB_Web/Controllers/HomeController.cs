@@ -96,6 +96,16 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
+        public ActionResult HowToReach()
+        {
+            return View();
+        }
+
+        public ActionResult OfficersDirectory()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult GetPatientLogin(string username, string password)
         {
