@@ -3,194 +3,195 @@
     ViewBag.Title = "GovernmentOrders";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="hero-slider"><div class="pr-15 pl-15">
-    <div class="row">
-        <div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
-            <h2 class="w-bgph ">UPPRPB</h2>
-            <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
-                <ul class="nav flex-column flex-nowrap overflow-hidden">
-                    <li class="nav-item"><a class="nav-link text-truncate" href="about.html">About UPPRPB</a></li>
-                    <li class="nav-item"><a class="nav-link text-truncate" href="dg_message.html">DGP Message</a></li>
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            <div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
+                <h2 class="w-bgph ">UPPRPB</h2>
+                <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
+                    <ul class="nav flex-column flex-nowrap overflow-hidden">
+                        <li class="nav-item"><a class="nav-link text-truncate" href="about.html">About UPPRPB</a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="dg_message.html">DGP Message</a></li>
 
-                    <li class="nav-item"><a class="nav-link text-truncate" href="Vission.html">Vission &amp; Mission</a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="Vission.html">Vission &amp; Mission</a></li>
 
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><span class="d-none d-sm-inline">Logo</span></a>
-                        <div class="collapse" id="submenu1" aria-expanded="false">
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><span class="d-none d-sm-inline">Logo</span></a>
+                            <div class="collapse" id="submenu1" aria-expanded="false">
 
-                            <ul class="flex-column nav pl-4">
-                                <li class="nav-item"><a class="nav-link p-1" href="g_overview.aspx">Overview</a></li>
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub3" data-toggle="collapse" data-target="#submenu1sub3">The Court</a>
-                                    <div class="collapse" id="submenu1sub3" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Composition</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Meeting Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub4" data-toggle="collapse" data-target="#submenu1sub4">Board of Management</a>
-                                    <div class="collapse" id="submenu1sub4" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Composition</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Meeting Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub7" data-toggle="collapse" data-target="#submenu1sub7">Examination Committee</a>
-                                    <div class="collapse" id="submenu1sub7" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Composition</a></li>
-                                            <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=EC">Meeting  Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub9" data-toggle="collapse" data-target="#submenu1sub9">Administrative Committee</a>
-                                    <div class="collapse" id="submenu1sub9" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Composition</a></li>
-                                            <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=ADC">Meeting  Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub11" data-toggle="collapse" data-target="#submenu1sub11">Academic Affairs Committee</a>
-                                    <div class="collapse" id="submenu1sub11" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="Governence?id=8">Composition</a></li>
-                                            <li class="nav-item"><a class="nav-link p-1" href="#!">Meeting  Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub8" data-toggle="collapse" data-target="#submenu1sub8">Building Works Committee</a>
-                                    <div class="collapse" id="submenu1sub8" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="Governence?id=9">Composition</a></li>
-                                            <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=BWC">Meeting  Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="Constitution.aspx?id=9">Constitution</a></li>
-                                        </ul>
-                                    </div>
-
-                                </li>
-                                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub8" data-toggle="collapse" data-target="#submenu1sub13">Board of Studies</a>
-                                    <div class="collapse" id="submenu1sub13" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="Constitution.aspx?id=10">Constitution</a></li>
-                                        </ul>
-                                    </div>
-
-                                </li>
+                                <ul class="flex-column nav pl-4">
+                                    <li class="nav-item"><a class="nav-link p-1" href="g_overview.aspx">Overview</a></li>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub3" data-toggle="collapse" data-target="#submenu1sub3">The Court</a>
+                                        <div class="collapse" id="submenu1sub3" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Composition</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Meeting Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub4" data-toggle="collapse" data-target="#submenu1sub4">Board of Management</a>
+                                        <div class="collapse" id="submenu1sub4" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Composition</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Meeting Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
 
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub7" data-toggle="collapse" data-target="#submenu1sub7">Examination Committee</a>
+                                        <div class="collapse" id="submenu1sub7" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Composition</a></li>
+                                                <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=EC">Meeting  Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub9" data-toggle="collapse" data-target="#submenu1sub9">Administrative Committee</a>
+                                        <div class="collapse" id="submenu1sub9" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Composition</a></li>
+                                                <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=ADC">Meeting  Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
-                                 <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub14" data-toggle="collapse" data-target="#submenu1sub14">Internal Quality Assurance Cell</a>
-                                     <div class="collapse" id="submenu1sub14" aria-expanded="false">
-                                        <ul class="flex-column nav pl-4">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Composition</a></li>
-                                            <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=IQAC">Meeting  Minutes</a></li>
-                                            <li class="nav-item">
-                                                <a class="nav-link p-1" href="#!">Constitution</a></li>
-                                        </ul>
-                                    </div>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub11" data-toggle="collapse" data-target="#submenu1sub11">Academic Affairs Committee</a>
+                                        <div class="collapse" id="submenu1sub11" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="Governence?id=8">Composition</a></li>
+                                                <li class="nav-item"><a class="nav-link p-1" href="#!">Meeting  Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub8" data-toggle="collapse" data-target="#submenu1sub8">Building Works Committee</a>
+                                        <div class="collapse" id="submenu1sub8" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="Governence?id=9">Composition</a></li>
+                                                <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=BWC">Meeting  Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="Constitution.aspx?id=9">Constitution</a></li>
+                                            </ul>
+                                        </div>
 
-                                </li>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub8" data-toggle="collapse" data-target="#submenu1sub13">Board of Studies</a>
+                                        <div class="collapse" id="submenu1sub13" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="Constitution.aspx?id=10">Constitution</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </li>
 
 
 
-                            </ul>
+                                     <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub14" data-toggle="collapse" data-target="#submenu1sub14">Internal Quality Assurance Cell</a>
+                                         <div class="collapse" id="submenu1sub14" aria-expanded="false">
+                                            <ul class="flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Composition</a></li>
+                                                <li class="nav-item"><a class="nav-link p-1" href="ViewUnivMeetingMinutes.aspx?m=IQAC">Meeting  Minutes</a></li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link p-1" href="#!">Constitution</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </li>
 
 
-                        </div>
-                    </li>   -->
 
-                    <li class="nav-item"><a class="nav-link text-truncate" href="logo.html">Logo</a></li>
-
-                    <li class="nav-item"><a class="nav-link text-truncate" href="org_structure.html">Organizational Structure</a></li>
-                    <li class="nav-item"><a class="nav-link text-truncate" href="govt_order.html">Government Order </a></li>
-                    <li class="nav-item"><a class="nav-link text-truncate" href="rti.html">Right to Information</a></li>
+                                </ul>
 
 
+                            </div>
+                        </li>   -->
 
-                    <!--<li class="nav-item"><a class="nav-link text-truncate" href="#!">Annual Reports</a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="logo.html">Logo</a></li>
 
-                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Photo Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link text-truncate" href="#!">Video Gallery</a></li>-->
+                        <li class="nav-item"><a class="nav-link text-truncate" href="org_structure.html">Organizational Structure</a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="govt_order.html">Government Order </a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="rti.html">Right to Information</a></li>
 
 
-                </ul>
+
+                        <!--<li class="nav-item"><a class="nav-link text-truncate" href="#!">Annual Reports</a></li>
+
+                        <li class="nav-item"><a class="nav-link text-truncate" href="#!">Photo Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link text-truncate" href="#!">Video Gallery</a></li>-->
+
+
+                    </ul>
+                </div>
+
+
             </div>
 
-
-        </div>
-
-        <div class="col-lg-10">
-            <div class="w_content">
+            <div class="col-lg-10">
+                <div class="w_content">
 
 
 
-                <p>
+                    <p>
 
-                </p><h3 class="w-hd-u">Government Orders</h3>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
-                <br>
-                <h3 class="w-hd-u">Mission</h3>
-                The distinctive mission of the University is:
+                    </p><h3 class="w-hd-u">Government Orders</h3>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
+                    <br>
+                    <h3 class="w-hd-u">Mission</h3>
+                    The distinctive mission of the University is:
 
-                <ul class="w_ul">
+                    <ul class="w_ul">
 
-                    <li>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</li>
-                    <li>To take leadership role by providing need-based programs in engineering and technology, applied sciences, management, humanities, architecture, pharmacy, retail and fashion design, mass-communication, agriculture and other employable courses in emerging areas.</li>
-                    <li>To promote compassionate care of the highest quality that translates new knowledge into meaningful improvements in technological outcomes through interdisciplinary collaboration, fiscal responsibility, support of diversity, a focus on quality and a culture of professionalism.</li>
-                    <li>To establish value creating networks and foster relationship with other leading institutes of higher learning and research, alumni and industries in order to provide significant contribution to national and international development.</li>
-                    <li>To create an intellectually stimulating Infrastructure and conducive environment for technology research, scholarship, creativity, innovation, entrepreneurship, and professional activity for service to community and economy.</li>
+                        <li>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</li>
+                        <li>To take leadership role by providing need-based programs in engineering and technology, applied sciences, management, humanities, architecture, pharmacy, retail and fashion design, mass-communication, agriculture and other employable courses in emerging areas.</li>
+                        <li>To promote compassionate care of the highest quality that translates new knowledge into meaningful improvements in technological outcomes through interdisciplinary collaboration, fiscal responsibility, support of diversity, a focus on quality and a culture of professionalism.</li>
+                        <li>To establish value creating networks and foster relationship with other leading institutes of higher learning and research, alumni and industries in order to provide significant contribution to national and international development.</li>
+                        <li>To create an intellectually stimulating Infrastructure and conducive environment for technology research, scholarship, creativity, innovation, entrepreneurship, and professional activity for service to community and economy.</li>
 
-                </ul><br>
+                    </ul><br>
 
-                <!--<h3 class="w-hd-u">Core Values</h3>
+                    <!--<h3 class="w-hd-u">Core Values</h3>
 
-                <ul class="w_ul">
-                    <li>Academic integrity</li>
-                    <li>Accountability with transparency, respect and tolerance for views of all stakeholders</li>
-                    <li>Concern for social responsibilities and attention to all national/international issues needing technological intervention</li>
-                    <li>Recognition of creativity and intellectual excellence</li>
-                    <li>Spirit of learning, exploration, innovation and enterprise</li>
-                    <li>All round understanding and knowledge of human sciences</li>
-                </ul>
-                <br>-->
+                    <ul class="w_ul">
+                        <li>Academic integrity</li>
+                        <li>Accountability with transparency, respect and tolerance for views of all stakeholders</li>
+                        <li>Concern for social responsibilities and attention to all national/international issues needing technological intervention</li>
+                        <li>Recognition of creativity and intellectual excellence</li>
+                        <li>Spirit of learning, exploration, innovation and enterprise</li>
+                        <li>All round understanding and knowledge of human sciences</li>
+                    </ul>
+                    <br>-->
 
 
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
 
+                </div>
             </div>
-        </div>
 
-        <div class="clearfix"></div>
+            <div class="clearfix"></div>
+        </div>
     </div>
-</div>
 </section>
 
 

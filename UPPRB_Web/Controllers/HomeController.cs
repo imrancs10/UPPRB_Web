@@ -30,8 +30,6 @@ namespace UPPRB_Web.Controllers
         [CustomAuthorize]
         public ActionResult Index()
         {
-            //LookupDetails _details = new LookupDetails();
-            //ViewData["Lookup"] = _details.GetLookupDetail();
             return View();
         }
         public ActionResult About()
@@ -67,6 +65,33 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult About_DGMessage()
+        {
+            return View();
+        }
+        public ActionResult About_Vision()
+        {
+            return View();
+        }
+
+        public ActionResult About_Logo()
+        {
+            return View();
+        }
+
+        public ActionResult About_OrgStructure()
+        {
+            return View();
+        }
+
+        public ActionResult About_GovernmentOrder()
+        {
+            return View();
+        }
+        public ActionResult About_RTI()
         {
             return View();
         }

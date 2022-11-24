@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "About Vision";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_About_SideMenu")
+
+            <div class="col-lg-10">
+                <div class="w_content">
+
+
+
+                    <p>
+
+                    </p><h3 class="w-hd-u">Vision</h3>
+                    UP Police Recruitment and Promotion Board is committed to being a leader in recruitment, through impartial and objective methodology, adopting transparent processes, innovative technological applications, continuous evolution and growth.     <br>
+                    <h3 class="w-hd-u">Mission</h3>
+                    UP Police Recruitment and Promotion Board is committed to providing services which are appropriate to the needs of the police force based on its requirements to meet the challenges of the millennium.
+                    <h3 class="w-hd-u">Founding Principles</h3>
+
+                    <ul class="w_ul">
+
+                        <li>To adopt and implement procedures which are fair, impartial, transparent, non-discretionary, and non-discriminatory.</li>
+                        <li>To inculcate a work culture of truthfulness, conscientious professionalism, responsibility, accountability, mutual trust and respect amongst one another and upholding the highest core values of reliability and work ethos.</li>
+                        <li>
+                            To achieve the goals, we strive to work as a team within the Board and in collaboration with other agencies, making use of their abilities, diverse experiences and skills in human resource management.
+                        </li>
+
+                    </ul><br>
+
+                    <!--<h3 class="w-hd-u">Core Values</h3>
+
+            <ul class="w_ul">
+                <li>Academic integrity</li>
+                <li>Accountability with transparency, respect and tolerance for views of all stakeholders</li>
+                <li>Concern for social responsibilities and attention to all national/international issues needing technological intervention</li>
+                <li>Recognition of creativity and intellectual excellence</li>
+                <li>Spirit of learning, exploration, innovation and enterprise</li>
+                <li>All round understanding and knowledge of human sciences</li>
+            </ul>
+            <br>-->
+
+
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/About"]').parent().addClass('active')
+    });
+</script>

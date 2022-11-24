@@ -474,6 +474,13 @@
     <Content Include="Views\Home\Administration.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\PhotoGallery.cshtml" />
+    <Content Include="Views\Home\About_DGMessage.cshtml" />
+    <Content Include="Views\Home\About_Vision.cshtml" />
+    <Content Include="Views\Home\About_Logo.cshtml" />
+    <Content Include="Views\Home\About_OrgStructure.cshtml" />
+    <Content Include="Views\Home\About_GovernmentOrder.cshtml" />
+    <Content Include="Views\Home\About_RTI.cshtml" />
+    <Content Include="Views\Shared\_About_SideMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
