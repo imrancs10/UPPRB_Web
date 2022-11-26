@@ -484,6 +484,9 @@
     <Content Include="Views\Home\HowToReach.cshtml" />
     <Content Include="Views\Home\OfficersDirectory.cshtml" />
     <Content Include="Views\Shared\_Contact_SideMenu.cshtml" />
+    <Content Include="Views\Shared\_Notice_SideMenu.cshtml" />
+    <Content Include="Views\Shared\_Galary_SideMenu.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
