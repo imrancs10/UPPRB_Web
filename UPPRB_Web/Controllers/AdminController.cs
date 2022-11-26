@@ -6,16 +6,24 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace UPPRB_Web.Controllers
 {
     public class AdminController : CommonController
     {
-        // GET: Admin
-        public ActionResult DoctorType()
+        public ActionResult Dashboard()
         {
             return View();
         }
+
+        public ActionResult NoticeEntry()
+        {
+            return View();
+        }
+
+
+
         [HttpPost]
         public ActionResult SaveDoctorType(int doctor, int doctortype)
         {
@@ -75,6 +83,12 @@ namespace UPPRB_Web.Controllers
             //_details.SetLabReportData(PatientId, BillNo, RefNo, ReportPath, LabName, ReportDate, doctorId);
             return View("PatientLabReport");
         }
-
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Index", "Login");
+        }
     }
 }

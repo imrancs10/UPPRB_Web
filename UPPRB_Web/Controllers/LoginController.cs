@@ -28,7 +28,7 @@ namespace UPPRB_Web.Controllers
             if (message == Enums.LoginMessage.Authenticated)
             {
                 //setUserClaim();
-                return RedirectToAction("AddDepartments", "Masters");
+                return RedirectToAction("Dashboard", "Admin");
             }
             else
             {
