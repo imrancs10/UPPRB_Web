@@ -11,9 +11,11 @@ using System.IO;
 using Org.BouncyCastle.Asn1.X509;
 using DataLayer;
 using UPPRB_Web.BAL.Masters;
+using UPPRB_Web.Infrastructure.Authentication;
 
 namespace UPPRB_Web.Controllers
 {
+    [CustomAuthorize]
     public class AdminController : CommonController
     {
         public ActionResult Dashboard()
