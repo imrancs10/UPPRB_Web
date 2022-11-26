@@ -11,11 +11,11 @@ namespace UPPRB_Web.BAL.Reports
 {
     public class ReportDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
 
         public List<PateintLeadger> GetBillReportData()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var patientInfo = _db.PatientInfoes.Where(x => x.PatientId == WebSession.PatientId).FirstOrDefault();
             var result = _db.PateintLeadgers.Where(x => x.PId == patientInfo.pid).OrderByDescending(x => x.billdate).ToList();
             result.ForEach(x =>
@@ -30,7 +30,7 @@ namespace UPPRB_Web.BAL.Reports
 
         public Enums.CrudStatus SetBillReportData(int PatientId, string BillNo, string BillType, DateTime BillDate, string ReportUrl, decimal BillAmount, string BillID)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var patientInfo = _db.PatientInfoes.Where(x => x.PatientId == PatientId).FirstOrDefault();
             PateintLeadger _report = new PateintLeadger();
             _report.netamt = BillAmount;
@@ -47,7 +47,7 @@ namespace UPPRB_Web.BAL.Reports
 
         public Enums.CrudStatus SetLabReportData(int PatientId, string BillNo, string RefNo, string ReportUrl, string LabName, DateTime ReportDate, string doctorId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var patientInfo = _db.PatientInfoes.Where(x => x.PatientId == PatientId).FirstOrDefault();
             LabreportPdf _report = new LabreportPdf();
             _report.ReportDate = ReportDate;
@@ -66,7 +66,7 @@ namespace UPPRB_Web.BAL.Reports
 
         public List<LabreportPdf> GetLabReportData()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var patientInfo = _db.PatientInfoes.Where(x => x.PatientId == WebSession.PatientId).FirstOrDefault();
             _db.Configuration.LazyLoadingEnabled = false;
             var result = _db.LabreportPdfs.Where(x => x.pid == patientInfo.pid).OrderBy(x => x.Labref).ToList();
@@ -80,7 +80,7 @@ namespace UPPRB_Web.BAL.Reports
 
         public List<PatientTransaction> GetPaymentReceipt()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             var result = _db.PatientTransactions.Where(x => x.PatientId == WebSession.PatientId).OrderBy(x => x.TransactionDate).ToList();
             result.ForEach(x =>
@@ -93,7 +93,7 @@ namespace UPPRB_Web.BAL.Reports
 
         public List<PatientLedgerModel> GetPatientLedger(DateTime? fromDate = null, DateTime? toDate = null)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             DateTime _period = DateTime.Now.AddMonths(-WebSession.PatientLedgerPeriodInMonth);
             var patientInfo = _db.PatientInfoes.Where(x => x.PatientId == WebSession.PatientId).FirstOrDefault();
             List<PateintLeadger> data = new List<PateintLeadger>();

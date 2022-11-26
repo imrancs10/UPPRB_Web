@@ -15,9 +15,9 @@ namespace UPPRB_Web.APIController
         /// Get Patient List
         /// </summary>
         /// <returns>List of Patientinfo</returns>
-        public List<PatientInfo> GetPatientInfo(int id)
+        public List<AdminUser> GetPatientInfo(int id)
         {
-            List<PatientInfo> list = new List<PatientInfo>() { new PatientInfo() { PatientId = 1 } };
+            List<AdminUser> list = new List<AdminUser>() { new AdminUser() { Id = 1 } };
             return list;
         }
     }

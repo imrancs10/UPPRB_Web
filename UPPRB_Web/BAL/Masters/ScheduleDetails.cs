@@ -10,10 +10,10 @@ namespace UPPRB_Web.BAL.Masters
 {
     public class ScheduleDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
         public Enums.CrudStatus SaveSchedule(ScheduleModel model)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.DoctorSchedules.Where(x =>x.DoctorScheduleID.Equals(model.ScheduleId)).FirstOrDefault();
             if (_deptRow == null)
@@ -34,7 +34,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus EditSchedule(ScheduleModel model)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _docRow = _db.DoctorSchedules.Where(x => x.DoctorScheduleID.Equals(model.ScheduleId)).FirstOrDefault();
             if (_docRow != null)
@@ -54,7 +54,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus DeleteSchedule(int docId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _docRow = _db.DoctorSchedules.Where(x => x.DoctorScheduleID.Equals(docId)).FirstOrDefault();
             if (_docRow != null)
@@ -69,7 +69,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public IEnumerable<object> ScheduleList()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from docSchedule in _db.DoctorSchedules
                          
                          orderby docSchedule.Doctor.DoctorName

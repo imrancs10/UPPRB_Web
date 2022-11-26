@@ -11,10 +11,10 @@ namespace UPPRB_Web.BAL.Appointments
 {
     public class AppointDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
         public IEnumerable<object> DeptWiseDoctorScheduleList(int deptId = 0, int year = 0, int month = 0)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             year = year == 0 ? DateTime.Now.Year : year;
             month = month == 0 ? DateTime.Now.Month : month;
             var _list = (from docSchedule in _db.DoctorSchedules
@@ -37,7 +37,7 @@ namespace UPPRB_Web.BAL.Appointments
         }
         public IEnumerable<object> DayWiseDoctorScheduleList(int deptId, string day, DateTime? date)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _docList = _db.DoctorLeaves.Where(x => date != null && x.LeaveDate == date).Select(x => x.DoctorId).ToList();
             var _list = (from docSchedule in _db.DoctorSchedules
 
@@ -61,7 +61,7 @@ namespace UPPRB_Web.BAL.Appointments
         }
         public IEnumerable<object> DateWiseDoctorAppointmentList(DateTime date)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from docAppointment in _db.AppointmentInfoes
 
                          orderby docAppointment.DoctorId
@@ -83,7 +83,7 @@ namespace UPPRB_Web.BAL.Appointments
             {
                 if (model.PatientId < 1)
                     return Enums.CrudStatus.SessionExpired;
-                _db = new UPPRB_WebEntities();
+                _db = new upprbDbEntities();
                 int _effectRow = 0;
                 int _deptRow = _db.AppointmentInfoes.Where(x => DbFunctions.TruncateTime(x.AppointmentDateFrom) == DbFunctions.TruncateTime(model.AppointmentDateFrom) && x.IsCancelled == false && x.PatientId.Equals(model.PatientId)).Count();
                 if (_deptRow < WebSession.AppointmentLimitPerUser)
@@ -122,7 +122,7 @@ namespace UPPRB_Web.BAL.Appointments
         }
         public IEnumerable<object> PatientAppointmentListBookAppointment(int _patientId, int year = 0, int month = 0)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from docAppointment in _db.AppointmentInfoes
 
                          orderby docAppointment.DoctorId
@@ -148,7 +148,7 @@ namespace UPPRB_Web.BAL.Appointments
         }
         public List<AppointmentsModel> PatientAppointmentList(int _patientId, int year = 0, int month = 0)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from docAppointment in _db.AppointmentInfoes
 
                          orderby docAppointment.DoctorId
@@ -186,7 +186,7 @@ namespace UPPRB_Web.BAL.Appointments
             }
             Dictionary<int, string> result = new Dictionary<int, string>();
             ;
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var app = _db.AppointmentInfoes.Where(x => x.PatientId.Equals(_patientId) && x.AppointmentId.Equals(_appId)).FirstOrDefault();
             if (app != null)
             {
@@ -215,7 +215,7 @@ namespace UPPRB_Web.BAL.Appointments
 
         public AppointmentModel PatientAppointmentCount(int _patientId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var appointment = (from docAppointment in _db.AppointmentInfoes
                                where docAppointment.PatientInfo.PatientId.Equals(_patientId)
                                && docAppointment.AppointmentDateFrom > DateTime.Now

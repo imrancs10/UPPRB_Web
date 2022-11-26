@@ -33,44 +33,31 @@ namespace UPPRB_Web.Global
             }
             set { HttpContext.Current.Session["username"] = value; }
         }
-        public static string FirstName
+        public static string Name
         {
             get
             {
-                if (System.Web.HttpContext.Current.Session["FirstName"] != null)
+                if (System.Web.HttpContext.Current.Session["Name"] != null)
                 {
-                    return HttpContext.Current.Session["FirstName"].ToString();
+                    return HttpContext.Current.Session["Name"].ToString();
                 }
                 else
                     return string.Empty;
             }
-            set { HttpContext.Current.Session["FirstName"] = value; }
+            set { HttpContext.Current.Session["Name"] = value; }
         }
-        public static string MiddleName
+        public static string MobileNumber
         {
             get
             {
-                if (System.Web.HttpContext.Current.Session["MiddleName"] != null)
+                if (System.Web.HttpContext.Current.Session["MobileNumber"] != null)
                 {
-                    return HttpContext.Current.Session["MiddleName"].ToString();
+                    return HttpContext.Current.Session["MobileNumber"].ToString();
                 }
                 else
                     return string.Empty;
             }
-            set { HttpContext.Current.Session["MiddleName"] = value; }
-        }
-        public static string LastName
-        {
-            get
-            {
-                if (System.Web.HttpContext.Current.Session["LastName"] != null)
-                {
-                    return HttpContext.Current.Session["LastName"].ToString();
-                }
-                else
-                    return string.Empty;
-            }
-            set { HttpContext.Current.Session["LastName"] = value; }
+            set { HttpContext.Current.Session["MobileNumber"] = value; }
         }
         public static string Email
         {

@@ -13,16 +13,16 @@ namespace UPPRB_Web.BAL.Lookup
 {
     public class LookupDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
 
         enum LookupEnum
         {
             HelpLineNo
         }
-        public List<MasterLookup> GetLookupDetail()
-        {
-            _db = new UPPRB_WebEntities();
-            return _db.MasterLookups.ToList();
-        }
+        //public List<MasterLookup> GetLookupDetail()
+        //{
+        //    _db = new upprbDbEntities();
+        //    return _db.MasterLookups.ToList();
+        //}
     }
 }

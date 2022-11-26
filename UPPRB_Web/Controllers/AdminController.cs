@@ -1,6 +1,4 @@
 ﻿using UPPRB_Web.BAL.Commom;
-using UPPRB_Web.BAL.Masters;
-using UPPRB_Web.BAL.Reports;
 using UPPRB_Web.Global;
 using System;
 using System.Collections.Generic;
@@ -21,12 +19,12 @@ namespace UPPRB_Web.Controllers
         [HttpPost]
         public ActionResult SaveDoctorType(int doctor, int doctortype)
         {
-            DoctorDetails _details = new DoctorDetails();
-            var result = _details.UpdateDoctorType(doctor, doctortype);
-            if (result == Enums.CrudStatus.Updated)
-                SetAlertMessage("Doctor Type saved.");
-            else
-                SetAlertMessage("Doctor Type not saved.");
+            //DoctorDetails _details = new DoctorDetails();
+            //var result = _details.UpdateDoctorType(doctor, doctortype);
+            //if (result == Enums.CrudStatus.Updated)
+            //    SetAlertMessage("Doctor Type saved.");
+            //else
+            //    SetAlertMessage("Doctor Type not saved.");
             return RedirectToAction("DoctorType");
         }
 
@@ -54,9 +52,9 @@ namespace UPPRB_Web.Controllers
             //{
             //    ReportPath = string.Empty;
             //}
-            ReportPath = string.Empty;
-            ReportDetails _details = new ReportDetails();
-            _details.SetBillReportData(PatientId, BillNo, BillType, BillDate, ReportPath, BillAmount, BillID);
+            //ReportPath = string.Empty;
+            //ReportDetails _details = new ReportDetails();
+            //_details.SetBillReportData(PatientId, BillNo, BillType, BillDate, ReportPath, BillAmount, BillID);
             return View("PatientBillReport");
         }
 
@@ -64,17 +62,17 @@ namespace UPPRB_Web.Controllers
         public ActionResult SetLabReport(HttpPostedFileBase reportfile, DateTime ReportDate, int PatientId, string BillNo, string RefNo, string LabName, string ReportUrl, string doctorId)
         {
             string ReportPath = string.Empty;
-            if (reportfile != null)
-            {
-                CommonDetails fileupload = new CommonDetails();
-                ReportPath = fileupload.ReportFileUpload(reportfile, Global.Enums.ReportType.Lab, RefNo);
-            }
-            else
-            {
-                ReportPath = ReportUrl;
-            }
-            ReportDetails _details = new ReportDetails();
-            _details.SetLabReportData(PatientId, BillNo, RefNo, ReportPath, LabName, ReportDate, doctorId);
+            //if (reportfile != null)
+            //{
+            //    CommonDetails fileupload = new CommonDetails();
+            //    ReportPath = fileupload.ReportFileUpload(reportfile, Global.Enums.ReportType.Lab, RefNo);
+            //}
+            //else
+            //{
+            //    ReportPath = ReportUrl;
+            //}
+            //ReportDetails _details = new ReportDetails();
+            //_details.SetLabReportData(PatientId, BillNo, RefNo, ReportPath, LabName, ReportDate, doctorId);
             return View("PatientLabReport");
         }
 

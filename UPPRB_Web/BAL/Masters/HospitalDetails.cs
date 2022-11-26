@@ -11,11 +11,11 @@ namespace UPPRB_Web.BAL.Masters
 {
     public class HospitalDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
 
         public Enums.CrudStatus SaveHospital(HospitalDetail hospital)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _hospitalRow = _db.HospitalDetails.Where(x => x.HospitalName.Equals(hospital.HospitalName)).FirstOrDefault();
             if (_hospitalRow == null)
@@ -30,7 +30,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public List<HospitalDetail> GetAllHospitalDetail()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _hospitalRow = _db.HospitalDetails.ToList();
             if (_hospitalRow.Count > 0)
             {
@@ -40,7 +40,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public HospitalDetail GetHospitalDetail()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _hospitalRow = _db.HospitalDetails.FirstOrDefault();
             if (_hospitalRow != null)
             {
@@ -50,7 +50,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public bool DeleteHospitalDetail(int Id)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _hospitalRow = _db.HospitalDetails.Where(x => x.Id == Id).FirstOrDefault();
             if (_hospitalRow != null)
             {

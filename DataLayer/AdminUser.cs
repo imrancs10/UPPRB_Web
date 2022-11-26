@@ -12,10 +12,15 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class MasterLookup
+    public partial class AdminUser
     {
         public int Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public string UserType { get; set; }
         public string Name { get; set; }
-        public string Value { get; set; }
+        public string EmailID { get; set; }
+        public Nullable<long> MobileNumber { get; set; }
     }
 }

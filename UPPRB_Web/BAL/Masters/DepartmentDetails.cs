@@ -11,11 +11,11 @@ namespace UPPRB_Web.BAL.Masters
 {
     public class DepartmentDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
 
         public Enums.CrudStatus SaveDept(string deptName, string deptDesc, string deptUrl)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Departments.Where(x => x.DepartmentName.Equals(deptName)).FirstOrDefault();
             var maxDepartmentId = _db.Departments.Max(x => x.DepartmentID);
@@ -37,7 +37,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Departments.Where(x => x.DepartmentID.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
@@ -54,7 +54,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus UpdateDeptImage(byte[] image, int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Departments.Where(x => x.DepartmentID.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
@@ -69,7 +69,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus DeleteDept(int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Departments.Where(x => x.DepartmentID.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
@@ -85,7 +85,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public List<DepartmentModel> DepartmentList()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from dept in _db.Departments
                          select new DepartmentModel
                          {
@@ -100,7 +100,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public List<MasterLookupModel> GetMastersData()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from dept in _db.MasterLookups
                          select new MasterLookupModel
                          {
@@ -113,7 +113,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public DepartmentModel GetDeparmentById(int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Departments.Where(x => x.DepartmentID.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
@@ -133,7 +133,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public Enums.CrudStatus SaveMasterLookup(string name, string value)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.MasterLookups.Where(x => x.Name.Equals(name)).FirstOrDefault();
             if (_deptRow == null)
@@ -151,7 +151,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public Enums.CrudStatus EditMasterLookup(string name, string value, int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.MasterLookups.Where(x => x.Id.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
@@ -167,7 +167,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus DeleteMasterLookup(int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.MasterLookups.Where(x => x.Id.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)

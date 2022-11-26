@@ -6,7 +6,7 @@ using DataLayer;
 
 namespace UPPRB_Web.Models.Masters
 {
-    public class AppSettingModel:AppointmentSetting
-    {
-    }
+    //public class AppSettingModel:AppointmentSetting
+    //{
+    //}
 }

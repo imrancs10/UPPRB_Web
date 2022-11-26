@@ -11,13 +11,13 @@ namespace UPPRB_Web.BAL.Masters
 {
     public class AppointmentSettingDetails
     {
-        UPPRB_WebEntities _db;
+        upprbDbEntities _db;
 
         public Enums.CrudStatus SaveAppSetting(AppSettingModel _model)
         {
             try
             {
-                _db = new UPPRB_WebEntities();
+                _db = new upprbDbEntities();
                 var _appSetting = _db.AppointmentSettings.Where(x => x.IsActive).FirstOrDefault();
                 if (_appSetting != null)
                 {
@@ -47,7 +47,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public AppointmentSetting GetAppSetting()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.AppointmentSettings.Where(x => x.IsActive).FirstOrDefault();
         }
     }

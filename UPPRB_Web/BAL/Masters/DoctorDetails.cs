@@ -14,10 +14,10 @@ namespace UPPRB_Web.BAL.Masters
 {
     public class DoctorDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
         public Enums.CrudStatus SaveDoctor(string doctorName, int deptId, string designation, string degree, string doctorDesc)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _deptRow = _db.Doctors.Where(x => x.DoctorName.Equals(doctorName) && x.DepartmentID.Equals(deptId)).FirstOrDefault();
             if (_deptRow == null)
@@ -39,7 +39,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus EditDoctor(string doctorName, int deptId, int docId, string designation, string degree, string doctorDesc)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _docRow = _db.Doctors.Where(x => x.DoctorID.Equals(docId)).FirstOrDefault();
             if (_docRow != null)
@@ -59,7 +59,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus UpdateDoctorImage(byte[] image, int doctorId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _doctorRow = _db.Doctors.Where(x => x.DoctorID.Equals(doctorId)).FirstOrDefault();
             if (_doctorRow != null)
@@ -76,7 +76,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus DeleteDoctor(int docId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _docRow = _db.Doctors.Where(x => x.DoctorID.Equals(docId)).FirstOrDefault();
             if (_docRow != null)
@@ -91,7 +91,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public List<DoctorModel> DoctorList(int deptId = 0)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from doc in _db.Doctors
                          from dept in _db.Departments.Where(x => x.DepartmentID.Equals(doc.DepartmentID))
                          orderby dept.DepartmentName
@@ -112,7 +112,7 @@ namespace UPPRB_Web.BAL.Masters
 
         public DoctorModel GetDoctorById(int deptId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _deptRow = _db.Doctors.Where(x => x.DoctorID.Equals(deptId)).FirstOrDefault();
             if (_deptRow != null)
             {
@@ -126,7 +126,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public List<DoctorTypeModel> GetDoctorTypeList()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _list = (from doc in _db.DoctorTypes
                          select new DoctorTypeModel
                          {
@@ -137,7 +137,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public Enums.CrudStatus UpdateDoctorType(int docId, int doctortype)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             var _docRow = _db.Doctors.Where(x => x.DoctorID.Equals(docId)).FirstOrDefault();
             if (_docRow != null)
@@ -153,7 +153,7 @@ namespace UPPRB_Web.BAL.Masters
         }
         public IEnumerable<object> GetDoctorLeaveList(int doctorId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return (from leave in _db.DoctorLeaves.Where(x => x.DoctorId.Equals(doctorId))
                     select new
                     {
@@ -181,7 +181,7 @@ namespace UPPRB_Web.BAL.Masters
             }
             else
             {
-                _db = new UPPRB_WebEntities();
+                _db = new upprbDbEntities();
                 int _effectRow = 0;
                 var _deptRow = _db.DoctorLeaves.Where(x => x.DoctorId.Equals(doctorId) && x.LeaveDate.Equals(leaveDate)).FirstOrDefault();
                 if (_deptRow == null)

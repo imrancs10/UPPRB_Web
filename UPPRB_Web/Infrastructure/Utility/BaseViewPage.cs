@@ -1,7 +1,4 @@
 ﻿using DataLayer;
-using UPPRB_Web.BAL.Appointments;
-using UPPRB_Web.BAL.Masters;
-using UPPRB_Web.BAL.Patient;
 using UPPRB_Web.Global;
 using UPPRB_Web.Infrastructure.Authentication;
 using UPPRB_Web.Models;
@@ -39,31 +36,31 @@ namespace UPPRB_Web.Infrastructure.Utility
         {
             get { return base.User as CustomPrincipal; }
         }
-        public virtual HospitalDetail GetHospitalDetail()
-        {
-            HospitalDetails _details = new HospitalDetails();
-            return null;// _details.GetHospitalDetail();
-        }
+        //public virtual HospitalDetail GetHospitalDetail()
+        //{
+        //    HospitalDetails _details = new HospitalDetails();
+        //    return null;// _details.GetHospitalDetail();
+        //}
 
-        public virtual AppointmentModel GetAppointmentDetail()
-        {
-            if (User != null)
-            {
-                AppointDetails _details = new AppointDetails();
-                return null;// _details.PatientAppointmentCount(User.Id);
-            }
-            return null;
-        }
+        //public virtual AppointmentModel GetAppointmentDetail()
+        //{
+        //    if (User != null)
+        //    {
+        //        AppointDetails _details = new AppointDetails();
+        //        return null;// _details.PatientAppointmentCount(User.Id);
+        //    }
+        //    return null;
+        //}
 
-        public virtual PatientInfo GetPatientInfo()
-        {
-            if (User != null)
-            {
-                PatientDetails _details = new PatientDetails();
-                return null;// _details.GetPatientDetailById(User.Id);
-            }
-            return null;
-        }
+        //public virtual PatientInfo GetPatientInfo()
+        //{
+        //    if (User != null)
+        //    {
+        //        PatientDetails _details = new PatientDetails();
+        //        return null;// _details.GetPatientDetailById(User.Id);
+        //    }
+        //    return null;
+        //}
 
         public virtual PDModel GetPatientOPDDetail()
         {

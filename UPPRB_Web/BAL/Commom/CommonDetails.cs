@@ -11,26 +11,28 @@ namespace UPPRB_Web.BAL.Commom
 {
     public class CommonDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
         private string[] Months = new string[] { "January", "Febuary", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December" };
 
         public List<DayModel> DaysList()
         {
-            _db = new UPPRB_WebEntities();
-            var _list = (from day in _db.DayMasters
-                         select new DayModel
-                         {
-                             DayId = day.DayId,
-                             DayName = day.DayName
-                         }).ToList();
-            return _list != null ? _list : new List<DayModel>();
+            //_db = new upprbDbEntities();
+            //var _list = (from day in _db.DayMasters
+            //             select new DayModel
+            //             {
+            //                 DayId = day.DayId,
+            //                 DayName = day.DayName
+            //             }).ToList();
+            //return _list != null ? _list : new List<DayModel>();
+            return null;
         }
 
         public List<PatientModel> PatientSearch(string _searchValue)
         {
-            _db = new UPPRB_WebEntities();
-            return _db.PatientInfoes.Where(x => x.CRNumber.Contains(_searchValue) || x.RegistrationNumber.Contains(_searchValue) || x.MobileNumber.Contains(_searchValue) || x.LastName.Contains(_searchValue) || x.FirstName.Contains(_searchValue) || x.Email.Contains(_searchValue))
-                                    .Select(x => new PatientModel { PatientId = x.PatientId, PatientName = x.FirstName + " " + x.LastName }).ToList();
+            //_db = new upprbDbEntities();
+            //return _db.PatientInfoes.Where(x => x.CRNumber.Contains(_searchValue) || x.RegistrationNumber.Contains(_searchValue) || x.MobileNumber.Contains(_searchValue) || x.LastName.Contains(_searchValue) || x.FirstName.Contains(_searchValue) || x.Email.Contains(_searchValue))
+            //                        .Select(x => new PatientModel { PatientId = x.PatientId, PatientName = x.FirstName + " " + x.LastName }).ToList();
+            return null;
         }
 
         public string ReportFileUpload(HttpPostedFileBase file, Enums.ReportType _type, string RefNo)

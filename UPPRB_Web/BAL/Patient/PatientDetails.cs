@@ -13,10 +13,10 @@ namespace UPPRB_Web.BAL.Patient
 {
     public class PatientDetails
     {
-        UPPRB_WebEntities _db = null;
+        upprbDbEntities _db = null;
         public Dictionary<string, object> GetPatientDetail(string UserId, string Password)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             Dictionary<string, object> resultDic = new Dictionary<string, object>();
             //string hashPassword = Utility.GetHashString(Password);
             var result = _db.PatientInfoes.Include(x => x.Department).Include(x => x.City)
@@ -103,50 +103,50 @@ namespace UPPRB_Web.BAL.Patient
 
         public PatientInfo GetPatientDetailByRegistrationNumber(string UserId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.RegistrationNumber == UserId).FirstOrDefault();
         }
 
         public PatientInfo GetPatientDetailByRegistrationNumberAndMobileNumber(string regNumber, string mobilenumber)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.RegistrationNumber == regNumber || x.CRNumber == regNumber && x.MobileNumber == mobilenumber).FirstOrDefault();
         }
 
         public PatientInfo GetPatientDetailByRegistrationNumberOrCRNumber(string UserId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.RegistrationNumber == UserId || x.CRNumber == UserId).FirstOrDefault();
         }
 
         public PatientInfo GetPatientDetailByresetCode(string resetCode)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.ResetCode == resetCode).FirstOrDefault();
         }
 
         public PatientInfo GetPatientDetailByMobileNumberOrEmail(string UserId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.MobileNumber == UserId.Trim() || x.Email == UserId.Trim()).FirstOrDefault();
         }
         public PatientInfo GetPatientDetailByMobileNumberANDEmail(string mobileNo, string emailId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => (!string.IsNullOrEmpty(x.MobileNumber) && x.MobileNumber.Equals(mobileNo)) || (!string.IsNullOrEmpty(x.Email) && x.Email.Equals(emailId))).FirstOrDefault();
         }
 
 
         public PatientInfo GetPatientDetailById(int Id)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
 
             return _db.PatientInfoes.Include(x => x.Department).Include(x => x.PatientTransactions).Include(x => x.AppointmentInfoes).Where(x => x.PatientId.Equals(Id)).FirstOrDefault();
         }
 
         public PatientInfo UpdatePatientDetail(PatientInfo info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _patientRow = _db.PatientInfoes.Where(x => x.PatientId.Equals(info.PatientId)).FirstOrDefault();
             if (_patientRow != null)
             {
@@ -166,7 +166,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public PatientInfoCRClone UpdatePatientDetailClone(PatientInfoCRClone info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _patientRow = _db.PatientInfoCRClones.Where(x => x.PatientId.Equals(info.PatientId)).FirstOrDefault();
             if (_patientRow != null)
             {
@@ -184,7 +184,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public PatientInfo UpdatePatientValidity(PatientInfo info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _patientRow = _db.PatientInfoes.Include(x => x.City).Include(x => x.State).Include(x => x.PatientTransactions).Where(x => x.PatientId.Equals(info.PatientId)).FirstOrDefault();
             if (_patientRow != null)
             {
@@ -200,7 +200,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public PatientInfo UpdatePatientHISSyncStatus(PatientInfo info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var _patientRow = _db.PatientInfoes.Where(x => x.PatientId.Equals(info.PatientId)).FirstOrDefault();
             if (_patientRow != null)
             {
@@ -214,7 +214,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public bool VerifyPatientOTP(int patientId, string OTP)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var result = _db.PatientInfoes.Where(x => x.PatientId.Equals(patientId) && x.OTP == OTP).FirstOrDefault();
             if (result != null)
             {
@@ -226,7 +226,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public Dictionary<string, object> CreateOrUpdatePatientDetail(PatientInfo info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             Dictionary<string, object> result = new Dictionary<string, object>();
             int _effectRow = 0;
             if (info.PatientId > 0)
@@ -264,7 +264,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public Dictionary<string, object> SaveTemporaryPatientInfo(PatientInfoTemporary info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             Dictionary<string, object> result = new Dictionary<string, object>();
             int _effectRow = 0;
             info.ValidUpto = DateTime.Now.AddDays(Convert.ToInt32(ConfigurationManager.AppSettings["TemporaryRegistrationValidityInDay"]));
@@ -279,7 +279,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public Dictionary<string, object> CreateOrUpdatePatientDetailClone(PatientInfoCRClone info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             Dictionary<string, object> result = new Dictionary<string, object>();
             int _effectRow = 0;
             bool foundEmail = false;
@@ -304,7 +304,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public Dictionary<string, object> SavePatientTransaction(PatientTransaction info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             Dictionary<string, object> result = new Dictionary<string, object>();
             int _effectRow = 0;
             _db.Entry(info).State = EntityState.Added;
@@ -316,7 +316,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public bool SavePatientLoginHistory(PatientLoginHistory info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             _db.Entry(info).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -351,17 +351,17 @@ namespace UPPRB_Web.BAL.Patient
         }
         public List<PatientInfo> GetPatientDetailByRegistrationNumberSearch(string regNo)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Include(x => x.Department).Where(x => x.RegistrationNumber.Contains(regNo)).ToList();
         }
         public List<PatientInfo> GetAllPatientDetail()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Include(x => x.Department).Where(x => DbFunctions.TruncateTime(x.ValidUpto) >= DbFunctions.TruncateTime(DateTime.Now)).ToList();
         }
         public bool SavePatientLabReport(LabReport info)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             _db.Entry(info).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -370,7 +370,7 @@ namespace UPPRB_Web.BAL.Patient
 
         public List<LabReport> GetPatientLabReports(int patientId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.LabReports.Include(x => x.PatientInfo).Where(x => x.PatientId == patientId).ToList();
         }
 
@@ -394,57 +394,57 @@ namespace UPPRB_Web.BAL.Patient
 
         public List<State> GetStates()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.States.ToList();
         }
         public List<City> GetAllCities()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Cities.ToList();
         }
         public List<Department> GetAllDepartment()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Departments.ToList();
         }
         public List<City> GetCities(int stateId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Cities.Where(x => x.StateId == stateId).ToList();
         }
         public State GetStateByStateId(int stateId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.States.Where(x => x.StateId == stateId).FirstOrDefault();
         }
         public City GetCitieByCItyId(int citiId)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Cities.Where(x => x.CityId == citiId).FirstOrDefault();
         }
 
         public State GetStateIdByStateName(string stateName)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.States.Where(x => x.StateName.Equals(stateName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
         }
         public City GetCityIdByCItyName(string cityName)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Cities.Where(x => x.CityName.Equals(cityName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
         }
 
         public void DeletePatientInfoCRData(string crNumber)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var deleteData = _db.PatientInfoCRClones.Where(x => x.CRNumber.Equals(crNumber)).FirstOrDefault();
             _db.PatientInfoCRClones.Remove(deleteData);
             _db.SaveChanges();
@@ -452,17 +452,17 @@ namespace UPPRB_Web.BAL.Patient
 
         public PatientInfoCRClone GetPatientCloneDetailByCRNumber(string crNumber)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoCRClones.Where(x => x.CRNumber == crNumber).FirstOrDefault();
         }
         public List<PatientInfo> SyncHISFailedPatientList()
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientInfoes.Where(x => x.RenewalStatusHIS.ToUpper() != "S" || x.RegistrationStatusHIS.ToUpper() != "S").ToList();
         }
         public bool SavePatientMessage(PatientMessage message)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             int _effectRow = 0;
             _db.Entry(message).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -470,12 +470,12 @@ namespace UPPRB_Web.BAL.Patient
         }
         public int GetPatientMessageCount(int Id)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             return _db.PatientMessages.Where(x => x.PatientId == Id && x.HasRead == false).ToList().Count;
         }
         public List<PatientMessage> UpdateAndGetPatientMessageList(int Id)
         {
-            _db = new UPPRB_WebEntities();
+            _db = new upprbDbEntities();
             var result = _db.PatientMessages.Where(x => x.PatientId == Id && x.HasRead == false).ToList();
             result.ForEach(x =>
             {

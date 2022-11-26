@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UPPRB_Web.Global;
-using UPPRB_Web.BAL.Masters;
 using UPPRB_Web.BAL.Commom;
 using UPPRB_Web.Infrastructure.Authentication;
 
@@ -61,23 +60,23 @@ namespace UPPRB_Web.Controllers
             TempData["Alert_Title"] = title;
         }
 
-        public virtual JsonResult GetDepartments()
-        {
-            DepartmentDetails _details = new DepartmentDetails();
-            return Json(_details.DepartmentList(), JsonRequestBehavior.AllowGet);
-        }
+        //public virtual JsonResult GetDepartments()
+        //{
+        //    DepartmentDetails _details = new DepartmentDetails();
+        //    return Json(_details.DepartmentList(), JsonRequestBehavior.AllowGet);
+        //}
 
-        public virtual JsonResult GetDoctorType()
-        {
-            DoctorDetails _details = new DoctorDetails();
-            return Json(_details.GetDoctorTypeList(), JsonRequestBehavior.AllowGet);
-        }
+        //public virtual JsonResult GetDoctorType()
+        //{
+        //    DoctorDetails _details = new DoctorDetails();
+        //    return Json(_details.GetDoctorTypeList(), JsonRequestBehavior.AllowGet);
+        //}
 
-        public JsonResult GetDoctorList(int deptId=0)
-        {
-            DoctorDetails _details = new DoctorDetails();
-            return Json(_details.DoctorList(deptId), JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult GetDoctorList(int deptId=0)
+        //{
+        //    DoctorDetails _details = new DoctorDetails();
+        //    return Json(_details.DoctorList(deptId), JsonRequestBehavior.AllowGet);
+        //}
 
         public JsonResult GetDaysList()
         {
