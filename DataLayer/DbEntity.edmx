@@ -18,8 +18,36 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupType" Type="varchar" MaxLength="500" />
+          <Property Name="LookupName" Type="varchar" MaxLength="500" />
+          <Property Name="ParentLookupId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LookupNameImmutable" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeType" Type="int" />
+          <Property Name="NoticeCategoryId" Type="int" />
+          <Property Name="NoticeSubCategoryId" Type="int" />
+          <Property Name="Subject" Type="varchar(max)" />
+          <Property Name="NoticeDate" Type="datetime" />
+          <Property Name="fileURL" Type="varchar" MaxLength="500" />
+          <Property Name="filename" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
         <EntityContainer Name="upprbDbModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -40,7 +68,35 @@
         </EntityType>
         <EntityContainer Name="upprbDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="Lookups" EntityType="upprbDbModel.Lookup" />
+          <EntitySet Name="Notices" EntityType="upprbDbModel.Notice" />
         </EntityContainer>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentLookupId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LookupNameImmutable" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeType" Type="Int32" />
+          <Property Name="NoticeCategoryId" Type="Int32" />
+          <Property Name="NoticeSubCategoryId" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
+          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -58,6 +114,34 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="upprbDbModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="LookupNameImmutable" ColumnName="LookupNameImmutable" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+                <ScalarProperty Name="LookupType" ColumnName="LookupType" />
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="upprbDbModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
+                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="NoticeSubCategoryId" ColumnName="NoticeSubCategoryId" />
+                <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
+                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
