@@ -10,7 +10,11 @@
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Uttar Pradesh Police Recruitment & Promotion Board</title>
-
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <!-- Bootstrap core CSS -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/css/bootstrap-reset.css" rel="stylesheet">
@@ -27,6 +31,11 @@
 
     <link href="~/Content/css/style.css" rel="stylesheet">
     <link href="~/Content/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/essential/jquery-ui.js"></script>
+    <link href="~/Scripts/essential/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/Scripts/App/Global/Utility.js"></script>
 
 </head>
 
@@ -340,7 +349,67 @@
         });
 
     </script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
 
+
+    @*Alert*@
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script>
+        $(function () {
+
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+    @*Ajax Loader*@
+
+    <div class="ajaxloader">
+        <img src="~/img/ajax-loader.gif" />
+    </div>
+    <style>
+        .ajaxloader {
+            background: #808080a3;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+            .ajaxloader img {
+                width: 80px;
+                height: 80px;
+                position: absolute;
+                top: 43%;
+                left: 45%;
+            }
+    </style>
 </body>
 </html>
 
