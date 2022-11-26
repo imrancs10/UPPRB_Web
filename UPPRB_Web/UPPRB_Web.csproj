@@ -446,6 +446,7 @@
     <Content Include="Content\Images\ico-social.png" />
     <Content Include="Content\Images\ico-twitter.png" />
     <Content Include="Content\Images\ico-youtube.png" />
+    <Content Include="Content\Images\Industrial Org Chart.png" />
     <Content Include="Content\Images\input-spinner.gif" />
     <Content Include="Content\Images\largelogo.jpg" />
     <Content Include="Content\Images\left-arrow.png" />
@@ -817,6 +818,7 @@
     <Content Include="Scripts\library\js\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\library\js\bootstrap.js.map" />
     <Content Include="Scripts\library\js\bootstrap.min.js.map" />
+    <Content Include="Views\Home\EnquiryForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
