@@ -425,7 +425,15 @@
     <Content Include="Content\Images\flags\fr.png" />
     <Content Include="Content\Images\flags\ru.png" />
     <Content Include="Content\Images\flags\us.png" />
+    <Content Include="Content\Images\gallery\1015073-up-police.jpg" />
+    <Content Include="Content\Images\gallery\16.jpg" />
+    <Content Include="Content\Images\gallery\17.jpg" />
+    <Content Include="Content\Images\gallery\18.jpg" />
+    <Content Include="Content\Images\gallery\21.jpg" />
+    <Content Include="Content\Images\gallery\cut_off_new.jpeg" />
     <Content Include="Content\Images\gallery\g1.jpg" />
+    <Content Include="Content\Images\gallery\police_3.jpg" />
+    <Content Include="Content\Images\gallery\upprpb-result.jpg" />
     <Content Include="Content\Images\ico-accessibility.png" />
     <Content Include="Content\Images\ico-facebook.png" />
     <Content Include="Content\Images\ico-goi-search.png" />
