@@ -1,10 +1,9 @@
 ﻿'use strict';
 $(document).ready(function () {
 
-    FillNoticeCategory();
-    FillNoticeSubCategory();
+    //FillNoticeCategory();
+    //FillNoticeSubCategory();
     FillNoticeType();
-
     function FillNoticeType(selectedNoticeTypeId = null) {
         let dropdown = $('#NoticeType');
         dropdown.empty();
@@ -32,7 +31,11 @@ $(document).ready(function () {
             }
         });
     }
-    function FillNoticeCategory(selectedNoticeCategoryId = null) {
+    $('#NoticeType').on('change', function (e) {
+        var valueSelected = this.value;
+        FillNoticeCategory(valueSelected);
+    });
+    function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
         let dropdown = $('#NoticeCategory');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -41,7 +44,7 @@ $(document).ready(function () {
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             type: 'POST',
-            data: '{lookupTypeId: 0,lookupType: "NoticeCategory" }',
+            data: '{lookupTypeId: "' + NoticeTypeId + '",lookupType: "NoticeCategory" }',
             url: '/Master/GetLookupDetail',
             success: function (data) {
                 $.each(data, function (key, entry) {
@@ -59,7 +62,11 @@ $(document).ready(function () {
             }
         });
     }
-    function FillNoticeSubCategory(selectedNoticeCategoryId = null) {
+    $('#NoticeCategory').on('change', function (e) {
+        var valueSelected = this.value;
+        FillNoticeSubCategory(valueSelected);
+    });
+    function FillNoticeSubCategory(NoticeCategoryId, selectedNoticeCategoryId = null) {
         let dropdown = $('#NoticeSubCategory');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -87,10 +94,7 @@ $(document).ready(function () {
         });
     }
 
-    $('#SchemeType').on('change', function (e) {
-        var valueSelected = this.value;
-        FillSchemeName(valueSelected);
-    });
+
 
     function FillSchemeName(SchemeTypeId, selectedSchemeNameId = null) {
         let dropdown = $('#SchemeName');
