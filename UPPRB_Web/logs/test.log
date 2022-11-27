@@ -466,3 +466,7 @@ Error Number:53,State:0,Class:20
    at System.Data.Entity.Core.EntityClient.EntityConnection.Open()
 ClientConnectionId:00000000-0000-0000-0000-000000000000
 Error Number:53,State:0,Class:20
+2022-11-26 17:04:00,942 [21] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-11-26 17:11:25,391 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-11-26 17:11:30,207 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-11-26 17:11:43,729 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 

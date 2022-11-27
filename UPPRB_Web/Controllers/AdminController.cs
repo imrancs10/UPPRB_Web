@@ -7,9 +7,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.IO;
+using Org.BouncyCastle.Asn1.X509;
+using DataLayer;
+using UPPRB_Web.BAL.Masters;
+using UPPRB_Web.Infrastructure.Authentication;
 
 namespace UPPRB_Web.Controllers
 {
+    [CustomAuthorize]
     public class AdminController : CommonController
     {
         public ActionResult Dashboard()
@@ -21,7 +27,38 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string NoticeSubCategory, string Subject, string NoticeDate, string fileURL)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            Notice notice = new Notice()
+            {
+                CreatedBy = UserData.UserId,
+                CreatedDate = DateTime.Today,
+                filename = filename,
+                fileURL = fileURL,
+                NoticeCategoryId = Convert.ToInt32(NoticeCategory),
+                NoticeDate = Convert.ToDateTime(NoticeDate),
+                NoticeSubCategoryId = Convert.ToInt32(NoticeSubCategory),
+                NoticeType = Convert.ToInt32(NoticeType),
+                Subject = Subject
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveNotice(notice);
+            if (saveStatus == Enums.CrudStatus.Saved)
+            {
+                if (postedFile != null)
+                {
+                    string path = Server.MapPath("~/FilesUploaded/Notices/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            return View();
+        }
 
 
         [HttpPost]

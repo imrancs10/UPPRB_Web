@@ -25,7 +25,6 @@ namespace UPPRB_Web.Controllers
     {
         //Declaring Log4Net
         ILog logger = LogManager.GetLogger(typeof(HomeController));
-        [CustomAuthorize]
         public ActionResult Index()
         {
             return View();
@@ -315,7 +314,6 @@ namespace UPPRB_Web.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-        [CustomAuthorize]
         public ActionResult MyProfile(string actionName)
         {
             //if (!string.IsNullOrEmpty(actionName))
@@ -392,16 +390,13 @@ namespace UPPRB_Web.Controllers
         //    });
         //}
 
-        [CustomAuthorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        [CustomAuthorize]
-       
+
         [HttpPost]
-        [CustomAuthorize]
         public ActionResult ChangePassword(string oldpassword, string newpassword, string confirmnewpassword)
         {
             if (newpassword.Trim() != confirmnewpassword.Trim())

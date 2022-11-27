@@ -27,7 +27,7 @@ namespace UPPRB_Web.Controllers
             _response = LoginResponse(message);
             if (message == Enums.LoginMessage.Authenticated)
             {
-                //setUserClaim();
+                setUserClaim();
                 return RedirectToAction("Dashboard", "Admin");
             }
             else
