@@ -5,6 +5,7 @@
 config
 Debug
 bin
+/.vs/
 /.vs/UPPRB_Web/v15/Server/sqlite3
 /UPPRB_Web/bin/DataLayer.dll.config
 *.CopyComplete
