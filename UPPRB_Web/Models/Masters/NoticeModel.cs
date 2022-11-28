@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace UPPRB_Web.Models.Masters
 {
-    public class DepartmentModel
+    public class NoticeModel
     {
-        public int DepartmentId { get; set; }
-        public string DeparmentName { get; set; }
-        public string DepartmentUrl { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public byte[] Image { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> NoticeType { get; set; }
+        public Nullable<int> NoticeCategoryId { get; set; }
+        public Nullable<int> NoticeSubCategoryId { get; set; }
+        public string Subject { get; set; }
+        [DisplayFormat(DataFormatString = "dd/MM/yyyy}")]
+
+        public Nullable<System.DateTime> NoticeDate { get; set; }
+        public string fileURL { get; set; }
+        public string filename { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     }
 
     public class DoctorModel
