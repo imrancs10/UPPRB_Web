@@ -50,6 +50,42 @@
     <link rel="stylesheet" href="~/Content/css/style.css">
     <link href="~/Content/css/simple.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/css/whack.css?v=1.0">
+    <script type="text/javascript" language="javascript">
+    function renderTime() {
+    var currentdate = new Date();
+    var currentTime = new Date();
+    var diem = "AM";
+    var h = currentTime.getHours();
+    var m = currentTime.getMinutes();
+    var s = currentTime.getSeconds();
+    var TodayDate = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
+    setTimeout('renderTime()', 1000);
+    if (h == 0) {
+    h = 12;
+    } else if (h > 12) {
+    h = h - 12;
+    diem = "PM";
+    }
+    if (h < 10) {
+    h = "0" + h;
+    }
+    if (m < 10) {
+    m = "0" + m;
+    }
+    if (s < 10) {
+    s = "0" + s;
+    }
+    var myClock = document.getElementById('clockDisplay');
+
+    var d = new Date();
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
+
+    myClock.innerHTML = "Today Date -" + output + ' ' + " Time -" + h + ":" + m + ":" + s + " " + diem;
+    }
+    renderTime();
+    </script>
 </head>
 <body>
 
@@ -70,7 +106,7 @@
                 <div class="common-left clearfix">
                     <ul>
                         <li>
-                            <p id="clockDisplay" class="datep">Today Date: 30-10-2022  Time: 02:48:34 PM</p>
+                            <p id="clockDisplay" class="datep"></p>
                         </li>
 
                     </ul>
