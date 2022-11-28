@@ -18,6 +18,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.Security;
 using static UPPRB_Web.Global.Enums;
+using UPPRB_Web.BAL.Masters;
 
 namespace UPPRB_Web.Controllers
 {
@@ -35,6 +36,9 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult Notice()
         {
+            var detail = new GeneralDetails();
+            var allnotice = detail.GetNoticeDetail();
+            ViewData["NoticeData"] = allnotice;
             return View();
         }
         public ActionResult DirectRecruitment()
