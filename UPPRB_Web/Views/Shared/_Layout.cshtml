@@ -436,7 +436,10 @@
             //highlight main menu
             $('.nav-menu li.active').removeClass('active');
             $('.nav-menu a[href]').each(function (ind, ele) {
-                if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
+                if (location.pathname == '/') {
+                    $('a[href="/Home/Index"]').parent().addClass('active')
+                }
+                else if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
                     $(ele).parent().addClass('active');
                     $(ele).parent().parent().show();
                 }
