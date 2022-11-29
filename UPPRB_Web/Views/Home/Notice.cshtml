@@ -5,6 +5,7 @@
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
     var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
+<script src="~/Scripts/Masters/noticePage.js"></script>
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
@@ -16,7 +17,7 @@
                             <h3 class="w-hd-u">Notices</h3>
                             <div id="divSearch" style="display:block;">
                                 <div class="dynamic_update pageheight">
-                                    <ul>
+                                    <ul id="noticeList">
                                         @foreach (var item in noticeData)
                                         {
                                             @*<span id="spnLink"></span>*@
@@ -38,7 +39,19 @@
                                             }
                                             else
                                             {
-
+                                                <li>
+                                                    @if (item.IsNew == true)
+                                                    {
+                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                    }
+                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
+                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                    </a>
+                                                    <p class="date">
+                                                        Date :
+                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                    </p>
+                                                </li>
                                             }
                                         }
                                     </ul>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using UPPRB_Web.BAL.Masters;
+using static iTextSharp.tool.xml.html.HTML;
 
 namespace UPPRB_Web.Controllers
 {
@@ -22,6 +23,13 @@ namespace UPPRB_Web.Controllers
                 lookupTypeId = null;
             }
             return Json(_details.GetLookupDetail(lookupTypeId, lookupType), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetNoticeDetail(int noticeId, int CategoryId)
+        {
+            var detail = new GeneralDetails();
+            var allnotice = detail.GetNoticeDetail(noticeId, CategoryId);
+            return Json(allnotice, JsonRequestBehavior.AllowGet);
         }
     }
 }

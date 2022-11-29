@@ -15,7 +15,7 @@
                             @foreach (var item in noticeData[i].NoticeCategories)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link p-1" href="/Home/Notice?noticeId=@noticeData[i].LookupId&categoryId=@item.LookupId">@item.LookupName</a>
+                                    <a class="nav-link p-1" id="btnNotice" onclick="onClickNotice(@noticeData[i].LookupId,@item.LookupId)" href="#">@item.LookupName</a>
                                 </li>
                             }
                             @*<li class="nav-item">

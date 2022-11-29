@@ -44,6 +44,7 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
+      
         public ActionResult DirectRecruitment()
         {
             return View();

@@ -599,6 +599,7 @@
     <Content Include="Scripts\library\js\popper.min.js.map" />
     <Content Include="Scripts\library\js\README.md" />
     <None Include="Scripts\library\js\_references.js" />
+    <Content Include="Scripts\Masters\noticePage.js" />
     <Content Include="Scripts\Masters\noticeEntry.js" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
