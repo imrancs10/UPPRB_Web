@@ -18,28 +18,27 @@ namespace UPPRB_Web.Models.Masters
         public Nullable<System.DateTime> NoticeDate { get; set; }
         public string fileURL { get; set; }
         public string filename { get; set; }
+        public bool? IsNew { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
     }
 
-    public class DoctorModel
+    public class NoticeTypeModel
     {
-        public int DoctorId { get; set; }
-        public string DoctorName { get; set; }
-        public int DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
-        public string Designation { get; set; }
-        public string Degree { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public byte[] Image { get; set; }
+        public NoticeTypeModel()
+        {
+            NoticeCategories = new List<NoticeCategoryModel>();
+        }
+        public int LookupId { get; set; }
+        public string LookupName { get; set; }
+        public List<NoticeCategoryModel> NoticeCategories { get; set; }
     }
-    public class DoctorTypeModel
+    public class NoticeCategoryModel
     {
-        public int Id { get; set; }
-        public string DoctorType { get; set; }
+        public int LookupId { get; set; }
+        public string LookupName { get; set; }
     }
-        public class MasterLookupModel
+    public class MasterLookupModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -3,11 +3,12 @@
     ViewBag.Title = "Notice";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
-            @Html.Partial("_Notice_SideMenu")
+            @Html.Partial("_Notice_SideMenu", noticeType)
             <div class="col-lg-10">
                 <div class="w_content">
                     <div id="DivContent">
@@ -22,6 +23,10 @@
                                             if (!string.IsNullOrEmpty(item.filename))
                                             {
                                                 <li>
+                                                    @if (item.IsNew == true)
+                                                    {
+                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                    }
                                                     <a href='~/FilesUploaded/Notices/@item.filename' title='Click to view more' target='_blank'>
                                                         @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
                                                     </a>

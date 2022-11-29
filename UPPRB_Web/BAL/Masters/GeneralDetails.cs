@@ -13,10 +13,12 @@ namespace UPPRB_Web.BAL.Masters
     {
         upprbDbEntities _db = null;
 
-        public List<NoticeModel> GetNoticeDetail()
+        public List<NoticeModel> GetNoticeDetail(int? noticeId, int? categoryId)
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.Notices
+                         where (noticeId == null || (noticeId != null && not.NoticeType == noticeId))
+                         && (categoryId == null || (categoryId != null && not.NoticeCategoryId == categoryId))
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -28,10 +30,34 @@ namespace UPPRB_Web.BAL.Masters
                              NoticeDate = not.NoticeDate,
                              NoticeSubCategoryId = not.NoticeSubCategoryId,
                              NoticeType = not.NoticeType,
-                             Subject = not.Subject
-                         }).ToList();
+                             Subject = not.Subject,
+                             IsNew = not.IsNew
+                         }).OrderByDescending(x => x.NoticeDate).ToList();
             return _list != null ? _list : new List<NoticeModel>();
         }
+
+        public List<NoticeTypeModel> GetNoticeHirarchyDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.Lookups
+                         where not.IsActive == true && not.LookupType == "NoticeType"
+                         select new NoticeTypeModel
+                         {
+                             LookupId = not.LookupId,
+                             LookupName = not.LookupName,
+                             NoticeCategories = (from look in _db.Lookups
+                                                 where look.LookupType == "NoticeCategory"
+                                                       && look.IsActive == true
+                                                       && look.ParentLookupId == not.LookupId
+                                                 select new NoticeCategoryModel
+                                                 {
+                                                     LookupId = look.LookupId,
+                                                     LookupName = look.LookupName
+                                                 }).ToList()
+                         }).OrderBy(x => x.LookupId).ToList();
+            return _list != null ? _list : new List<NoticeTypeModel>();
+        }
+
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();
