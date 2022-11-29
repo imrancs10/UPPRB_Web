@@ -13,13 +13,6 @@ namespace UPPRB_Web.BAL.Masters
     {
         upprbDbEntities _db = null;
 
-        public Enums.CrudStatus SaveNotice(Notice notice)
-        {
-            _db = new upprbDbEntities();
-            _db.Entry(notice).State = EntityState.Added;
-            var _effectRow = _db.SaveChanges();
-            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
-        }
         public List<NoticeModel> GetNoticeDetail()
         {
             _db = new upprbDbEntities();

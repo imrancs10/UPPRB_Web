@@ -18,20 +18,20 @@
                         @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @*<div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Type</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="NoticeType" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline1">General Notices</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline2" name="NoticeType" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline2">Recruitment Notices</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline3" name="NoticeType" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline3">Promotion Notices</label>
-                                </div>
-                            </div>*@
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Type</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="NoticeType" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">General Notices</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="NoticeType" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Recruitment Notices</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline3" name="NoticeType" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline3">Promotion Notices</label>
+                </div>
+            </div>*@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Notice Type</label>
                                 <select class="form-control mb-3" style="width:80%" id="NoticeType" name="NoticeType">
@@ -49,15 +49,15 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Subject</label>
-                                
+
                                 <textarea type="text" class="form-control" id="inputEmail3" placeholder="Subject" name="Subject"> </textarea>
-                               
+
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-3 col-form-label">Notice Date</label>
-                                
-                                    <input type="date" class="form-control" id="inputPassword3" placeholder="NoticeDate" name="NoticeDate">
-                                
+
+                                <input type="date" class="form-control" id="inputPassword3" placeholder="NoticeDate" name="NoticeDate">
+
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-3 control-label col-lg-2 mb-3">File URL</label>
@@ -74,6 +74,16 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" name="postedFile">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew">
+                                        <label class="form-check-label" for="gridCheck1">
+                                            Highlight as New
+                                        </label>
                                     </div>
                                 </div>
                             </div>

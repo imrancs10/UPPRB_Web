@@ -43,6 +43,7 @@
           <Property Name="filename" Type="varchar" MaxLength="500" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
+          <Property Name="IsNew" Type="bit" />
         </EntityType>
         <EntityContainer Name="upprbDbModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
@@ -96,6 +97,7 @@
           <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="IsNew" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -132,6 +134,7 @@
           <EntitySetMapping Name="Notices">
             <EntityTypeMapping TypeName="upprbDbModel.Notice">
               <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="filename" ColumnName="filename" />

@@ -28,7 +28,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string NoticeSubCategory, string Subject, string NoticeDate, string fileURL)
+        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string NoticeSubCategory, string Subject, string NoticeDate, string fileURL, string highlightNew)
         {
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
             Notice notice = new Notice()
@@ -41,7 +41,8 @@ namespace UPPRB_Web.Controllers
                 NoticeDate = Convert.ToDateTime(NoticeDate),
                 NoticeSubCategoryId = Convert.ToInt32(NoticeSubCategory),
                 NoticeType = Convert.ToInt32(NoticeType),
-                Subject = Subject
+                Subject = Subject,
+                IsNew = highlightNew == "on" ? true : false
             };
             AdminDetails detail = new AdminDetails();
             var saveStatus = detail.SaveNotice(notice);
@@ -57,6 +58,7 @@ namespace UPPRB_Web.Controllers
                     postedFile.SaveAs(path + Path.GetFileName(filename));
                 }
             }
+            SetAlertMessage("Notice Saved", "Success");
             return View();
         }
 

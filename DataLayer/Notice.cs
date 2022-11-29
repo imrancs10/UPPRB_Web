@@ -24,5 +24,6 @@ namespace DataLayer
         public string filename { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
+        public Nullable<bool> IsNew { get; set; }
     }
 }
