@@ -12,7 +12,7 @@
             <div class="col-lg-10">
                 <section class="card">
                     <header class="card-header">
-                        Notice Entry Forms
+                        <div style="text-align:center;">Notice Entry Form</div>
                     </header>
                     <div class="card-body">
                         @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -33,42 +33,43 @@
                                 </div>
                             </div>*@
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Type</label>
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Notice Type</label>
                                 <select class="form-control mb-3" style="width:80%" id="NoticeType" name="NoticeType">
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Category</label>
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Notice Category</label>
                                 <select class="form-control mb-3" style="width:80%" id="NoticeCategory" name="NoticeCategory">
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Sub Category</label>
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Notice Sub Category</label>
                                 <select class="form-control mb-3" style="width:80%" id="NoticeSubCategory" name="NoticeSubCategory">
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Subject</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Subject" name="Subject">
-                                </div>
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Subject</label>
+                                
+                                <textarea type="text" class="form-control" id="inputEmail3" placeholder="Subject" name="Subject"> </textarea>
+                               
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Notice Date</label>
-                                <div class="col-sm-10">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">Notice Date</label>
+                                
                                     <input type="date" class="form-control" id="inputPassword3" placeholder="NoticeDate" name="NoticeDate">
-                                </div>
+                                
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label col-lg-2 mb-3">File URL</label>
+                                <label class="col-sm-3 control-label col-lg-2 mb-3">File URL</label>
                                 <div class="col-lg-10">
                                     <div class="custom-file">
                                         <input type="text" class="form-control" id="inputEmail3" placeholder="file" name="fileURL">
                                     </div>
                                 </div>
                             </div>
+                            <div class="or">OR</div><br />
                             <div class="form-group row">
-                                <label class="col-sm-2 control-label col-lg-2 mb-3">File Upload</label>
+                                <label class="col-sm-3 control-label col-lg-2 mb-3">File Upload</label>
                                 <div class="col-lg-10">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" name="postedFile">
@@ -77,8 +78,8 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Save Notice</button>
+                                <div class="col-sm-12">
+                                    <center><button type="submit" class="btn btn-primary">Save Notice</button></center>
                                 </div>
                             </div>
                         }
@@ -90,13 +91,15 @@
         </div>
     </div>
     <!-- Right Slidebar end -->
-    <!--footer start-->
+    <!--footer start--
     <footer class="site-footer">
-        <div class="text-center">
-            <script>document.write(new Date().getFullYear())</script> &copy;Uttar Pradesh Police Recruitment & Promotion Board.
-            <a href="#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+        <div class="text-center"><br />
+            <p style="text-align:center">
+                <script>document.write(new Date().getFullYear())</script> &copy;Uttar Pradesh Police Recruitment & Promotion Board.
+                <a href="#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </p>
         </div>
     </footer>
     <!--footer end-->

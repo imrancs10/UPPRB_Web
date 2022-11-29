@@ -7819,3 +7819,19 @@ a {
     padding-top: 2px;
     padding-bottom: 8px;
 }
+/*------or css--------*/
+.or {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:gray;
+}
+.or:after,
+.or:before{
+    content:"";
+    display:block;
+    background:grey;
+    width:30%;
+    height:1px;
+    margin:10px 10px;
+}
