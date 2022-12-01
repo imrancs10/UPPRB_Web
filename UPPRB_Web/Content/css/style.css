@@ -265,7 +265,7 @@ p {
 /* Logo */
 .header .logo {
     float: left;
-    margin-top: 35px;
+    margin-top: 15px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
