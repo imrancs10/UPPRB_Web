@@ -20,6 +20,7 @@ using System.Web.Security;
 using static UPPRB_Web.Global.Enums;
 using UPPRB_Web.BAL.Masters;
 using System.Data.Entity.Migrations.Model;
+using static iTextSharp.tool.xml.html.HTML;
 
 namespace UPPRB_Web.Controllers
 {
@@ -44,7 +45,17 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
-      
+
+        public ActionResult Result(int? noticeId = null, int? categoryId = null)
+        {
+            var detail = new GeneralDetails();
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId);
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+
         public ActionResult DirectRecruitment()
         {
             return View();
