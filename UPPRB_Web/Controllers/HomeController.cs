@@ -30,6 +30,11 @@ namespace UPPRB_Web.Controllers
         ILog logger = LogManager.GetLogger(typeof(HomeController));
         public ActionResult Index()
         {
+            var detail = new GeneralDetails();
+            var latestEvent = detail.GetLatestEventDetail();
+            ViewData["LatestEvent"] = latestEvent;
+            var highlightedNotice = detail.GetHighlightedNoticeDetail();
+            ViewData["HighlightedNotice"] = highlightedNotice;
             return View();
         }
         public ActionResult About()

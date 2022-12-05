@@ -35,6 +35,50 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderByDescending(x => x.NoticeDate).ToList();
             return _list != null ? _list : new List<NoticeModel>();
         }
+        public List<NoticeModel> GetLatestEventDetail()
+        {
+            _db = new upprbDbEntities();
+            var currentDate = DateTime.Now;
+            var _list = (from not in _db.Notices
+                         where currentDate >= not.NoticeDate
+                         select new NoticeModel
+                         {
+                             filename = not.filename,
+                             CreatedBy = not.CreatedBy,
+                             CreatedDate = not.CreatedDate,
+                             fileURL = not.fileURL,
+                             Id = not.Id,
+                             NoticeCategoryId = not.NoticeCategoryId,
+                             NoticeDate = not.NoticeDate,
+                             NoticeSubCategoryId = not.NoticeSubCategoryId,
+                             NoticeType = not.NoticeType,
+                             Subject = not.Subject,
+                             IsNew = not.IsNew
+                         }).OrderByDescending(x => x.NoticeDate).Skip(1).Take(7).ToList();
+            return _list != null ? _list : new List<NoticeModel>();
+        }
+        public NoticeModel GetHighlightedNoticeDetail()
+        {
+            _db = new upprbDbEntities();
+            var currentDate = DateTime.Now;
+            var _list = (from not in _db.Notices
+                         where currentDate >= not.NoticeDate
+                         select new NoticeModel
+                         {
+                             filename = not.filename,
+                             CreatedBy = not.CreatedBy,
+                             CreatedDate = not.CreatedDate,
+                             fileURL = not.fileURL,
+                             Id = not.Id,
+                             NoticeCategoryId = not.NoticeCategoryId,
+                             NoticeDate = not.NoticeDate,
+                             NoticeSubCategoryId = not.NoticeSubCategoryId,
+                             NoticeType = not.NoticeType,
+                             Subject = not.Subject,
+                             IsNew = not.IsNew
+                         }).OrderByDescending(x => x.NoticeDate).FirstOrDefault();
+            return _list != null ? _list : new NoticeModel();
+        }
 
         public List<NoticeTypeModel> GetNoticeHirarchyDetail()
         {

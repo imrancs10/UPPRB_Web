@@ -1,7 +1,9 @@
-﻿
+﻿@using UPPRB_Web.Models.Masters;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var LatestEvent = ViewData["LatestEvent"] as List<NoticeModel>;
+    var HighlightedNotice = ViewData["HighlightedNotice"] as NoticeModel;
 }
 
 <section class="hero-slider">
@@ -54,89 +56,40 @@
                     <nav>
                         <div class="nav nav-tabs text-uppercase  d-flex bd-highlight" id="nav-tab" role="tablist">
                             <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Events </b></a>
-
-
-
                         </div>
                     </nav>
 
                     <marquee scrollamount="5" direction="up" onmouseover="this.stop()" onmouseout="this.start()" style="height: 200px;">
                         <ul class="ultxt1">
-                            <li class="p-10" style="width: 95%">
-                                <h6>
-                                    <img id="ContentPlaceHolder2_Repeater2_Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                    <!--<span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (17.10.2022)</span>-->
-                                    <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (22.11.2022)</span>
-                                </h6>
+                            @foreach (var item in LatestEvent)
+                            {
+                                <li class="p-10" style="width: 95%">
+                                    <h6>
 
-                                <p style="text-align: justify">
-                                    <a href='./Notices/pdf/vig1_22112022.pdf' target="_blank"><span id="ContentPlaceHolder2_Repeater2_Label2_0" class="text">Expression of Interest in relation to offline examination and information technology and computer programming examination in the perspective of promotion from Computer Operator Grade-C to Programmer Grade-2 under Uttar Pradesh Police Computer Staff Class (Non-Gazetted) Service Rules-2011 (as amended) Invitation of (EOI). - </span></a>
-
-                                </p>
-                                <a id="ContentPlaceHolder2_Repeater2_HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='./Notices/pdf/vig1_22112022.pdf' target="_blank"><u>More..</u></a>
-                                <div class="clearfix">
-                                </div>
-                            </li>
-                            <li class="p-10" style="width: 95%">
-                                <h6>
-                                    <img id="ContentPlaceHolder2_Repeater2_Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                    <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (21.11.2022)</span>
-
-                                </h6>
-
-                                <p style="text-align: justify">
-                                    <a href="https://upprpbsimca20.onlineapplicationform.org/UPPRPBM/" target="_blank"><span id="ContentPlaceHolder2_Repeater2_Label2_0" class="text">Direct recruitment of Sub-Inspector of Police (Confidential), Assistant Sub-Inspector of Police (Clerk) and Assistant Sub-Inspector of Police (Accounts) in UP Police for men and women - Link for the admit card of the shorthand test under the recruitment process of 2020-21. </span></a>
-                                </p>
-                                <a id="ContentPlaceHolder2_Repeater2_HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href="https://upprpbsimca20.onlineapplicationform.org/UPPRPBM/" target="_blank"><u>More..</u></a>
-                                <div class="clearfix">
-                                </div>
-                            </li>
-                            <li class="p-10" style="width: 95%">
-                                <h6>
-                                    <img id="ContentPlaceHolder2_Repeater2_Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                    <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (18.11.2022)</span>
-
-                                </h6>
-
-                                <p style="text-align: justify">
-                                    <a href='./Notices/pdf/vig2_18112022.pdf' target="_blank"><span id="ContentPlaceHolder2_Repeater2_Label2_0" class="text">Direct recruitment of Sub-Inspector of Police (Confidential), Assistant Sub-Inspector of Police (Clerk) and Assistant Sub-Inspector of Police (Accounts) in UP Police for men and women - Information regarding shorthand test under the recruitment process of 2020-21. </span></a>
-
-                                </p>
-                                <a id="ContentPlaceHolder2_Repeater2_HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='./Notices/pdf/vig2_18112022.pdf' target="_blank"><u>More..</u></a>
-                                <div class="clearfix">
-                                </div>
-                            </li>
-                            <li class="p-10" style="width: 95%">
-                                <h6>
-                                    <img id="ContentPlaceHolder2_Repeater2_Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                    <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (18.11.2022)</span>
-
-                                </h6>
-
-                                <p style="text-align: justify">
-                                    <a href='./Notices/pdf/vig1_18112022.pdf' target="_blank"><span id="ContentPlaceHolder2_Repeater2_Label2_0" class="text">Information regarding list of eligible candidates, date of examination, date of admit card and practice test for efficiency assessment (shorthand) examination under recruitment to the post of Police Sub-Inspector (Confidential) under deceased dependent.</span></a>
-
-                                </p>
-                                <a id="ContentPlaceHolder2_Repeater2_HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='./Notices/pdf/vig1_18112022.pdf' target="_blank"><u>More..</u></a>
-                                <div class="clearfix">
-                                </div>
-                            </li>
-                            <li class="p-10" style="width: 95%">
-                                <h6>
-                                    <img id="ContentPlaceHolder2_Repeater2_Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                    <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (17.11.2022)</span>
-
-                                </h6>
-                                <div class="clr">
-                                </div>
-                                <p style="text-align: justify">
-                                    <a href='./Notices/pdf/vig1_17112022.pdf' target="_blank"><span id="ContentPlaceHolder2_Repeater2_Label2_0" class="text">Direct recruitment of Sub-Inspector of Police (Confidential), Assistant Sub-Inspector of Police (Clerk) and Assistant Sub-Inspector of Police (Accounts) in UP Police for men and women - List of eligible candidates for shorthand test under the recruitment process of 2020-21, date of examination, Information regarding date of admit card and practice test. </span></a>
-
-                                </p>
-                                <a id="ContentPlaceHolder2_Repeater2_HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='./Notices/pdf/vig1_17112022.pdf' target="_blank"><u>More..</u></a>
-                                <div class="clearfix">
-                                </div>
-                            </li>
+                                        @if (item.IsNew == true)
+                                        {
+                                            <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                        }
+                                        <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (@item.NoticeDate.Value.ToString("dd/MM/yyyy"))</span>
+                                    </h6>
+                                    @if (!string.IsNullOrEmpty(item.filename))
+                                    {
+                                        <p style="text-align: justify">
+                                            <a href='~/FilesUploaded/Notices/@item.filename' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                        </p>
+                                        <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='~/FilesUploaded/Notices/@item.filename' target="_blank"><u>More..</u></a>
+                                    }
+                                    else
+                                    {
+                                        <p style="text-align: justify">
+                                            <a href='@item.fileURL' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                        </p>
+                                        <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='@item.fileURL' target="_blank"><u>More..</u></a>
+                                    }
+                                    <div class="clearfix">
+                                    </div>
+                                </li>
+                            }
                         </ul>
                     </marquee>
 
@@ -155,27 +108,22 @@
                 <div class="modern-ticker mt-round">
                     <div class="mt-body">
                         <div class="mt-news">
-                            <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
-                                <p>
+                            @if (HighlightedNotice != null)
+                            {
+                                <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
+                                    <p>
+                                        <a href="#!" style="color: #03749d">
+                                            <u>LATEST NEWS: </u>
+                                            @if (HighlightedNotice.IsNew == true)
+                                            {
+                                                <img src="~/Content/images/new.gif" alt="new" />
+                                            }
+                                            @HighlightedNotice.Subject
+                                        </a>
+                                    </p>
+                                </marquee>
+                            }
 
-
-
-
-                                    <a href="#!" style="color: #03749d">
-                                        <u>LATEST NEWS: </u>
-                                        <img src="~/Content/images/new.gif" alt="new" />
-                                        Regarding inviting tenders through open tender for filling 120 posts of workshop staff, 1374 posts of assistant operators and 936 posts of head operators by direct recruitment-2022 in UP Police Radio Cadre.
-                                    </a>
-                                    <!--
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="PDF/RagPickers.pdf" target="_blank"><img src="~/Content/images/new.gif" alt="new" />Regarding inviting tenders through open tender for filling 120 posts of workshop staff, 1374 posts of assistant operators and 936 posts of principal operators by direct recruitment-2022 in UP Police Radio Cadre.   </a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                     -->
-
-
-
-                                </p>
-                            </marquee>
                         </div>
                     </div>
                 </div>
@@ -386,7 +334,7 @@
 
                         <li class="nav-item"><a class="nav-link text-truncate" href="#!"> <i class="fas fa-joint"></i> Instructions for Use of Geographic Mapping System</a></li>
 
-                        
+
                     </ul>
                     <div class="col-lg-12 ">
                         <div class="single-widget mt-30">
@@ -438,7 +386,7 @@
                                                         Medals
                                                     </div>
                                                 </a>
-                                            </div>                                       
+                                            </div>
                                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
                                                 <a href="#!">
                                                     <div class="icon-box iconbox-border p-5">
@@ -473,7 +421,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="Admission" role="tabpanel" aria-labelledby="Admission-tab">
