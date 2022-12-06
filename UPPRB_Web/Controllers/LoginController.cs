@@ -62,5 +62,10 @@ namespace UPPRB_Web.Controllers
             HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
             Response.Cookies.Add(faCookie);
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
     }
 }
