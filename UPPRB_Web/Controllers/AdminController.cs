@@ -12,6 +12,7 @@ using Org.BouncyCastle.Asn1.X509;
 using DataLayer;
 using UPPRB_Web.BAL.Masters;
 using UPPRB_Web.Infrastructure.Authentication;
+using static iTextSharp.tool.xml.html.HTML;
 
 namespace UPPRB_Web.Controllers
 {
@@ -25,6 +26,9 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult NoticeEntry()
         {
+            var detail = new GeneralDetails();
+            var allnotice = detail.GetNoticeDetail();
+            ViewData["NoticeData"] = allnotice;
             return View();
         }
         [HttpPost]

@@ -13,10 +13,16 @@ namespace UPPRB_Web.BAL.Masters
     {
         upprbDbEntities _db = null;
 
-        public List<NoticeModel> GetNoticeDetail(int? noticeId, int? categoryId)
+        public List<NoticeModel> GetNoticeDetail(int? noticeId = null, int? categoryId = null)
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.Notices
+                         join lookEntry in _db.Lookups on not.EntryTypeId equals lookEntry.LookupId into lookEntry1
+                         from lookEntry2 in lookEntry1.DefaultIfEmpty()
+                         join lookNoticeType in _db.Lookups on not.NoticeType equals lookNoticeType.LookupId into lookNoticeType1
+                         from lookNoticeType2 in lookNoticeType1.DefaultIfEmpty()
+                         join lookNotCategory in _db.Lookups on not.NoticeCategoryId equals lookNotCategory.LookupId into lookNotCategory1
+                         from lookNotCategory2 in lookNotCategory1.DefaultIfEmpty()
                          where (noticeId == null || (noticeId != null && not.NoticeType == noticeId))
                          && (categoryId == null || (categoryId != null && not.NoticeCategoryId == categoryId))
                          select new NoticeModel
@@ -31,7 +37,10 @@ namespace UPPRB_Web.BAL.Masters
                              EntryTypeId = not.EntryTypeId,
                              NoticeType = not.NoticeType,
                              Subject = not.Subject,
-                             IsNew = not.IsNew
+                             IsNew = not.IsNew,
+                             EntryTypeName = lookEntry2 != null ? lookEntry2.LookupName : "",
+                             NoticeCategoryName = lookNotCategory2 != null ? lookNotCategory2.LookupName : "",
+                             NoticeTypeName = lookNoticeType2 != null ? lookNoticeType2.LookupName : ""
                          }).OrderByDescending(x => x.NoticeDate).ToList();
             return _list != null ? _list : new List<NoticeModel>();
         }

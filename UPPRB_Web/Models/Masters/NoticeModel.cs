@@ -21,6 +21,9 @@ namespace UPPRB_Web.Models.Masters
         public bool? IsNew { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
+        public string NoticeTypeName { get; set; }
+        public string NoticeCategoryName { get; set; }
+        public string EntryTypeName { get; set; }
     }
 
     public class NoticeTypeModel
