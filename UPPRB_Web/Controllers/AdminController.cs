@@ -61,7 +61,10 @@ namespace UPPRB_Web.Controllers
             SetAlertMessage("Notice Saved", "Success");
             return View();
         }
-
+        public ActionResult AddNotice()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult SaveDoctorType(int doctor, int doctortype)
