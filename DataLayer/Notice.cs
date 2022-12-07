@@ -17,7 +17,7 @@ namespace DataLayer
         public int Id { get; set; }
         public Nullable<int> NoticeType { get; set; }
         public Nullable<int> NoticeCategoryId { get; set; }
-        public Nullable<int> NoticeSubCategoryId { get; set; }
+        public Nullable<int> EntryTypeId { get; set; }
         public string Subject { get; set; }
         public Nullable<System.DateTime> NoticeDate { get; set; }
         public string fileURL { get; set; }

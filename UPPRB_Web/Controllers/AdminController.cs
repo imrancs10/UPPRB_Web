@@ -28,7 +28,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string NoticeSubCategory, string Subject, string NoticeDate, string fileURL, string highlightNew)
+        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string EntryType, string Subject, string NoticeDate, string fileURL, string highlightNew, string EntryTypeName)
         {
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
             Notice notice = new Notice()
@@ -37,10 +37,10 @@ namespace UPPRB_Web.Controllers
                 CreatedDate = DateTime.Today,
                 filename = filename,
                 fileURL = fileURL,
-                NoticeCategoryId = Convert.ToInt32(NoticeCategory),
+                NoticeCategoryId = !string.IsNullOrEmpty(NoticeCategory) ? (int?)Convert.ToInt32(NoticeCategory) : null,
                 NoticeDate = Convert.ToDateTime(NoticeDate),
-                NoticeSubCategoryId = Convert.ToInt32(NoticeSubCategory),
-                NoticeType = Convert.ToInt32(NoticeType),
+                EntryTypeId = !string.IsNullOrEmpty(EntryType) ? (int?)Convert.ToInt32(EntryType) : null,
+                NoticeType = !string.IsNullOrEmpty(NoticeType) ? (int?)Convert.ToInt32(NoticeType) : null,
                 Subject = Subject,
                 IsNew = highlightNew == "on" ? true : false
             };
@@ -50,7 +50,12 @@ namespace UPPRB_Web.Controllers
             {
                 if (postedFile != null)
                 {
-                    string path = Server.MapPath("~/FilesUploaded/Notices/");
+
+                    string path = string.Empty;
+                    if (!string.IsNullOrEmpty(EntryTypeName))
+                        path = Server.MapPath("~/FilesUploaded/" + EntryTypeName + "/");
+                    else
+                        path = Server.MapPath("~/FilesUploaded/Other/");
                     if (!Directory.Exists(path))
                     {
                         Directory.CreateDirectory(path);

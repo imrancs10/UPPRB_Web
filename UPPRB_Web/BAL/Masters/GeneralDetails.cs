@@ -28,7 +28,7 @@ namespace UPPRB_Web.BAL.Masters
                              Id = not.Id,
                              NoticeCategoryId = not.NoticeCategoryId,
                              NoticeDate = not.NoticeDate,
-                             NoticeSubCategoryId = not.NoticeSubCategoryId,
+                             EntryTypeId = not.EntryTypeId,
                              NoticeType = not.NoticeType,
                              Subject = not.Subject,
                              IsNew = not.IsNew
@@ -50,7 +50,7 @@ namespace UPPRB_Web.BAL.Masters
                              Id = not.Id,
                              NoticeCategoryId = not.NoticeCategoryId,
                              NoticeDate = not.NoticeDate,
-                             NoticeSubCategoryId = not.NoticeSubCategoryId,
+                             EntryTypeId = not.EntryTypeId,
                              NoticeType = not.NoticeType,
                              Subject = not.Subject,
                              IsNew = not.IsNew
@@ -72,7 +72,7 @@ namespace UPPRB_Web.BAL.Masters
                              Id = not.Id,
                              NoticeCategoryId = not.NoticeCategoryId,
                              NoticeDate = not.NoticeDate,
-                             NoticeSubCategoryId = not.NoticeSubCategoryId,
+                             EntryTypeId = not.EntryTypeId,
                              NoticeType = not.NoticeType,
                              Subject = not.Subject,
                              IsNew = not.IsNew

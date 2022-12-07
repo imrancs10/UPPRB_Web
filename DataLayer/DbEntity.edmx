@@ -36,7 +36,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoticeType" Type="int" />
           <Property Name="NoticeCategoryId" Type="int" />
-          <Property Name="NoticeSubCategoryId" Type="int" />
+          <Property Name="EntryTypeId" Type="int" />
           <Property Name="Subject" Type="varchar(max)" />
           <Property Name="NoticeDate" Type="datetime" />
           <Property Name="fileURL" Type="varchar" MaxLength="500" />
@@ -90,7 +90,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NoticeType" Type="Int32" />
           <Property Name="NoticeCategoryId" Type="Int32" />
-          <Property Name="NoticeSubCategoryId" Type="Int32" />
+          <Property Name="EntryTypeId" Type="Int32" />
           <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NoticeDate" Type="DateTime" Precision="3" />
           <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -141,7 +141,7 @@
                 <ScalarProperty Name="fileURL" ColumnName="fileURL" />
                 <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="NoticeSubCategoryId" ColumnName="NoticeSubCategoryId" />
+                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
                 <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
                 <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

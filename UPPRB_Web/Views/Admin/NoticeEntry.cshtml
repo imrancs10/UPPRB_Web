@@ -4,114 +4,138 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <script src="~/Scripts/Masters/noticeEntry.js"></script>
-<section class="wrapper">
-    <!-- page start-->
-    <div class="row">
-        <div class="col-lg-12">
+<section id="main-content" style="margin-left:10px">
+    <section class="wrapper">
+        <!--state overview start-->
+        <div class="row state-overview">
 
-            <div class="col-lg-10">
+            <div class="col-lg-12 col-sm-3">
                 <section class="card">
-                    <header class="card-header">
-                        <div style="text-align:center;">Notice Entry Form</div>
-                    </header>
-                    <div class="card-body">
-                        @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            @*<div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Type</label>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="NoticeType" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadioInline1">General Notices</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="NoticeType" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadioInline2">Recruitment Notices</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline3" name="NoticeType" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadioInline3">Promotion Notices</label>
-                </div>
-            </div>*@
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Type</label>
-                                <select class="form-control mb-3" style="width:80%" id="NoticeType" name="NoticeType">
-                                </select>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Notice Category</label>
-                                <select class="form-control mb-3" style="width:80%" id="NoticeCategory" name="NoticeCategory">
-                                </select>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Sub Category</label>
-                                <select class="form-control mb-3" style="width:80%" id="NoticeSubCategory" name="NoticeSubCategory">
-                                </select>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Subject</label>
-
-                                <textarea type="text" class="form-control" id="inputEmail3" placeholder="Subject" name="Subject"> </textarea>
-
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Notice Date</label>
-
-                                <input type="date" class="form-control" id="inputPassword3" placeholder="NoticeDate" name="NoticeDate">
-
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label col-lg-2 mb-3">File URL</label>
-                                <div class="col-lg-10">
-                                    <div class="custom-file">
-                                        <input type="text" class="form-control" id="inputEmail3" placeholder="file" name="fileURL">
+                    <div class="card-body left">
+                        <a href="#myModal" data-toggle="modal" class="btn btn-sm btn-success">
+                            Add Notice
+                        </a>
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width:150%">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add New Notice</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label for="exampleInputEmail1">Entry Type</label>
+                                                    <select class="form-control mb-3" style="" id="EntryType" name="EntryType">
+                                                    </select>
+                                                    <input type="hidden" value="" name="EntryTypeName"/>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="display:none;" id="divNotice">
+                                                <div class="col-lg-6">
+                                                    <label for="exampleInputEmail1">Select Type</label>
+                                                    <select class="form-control mb-3" style="width:80%" id="NoticeType" name="NoticeType">
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="exampleInputPassword1">Select Category</label>
+                                                    <select class="form-control mb-3" style="width:80%" id="NoticeCategory" name="NoticeCategory">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label for="exampleInputEmail1">Subject</label>
+                                                    <textarea type="text" class="form-control" id="inputEmail3" placeholder="Enter Subject" name="Subject"> </textarea>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label for="exampleInputPassword1">Notice Date</label>
+                                                    <input type="date" class="form-control" id="inputPassword3" placeholder="Notice Date" name="NoticeDate">
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="1">
+                                                        <label class="custom-control-label" for="customRadioInline1">Upload Web Url</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="2">
+                                                        <label class="custom-control-label" for="customRadioInline2">Upload File</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label>File URL</label>
+                                                    <div>
+                                                        <div class="custom-file">
+                                                            <input type="text" class="form-control" disabled id="inputEmail3" placeholder="file" name="fileURL">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label>File Upload</label>
+                                                    <div>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" disabled id="customFile" name="postedFile">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew" checked> Highlight as New
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
+                                        }
                                     </div>
                                 </div>
                             </div>
-                            <div class="or">OR</div><br />
-                            <div class="form-group row">
-                                <label class="col-sm-3 control-label col-lg-2 mb-3">File Upload</label>
-                                <div class="col-lg-10">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="postedFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew">
-                                        <label class="form-check-label" for="gridCheck1">
-                                            Highlight as New
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <center><button type="submit" class="btn btn-primary">Save Notice</button></center>
-                                </div>
-                            </div>
-                        }
+                        </div>
                     </div>
                 </section>
-
             </div>
-
         </div>
-    </div>
-    <!-- Right Slidebar end -->
-    <!--footer start--
-    <footer class="site-footer">
-        <div class="text-center"><br />
-            <p style="text-align:center">
-                <script>document.write(new Date().getFullYear())</script> &copy;Uttar Pradesh Police Recruitment & Promotion Board.
-                <a href="#" class="go-top">
-                    <i class="fa fa-angle-up"></i>
-                </a>
-            </p>
+        <!--state overview end-->
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        All Notice Details
+                    </header>
+                    <table class="table table-striped table-advance table-hover">
+                        <thead>
+                            <tr>
+                                <th style="color:black"><i class="fa fa-bullhorn" style="color:black"></i> Company</th>
+                                <th class="hidden-phone" style="color:black"><i class="fa fa-question-circle"></i> Descrition</th>
+                                <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> Profit</th>
+                                <th style="color:black"><i class=" fa fa-edit" style="color:black"></i> Status</th>
+                                <th style="color:black"><i class=" fa fa-act" style="color:black"></i> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#">Vector Ltd</a></td>
+                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
+                                <td>12120.00$ </td>
+                                <td><span class="badge badge-info label-mini">Due</span></td>
+                                <td>
+                                    <i class="fa fa-pencil"></i>&nbsp;
+                                    <i class="fa fa-trash-o "></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
         </div>
-    </footer>
-    <!--footer end-->
+    </section>
+    <!--main content end-->
 </section>
 

@@ -717,6 +717,7 @@
     <Content Include="Scripts\library\js\bootstrap.min.js.map" />
     <Content Include="Views\Home\EnquiryForm.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
+    <Content Include="Views\Admin\AddNotice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -724,7 +725,7 @@
     <Folder Include="BAL\Patient\" />
     <Folder Include="BAL\Reports\" />
     <Folder Include="ExternalAssembly\" />
-    <Folder Include="FilesUploaded\Notices\" />
+    <Folder Include="FilesUploaded\Notice\" />
     <Folder Include="Infrastructure\Adapter\WebService\" />
     <Folder Include="LabReports\" />
   </ItemGroup>

@@ -3,7 +3,58 @@ $(document).ready(function () {
 
     //FillNoticeCategory();
     //FillNoticeSubCategory();
+    FillEntryType();
     FillNoticeType();
+    function FillEntryType(selectedEntryTypeId = null) {
+        let dropdown = $('#EntryType');
+        dropdown.empty();
+        dropdown.append('<option value="">Select</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{lookupTypeId: 0,lookupType: "UploadType" }',
+            url: '/Master/GetLookupDetail',
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                });
+                if (selectedEntryTypeId != null) {
+                    dropdown.val(selectedEntryTypeId);
+                }
+            },
+            failure: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    }
+    $('#EntryType').on('change', function (e) {
+        var valueSelected = $("#EntryType option:selected").text();
+        if (valueSelected == 'Notice')
+            $('#divNotice').css('display', '');
+        else {
+            $('#divNotice').css('display', 'none');
+            $('#NoticeCategory').val("");
+            $('#NoticeType').val("");
+        }
+        $('[name*=EntryTypeName]').val(valueSelected);
+    });
+    $('[name*=customRadioInline1]').on('change', function (e) {
+        var valueSelected = this.value;
+        if (valueSelected == 1) {
+            $('[name*=fileURL]').removeAttr('disabled');
+            $('[name*=postedFile]').prop("disabled", true);
+            $('[name*=postedFile]').val(null);
+        }
+        else {
+            $('[name*=fileURL]').prop("disabled", true);
+            $('[name*=postedFile]').removeAttr('disabled');
+        }
+    });
     function FillNoticeType(selectedNoticeTypeId = null) {
         let dropdown = $('#NoticeType');
         dropdown.empty();

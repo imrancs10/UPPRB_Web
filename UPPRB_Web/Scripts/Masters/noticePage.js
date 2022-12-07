@@ -21,7 +21,7 @@ function fillNotice(noticeId, CategoryId) {
                     if (item.IsNew == true) {
                         element += '<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">';
                     }
-                    element += "<a href='/FilesUploaded/Notices/" + item.filename + "' title='Click to view more' target='_blank'>";
+                    element += "<a href='/FilesUploaded/Notice/" + item.filename + "' title='Click to view more' target='_blank'>";
                     element += item.Subject + "<span class='whatsnew' style='color:brown'> [ Notice Board ]</span></a>";
                     element += '<p class="date"> Date :' + formatDate(item.NoticeDate) + '</p></li>';
                 }
