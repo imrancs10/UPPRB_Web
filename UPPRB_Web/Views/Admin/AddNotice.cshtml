@@ -19,7 +19,7 @@
 
                             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                                 <div class="modal-dialog">
-                                    <div class="modal-content">
+                                    <div class="modal-content" style="width:150%">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Add New Notice</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -29,58 +29,76 @@
                                         <div class="modal-body">
 
                                             <form role="form">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Notice Type</label>
-                                                    <select class="form-control mb-3">
-                                                        <option value="1">General Notices</option>
-                                                        <option value="2">Recruitment Notice</option>
-                                                        <option value="3">Promotion Notice</option>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <label for="exampleInputEmail1">Select Type</label>
+                                                        <select class="form-control mb-3">
+                                                            <option value="1">General Notices</option>
+                                                            <option value="2">Recruitment Notice</option>
+                                                            <option value="3">Promotion Notice</option>
 
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword1">Notice Category</label>
-                                                    <select class="form-control mb-3">
-                                                        <option value="1">General Notices</option>
-                                                        <option value="2">Recruitment Notice</option>
-                                                        <option value="3">Promotion Notice</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label for="exampleInputPassword1">Select Category</label>
+                                                        <select class="form-control mb-3">
+                                                            <option value="1">General Notices</option>
+                                                            <option value="2">Recruitment Notice</option>
+                                                            <option value="3">Promotion Notice</option>
 
-                                                    </select>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Subject</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter subject">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword1">Notice Date</label>
-                                                    <input type="Date" class="form-control" id="exampleInputPassword3" placeholder="Date">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>File URL</label>
-                                                    <div>
-                                                        <div class="custom-file">
-                                                            <input type="text" class="form-control" id="inputEmail3" placeholder="file" name="fileURL">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <label for="exampleInputEmail1">Subject</label>
+                                                        <textarea type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter subject"></textarea>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label for="exampleInputPassword1">Notice Date</label>
+                                                        <input type="Date" class="form-control" id="exampleInputPassword3" placeholder="Date">
+                                                    </div>
+                                                </div><br />
+                                                <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                                                <label class="custom-control-label" for="customRadioInline1">Upload Web Url</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                                <label class="custom-control-label" for="customRadioInline2">Upload File</label>
+                                                            </div>
+
+                                                        </div>
+                                                    
+                                                    <div class="col-lg-6">
+                                                        <label>File URL</label>
+                                                        <div>
+                                                            <div class="custom-file">
+                                                                <input type="text" class="form-control" id="inputEmail3" placeholder="WebURL" name="fileURL">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label>File Upload</label>
+                                                        <div>
+                                                            <div class="custom-file">
+                                                                <input type="file" class="custom-file-input" id="customFile" name="postedFile">
+                                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--<div class="or">OR</div><br />-->
-                                                <div class="form-group">
-                                                    <label>File Upload</label>
-                                                    <div>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="customFile" name="postedFile">
-                                                            <label class="custom-file-label" for="customFile">Choose file</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <br />
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> Highlight as New
+                                                        <input type="checkbox" checked> Highlight as New
                                                     </label>
                                                 </div>
                                                 <center><button type="submit" class="btn btn-default">Submit</button></center>
                                             </form>
-                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,9 +134,8 @@
                                     <td>12120.00$ </td>
                                     <td><span class="badge badge-info label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -131,9 +148,8 @@
                                     <td>56456.00$ </td>
                                     <td><span class="badge badge-warning label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -146,9 +162,8 @@
                                     <td>14400.00$ </td>
                                     <td><span class="badge badge-success label-mini">Paid</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,9 +176,8 @@
                                     <td>2323.50$ </td>
                                     <td><span class="badge badge-danger label-mini">Paid</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -172,9 +186,8 @@
                                     <td>12120.00$ </td>
                                     <td><span class="badge badge-primary label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,9 +200,8 @@
                                     <td>56456.00$ </td>
                                     <td><span class="badge badge-warning label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -198,9 +210,8 @@
                                     <td>12120.00$ </td>
                                     <td><span class="badge badge-success label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -213,9 +224,8 @@
                                     <td>56456.00$ </td>
                                     <td><span class="badge badge-warning label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -224,9 +234,8 @@
                                     <td>12120.00$ </td>
                                     <td><span class="badge badge-info label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -239,9 +248,8 @@
                                     <td>56456.00$ </td>
                                     <td><span class="badge badge-warning label-mini">Due</span></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o"></i>
                                     </td>
                                 </tr>
                             </tbody>
