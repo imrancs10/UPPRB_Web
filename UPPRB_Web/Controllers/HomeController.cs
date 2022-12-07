@@ -135,6 +135,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult Manual()
+        {
+            return View();
+        }
         //public ActionResult Register(string actionName)
         //{
         //    if (actionName == "getotpscreen")
