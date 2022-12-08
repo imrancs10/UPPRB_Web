@@ -111,6 +111,15 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new List<NoticeTypeModel>();
         }
 
+        public bool DeleteNotice(int Id)
+        {
+            _db = new upprbDbEntities();
+            var result = _db.Notices.FirstOrDefault(x => x.Id == Id);
+            _db.Notices.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();

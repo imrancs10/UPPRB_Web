@@ -1,6 +1,8 @@
 ﻿'use strict';
 $(document).ready(function () {
-
+    $('#btnAddNotice').click(function () {
+        $('#addEditNoticeModel').modal('show');
+    });
     //FillNoticeCategory();
     //FillNoticeSubCategory();
     FillEntryType();
@@ -86,33 +88,7 @@ $(document).ready(function () {
         var valueSelected = this.value;
         FillNoticeCategory(valueSelected);
     });
-    function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
-        let dropdown = $('#NoticeCategory');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            type: 'POST',
-            data: '{lookupTypeId: "' + NoticeTypeId + '",lookupType: "NoticeCategory" }',
-            url: '/Master/GetLookupDetail',
-            success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
-                });
-                if (selectedNoticeCategoryId != null) {
-                    dropdown.val(selectedNoticeCategoryId);
-                }
-            },
-            failure: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log(response.responseText);
-            }
-        });
-    }
+   
     $('#NoticeCategory').on('change', function (e) {
         var valueSelected = this.value;
         FillNoticeSubCategory(valueSelected);
@@ -144,42 +120,60 @@ $(document).ready(function () {
             }
         });
     }
-
-
-
-    function FillSchemeName(SchemeTypeId, selectedSchemeNameId = null) {
-        let dropdown = $('#SchemeName');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            type: 'POST',
-            data: '{lookupTypeId: "' + SchemeTypeId + '",lookupType: "SchemeName" }',
-            url: '/Masters/GetLookupDetail',
-            success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
-                });
-                if (selectedSchemeNameId != null) {
-                    dropdown.val(selectedSchemeNameId);
-                }
-            },
-            failure: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log(response.responseText);
-            }
-        });
-    }
-    $('#SchemeName').on('change', function (e) {
-        var valueSelected = this.value;
-        FillSector(valueSelected);
-    });
 });
 
-function editUpload(id) {
-    alert(id);
+function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
+    let dropdown = $('#NoticeCategory');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        data: '{lookupTypeId: "' + NoticeTypeId + '",lookupType: "NoticeCategory" }',
+        url: '/Master/GetLookupDetail',
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+            });
+            if (selectedNoticeCategoryId != null) {
+                dropdown.val(selectedNoticeCategoryId);
+            }
+        },
+        failure: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response.responseText);
+        }
+    });
+}
+
+function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, NoticeDate, fileURL, filename, IsNew, EntryTypeName) {
+    $('#hiddenId').val(Id);
+    //$('#btnSave').val('Update');
+    $('#EntryType').val(EntryTypeId);
+    $('#NoticeType').val(NoticeType);
+    FillNoticeCategory(NoticeType, NoticeCategoryId);
+    //$('#NoticeCategory').val(NoticeCategoryId);
+    $('#Subject').val(Subject);
+    $('#NoticeDate').val(NoticeDate);
+    $('#fileURL').val(fileURL);
+    //$('#customFile').val(filename);
+    $('#EntryType').change();
+    //if (EntryTypeName == 'Notice')
+    //    $('#divNotice').css('display', '');
+    //$('#btnAddNotice')[0].click();
+    $('#myModal').modal('show');
+}
+function formatDate(noticeDate) {
+    var milli = noticeDate.replace(/\/Date\((-?\d+)\)\//, '$1');
+    var now = new Date(parseInt(milli));
+
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = (day) + "-" + (month) + "-" + now.getFullYear();
+    return today;
 }

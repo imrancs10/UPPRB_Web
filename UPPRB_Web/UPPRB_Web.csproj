@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -560,6 +561,7 @@
     <None Include="Scripts\library\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\library\js\jquery-1.11.0.min.js" />
     <Content Include="Scripts\library\js\jquery-migrate-3.0.0.js" />
     <Content Include="Scripts\library\js\jquery-minicolors.js" />
     <Content Include="Scripts\library\js\jquery-ui.js" />

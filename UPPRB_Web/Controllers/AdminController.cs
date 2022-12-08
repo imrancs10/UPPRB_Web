@@ -24,11 +24,15 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
-        public ActionResult NoticeEntry()
+        public ActionResult NoticeEntry(bool? deleteMessage)
         {
             //var detail = new GeneralDetails();
             //var allnotice = detail.GetNoticeDetail();
             //ViewData["NoticeData"] = allnotice;
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Upload Data has been Deleted", "Notice Entry");
+            }
             return View();
         }
         [HttpPost]
@@ -54,6 +58,13 @@ namespace UPPRB_Web.Controllers
             recordsTotal = result.Count();
             var data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteNotice(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.DeleteNotice(Id);
+            return RedirectToAction("NoticeEntry", new { deleteMessage = true });
         }
 
         [HttpPost]
