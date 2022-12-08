@@ -26,11 +26,36 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult NoticeEntry()
         {
-            var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail();
-            ViewData["NoticeData"] = allnotice;
+            //var detail = new GeneralDetails();
+            //var allnotice = detail.GetNoticeDetail();
+            //ViewData["NoticeData"] = allnotice;
             return View();
         }
+        [HttpPost]
+        public JsonResult GetAllNotice()
+        {
+            var detail = new GeneralDetails();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            var result = detail.GetNoticeDetail();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.EntryTypeName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.NoticeTypeName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.NoticeCategoryName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            var data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string EntryType, string Subject, string NoticeDate, string fileURL, string highlightNew, string EntryTypeName)
         {
