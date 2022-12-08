@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -267,6 +267,7 @@
   <ItemGroup>
     <Content Include="Content\css\all.min.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap-extended.css" />
     <Content Include="Content\css\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.css" />
@@ -274,6 +275,7 @@
     <Content Include="Content\css\bootstrap-reset.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min1.css" />
     <Content Include="Content\css\boxstyle.css" />
     <Content Include="Content\css\custom-bootstrap-margin-padding.css" />
     <Content Include="Content\css\dash1.css" />
@@ -293,6 +295,7 @@
     <Content Include="Content\css\hoe-theme-color.css" />
     <Content Include="Content\css\hoe.css" />
     <Content Include="Content\css\hover.css" />
+    <Content Include="Content\css\icons.css" />
     <Content Include="Content\css\image-crop.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\invoice-print.css" />
@@ -314,6 +317,7 @@
     <Content Include="Content\css\soon.css" />
     <Content Include="Content\css\style-responsive.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style1.css" />
     <Content Include="Content\css\table-responsive.css" />
     <Content Include="Content\css\tasks.css" />
     <Content Include="Content\css\themify-icons.css" />
@@ -496,6 +500,7 @@
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\js\jquery.marquee.js" />
     <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.min1.js" />
     <Content Include="Content\js\jquery.nicescroll.js" />
     <Content Include="Content\js\jquery.pulsate.min.js" />
     <Content Include="Content\js\jquery.scrollTo.min.js" />
@@ -513,6 +518,7 @@
     <Content Include="Content\js\onepage-nav.min.js" />
     <Content Include="Content\js\owl-carousel.js" />
     <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\pace.min.js" />
     <Content Include="Content\js\pickers\init-color-picker.js" />
     <Content Include="Content\js\pickers\init-date-picker.js" />
     <Content Include="Content\js\pickers\init-datetime-picker.js" />
@@ -549,6 +555,8 @@
     <Content Include="Scripts\library\js\easing.js" />
     <Content Include="Scripts\library\js\finalcountdown.min.js" />
     <Content Include="Scripts\library\js\flex-slider.js" />
+    <Content Include="FilesUploaded\ManualFiles\CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" />
+    <Content Include="FilesUploaded\PAC\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCI56b99a65-84e0-4ead-ac1a-1dccf166a4c4.pdf" />
     <None Include="Scripts\library\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.min.js" />
@@ -718,6 +726,11 @@
     <Content Include="Views\Home\EnquiryForm.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Admin\AddNotice.cshtml" />
+    <Content Include="Views\Home\PACLogin.cshtml" />
+    <Content Include="Views\Home\Manual.cshtml" />
+    <Content Include="Views\Shared\_Manual_SideMenu.cshtml" />
+    <Content Include="Views\Shared\_Result_SideMenu.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
