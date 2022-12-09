@@ -27,10 +27,10 @@ namespace UPPRB_Web.BAL.Masters
                          && (categoryId == null || (categoryId != null && not.NoticeCategoryId == categoryId))
                          select new NoticeModel
                          {
-                             filename = not.filename,
+                             filename = not.filename != null ? not.filename : "",
                              CreatedBy = not.CreatedBy,
                              CreatedDate = not.CreatedDate,
-                             fileURL = not.fileURL,
+                             fileURL = not.fileURL != null ? not.fileURL : "",
                              Id = not.Id,
                              NoticeCategoryId = not.NoticeCategoryId,
                              NoticeDate = not.NoticeDate,

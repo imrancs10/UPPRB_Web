@@ -68,11 +68,14 @@ namespace UPPRB_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory, string EntryType, string Subject, string NoticeDate, string fileURL, string highlightNew, string EntryTypeName)
+        public ActionResult NoticeEntry(HttpPostedFileBase postedFile, string NoticeType, string NoticeCategory,
+            string EntryType, string Subject, string NoticeDate, string fileURL, string highlightNew,
+            string EntryTypeName, string hiddenNoticeID)
         {
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
             Notice notice = new Notice()
             {
+                Id = !string.IsNullOrEmpty(hiddenNoticeID) ? Convert.ToInt32(hiddenNoticeID) : 0,
                 CreatedBy = UserData.UserId,
                 CreatedDate = DateTime.Today,
                 filename = filename,
@@ -86,7 +89,7 @@ namespace UPPRB_Web.Controllers
             };
             AdminDetails detail = new AdminDetails();
             var saveStatus = detail.SaveNotice(notice);
-            if (saveStatus == Enums.CrudStatus.Saved)
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
             {
                 if (postedFile != null)
                 {

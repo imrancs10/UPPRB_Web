@@ -16,8 +16,28 @@ namespace UPPRB_Web.BAL.Masters
         public Enums.CrudStatus SaveNotice(Notice notice)
         {
             _db = new upprbDbEntities();
-            _db.Entry(notice).State = EntityState.Added;
-            var _effectRow = _db.SaveChanges();
+            int _effectRow = 0;
+            if (notice.Id == 0)
+                _db.Entry(notice).State = EntityState.Added;
+            else
+            {
+                var _deptRow = _db.Notices.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.fileURL = notice.fileURL;
+                    _deptRow.Subject = notice.Subject;
+                    _deptRow.NoticeDate = notice.NoticeDate;
+                    _deptRow.NoticeCategoryId = notice.NoticeCategoryId;
+                    _deptRow.EntryTypeId = notice.EntryTypeId;
+                    _deptRow.filename = !string.IsNullOrEmpty(notice.filename) ? notice.filename : _deptRow.filename;
+                    _deptRow.IsNew = notice.IsNew;
+                    _deptRow.NoticeType = notice.NoticeType;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)

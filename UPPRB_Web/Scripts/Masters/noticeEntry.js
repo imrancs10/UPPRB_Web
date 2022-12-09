@@ -1,8 +1,8 @@
 ﻿'use strict';
 $(document).ready(function () {
-    $('#btnAddNotice').click(function () {
-        $('#addEditNoticeModel').modal('show');
-    });
+    //$('#btnAddNotice').click(function () {
+    //    $('#addEditNoticeModel').modal('show');
+    //});
     //FillNoticeCategory();
     //FillNoticeSubCategory();
     FillEntryType();
@@ -88,7 +88,7 @@ $(document).ready(function () {
         var valueSelected = this.value;
         FillNoticeCategory(valueSelected);
     });
-   
+
     $('#NoticeCategory').on('change', function (e) {
         var valueSelected = this.value;
         FillNoticeSubCategory(valueSelected);
@@ -152,20 +152,28 @@ function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
 
 function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, NoticeDate, fileURL, filename, IsNew, EntryTypeName) {
     $('#hiddenId').val(Id);
+    $('[name*=EntryTypeName]').val(EntryTypeName);
+    $('[name*=hiddenNoticeID]').val(Id);
     //$('#btnSave').val('Update');
     $('#EntryType').val(EntryTypeId);
     $('#NoticeType').val(NoticeType);
     FillNoticeCategory(NoticeType, NoticeCategoryId);
     //$('#NoticeCategory').val(NoticeCategoryId);
     $('#Subject').val(Subject);
-    $('#NoticeDate').val(NoticeDate);
-    $('#fileURL').val(fileURL);
+    $('#NoticeDate').val(formatDateyyyyMMdd(NoticeDate));
+    $('#fileURL').val(fileURL != "null" ? fileURL : "");
     //$('#customFile').val(filename);
     $('#EntryType').change();
     //if (EntryTypeName == 'Notice')
     //    $('#divNotice').css('display', '');
     //$('#btnAddNotice')[0].click();
     $('#myModal').modal('show');
+    $('#highlightNew').prop('checked', IsNew)
+    if (filename != null && filename != "" && filename != undefined && filename != "")
+        $('[id*=customRadioInline2]').prop("checked",true);
+    else
+        $('[id*=customRadioInline1]').prop("checked", true);
+    $('[name*=customRadioInline1]').change();
 }
 function formatDate(noticeDate) {
     var milli = noticeDate.replace(/\/Date\((-?\d+)\)\//, '$1');
@@ -175,5 +183,15 @@ function formatDate(noticeDate) {
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
     var today = (day) + "-" + (month) + "-" + now.getFullYear();
+    return today;
+}
+function formatDateyyyyMMdd(noticeDate) {
+    var milli = noticeDate.source.replace("Date(", "").replace(")", "");
+    var now = new Date(parseInt(milli));
+
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear() + "-" + (month) + "-" + (day);
     return today;
 }
