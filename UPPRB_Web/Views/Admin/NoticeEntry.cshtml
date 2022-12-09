@@ -154,6 +154,7 @@
             "orderMulti": false, // for disable multiple column at once
             "ordering": false,
             "pageLength": 10,
+            "className": 'dt-body-nowrap',
             "PaginationType": 'full_numbers',
             "ajax": {
                 "url": "/Admin/GetAllNotice",
@@ -187,13 +188,13 @@
                 {
                     "title": "File URL",
                     "render": function (data, type, full, meta) {
-                        return '<a target="_blank" style=" color: blue;" href="' + full.fileURL + '">' + full.fileURL + '</a>';
+                        return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.fileURL + '">' + full.fileURL + '</a>';
                     }
                 },
                 {
                     "title": "File Name",
                     "render": function (data, type, full, meta) {
-                        return '<a target="_blank" style=" color: blue;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + full.filename + '</a>';
+                        return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + full.filename + '</a>';
                     }
                 },
                 {
@@ -240,3 +241,9 @@
             });
     })
 </script>
+
+<style type="text/css">
+    #tableCity td, #tableCity th {
+        white-space: nowrap;
+    }
+</style>
