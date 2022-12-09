@@ -7835,12 +7835,3 @@ a {
     height:1px;
     margin:10px 10px;
 }
-
-.table thead th {
-    color: rgba(22, 24, 27, .54) !important;
-    font-size: 13px;
-}
-
-.dt-body-nowrap {
-    white-space: nowrap;
-}
