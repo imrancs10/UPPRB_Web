@@ -13,8 +13,8 @@
             <section class="card">
                 <div class="card-body left">
                     @*<a href="#myModal" data-toggle="modal" class="btn btn-sm btn-success" id="btnAddNotice">
-                        Add Notice
-                    </a>*@
+                            Add Notice
+                        </a>*@
                     @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="row">
@@ -167,7 +167,7 @@
                         htmlDOM = '<div class="form-group mt-lg">' +
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
                             "<a id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + "," + full.EntryTypeId + "," + full.NoticeType + "," + full.NoticeCategoryId + ",\"" + full.Subject + "\"," + full.NoticeDate + ",\"" + full.fileURL + "\",\"" + full.filename + "\"," + full.IsNew + ",\"" + full.EntryTypeName + "\")' href='#'> <i class='fa fa-pencil' style='color:black'></i></a>&nbsp;&nbsp;" +
-                            '<a id="lnkDelete" onclick="javascript:return openDialogue(' + full.Id + ');" href="#" data-url="DeleteNotice"><i class="fa fa-trash-o" style="color:red"></i></a>' +
+                            //'<a id="lnkDelete" onclick="javascript:return openDialogue(' + full.Id + ');" href="#" data-url="DeleteNotice"><i class="fa fa-trash-o" style="color:red"></i></a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;
@@ -183,8 +183,18 @@
                         return '<span>' + formatDate(full.NoticeDate) + '</span>';
                     }
                 },
-                { "data": "fileURL", "name": "fileURL", "autoWidth": true, "title": "File URL" },
-                { "data": "filename", "name": "filename", "autoWidth": true, "title": "file Name" },
+                {
+                    "title": "File URL",
+                    "render": function (data, type, full, meta) {
+                        return '<a target="_blank" style=" color: blue;" href="' + full.fileURL + '">' + full.fileURL + '</a>';
+                    }
+                },
+                {
+                    "title": "File Name",
+                    "render": function (data, type, full, meta) {
+                        return '<a target="_blank" style=" color: blue;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + full.filename + '</a>';
+                    }
+                },
                 {
                     "title": "Created Date",
                     "render": function (data, type, full, meta) {
