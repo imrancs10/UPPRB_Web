@@ -5,8 +5,8 @@
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
 }
 <script src="~/Scripts/Masters/noticeEntry.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />
+@*<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />*@
 <link href="~/Content/css/design1.css" rel="stylesheet" />
 <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
@@ -173,7 +173,7 @@
                         var htmlDOM = "";
                         htmlDOM = '<div class="form-group mt-lg">' +
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
-                            "<a id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + "," + full.EntryTypeId + "," + full.NoticeType + "," + full.NoticeCategoryId + ",\"" + full.Subject + "\"," + full.NoticeDate + ",\"" + full.fileURL + "\",\"" + full.filename + "\"," + full.IsNew + ",\"" + full.EntryTypeName + "\")' href='#'> <i class='fa fa-pencil' style='color:black'></i></a>&nbsp;&nbsp;" +
+                            "<a style='margin-left: 35%;' id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + "," + full.EntryTypeId + "," + full.NoticeType + "," + full.NoticeCategoryId + ",\"" + full.Subject + "\"," + full.NoticeDate + ",\"" + full.fileURL + "\",\"" + full.filename + "\"," + full.IsNew + ",\"" + full.EntryTypeName + "\")' href='#'> <i class='fa fa-pencil' style='color:black'></i></a>&nbsp;&nbsp;" +
                             //'<a id="lnkDelete" onclick="javascript:return openDialogue(' + full.Id + ');" href="#" data-url="DeleteNotice"><i class="fa fa-trash-o" style="color:red"></i></a>' +
                             '</div>' +
                             '</div>';
