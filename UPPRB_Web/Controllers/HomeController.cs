@@ -44,7 +44,7 @@ namespace UPPRB_Web.Controllers
         public ActionResult Notice(int? noticeId = null, int? categoryId = null)
         {
             var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail(noticeId, categoryId);
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Notice").ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -54,7 +54,7 @@ namespace UPPRB_Web.Controllers
         public ActionResult Result(int? noticeId = null, int? categoryId = null)
         {
             var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail(noticeId, categoryId);
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result").ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;

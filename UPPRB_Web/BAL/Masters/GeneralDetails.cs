@@ -49,7 +49,8 @@ namespace UPPRB_Web.BAL.Masters
             _db = new upprbDbEntities();
             var currentDate = DateTime.Now;
             var _list = (from not in _db.Notices
-                         where currentDate >= not.NoticeDate
+                         join look in _db.Lookups on not.EntryTypeId equals look.LookupId
+                         where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -71,7 +72,8 @@ namespace UPPRB_Web.BAL.Masters
             _db = new upprbDbEntities();
             var currentDate = DateTime.Now;
             var _list = (from not in _db.Notices
-                         where currentDate >= not.NoticeDate
+                         join look in _db.Lookups on not.EntryTypeId equals look.LookupId
+                         where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
                          select new NoticeModel
                          {
                              filename = not.filename,
