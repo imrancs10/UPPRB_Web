@@ -209,6 +209,7 @@
     <Compile Include="BAL\Masters\GeneralDetails.cs" />
     <Compile Include="BAL\Masters\AdminDetails.cs" />
     <Compile Include="BAL\Masters\MasterDetails.cs" />
+    <Compile Include="Controllers\PACController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
@@ -734,6 +735,9 @@
     <Content Include="Views\Shared\_Manual_SideMenu.cshtml" />
     <Content Include="Views\Shared\_Result_SideMenu.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\PAC\Dashboard.cshtml" />
+    <Content Include="Views\PAC\PACDocument.cshtml" />
+    <Content Include="Views\Shared\_PACLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

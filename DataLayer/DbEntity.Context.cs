@@ -28,5 +28,6 @@ namespace DataLayer
         public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<Notice> Notices { get; set; }
+        public virtual DbSet<PACUser> PACUsers { get; set; }
     }
 }

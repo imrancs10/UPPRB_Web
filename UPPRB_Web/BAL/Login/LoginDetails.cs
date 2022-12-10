@@ -31,12 +31,29 @@ namespace UPPRB_Web.BAL.Login
                 {
                     if (_userLogin.IsActive == false)
                         return Enums.LoginMessage.UserBlocked;
-                    //else
-                    //{
-                    //    //_userLogin.LastLogin = DateTime.Now;
-                    //    _db.Entry(_userLogin).State = EntityState.Modified;
-                    //    _db.SaveChanges();
-                    //}
+                }
+                UserData.UserId = _userLogin.Id;
+                UserData.Username = _userLogin.UserName;
+                UserData.Name = _userLogin.Name;
+                UserData.MobileNumber = Convert.ToString(_userLogin.MobileNumber);
+                UserData.Email = _userLogin.EmailID;
+                return Enums.LoginMessage.Authenticated;
+            }
+            else
+                return Enums.LoginMessage.InvalidCreadential;
+        }
+        public Enums.LoginMessage PACLogin(string UserName, string Password)
+        {
+            _db = new upprbDbEntities();
+
+            var _userLogin = _db.PACUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
+
+            if (_userLogin != null)
+            {
+                if (_userLogin != null)
+                {
+                    if (_userLogin.IsActive == false)
+                        return Enums.LoginMessage.UserBlocked;
                 }
                 UserData.UserId = _userLogin.Id;
                 UserData.Username = _userLogin.UserName;

@@ -21,6 +21,7 @@ using static UPPRB_Web.Global.Enums;
 using UPPRB_Web.BAL.Masters;
 using System.Data.Entity.Migrations.Model;
 using static iTextSharp.tool.xml.html.HTML;
+using UPPRB_Web.BAL.Login;
 
 namespace UPPRB_Web.Controllers
 {
@@ -138,6 +139,50 @@ namespace UPPRB_Web.Controllers
         public ActionResult Manual()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult PACLogin(string username, string password)
+        {
+            LoginDetails _details = new LoginDetails();
+            string _response = string.Empty;
+            Enums.LoginMessage message = _details.PACLogin(username, password);
+            _response = LoginResponse(message);
+            if (message == Enums.LoginMessage.Authenticated)
+            {
+                setUserClaim();
+                return RedirectToAction("PACDocument", "PAC");
+            }
+            else
+            {
+                SetAlertMessage(_response, "Login Response");
+                return View("PACLogin");
+            }
+        }
+
+        private void setUserClaim()
+        {
+            CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
+            serializeModel.Id = UserData.UserId;
+            serializeModel.FirstName = string.IsNullOrEmpty(UserData.Name) ? string.Empty : UserData.Name;
+            serializeModel.Mobile = string.IsNullOrEmpty(UserData.MobileNumber) ? string.Empty : UserData.MobileNumber;
+            serializeModel.LastName = string.IsNullOrEmpty(UserData.Username) ? string.Empty : UserData.Username;
+            serializeModel.Email = string.IsNullOrEmpty(UserData.Email) ? string.Empty : UserData.Email;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            string userData = serializer.Serialize(serializeModel);
+
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                     1,
+                     UserData.Email,
+                     DateTime.Now,
+                     DateTime.Now.AddMinutes(15),
+                     false,
+                     userData);
+
+            string encTicket = FormsAuthentication.Encrypt(authTicket);
+            HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+            Response.Cookies.Add(faCookie);
         }
         //public ActionResult Register(string actionName)
         //{

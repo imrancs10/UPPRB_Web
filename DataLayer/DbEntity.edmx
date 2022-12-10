@@ -45,10 +45,24 @@
           <Property Name="CreatedBy" Type="int" />
           <Property Name="IsNew" Type="bit" />
         </EntityType>
+        <EntityType Name="PACUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="EmailID" Type="varchar" MaxLength="500" />
+          <Property Name="MobileNumber" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="UserType" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityContainer Name="upprbDbModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -71,6 +85,7 @@
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <EntitySet Name="Lookups" EntityType="upprbDbModel.Lookup" />
           <EntitySet Name="Notices" EntityType="upprbDbModel.Notice" />
+          <EntitySet Name="PACUsers" EntityType="upprbDbModel.PACUser" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -98,6 +113,19 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="IsNew" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PACUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UserType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -144,6 +172,20 @@
                 <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
                 <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
                 <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACUsers">
+            <EntityTypeMapping TypeName="upprbDbModel.PACUser">
+              <MappingFragment StoreEntitySet="PACUser">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

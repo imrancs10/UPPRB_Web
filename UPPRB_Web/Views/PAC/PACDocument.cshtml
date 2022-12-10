@@ -1,0 +1,65 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "PAC Notice";
+    Layout = "~/Views/Shared/_PACLayout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+}
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="w_content">
+                    <div id="DivContent" style="margin-top: 80px; min-height: 478px;">
+                        <div id="Panel1">
+                            <h3 class="w-hd-u">Notices</h3>
+                            <div id="divSearch" style="display:block;">
+                                <div class="dynamic_update pageheight">
+                                    <ul id="noticeList">
+                                        @foreach (var item in noticeData)
+                                        {
+                                            @*<span id="spnLink"></span>*@
+                                            if (!string.IsNullOrEmpty(item.filename))
+                                            {
+                                                <li>
+                                                    @if (item.IsNew == true)
+                                                    {
+                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                    }
+                                                    <a href='~/FilesUploaded/Notice/@item.filename' title='Click to view more' target='_blank'>
+                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                    </a>
+                                                    <p class="date">
+                                                        Date :
+                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                    </p>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    @if (item.IsNew == true)
+                                                    {
+                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                    }
+                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
+                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                    </a>
+                                                    <p class="date">
+                                                        Date :
+                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                    </p>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
