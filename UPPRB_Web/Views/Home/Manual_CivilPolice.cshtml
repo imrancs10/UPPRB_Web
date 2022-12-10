@@ -1,0 +1,46 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "Manual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+<script src="~/Scripts/Masters/noticePage.js"></script>
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_Manual_SideMenu")
+
+            <div class="col-lg-10">
+                <div class="w_content">
+
+
+
+                    <p>
+
+                    </p><h3 class="w-hd-u">Manual: Civil Police</h3>
+                        <ul class="w_ul">
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif"></a> </li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif"></a> </li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif"></a> </li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif"></a> </li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif"></a> </li>
+                            <li><a href="~/FilesUploaded/ManualFiles/CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" target="_blank">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                        </ul><br>                   
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/Notice"]').parent().addClass('active')
+    });
+</script>
