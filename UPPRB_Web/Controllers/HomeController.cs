@@ -140,6 +140,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult Manual_CivilPolice()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult PACLogin(string username, string password)
         {
