@@ -112,14 +112,28 @@
                             {
                                 <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
                                     <p>
-                                        <a href="#!" style="color: #03749d">
-                                            <u>LATEST NEWS: </u>
-                                            @if (HighlightedNotice.IsNew == true)
-                                            {
-                                                <img src="~/Content/images/new.gif" alt="new" />
-                                            }
-                                            @HighlightedNotice.Subject
-                                        </a>
+                                        @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
+                                        {
+                                            <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank" style="color: #03749d">
+                                                <u>LATEST NEWS: </u>
+                                                @if (HighlightedNotice.IsNew == true)
+                                                {
+                                                    <img src="~/Content/images/new.gif" alt="new" />
+                                                }
+                                                @HighlightedNotice.Subject
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href='@HighlightedNotice.fileURL' target="_blank" style="color: #03749d">
+                                                <u>LATEST NEWS: </u>
+                                                @if (HighlightedNotice.IsNew == true)
+                                                {
+                                                    <img src="~/Content/images/new.gif" alt="new" />
+                                                }
+                                                @HighlightedNotice.Subject
+                                            </a>
+                                        }
                                     </p>
                                 </marquee>
                             }
