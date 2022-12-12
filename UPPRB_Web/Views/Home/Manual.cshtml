@@ -20,7 +20,7 @@
                             @foreach (var category in item.NoticeCategories)
                             {
                                 <li>
-                                    <a href="~/Home/Manual_Detail?noticeId=@item.LookupId&categoryId=@category.LookupId">
+                                    <a href="/Home/Manual_Detail?noticeId=@item.LookupId&categoryId=@category.LookupId">
                                         @category.LookupName
                                         @*<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">*@
                                     </a>
