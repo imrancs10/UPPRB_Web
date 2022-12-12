@@ -6,7 +6,6 @@ $(document).ready(function () {
     //FillNoticeCategory();
     //FillNoticeSubCategory();
     FillEntryType();
-    FillNoticeType();
     function FillEntryType(selectedEntryTypeId = null) {
         let dropdown = $('#EntryType');
         dropdown.empty();
@@ -36,8 +35,10 @@ $(document).ready(function () {
     }
     $('#EntryType').on('change', function (e) {
         var valueSelected = $("#EntryType option:selected").text();
-        if (valueSelected == 'Notice')
+        if (valueSelected == 'Notice' || valueSelected == 'RecruitmentRules') {
+            FillNoticeType(this.value);
             $('#divNotice').css('display', '');
+        }
         else {
             $('#divNotice').css('display', 'none');
             $('#NoticeCategory').val("");
@@ -57,33 +58,6 @@ $(document).ready(function () {
             $('[name*=postedFile]').removeAttr('disabled');
         }
     });
-    function FillNoticeType(selectedNoticeTypeId = null) {
-        let dropdown = $('#NoticeType');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            type: 'POST',
-            data: '{lookupTypeId: 0,lookupType: "NoticeType" }',
-            url: '/Master/GetLookupDetail',
-            success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
-                });
-                if (selectedNoticeTypeId != null) {
-                    dropdown.val(selectedNoticeTypeId);
-                }
-            },
-            failure: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log(response.responseText);
-            }
-        });
-    }
     $('#NoticeType').on('change', function (e) {
         var valueSelected = this.value;
         FillNoticeCategory(valueSelected);
@@ -122,6 +96,34 @@ $(document).ready(function () {
     }
 });
 
+function FillNoticeType(entryTypeId = null, selectedNoticeTypeId = null) {
+    let dropdown = $('#NoticeType');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        data: '{lookupTypeId: "' + entryTypeId + '",lookupType: "NoticeType" }',
+        url: '/Master/GetLookupDetail',
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+            });
+            if (selectedNoticeTypeId != null) {
+                dropdown.val(selectedNoticeTypeId);
+            }
+        },
+        failure: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response.responseText);
+        }
+    });
+}
+
 function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
     let dropdown = $('#NoticeCategory');
     dropdown.empty();
@@ -156,7 +158,8 @@ function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, Noti
     $('[name*=hiddenNoticeID]').val(Id);
     //$('#btnSave').val('Update');
     $('#EntryType').val(EntryTypeId);
-    $('#NoticeType').val(NoticeType);
+    //$('#NoticeType').val(NoticeType);
+    FillNoticeType(EntryTypeId, NoticeType)
     FillNoticeCategory(NoticeType, NoticeCategoryId);
     //$('#NoticeCategory').val(NoticeCategoryId);
     $('#Subject').val(Subject);
@@ -170,7 +173,7 @@ function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, Noti
     $('#myModal').modal('show');
     $('#highlightNew').prop('checked', IsNew)
     if (filename != null && filename != "" && filename != undefined && filename != "")
-        $('[id*=customRadioInline2]').prop("checked",true);
+        $('[id*=customRadioInline2]').prop("checked", true);
     else
         $('[id*=customRadioInline1]').prop("checked", true);
     $('[name*=customRadioInline1]').change();
