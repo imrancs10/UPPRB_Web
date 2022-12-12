@@ -139,10 +139,19 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult Manual()
         {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetRecruitmentRuleNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
-        public ActionResult Manual_CivilPolice()
+        public ActionResult Manual_Detail(int? noticeId = null, int? categoryId = null)
         {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "RecruitmentRules" && currentDate >= x.NoticeDate).ToList();
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetRecruitmentRuleNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
         [HttpPost]

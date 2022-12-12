@@ -95,7 +95,31 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.Lookups
-                         where not.IsActive == true && not.LookupType == "NoticeType"
+                         join parent in _db.Lookups on not.ParentLookupId equals parent.LookupId
+                         where not.IsActive == true && not.LookupType == "NoticeType" && parent.LookupType == "UploadType" && parent.LookupName == "Notice"
+                         select new NoticeTypeModel
+                         {
+                             LookupId = not.LookupId,
+                             LookupName = not.LookupName,
+                             NoticeCategories = (from look in _db.Lookups
+                                                 where look.LookupType == "NoticeCategory"
+                                                       && look.IsActive == true
+                                                       && look.ParentLookupId == not.LookupId
+                                                 select new NoticeCategoryModel
+                                                 {
+                                                     LookupId = look.LookupId,
+                                                     LookupName = look.LookupName
+                                                 }).ToList()
+                         }).OrderBy(x => x.LookupId).ToList();
+            return _list != null ? _list : new List<NoticeTypeModel>();
+        }
+
+        public List<NoticeTypeModel> GetRecruitmentRuleNoticeHirarchyDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.Lookups
+                         join parent in _db.Lookups on not.ParentLookupId equals parent.LookupId
+                         where not.IsActive == true && not.LookupType == "NoticeType" && parent.LookupType == "UploadType" && parent.LookupName == "RecruitmentRules"
                          select new NoticeTypeModel
                          {
                              LookupId = not.LookupId,
