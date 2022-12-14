@@ -56,7 +56,8 @@ namespace UPPRB_Web.Controllers
         public ActionResult Result(int? noticeId = null, int? categoryId = null)
         {
             var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result").ToList();
+            var currentDate = DateTime.Now;
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result" && currentDate >= x.NoticeDate).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -136,6 +137,10 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult Tender()
         {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "Tender" && currentDate >= x.NoticeDate).ToList();
+            ViewData["NoticeData"] = allnotice;
             return View();
         }
         public ActionResult PACLogin()
