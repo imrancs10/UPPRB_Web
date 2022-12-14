@@ -739,6 +739,7 @@
     <Content Include="Views\PAC\PACDocument.cshtml" />
     <Content Include="Views\Shared\_PACLayout.cshtml" />
     <Content Include="Views\Home\Manual_Detail.cshtml" />
+    <Content Include="Views\Home\Tender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

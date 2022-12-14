@@ -133,6 +133,11 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Tender()
+        {
+            return View();
+        }
         public ActionResult PACLogin()
         {
             return View();
