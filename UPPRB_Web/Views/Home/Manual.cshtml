@@ -9,10 +9,8 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Manual_SideMenu", noticeType)
-            <div class="col-lg-10">
-                <div class="w_content">
-                    <p>
-                    </p>
+            <div class="col-lg-10 w_content pt-20 mt-0">                
+                <h2 class="w-bgph">Recruitment Rules</h2>
                     @foreach (var item in noticeType)
                     {
                         <h3 class="w-hd-u">@item.LookupName</h3>
@@ -30,7 +28,7 @@
                         <br>
                     }
                     <div class="clearfix"></div>
-                </div>
+                
             </div>
             <div class="clearfix"></div>
         </div>
