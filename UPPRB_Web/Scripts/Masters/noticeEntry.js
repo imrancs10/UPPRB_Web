@@ -38,9 +38,16 @@ $(document).ready(function () {
         if (valueSelected == 'Notice' || valueSelected == 'RecruitmentRules') {
             FillNoticeType(this.value);
             $('#divNotice').css('display', '');
+            $('#divNoticeCategory').css('display', '');
+        }
+        else if (valueSelected == 'GO') {
+            FillNoticeType(this.value);
+            $('#divNotice').css('display', '');
+            $('#divNoticeCategory').css('display', 'none');
         }
         else {
             $('#divNotice').css('display', 'none');
+            $('#divNoticeCategory').css('display', 'none');
             $('#NoticeCategory').val("");
             $('#NoticeType').val("");
         }
