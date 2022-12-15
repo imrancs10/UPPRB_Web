@@ -74,6 +74,10 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult GovernmentOrders()
         {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "GO" && currentDate >= x.NoticeDate).ToList();
+            ViewData["NoticeData"] = allnotice;
             return View();
         }
         public ActionResult SelectionProcedure()

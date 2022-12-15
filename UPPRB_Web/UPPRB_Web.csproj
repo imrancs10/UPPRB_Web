@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -326,9 +325,13 @@
     <Content Include="Content\css\themify-icons.css" />
     <Content Include="Content\css\whack.css" />
     <Content Include="Content\css\yamm.css" />
+    <Content Include="Content\fonts\boxicons.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\LineIcons.svg" />
     <Content Include="Content\fonts\themify.svg" />
+    <Content Include="Content\font\bootstrap-icons-1.css" />
+    <Content Include="Content\font\bootstrap-icons.css" />
     <Content Include="Content\font\flaticon.css" />
     <Content Include="Content\font\Flaticon.svg" />
     <Content Include="Content\icon\academiccalendar.png" />
@@ -353,6 +356,7 @@
     <Content Include="Content\icon\fee.png" />
     <Content Include="Content\icon\GATE.png" />
     <Content Include="Content\icon\grivance1.png" />
+    <Content Include="Content\icon\Jansunwai.png" />
     <Content Include="Content\icon\jee.png" />
     <Content Include="Content\icon\Jee1.png" />
     <Content Include="Content\icon\MACER.png" />
@@ -374,6 +378,7 @@
     <Content Include="Content\icon\tender.png" />
     <Content Include="Content\icon\teqp.png" />
     <Content Include="Content\icon\timetable.png" />
+    <Content Include="Content\icon\upp.png" />
     <Content Include="Content\icon\usermanual.png" />
     <Content Include="Content\icon\usful.png" />
     <Content Include="Content\icon\vehicle.png" />
@@ -389,6 +394,7 @@
     <Content Include="Content\Images\arrow-up.png" />
     <Content Include="Content\Images\avatar1_small.jpg" />
     <Content Include="Content\Images\banner1.jpg" />
+    <Content Include="Content\Images\banner11.jpg" />
     <Content Include="Content\Images\banner2.jpg" />
     <Content Include="Content\Images\black.png" />
     <Content Include="Content\Images\blue.png" />
@@ -419,6 +425,8 @@
     <Content Include="Content\Images\email-img\social-twitter.png" />
     <Content Include="Content\Images\email-img\social-youtube.png" />
     <Content Include="Content\Images\email-img\vector-lab.jpg" />
+    <Content Include="Content\Images\enter_mobile.jpg" />
+    <Content Include="Content\Images\favicon-32x32.png" />
     <Content Include="Content\Images\file-search\ai.png" />
     <Content Include="Content\Images\file-search\doc.png" />
     <Content Include="Content\Images\file-search\email.png" />
@@ -463,6 +471,7 @@
     <Content Include="Content\Images\logo3.jpg" />
     <Content Include="Content\Images\new.gif" />
     <Content Include="Content\Images\orange.png" />
+    <Content Include="Content\Images\org_chart.png" />
     <Content Include="Content\Images\right-arrow.png" />
     <Content Include="Content\Images\search-icon-white.png" />
     <Content Include="Content\Images\search-icon.png" />
@@ -542,6 +551,15 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="FilesUploaded\Notice\declaration1fc00352-cb22-43cb-8fb9-8df5b2586007.jpeg" />
+    <Content Include="FilesUploaded\Notice\declaration6abc4975-2745-4724-b4fa-5ae802337c03.jpeg" />
+    <Content Include="FilesUploaded\Notice\photo31edcbb5-af35-4a73-934a-67854158b398.jpeg" />
+    <Content Include="FilesUploaded\Notice\photoeeced7aa-82c2-4a9f-b99e-36f15b03abc5.jpeg" />
+    <Content Include="FilesUploaded\Notice\sign0b798f3d-7dec-46c5-84eb-4f4439f551f6.jpeg" />
+    <Content Include="FilesUploaded\Notice\sign8c8525e1-6080-494f-bc2d-6434be4032d9.jpeg" />
+    <Content Include="FilesUploaded\PAC\photo066cccf3-1099-438a-9016-9c1f01a3df61.jpeg" />
+    <Content Include="FilesUploaded\Result\photod7c02a35-0da3-4a6b-8313-b11cddedb57a.jpeg" />
+    <Content Include="FilesUploaded\Result\photof52602cf-a9ce-4fe2-8410-334e3826ecba.jpeg" />
     <Content Include="Global.asax" />
     <Content Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
     <Content Include="logs\test.log" />
@@ -560,6 +578,25 @@
     <Content Include="Scripts\library\js\flex-slider.js" />
     <Content Include="FilesUploaded\ManualFiles\CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" />
     <Content Include="FilesUploaded\PAC\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCI56b99a65-84e0-4ead-ac1a-1dccf166a4c4.pdf" />
+    <Content Include="FilesUploaded\RecruitmentRules\Sicp_Hindi and Englishb49975dc-0c30-4184-a333-c272adfe7665.pdf" />
+    <Content Include="FilesUploaded\Result\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCI17f759bd-457e-4f93-a035-02df0b31b076.pdf" />
+    <Content Include="FilesUploaded\Result\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCIc92d78be-e6eb-4f24-962a-536479ab5e23.pdf" />
+    <Content Include="FilesUploaded\Tender\vig1_13122022e0a8d996-376d-41ad-aad1-2920cdad7f22.pdf" />
+    <Content Include="FilesUploaded\PAC\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCI0125acc6-da02-4893-88c4-8307592d6482.pdf" />
+    <Content Include="FilesUploaded\Notice\Advt. No. 01_2022-FCI Category III ZONE-WISE RECRUITMENT OF NON-EXECUTIVES IN FCIb9f8d469-0316-476a-996b-8a0d028be689.pdf" />
+    <Content Include="FilesUploaded\Notice\CamScanner 11-23-2022 17.403a4f4b97-ca67-4ddb-8e46-0f4a8cfc2197.pdf" />
+    <Content Include="FilesUploaded\Notice\fdgdf5abd8552-4e58-409e-9441-a4c685f440a9.pdf" />
+    <Content Include="FilesUploaded\GO\mratak1c17942a-e609-491e-b7b2-601b826a579b.pdf" />
+    <Content Include="Content\fonts\LineIcons.eot" />
+    <Content Include="Content\fonts\LineIcons.ttf" />
+    <Content Include="Content\fonts\LineIcons.woff" />
+    <Content Include="Content\fonts\LineIcons.woff2" />
+    <Content Include="Content\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\fonts\bootstrap-icons.woff2" />
+    <Content Include="Content\fonts\boxicons.eot" />
+    <Content Include="Content\fonts\boxicons.ttf" />
+    <Content Include="Content\fonts\boxicons.woff" />
+    <Content Include="Content\fonts\boxicons.woff2" />
     <None Include="Scripts\library\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.min.js" />
@@ -747,7 +784,6 @@
     <Folder Include="BAL\Patient\" />
     <Folder Include="BAL\Reports\" />
     <Folder Include="ExternalAssembly\" />
-    <Folder Include="FilesUploaded\Notice\" />
     <Folder Include="Infrastructure\Adapter\WebService\" />
     <Folder Include="LabReports\" />
   </ItemGroup>
