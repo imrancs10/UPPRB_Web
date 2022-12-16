@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -777,6 +778,7 @@
     <Content Include="Views\Shared\_PACLayout.cshtml" />
     <Content Include="Views\Home\Manual_Detail.cshtml" />
     <Content Include="Views\Home\Tender.cshtml" />
+    <Content Include="Views\Shared\_GO_SideMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

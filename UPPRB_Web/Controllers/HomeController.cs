@@ -78,6 +78,8 @@ namespace UPPRB_Web.Controllers
             var currentDate = DateTime.Now;
             var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "GO" && currentDate >= x.NoticeDate).ToList();
             ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetGONoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
         public ActionResult SelectionProcedure()
