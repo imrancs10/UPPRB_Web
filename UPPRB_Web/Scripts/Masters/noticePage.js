@@ -19,7 +19,7 @@ function fillNotice(noticeId, CategoryId) {
                 if (item.filename != '' && item.filename != null) {
                     element += '<li>';
                     if (item.IsNew == true) {
-                        element += '<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">';
+                        element += '<img id="Image1_0" class="w_fl_ico" src="/Content/images/new.gif">';
                     }
                     element += "<a href='/FilesUploaded/Notice/" + item.filename + "' title='Click to view more' target='_blank'>";
                     element += item.Subject + "<span class='whatsnew' style='color:brown'> [ Notice Board ]</span></a>";
@@ -28,7 +28,7 @@ function fillNotice(noticeId, CategoryId) {
                 else {
                     element += '<li>';
                     if (item.IsNew == true) {
-                        element += '<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">';
+                        element += '<img id="Image1_0" class="w_fl_ico" src="/Content/images/new.gif">';
                     }
                     element += "<a href='" + item.fileURL + "' title='Click to view more' target='_blank'>";
                     element += item.Subject + "<span class='whatsnew' style='color:brown'> [ Notice Board ]</span></a>";
