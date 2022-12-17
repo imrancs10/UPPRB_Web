@@ -10,7 +10,13 @@
         <div class="row">
             @Html.Partial("_GO_SideMenu", noticeType)
             <div class="col-lg-10 w_content pt-20 mt-0">
-                <h2 class="w-bgph ">Government Orders</h2>
+                <h2 class="w-bgph ">
+                    Government Orders |
+                    @if (noticeData.Count > 0)
+                    {
+                        <span>@noticeData[0].NoticeTypeName</span>
+                    }
+                </h2>
                 <div class=" table-responsive">
                     <div>
                         <table cellspacing="4" cellpadding="4" id="ContentPlaceHolder2_GridView1" style="width:100%;">
