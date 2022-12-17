@@ -100,11 +100,11 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
-        public ActionResult PhotoGallery()
+        public ActionResult PhotoGallery(int? Id = null)
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "PhotoGalary" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail(Id).Where(x => x.EntryTypeName == "PhotoGalary" && currentDate >= x.NoticeDate).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
