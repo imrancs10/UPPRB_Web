@@ -40,7 +40,7 @@ $(document).ready(function () {
             $('#divNotice').css('display', '');
             $('#divNoticeCategory').css('display', '');
         }
-        else if (valueSelected == 'GO') {
+        else if (valueSelected == 'GO' || valueSelected == 'PhotoGalary') {
             FillNoticeType(this.value);
             $('#divNotice').css('display', '');
             $('#divNoticeCategory').css('display', 'none');

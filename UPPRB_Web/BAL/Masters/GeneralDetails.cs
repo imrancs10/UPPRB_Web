@@ -164,6 +164,20 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new List<NoticeTypeModel>();
         }
 
+        public List<NoticeTypeModel> GetPhotoGalaryNoticeHirarchyDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.Lookups
+                         join parent in _db.Lookups on not.ParentLookupId equals parent.LookupId
+                         where not.IsActive == true && not.LookupType == "NoticeType" && parent.LookupType == "UploadType" && parent.LookupName == "PhotoGalary"
+                         select new NoticeTypeModel
+                         {
+                             LookupId = not.LookupId,
+                             LookupName = not.LookupName,
+                         }).OrderBy(x => x.LookupId).ToList();
+            return _list != null ? _list : new List<NoticeTypeModel>();
+        }
+
         public bool DeleteNotice(int Id)
         {
             _db = new upprbDbEntities();

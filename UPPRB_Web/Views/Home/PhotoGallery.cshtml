@@ -1,13 +1,15 @@
-﻿
+﻿@using UPPRB_Web.Models.Masters;
 @{
     ViewBag.Title = "PhotoGallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
 
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
-           @Html.Partial("_Galary_SideMenu")
+            @Html.Partial("_Galary_SideMenu", noticeType)
             <div class="col-lg-10 w_content pt-20 mt-0">
                 <h2 class="w-bgph ">Photo Gallery</h2>
                 <hr>
