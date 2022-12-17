@@ -9,7 +9,7 @@
             @for (int i = 0; i < noticeData.Count; i++)
             {
                 <li class="nav-item">
-                    <a class="nav-link text-truncate" href="#submenu1sub@(i+1)" data-target="#submenu1sub@(i+1)">@noticeData[i].LookupName</a>
+                    <a class="nav-link text-truncate" id="btnNotice" href="/Home/GovernmentOrders_Detail?noticeId=@noticeData[i].LookupId">@noticeData[i].LookupName</a>
                 </li>
             }
         </ul>

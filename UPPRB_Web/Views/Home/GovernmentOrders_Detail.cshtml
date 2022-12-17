@@ -1,0 +1,72 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "GovernmentOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_GO_SideMenu", noticeType)
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h2 class="w-bgph ">Government Orders</h2>
+                <div class=" table-responsive">
+                    <div>
+                        <table cellspacing="4" cellpadding="4" id="ContentPlaceHolder2_GridView1" style="width:100%;">
+                            @foreach (var item in noticeData)
+                            {
+                                <tr align="left">
+                                    <td>
+                                        <table cellpadding="0" cellspacing="0"
+                                               style="text-align: left; background-color: #FBFBFB; border: 1px solid #EBEBEB; padding: 5px; margin-bottom: 5px; width: 100%">
+                                            <tr>
+                                                <td colspan="2" style="padding-left: 10px; padding-right: 5px">
+                                                    <b>Circular :&nbsp;</b> @item.Subject
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding-left: 10px; padding-right: 5px">
+                                                    Date:&nbsp;@item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td align="right" width="50%" style="padding-left: 10px; padding-right: 10px">
+                                                    Attachment:
+                                                    @if (!string.IsNullOrEmpty(item.filename))
+                                                    {
+                                                        <a id="HyperLink2_0" href="~/FilesUploaded/GO/@item.filename" target="_blank" style="color:#CC3300;">
+                                                            Download <i class="fa fa-download"> </i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="HyperLink2_0" href="@item.fileURL" target="_blank" style="color:#CC3300;">
+                                                            Download <i class="fa fa-download"> </i>
+                                                        </a>
+                                                    }
+
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+
+
+
+                </div>
+
+                <br>
+
+
+                <div class="clearfix"></div>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</section>

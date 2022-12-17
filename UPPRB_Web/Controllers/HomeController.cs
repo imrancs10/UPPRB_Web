@@ -82,6 +82,16 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
+        public ActionResult GovernmentOrders_Detail(int? noticeId = null)
+        {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var allnotice = detail.GetNoticeDetail(noticeId).Where(x => x.EntryTypeName == "GO" && currentDate >= x.NoticeDate).ToList();
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetGONoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
         public ActionResult SelectionProcedure()
         {
             return View();
