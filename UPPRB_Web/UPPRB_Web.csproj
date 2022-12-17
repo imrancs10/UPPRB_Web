@@ -780,6 +780,7 @@
     <Content Include="Views\Home\Tender.cshtml" />
     <Content Include="Views\Shared\_GO_SideMenu.cshtml" />
     <Content Include="Views\Home\GovernmentOrders_Detail.cshtml" />
+    <Content Include="Views\Admin\NoticeEntryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

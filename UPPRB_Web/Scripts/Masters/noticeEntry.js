@@ -160,30 +160,31 @@ function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
 }
 
 function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, NoticeDate, fileURL, filename, IsNew, EntryTypeName) {
-    $('#hiddenId').val(Id);
-    $('[name*=EntryTypeName]').val(EntryTypeName);
-    $('[name*=hiddenNoticeID]').val(Id);
-    //$('#btnSave').val('Update');
-    $('#EntryType').val(EntryTypeId);
-    //$('#NoticeType').val(NoticeType);
-    FillNoticeType(EntryTypeId, NoticeType)
-    FillNoticeCategory(NoticeType, NoticeCategoryId);
-    //$('#NoticeCategory').val(NoticeCategoryId);
-    $('#Subject').val(Subject);
-    $('#NoticeDate').val(formatDateyyyyMMdd(NoticeDate));
-    $('#fileURL').val(fileURL != "null" ? fileURL : "");
-    //$('#customFile').val(filename);
-    $('#EntryType').change();
-    //if (EntryTypeName == 'Notice')
-    //    $('#divNotice').css('display', '');
-    //$('#btnAddNotice')[0].click();
-    $('#myModal').modal('show');
-    $('#highlightNew').prop('checked', IsNew)
-    if (filename != null && filename != "" && filename != undefined && filename != "")
-        $('[id*=customRadioInline2]').prop("checked", true);
-    else
-        $('[id*=customRadioInline1]').prop("checked", true);
-    $('[name*=customRadioInline1]').change();
+    window.location.href = '/Admin/NoticeEntry?noticeId=' + Id;
+    //$('#hiddenId').val(Id);
+    //$('[name*=EntryTypeName]').val(EntryTypeName);
+    //$('[name*=hiddenNoticeID]').val(Id);
+    ////$('#btnSave').val('Update');
+    //$('#EntryType').val(EntryTypeId);
+    ////$('#NoticeType').val(NoticeType);
+    //FillNoticeType(EntryTypeId, NoticeType)
+    //FillNoticeCategory(NoticeType, NoticeCategoryId);
+    ////$('#NoticeCategory').val(NoticeCategoryId);
+    //$('#Subject').val(Subject);
+    //$('#NoticeDate').val(formatDateyyyyMMdd(NoticeDate));
+    //$('#fileURL').val(fileURL != "null" ? fileURL : "");
+    ////$('#customFile').val(filename);
+    //$('#EntryType').change();
+    ////if (EntryTypeName == 'Notice')
+    ////    $('#divNotice').css('display', '');
+    ////$('#btnAddNotice')[0].click();
+    //$('#myModal').modal('show');
+    //$('#highlightNew').prop('checked', IsNew)
+    //if (filename != null && filename != "" && filename != undefined && filename != "")
+    //    $('[id*=customRadioInline2]').prop("checked", true);
+    //else
+    //    $('[id*=customRadioInline1]').prop("checked", true);
+    //$('[name*=customRadioInline1]').change();
 }
 function formatDate(noticeDate) {
     var milli = noticeDate.replace(/\/Date\((-?\d+)\)\//, '$1');
@@ -196,7 +197,13 @@ function formatDate(noticeDate) {
     return today;
 }
 function formatDateyyyyMMdd(noticeDate) {
-    var milli = noticeDate.source.replace("Date(", "").replace(")", "");
+    var milli = 0;
+    if (noticeDate.source) {
+        milli = noticeDate.source.replace("Date(", "").replace(")", "");
+    }
+    else {
+        milli = noticeDate.replace("Date(", "").replace(")", "").replaceAll("/", "");
+    }
     var now = new Date(parseInt(milli));
 
     var day = ("0" + now.getDate()).slice(-2);

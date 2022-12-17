@@ -1,5 +1,9 @@
 ﻿@using UPPRB_Web.Global
 @using UPPRB_Web.Infrastructure.Authentication;
+@{
+    var entryType = GetEntryTypeDetail();
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,11 +104,11 @@
                                 <span>Master Data Management</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="/Admin/NoticeEntry">Notice</a></li>
-                                <li><a href="#!">Tender</a></li>
-                                <li><a href="#!">GO</a></li>
-                                <li><a href="#!">Results</a></li>
-
+                                <li><a href="/Admin/NoticeEntry">Upload New Entry</a></li>
+                                @foreach (var entry in entryType)
+                                {
+                                    <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeName List</a></li>
+                                }
                             </ul>
                         </li>
 

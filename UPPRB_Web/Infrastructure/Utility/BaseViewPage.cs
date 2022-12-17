@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using static UPPRB_Web.Global.Enums;
+using UPPRB_Web.BAL.Masters;
+using UPPRB_Web.Models.Masters;
 
 namespace UPPRB_Web.Infrastructure.Utility
 {
@@ -36,11 +38,11 @@ namespace UPPRB_Web.Infrastructure.Utility
         {
             get { return base.User as CustomPrincipal; }
         }
-        //public virtual HospitalDetail GetHospitalDetail()
-        //{
-        //    HospitalDetails _details = new HospitalDetails();
-        //    return null;// _details.GetHospitalDetail();
-        //}
+        public virtual List<NoticeModel> GetEntryTypeDetail()
+        {
+            GeneralDetails _details = new GeneralDetails();
+            return _details.GetEntryType();
+        }
 
         //public virtual AppointmentModel GetAppointmentDetail()
         //{

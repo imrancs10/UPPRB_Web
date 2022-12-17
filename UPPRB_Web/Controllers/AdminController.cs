@@ -13,6 +13,7 @@ using DataLayer;
 using UPPRB_Web.BAL.Masters;
 using UPPRB_Web.Infrastructure.Authentication;
 using static iTextSharp.tool.xml.html.HTML;
+using Newtonsoft.Json.Linq;
 
 namespace UPPRB_Web.Controllers
 {
@@ -24,19 +25,30 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
-        public ActionResult NoticeEntry(bool? deleteMessage)
+        public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();
             //var allnotice = detail.GetNoticeDetail();
             //ViewData["NoticeData"] = allnotice;
-            if (deleteMessage == true)
-            {
-                SetAlertMessage("Upload Data has been Deleted", "Notice Entry");
-            }
+            //if (deleteMessage == true)
+            //{
+            //    SetAlertMessage("Upload Data has been Deleted", "Notice Entry");
+            //}
             return View();
         }
         [HttpPost]
-        public JsonResult GetAllNotice()
+        public JsonResult GetNoticeForEdit(int? noticeId = null)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.GetNoticeDetail(null, null, null, noticeId).FirstOrDefault();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult NoticeEntryList(int entryTypeId)
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult GetAllNotice(int? entryTypeId = null)
         {
             var detail = new GeneralDetails();
             string draw = Request.Form.GetValues("draw").FirstOrDefault();
@@ -46,7 +58,7 @@ namespace UPPRB_Web.Controllers
             int skip = start != null ? Convert.ToInt32(start) : 0;
             int recordsTotal = 0;
             string filterText = Request["search[value]"];
-            var result = detail.GetNoticeDetail();
+            var result = detail.GetNoticeDetail(null, null, entryTypeId);
 
             if (!string.IsNullOrEmpty(filterText))
             {

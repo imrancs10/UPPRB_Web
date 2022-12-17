@@ -12,8 +12,19 @@ namespace UPPRB_Web.BAL.Masters
     public class GeneralDetails
     {
         upprbDbEntities _db = null;
-
-        public List<NoticeModel> GetNoticeDetail(int? noticeId = null, int? categoryId = null)
+        public List<NoticeModel> GetEntryType()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.Lookups
+                         where lookEntry.LookupType == "UploadType" && lookEntry.IsActive == true
+                         select new NoticeModel
+                         {
+                             EntryTypeId = lookEntry.LookupId,
+                             EntryTypeName = lookEntry.LookupName,
+                         }).OrderBy(x => x.EntryTypeName).ToList();
+            return _list != null ? _list : new List<NoticeModel>();
+        }
+        public List<NoticeModel> GetNoticeDetail(int? noticeTypeId = null, int? categoryId = null, int? entryTypeId = null, int? noticeId = null)
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.Notices
@@ -23,8 +34,10 @@ namespace UPPRB_Web.BAL.Masters
                          from lookNoticeType2 in lookNoticeType1.DefaultIfEmpty()
                          join lookNotCategory in _db.Lookups on not.NoticeCategoryId equals lookNotCategory.LookupId into lookNotCategory1
                          from lookNotCategory2 in lookNotCategory1.DefaultIfEmpty()
-                         where (noticeId == null || (noticeId != null && not.NoticeType == noticeId))
+                         where (noticeTypeId == null || (noticeTypeId != null && not.NoticeType == noticeTypeId))
                          && (categoryId == null || (categoryId != null && not.NoticeCategoryId == categoryId))
+                          && (entryTypeId == null || (entryTypeId != null && not.EntryTypeId == entryTypeId))
+                           && (noticeId == null || (noticeId != null && not.Id == noticeId))
                          select new NoticeModel
                          {
                              filename = not.filename != null ? not.filename : "",
