@@ -10,18 +10,47 @@
             @Html.Partial("_Contact_SideMenu")
 
             <div class="col-lg-10 w_content pt-20 mt-0">
-                <h2 class="w-bgph" style="text-align:center">Under Maintanance</h2>
+                <h2 class="w-bgph" style="text-align:center">Enquiry Form</h2>
                 <hr>
-                <div class="clr"></div>
-                <h4 style="text-align: center">उत्तर प्रदेश पुलिस सेवा भर्ती एवं प्रोन्नति बोर्ड</h4>
-                <h4 style="text-align: center">Uttar Pradesh Police Recruitment & Promotion Board</h4>
-                <div class="clr"></div>
-                <article style="text-align:center">
-                    <h2>Page is under construction.</h2>
-                    <p style="text-align:center">Scheduled maintenance is currently in progress. Please check back soon.</p>
-                    <p style="text-align:center">We apologize for any inconvenience.</p>
-                    <p id="signature" style="text-align:center">&mdash; <a href="mailto:[Email]">[Administrator]</a></p>
-                </article>
+                <div class="clr"></div><center>
+    <div style="width: 500px; height:500px">
+
+        <form id="enquiry_form" action="#" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <label class="required" for="name">Name:&nbsp;  </label><br />
+                <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+                <span id="name_validation" class="error_message"></span>
+            </div><br />
+            <div class="row">
+                <label class="required" for="email">Mobile:&nbsp;  </label><br />
+                <input id="mobile" class="input" name="mobile" type="text" value="" size="30" /><br />
+                <span id="email_validation" class="error_message"></span>
+            </div><br />
+            <div class="row">
+                <label class="required" for="email">Email:&nbsp;  </label><br />
+                <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+                <span id="email_validation" class="error_message"></span>
+            </div>
+            <div class="row">
+                <label class="required" for="address">Address:&nbsp;  </label><br />
+                <textarea id="address" class="input" name="address" rows="1" cols="30"></textarea><br />
+                <span id="message_validation" class="error_message"></span>
+            </div>
+            <div class="row">
+                <label class="required" for="subject">Subject:&nbsp;  </label><br />
+                <textarea id="subject" class="input" name="subject" rows="1" cols="30"></textarea><br />
+                <span id="message_validation" class="error_message"></span>
+            </div>
+            <div class="row">
+                <label class="required" for="message">Message:&nbsp;  </label><br />
+                <textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
+                <span id="message_validation" class="error_message"></span>
+            </div><br />
+            <input id="submit_button" type="submit" value="Send email" />
+        </form>
+
+    </div>
+</center>
                 <hr>
 
             </div>
