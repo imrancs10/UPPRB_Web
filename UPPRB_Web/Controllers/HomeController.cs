@@ -22,6 +22,8 @@ using UPPRB_Web.BAL.Masters;
 using System.Data.Entity.Migrations.Model;
 using static iTextSharp.tool.xml.html.HTML;
 using UPPRB_Web.BAL.Login;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.IO;
 
 namespace UPPRB_Web.Controllers
 {
@@ -154,6 +156,27 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult EnquiryForm()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EnquiryForm(string name, string mobile, string email, string address, string subject, string message)
+        {
+            Enquiry enquiry = new Enquiry()
+            {
+                CreatedDate = DateTime.Today,
+                Address = address,
+                Subject = subject,
+                Email = email,
+                Message = message,
+                Mobile = mobile,
+                Name = name
+            };
+            GeneralDetails detail = new GeneralDetails();
+            var saveStatus = detail.SaveEnquiry(enquiry);
+            if (saveStatus == Enums.CrudStatus.Saved)
+                SetAlertMessage("Enquiry Submitted", "Success");
+            else
+                SetAlertMessage("Enquiry not Submitted", "Failed");
             return View();
         }
 

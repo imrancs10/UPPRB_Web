@@ -13,44 +13,44 @@
                 <h2 class="w-bgph" style="text-align:center">Enquiry Form</h2>
                 <hr>
                 <div class="clr"></div><center>
-    <div style="width: 500px; height:500px">
+                    <div style="width: 500px; height:500px">
+                        @using (Html.BeginForm("EnquiryForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <label class="required" for="name">Name:&nbsp;  </label><br />
+                                <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+                                <span id="name_validation" class="error_message"></span>
+                            </div><br />
+                            <div class="row">
+                                <label class="required" for="email">Mobile:&nbsp;  </label><br />
+                                <input id="mobile" class="input" name="mobile" type="text" value="" size="30" /><br />
+                                <span id="email_validation" class="error_message"></span>
+                            </div><br />
+                            <div class="row">
+                                <label class="required" for="email">Email:&nbsp;  </label><br />
+                                <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+                                <span id="email_validation" class="error_message"></span>
+                            </div>
+                            <div class="row">
+                                <label class="required" for="address">Address:&nbsp;  </label><br />
+                                <textarea id="address" class="input" name="address" rows="1" cols="30"></textarea><br />
+                                <span id="message_validation" class="error_message"></span>
+                            </div>
+                            <div class="row">
+                                <label class="required" for="subject">Subject:&nbsp;  </label><br />
+                                <textarea id="subject" class="input" name="subject" rows="1" cols="30"></textarea><br />
+                                <span id="message_validation" class="error_message"></span>
+                            </div>
+                            <div class="row">
+                                <label class="required" for="message">Message:&nbsp;  </label><br />
+                                <textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
+                                <span id="message_validation" class="error_message"></span>
+                            </div><br />
+                            <input id="submit_button" type="submit" value="Submit" />
+                        }
 
-        <form id="enquiry_form" action="#" method="POST" enctype="multipart/form-data">
-            <div class="row">
-                <label class="required" for="name">Name:&nbsp;  </label><br />
-                <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
-                <span id="name_validation" class="error_message"></span>
-            </div><br />
-            <div class="row">
-                <label class="required" for="email">Mobile:&nbsp;  </label><br />
-                <input id="mobile" class="input" name="mobile" type="text" value="" size="30" /><br />
-                <span id="email_validation" class="error_message"></span>
-            </div><br />
-            <div class="row">
-                <label class="required" for="email">Email:&nbsp;  </label><br />
-                <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-                <span id="email_validation" class="error_message"></span>
-            </div>
-            <div class="row">
-                <label class="required" for="address">Address:&nbsp;  </label><br />
-                <textarea id="address" class="input" name="address" rows="1" cols="30"></textarea><br />
-                <span id="message_validation" class="error_message"></span>
-            </div>
-            <div class="row">
-                <label class="required" for="subject">Subject:&nbsp;  </label><br />
-                <textarea id="subject" class="input" name="subject" rows="1" cols="30"></textarea><br />
-                <span id="message_validation" class="error_message"></span>
-            </div>
-            <div class="row">
-                <label class="required" for="message">Message:&nbsp;  </label><br />
-                <textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
-                <span id="message_validation" class="error_message"></span>
-            </div><br />
-            <input id="submit_button" type="submit" value="Send email" />
-        </form>
-
-    </div>
-</center>
+                    </div>
+                </center>
                 <hr>
 
             </div>

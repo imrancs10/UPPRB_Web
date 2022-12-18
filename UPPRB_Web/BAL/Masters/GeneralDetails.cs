@@ -223,6 +223,14 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new List<FeedbackModel>();
         }
 
+        public Enums.CrudStatus SaveEnquiry(Enquiry enquiry)
+        {
+            _db = new upprbDbEntities();
+            _db.Entry(enquiry).State = EntityState.Added;
+            int _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();
