@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="upprbDbModel.Lookup" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="upprbDbModel.Notice" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="upprbDbModel.PACUser" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="upprbDbModel.Enquiry" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="upprbDbModel.Feedback" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -29,5 +29,7 @@ namespace DataLayer
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<Notice> Notices { get; set; }
         public virtual DbSet<PACUser> PACUsers { get; set; }
+        public virtual DbSet<Enquiry> Enquiries { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
     }
 }

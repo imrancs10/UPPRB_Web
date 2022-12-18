@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -247,6 +248,8 @@
     <Compile Include="Models\DepartmentOPDModel.cs" />
     <Compile Include="Models\AppointmentsModel.cs" />
     <Compile Include="Models\DischargeSummaryModel.cs" />
+    <Compile Include="Models\Masters\FeedbackModel.cs" />
+    <Compile Include="Models\Masters\EnquiryModel.cs" />
     <Compile Include="Models\PDModel.cs" />
     <Compile Include="Models\Masters\AppSettingModel.cs" />
     <Compile Include="Models\Masters\NoticeModel.cs" />
@@ -781,6 +784,8 @@
     <Content Include="Views\Shared\_GO_SideMenu.cshtml" />
     <Content Include="Views\Home\GovernmentOrders_Detail.cshtml" />
     <Content Include="Views\Admin\NoticeEntryList.cshtml" />
+    <Content Include="Views\Admin\EnquiryList.cshtml" />
+    <Content Include="Views\Admin\FeedbackList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

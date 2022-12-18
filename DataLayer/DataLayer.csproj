@@ -71,6 +71,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Enquiry.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lookup.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

@@ -187,6 +187,42 @@ namespace UPPRB_Web.BAL.Masters
             return true;
         }
 
+        public List<EnquiryModel> GetAllEnquiry()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from en in _db.Enquiries
+                         select new EnquiryModel
+                         {
+                             Address = en.Address,
+                             Id = en.Id,
+                             Email = en.Email,
+                             Message = en.Message,
+                             Mobile = en.Mobile,
+                             Name = en.Name,
+                             Subject = en.Subject,
+                             CreatedDate = en.CreatedDate
+                         }).OrderByDescending(x => x.Id).ToList();
+            return _list != null ? _list : new List<EnquiryModel>();
+        }
+
+        public List<FeedbackModel> GetAllFeedback()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from en in _db.Feedbacks
+                         select new FeedbackModel
+                         {
+                             Address = en.Address,
+                             Id = en.Id,
+                             Email = en.Email,
+                             Message = en.Message,
+                             Mobile = en.Mobile,
+                             Name = en.Name,
+                             Subject = en.Subject,
+                             CreatedDate = en.CreatedDate
+                         }).OrderByDescending(x => x.Id).ToList();
+            return _list != null ? _list : new List<FeedbackModel>();
+        }
+
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();
