@@ -79,13 +79,23 @@
                 {
                     "title": "File URL",
                     "render": function (data, type, full, meta) {
-                        return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.fileURL + '">' + full.fileURL + '</a>';
+                        if (full.fileURL) {
+                            var truncatedFileName = (full.fileURL.length > 20) ? full.fileURL.substring(0, 20) + '...' : full.fileURL
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.fileURL + '">' + truncatedFileName + '</a>';
+                        } else {
+                            return '';
+                        }
                     }
                 },
                 {
                     "title": "File Name",
                     "render": function (data, type, full, meta) {
-                        return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + full.filename + '</a>';
+                        if (full.filename) {
+                            var truncatedFileName = (full.filename.length > 20) ? full.filename.substring(0, 20) + '...' : full.filename
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + truncatedFileName + '</a>';
+                        } else {
+                            return '';
+                        }
                     }
                 },
                 {
@@ -97,6 +107,18 @@
                 { "data": "IsNew", "name": "IsNew", "autoWidth": true, "title": "Highlighted New" }
 
             ],
+            //'columnDefs': [
+            //    {
+            //        'targets': 1,
+            //        'render': function (data, type, full, meta) {
+            //            if (type === 'display') {
+            //                data = strtrunc(data, 10);
+            //            }
+
+            //            return data;
+            //        }
+            //    }
+            //]
             //"fnRowCallback": function (nRow, aData, iDisplayIndex) {
             //    var pageNumber = 0;
             //    $.each($('.paginate_button'), function (index, button) {
@@ -130,7 +152,11 @@
                 }
                 return;
             });
-    })
+    });
+    function strtrunc(str, max, add) {
+        add = add || '...';
+        return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+    };
 </script>
 
 <style type="text/css">
