@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -559,6 +558,7 @@
     <Content Include="FilesUploaded\Notice\sign0b798f3d-7dec-46c5-84eb-4f4439f551f6.jpeg" />
     <Content Include="FilesUploaded\Notice\sign8c8525e1-6080-494f-bc2d-6434be4032d9.jpeg" />
     <Content Include="FilesUploaded\PAC\photo066cccf3-1099-438a-9016-9c1f01a3df61.jpeg" />
+    <Content Include="FilesUploaded\PhotoGalary\1712202211485fba-9681-42d1-851f-66d30bdf0d01.jpg" />
     <Content Include="FilesUploaded\Result\photod7c02a35-0da3-4a6b-8313-b11cddedb57a.jpeg" />
     <Content Include="FilesUploaded\Result\photof52602cf-a9ce-4fe2-8410-334e3826ecba.jpeg" />
     <Content Include="Global.asax" />
