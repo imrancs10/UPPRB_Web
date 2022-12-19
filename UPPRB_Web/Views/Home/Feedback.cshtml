@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "EnquiryForm";
+    ViewBag.Title = "Feedback";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,11 +10,11 @@
             @Html.Partial("_Contact_SideMenu")
 
             <div class="col-lg-10 w_content pt-20 mt-0">
-                <h2 class="w-bgph">Enquiry Form</h2>
+                <h2 class="w-bgph">Feedback Form</h2>
                 <hr>
                 <div class="clr"></div><center>
                     <div style="width: 600px; height:500px">
-                        @using (Html.BeginForm("EnquiryForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("FeedbackForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="row">
                                 <label class="required" for="name">Name:&nbsp;&nbsp;  </label><br />
@@ -42,7 +42,7 @@
                                 <span id="message_validation" class="error_message"></span>
                             </div>
                             <div class="row">
-                                <label class="required" for="message">Message:&nbsp;  </label>
+                                <label class="required" for="message">Feedback:&nbsp;  </label>
                                 <textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
                                 <span id="message_validation" class="error_message"></span>
                             </div><br />

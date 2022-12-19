@@ -179,7 +179,10 @@ namespace UPPRB_Web.Controllers
                 SetAlertMessage("Enquiry not Submitted", "Failed");
             return View();
         }
-
+        public ActionResult Feedback()
+        {
+            return View();
+        }
         public ActionResult Tender()
         {
             var detail = new GeneralDetails();

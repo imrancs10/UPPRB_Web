@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -786,6 +785,7 @@
     <Content Include="Views\Admin\NoticeEntryList.cshtml" />
     <Content Include="Views\Admin\EnquiryList.cshtml" />
     <Content Include="Views\Admin\FeedbackList.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
