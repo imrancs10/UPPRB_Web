@@ -24,6 +24,7 @@ namespace UPPRB_Web.Models.Masters
         public string NoticeTypeName { get; set; }
         public string NoticeCategoryName { get; set; }
         public string EntryTypeName { get; set; }
+        public string EntryTypeDisplayName { get; set; }
     }
 
     public class NoticeTypeModel

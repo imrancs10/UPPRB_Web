@@ -21,6 +21,7 @@ namespace UPPRB_Web.BAL.Masters
                          {
                              EntryTypeId = lookEntry.LookupId,
                              EntryTypeName = lookEntry.LookupName,
+                             EntryTypeDisplayName = lookEntry.LookupNameImmutable
                          }).OrderBy(x => x.EntryTypeName).ToList();
             return _list != null ? _list : new List<NoticeModel>();
         }

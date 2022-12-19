@@ -1,7 +1,9 @@
-﻿
+﻿@using UPPRB_Web.Global
+@using UPPRB_Web.Infrastructure.Authentication;
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var entryType = GetEntryTypeDetail();
 }
 
 <section class="wrapper">
@@ -18,88 +20,27 @@
                     <!--<h1 class="count">
                     0
                 </h1>-->
-                    <a href="/Admin/NoticeEntry"><h3 style="color:brown">Upload New Entry</h3></a>                    
+                    <a href="/Admin/NoticeEntry"><h3 style="color:brown">Upload New Entry</h3></a>
                 </div>
             </section>
         </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol red">
-                    <i class="fa fa-tags"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count2">
-                    0
-                </h1>-->                    
-                    <a href="/Admin/NoticeEntryList?entryTypeId=26"><h3 style="color:brown">Notices</h3></a>                    
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol yellow">
-                    <i class="fa fa-tags"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count3">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=28"><h3 style="color:brown">PAC</h3></a>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol blue">
-                    <i class="fa fa-photo"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count4">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=72"><h3 style="color:brown">Photo Gallary</h3></a>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol terques">
-                    <i class="fa fa-eye"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class="count">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=29"><h3 style="color:brown">Recruitment Rules</h3></a>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol red">
-                    <i class="fa fa-tags"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count2">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=27"><h3 style="color:brown">Results</h3></a>
-                </div>
-            </section>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol yellow">
-                    <i class="fa fa-tags"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count3">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=58"><h3 style="color:brown">Tender</h3></a>
-                </div>
-            </section>
-        </div>
+        @foreach (var entry in entryType)
+        {
+            <div class="col-lg-3 col-sm-6">
+                <section class="card">
+                    <div class="symbol red">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <div class="value">
+                        <!--<h1 class=" count2">
+                        0
+                    </h1>-->
+                        <a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId"><h3 style="color:brown">@entry.EntryTypeDisplayName</h3></a>
+                    </div>
+                </section>
+            </div>
+        }
+      
         <div class="col-lg-3 col-sm-6">
             <section class="card">
                 <div class="symbol blue">
@@ -113,19 +54,7 @@
                 </div>
             </section>
         </div>
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol blue">
-                    <i class="fa fa-pencil"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class=" count4">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntryList?entryTypeId=59"><h3 style="color:brown">Government Order</h3></a>
-                </div>
-            </section>
-        </div>
+
         <div class="col-lg-3 col-sm-6">
             <section class="card">
                 <div class="symbol blue">

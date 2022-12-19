@@ -107,7 +107,7 @@
                                 <li><a href="/Admin/NoticeEntry">Upload New Entry</a></li>
                                 @foreach (var entry in entryType)
                                 {
-                                    <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeName List</a></li>
+                                    <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeDisplayName</a></li>
                                 }
                             </ul>
                         </li>

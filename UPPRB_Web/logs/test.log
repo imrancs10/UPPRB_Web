@@ -499,3 +499,4 @@ Error Number:53,State:0,Class:20
    at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
    at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass41_0.<GetResults>b__0()
    at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+2022-12-19 10:24:09,032 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
