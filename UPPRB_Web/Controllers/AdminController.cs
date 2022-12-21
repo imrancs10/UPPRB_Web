@@ -159,6 +159,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult PACEntry()
+        {
+            return View();
+        }
 
         [HttpPost]
         public JsonResult GetAllFeedback()
