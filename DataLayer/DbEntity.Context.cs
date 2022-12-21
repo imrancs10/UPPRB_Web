@@ -31,5 +31,10 @@ namespace DataLayer
         public virtual DbSet<PACUser> PACUsers { get; set; }
         public virtual DbSet<Enquiry> Enquiries { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<DistrictMaster> DistrictMasters { get; set; }
+        public virtual DbSet<PSMaster> PSMasters { get; set; }
+        public virtual DbSet<RangeMaster> RangeMasters { get; set; }
+        public virtual DbSet<StateMaster> StateMasters { get; set; }
+        public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
     }
 }

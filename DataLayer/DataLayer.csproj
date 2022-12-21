@@ -71,6 +71,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DistrictMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enquiry.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,18 @@
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RangeMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StateMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZoneMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

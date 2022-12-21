@@ -16,10 +16,11 @@
 
         <div class="col-lg-12 col-sm-3">
             <section class="card">
+                <header class="card-header">
+                   PAC Entry
+                </header>
                 <div class="card-body left">
-                    @*<a href="#myModal" data-toggle="modal" class="btn btn-sm btn-success" id="btnAddNotice">
-                            Add Notice
-                        </a>*@
+
                     @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="row">
@@ -27,32 +28,37 @@
                                 <label for="exampleInputEmail1">State</label>
                                 <select class="form-control mb-3" style="" id="State" name="State">
                                 </select>
-                                <!--<input type="hidden" value="" name="EntryTypeName" />
-                                <input type="hidden" value="" name="hiddenNoticeID" />-->
                             </div>
-                        </div>
-                        <div class="row" style="display:none;" id="divNotice">
                             <div class="col-lg-6">
-                                <label for="exampleInputEmail1">Zone</label>
-                                <select class="form-control mb-3" style="width:80%" id="Zone" name="Zone">
-                                </select>
-                            </div>
-                            <div class="col-lg-6" id="divNoticeCategory">
-                                <label for="exampleInputPassword1">District</label>
-                                <select class="form-control mb-3" style="width:80%" id="District" name="District">
-                                </select>
-                            </div>
-                            <div class="col-lg-6" id="divNoticeCategory">
-                                <label for="exampleInputPassword1">FIR Police Station</label>
-                                <select class="form-control mb-3" style="width:80%" id="PoliceStation" name="PoliceStation">
+                                <label for="exampleInputEmail1">Range</label>
+                                <select class="form-control mb-3" style="" id="State" name="State">
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Zone</label>
+                                <select class="form-control mb-3" id="Zone" name="Zone">
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputPassword1">District</label>
+                                <select class="form-control mb-3" id="District" name="District">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputPassword1">FIR Police Station</label>
+                                <select class="form-control mb-3" id="PoliceStation" name="PoliceStation">
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Examination Center Name</label>
                                 <textarea type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examination Center Name" name="Examination Center Name"> </textarea>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Address</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
@@ -61,6 +67,8 @@
                                 <label for="exampleInputEmail1">FIR No.</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">FIR Date</label>
                                 <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
@@ -69,6 +77,8 @@
                                 <label for="exampleInputEmail1">Accused Name</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">FIR Details</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
@@ -77,7 +87,7 @@
                                 <label for="exampleInputPassword1">Publish Date</label>
                                 <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
                             </div>
-                        </div><br />
+                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="custom-control custom-radio custom-control-inline">
@@ -89,6 +99,8 @@
                                     <label class="custom-control-label" for="customRadioInline2">Upload File</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label>File URL</label>
                                 <div>
@@ -107,13 +119,14 @@
                                 </div>
                             </div>
                         </div>
-                        <br />
-                        <div class="checkbox">
-                            <label>
-                                <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew" checked> Highlight as New
-                            </label>
+                        <div class="row">
+                            <div class="checkbox">
+                                <label>
+                                    <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew" checked> Highlight as New
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
                     }
                 </div>
             </section>

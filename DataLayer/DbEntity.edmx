@@ -18,6 +18,14 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="DistrictMaster">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="500" />
+          <Property Name="RangeId" Type="int" />
+        </EntityType>
         <EntityType Name="Enquiry">
           <Key>
             <PropertyRef Name="Id" />
@@ -84,13 +92,49 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="PSMaster">
+          <Key>
+            <PropertyRef Name="PSId" />
+          </Key>
+          <Property Name="PSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PSName" Type="varchar" MaxLength="500" />
+          <Property Name="DistrictId" Type="int" />
+        </EntityType>
+        <EntityType Name="RangeMaster">
+          <Key>
+            <PropertyRef Name="RangeId" />
+          </Key>
+          <Property Name="RangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RangeName" Type="varchar" MaxLength="500" />
+          <Property Name="ZoneId" Type="int" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ZoneMaster">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZoneName" Type="varchar" MaxLength="500" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
         <EntityContainer Name="upprbDbModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PSMaster" EntityType="Self.PSMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RangeMaster" EntityType="Self.RangeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -116,6 +160,11 @@
           <EntitySet Name="PACUsers" EntityType="upprbDbModel.PACUser" />
           <EntitySet Name="Enquiries" EntityType="upprbDbModel.Enquiry" />
           <EntitySet Name="Feedbacks" EntityType="upprbDbModel.Feedback" />
+          <EntitySet Name="DistrictMasters" EntityType="upprbDbModel.DistrictMaster" />
+          <EntitySet Name="PSMasters" EntityType="upprbDbModel.PSMaster" />
+          <EntitySet Name="RangeMasters" EntityType="upprbDbModel.RangeMaster" />
+          <EntitySet Name="StateMasters" EntityType="upprbDbModel.StateMaster" />
+          <EntitySet Name="ZoneMasters" EntityType="upprbDbModel.ZoneMaster" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -182,6 +231,45 @@
           <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="DistrictMaster">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RangeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PSMaster">
+          <Key>
+            <PropertyRef Name="PSId" />
+          </Key>
+          <Property Name="PSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PSName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RangeMaster">
+          <Key>
+            <PropertyRef Name="RangeId" />
+          </Key>
+          <Property Name="RangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RangeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ZoneId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ZoneMaster">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZoneName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -271,6 +359,50 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictMasters">
+            <EntityTypeMapping TypeName="upprbDbModel.DistrictMaster">
+              <MappingFragment StoreEntitySet="DistrictMaster">
+                <ScalarProperty Name="RangeId" ColumnName="RangeId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PSMasters">
+            <EntityTypeMapping TypeName="upprbDbModel.PSMaster">
+              <MappingFragment StoreEntitySet="PSMaster">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="PSName" ColumnName="PSName" />
+                <ScalarProperty Name="PSId" ColumnName="PSId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RangeMasters">
+            <EntityTypeMapping TypeName="upprbDbModel.RangeMaster">
+              <MappingFragment StoreEntitySet="RangeMaster">
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="RangeName" ColumnName="RangeName" />
+                <ScalarProperty Name="RangeId" ColumnName="RangeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="upprbDbModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZoneMasters">
+            <EntityTypeMapping TypeName="upprbDbModel.ZoneMaster">
+              <MappingFragment StoreEntitySet="ZoneMaster">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
