@@ -24,6 +24,8 @@ $(document).ready(function () {
                 if (selectedStateId != null) {
                     dropdown.val(selectedStateId);
                 }
+                dropdown.val(1);
+                FillZone(1);
             },
             failure: function (response) {
                 console.log(response);
