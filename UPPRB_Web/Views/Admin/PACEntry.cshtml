@@ -4,9 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
 }
-<script src="~/Scripts/Masters/noticeEntry.js"></script>
-@*<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />*@
+<script src="~/Scripts/Masters/pacEntry.js"></script>
 <link href="~/Content/css/design1.css" rel="stylesheet" />
 <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,7 +19,7 @@
                 </header>
                 <div class="card-body left">
 
-                    @using (Html.BeginForm("NoticeEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("PACEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="row">
                             <div class="col-lg-6">
@@ -55,37 +53,37 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Examine Center Name</label>
-                                <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="Examine Center Name"> </input>
+                                <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName"> </input>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Address</label>
-                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
+                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Address"> </textarea>
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">FIR No.</label>
-                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
+                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="FIRNo"> </textarea>
                             </div>
                         </div><br />
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">FIR Date</label>
-                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
+                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="FIRDate">
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">Publish Date</label>
-                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
-                            </div>                            
+                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="PublishDate">
+                            </div>
                         </div><br />
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Accused Name</label>
-                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
+                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Accused Name" name="AccusedName"> </textarea>
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">FIR Details</label>
-                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
+                                <textarea type="text" class="form-control" id="Subject" placeholder="FIR Details" name="FIRDetails"> </textarea>
                             </div>
                         </div><br />
                         <div class="row">
@@ -118,13 +116,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><br />                        
-                            <div class="checkbox">
-                                <label>
-                                    <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew" checked> Highlight as New
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>                        
+                        </div><br />
+                        <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
                     }
                 </div>
             </section>

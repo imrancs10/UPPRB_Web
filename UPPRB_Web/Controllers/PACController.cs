@@ -25,10 +25,31 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult PACDocument()
         {
-            var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "PAC").ToList();
-            ViewData["NoticeData"] = allnotice;
             return View();
+        }
+        [HttpPost]
+        public JsonResult GetAllPAC()
+        {
+            var detail = new GeneralDetails();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            var result = detail.GetAllPACDetail();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.PS_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            var data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Logout()
         {

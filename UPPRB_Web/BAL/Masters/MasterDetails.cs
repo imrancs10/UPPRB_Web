@@ -22,5 +22,69 @@ namespace UPPRB_Web.BAL.Masters
                     }).OrderBy(x => x.LookupName).ToList();
 
         }
+        public IEnumerable<object> GetStateDetail()
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.StateMasters
+                    select new
+                    {
+                        lookup.StateId,
+                        lookup.StateName
+                    }).OrderBy(x => x.StateName).ToList();
+
+        }
+        public IEnumerable<object> GetZoneDetail(int stateId)
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.ZoneMasters
+                    where lookup.StateId == stateId
+                    select new
+                    {
+                        lookup.StateId,
+                        lookup.ZoneId,
+                        lookup.ZoneName,
+                    }).OrderBy(x => x.ZoneName).ToList();
+
+        }
+
+        public IEnumerable<object> GetRangeDetail(int zoneId)
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.RangeMasters
+                    where lookup.ZoneId == zoneId
+                    select new
+                    {
+                        lookup.RangeId,
+                        lookup.ZoneId,
+                        lookup.RangeName,
+                    }).OrderBy(x => x.RangeName).ToList();
+
+        }
+
+        public IEnumerable<object> GetDistrictDetail(int rangeId)
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.DistrictMasters
+                    where lookup.RangeId == rangeId
+                    select new
+                    {
+                        lookup.DistrictId,
+                        lookup.RangeId,
+                        lookup.DistrictName
+                    }).OrderBy(x => x.DistrictName).ToList();
+        }
+        public IEnumerable<object> GetPoliceStationDetail(int districtId)
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.PSMasters
+                    where lookup.DistrictId == districtId
+                    select new
+                    {
+                        lookup.DistrictId,
+                        lookup.PSId,
+                        lookup.PSName
+                    }).OrderBy(x => x.PSName).ToList();
+        }
+
     }
 }

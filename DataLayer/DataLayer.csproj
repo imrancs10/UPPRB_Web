@@ -86,6 +86,9 @@
     <Compile Include="Notice.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="PACEntry.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PACUser.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

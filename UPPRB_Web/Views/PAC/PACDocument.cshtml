@@ -2,64 +2,146 @@
 @{
     ViewBag.Title = "PAC Notice";
     Layout = "~/Views/Shared/_PACLayout.cshtml";
-    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
 }
-<section class="hero-slider">
-    <div class="pr-15 pl-15">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="w_content">
-                    <div id="DivContent" style="margin-top: 80px; min-height: 478px;">
-                        <div id="Panel1">
-                            <h3 class="w-hd-u">Notices</h3>
-                            <div id="divSearch" style="display:block;">
-                                <div class="dynamic_update pageheight">
-                                    <ul id="noticeList">
-                                        @foreach (var item in noticeData)
-                                        {
-                                            @*<span id="spnLink"></span>*@
-                                            if (!string.IsNullOrEmpty(item.filename))
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='~/FilesUploaded/PAC/@item.filename' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+
+<link href="~/Content/css/design1.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="card">
+                <header class="card-header">
+                    All PAC Details
+                </header>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="table-responsive" style="overflow:auto!important;">
+                            <table class="table table-bordered" id="tablePACDoc"></table>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </section>
+<!--main content end-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tablePACDoc = $("#tablePACDoc").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ordering": false,
+            "pageLength": 10,
+            "scrollX": true,
+            "scrollY": "250px",
+            "scrollCollapse": true,
+            "className": 'dt-body-nowrap',
+            "PaginationType": 'full_numbers',
+            "ajax": {
+                "url": "/PAC/GetAllPAC",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
+
+                { "data": "State_Name", "name": "State_Name", "autoWidth": true, "title": "State" },
+                { "data": "Zone_Name", "name": "Zone_Name", "autoWidth": true, "title": "Zone" },
+                { "data": "Range_Name", "name": "Range_Name", "autoWidth": true, "title": "Range" },
+                { "data": "District_Name", "name": "District_Name", "autoWidth": true, "title": "District" },
+                { "data": "PS_Name", "name": "PS_Name", "autoWidth": true, "title": "Police Station" },
+                { "data": "AccusedName", "name": "AccusedName", "autoWidth": true, "title": "Accused Name" },
+                { "data": "ExamineCenterName", "name": "ExamineCenterName", "autoWidth": true, "title": "Examine Center" },
+
+
+                { "data": "FIRNo", "name": "FIRNo", "autoWidth": true, "title": "FIR No" },
+                {
+                    "title": "FIR Date",
+                    "render": function (data, type, full, meta) {
+                        return '<span>' + formatDate(full.FIRDate) + '</span>';
+                    }
+                },
+                { "data": "Address", "name": "Address", "autoWidth": true, "title": "Address" },
+                { "data": "FIRDetails", "name": "FIRDetails", "autoWidth": true, "title": "FIRDetails" },
+                {
+                    "title": "File URL",
+                    "render": function (data, type, full, meta) {
+                        if (full.FileURL) {
+                            var truncatedFileName = (full.FileURL.length > 20) ? full.FileURL.substring(0, 20) + '...' : full.FileURL
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.FileURL + '">' + truncatedFileName + '</a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
+                    "title": "File Name",
+                    "render": function (data, type, full, meta) {
+                        if (full.FileUploadName) {
+                            var truncatedFileName = (full.FileUploadName.length > 20) ? full.FileUploadName.substring(0, 20) + '...' : full.FileUploadName
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/PAC/' + encodeURIComponent(full.FileUploadName) + '><i class="fa fa-download" style="color:black;cursor: pointer;"></i></a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+            ],
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                var pageNumber = 0;
+                $.each($('.paginate_button'), function (index, button) {
+                    if ($(this).css('background-image') == 'linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%)') {
+                        pageNumber = $(this).html()
+                    }
+                });
+                if (pageNumber == 0) {
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
+                else {
+                    pageNumber = pageNumber - 1;
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
+
+                return nRow;
+            },
+        });
+        var info = tablePACDoc.page.info();
+        $("#tablePACDoc_filter input")
+            .unbind() // Unbind previous default bindings
+            .bind("input", function (e) { // Bind our desired behavior
+                // If the length is 2 or more characters, or the user pressed ENTER, search
+                if (this.value.length >= 2 || e.keyCode == 13) {
+                    // Call the API search function
+                    tablePACDoc.search(this.value).draw();
+                }
+                // Ensure we clear the search if they backspace far enough
+                if (this.value == "") {
+                    tablePACDoc.search("").draw();
+                }
+                return;
+            });
+    });
+    function strtrunc(str, max, add) {
+        add = add || '...';
+        return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+    };
+    function formatDate(noticeDate) {
+        var milli = noticeDate.replace(/\/Date\((-?\d+)\)\//, '$1');
+        var now = new Date(parseInt(milli));
+
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = (day) + "-" + (month) + "-" + now.getFullYear();
+        return today;
+    }
+</script>
+
+<style type="text/css">
+    #tablePACDoc td, #tablePACDoc th {
+        white-space: nowrap;
+    }
+</style>

@@ -6,6 +6,7 @@ using DataLayer;
 using System.Data.Entity;
 using UPPRB_Web.Global;
 using UPPRB_Web.Models.Masters;
+using WebActivatorEx;
 
 namespace UPPRB_Web.BAL.Masters
 {
@@ -231,6 +232,43 @@ namespace UPPRB_Web.BAL.Masters
             int _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public List<PACEntryModel> GetAllPACDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from pac in _db.PACEntries
+                         join state in _db.StateMasters on pac.State_Id equals state.StateId
+                         join zone in _db.ZoneMasters on pac.Zone_Id equals zone.ZoneId
+                         join range in _db.RangeMasters on pac.Range_Id equals range.RangeId
+                         join district in _db.DistrictMasters on pac.District_Id equals district.DistrictId
+                         join ps in _db.PSMasters on pac.PS_Id equals ps.PSId
+                         select new PACEntryModel
+                         {
+                             FileUploadName = pac.FileUploadName != null ? pac.FileUploadName : "",
+                             CreatedDate = pac.CreatedDate,
+                             FileURL = pac.FileURL != null ? pac.FileURL : "",
+                             Id = pac.Id,
+                             AccusedName = pac.AccusedName,
+                             PublishDate = pac.PublishDate,
+                             PS_Id = pac.PS_Id,
+                             Address = pac.Address,
+                             District_Id = pac.District_Id,
+                             District_Name = district.DistrictName,
+                             ExamineCenterName = pac.ExamineCenterName,
+                             FIRDate = pac.FIRDate,
+                             FIRDetails = pac.FIRDetails,
+                             FIRNo = pac.FIRNo,
+                             PS_Name = ps.PSName,
+                             Range_Id = pac.Range_Id,
+                             Range_Name = range.RangeName,
+                             State_Id = pac.State_Id,
+                             State_Name = state.StateName,
+                             Zone_Id = pac.Zone_Id,
+                             Zone_Name = zone.ZoneName
+                         }).OrderByDescending(x => x.PublishDate).ToList();
+            return _list != null ? _list : new List<PACEntryModel>();
+        }
+
 
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{

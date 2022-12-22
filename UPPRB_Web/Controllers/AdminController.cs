@@ -163,7 +163,48 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult PACEntry(HttpPostedFileBase postedFile, string State, string Zone,
+       string Range, string District, string PoliceStation, string ExamineCenterName, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            PACEntry notice = new PACEntry()
+            {
+                CreatedDate = DateTime.Today,
+                FileUploadName = filename,
+                FileURL = fileURL,
+                State_Id = !string.IsNullOrEmpty(State) ? (int?)Convert.ToInt32(State) : null,
+                PublishDate = Convert.ToDateTime(PublishDate),
+                FIRDate = Convert.ToDateTime(FIRDate),
+                Zone_Id = !string.IsNullOrEmpty(Zone) ? (int?)Convert.ToInt32(Zone) : null,
+                Range_Id = !string.IsNullOrEmpty(Range) ? (int?)Convert.ToInt32(Range) : null,
+                District_Id = !string.IsNullOrEmpty(District) ? (int?)Convert.ToInt32(District) : null,
+                AccusedName = AccusedName,
+                Address = Address,
+                ExamineCenterName = ExamineCenterName,
+                FIRDetails = FIRDetails,
+                FIRNo = FIRNo,
+                PS_Id = !string.IsNullOrEmpty(PoliceStation) ? (int?)Convert.ToInt32(PoliceStation) : null,
+                
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SavePACEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                if (postedFile != null)
+                {
 
+                    string path = Server.MapPath("~/FilesUploaded/PAC/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            SetAlertMessage("PAC Enrty Saved", "Success");
+            return View();
+        }
         [HttpPost]
         public JsonResult GetAllFeedback()
         {

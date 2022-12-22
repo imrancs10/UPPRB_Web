@@ -36,5 +36,6 @@ namespace DataLayer
         public virtual DbSet<RangeMaster> RangeMasters { get; set; }
         public virtual DbSet<StateMaster> StateMasters { get; set; }
         public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
+        public virtual DbSet<PACEntry> PACEntries { get; set; }
     }
 }

@@ -79,6 +79,27 @@
           <Property Name="CreatedBy" Type="int" />
           <Property Name="IsNew" Type="bit" />
         </EntityType>
+        <EntityType Name="PACEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State_Id" Type="int" />
+          <Property Name="Zone_Id" Type="int" />
+          <Property Name="Range_Id" Type="int" />
+          <Property Name="District_Id" Type="int" />
+          <Property Name="PS_Id" Type="int" />
+          <Property Name="ExamineCenterName" Type="varchar" MaxLength="500" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="FIRNo" Type="varchar" MaxLength="500" />
+          <Property Name="FIRDate" Type="datetime" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="AccusedName" Type="varchar" MaxLength="500" />
+          <Property Name="FIRDetails" Type="varchar(max)" />
+          <Property Name="FileURL" Type="varchar" MaxLength="500" />
+          <Property Name="FileUploadName" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="PACUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -130,6 +151,7 @@
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACEntry" EntityType="Self.PACEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PSMaster" EntityType="Self.PSMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RangeMaster" EntityType="Self.RangeMaster" Schema="dbo" store:Type="Tables" />
@@ -165,6 +187,7 @@
           <EntitySet Name="RangeMasters" EntityType="upprbDbModel.RangeMaster" />
           <EntitySet Name="StateMasters" EntityType="upprbDbModel.StateMaster" />
           <EntitySet Name="ZoneMasters" EntityType="upprbDbModel.ZoneMaster" />
+          <EntitySet Name="PACEntries" EntityType="upprbDbModel.PACEntry" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -270,6 +293,27 @@
           <Property Name="ZoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ZoneName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="StateId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PACEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State_Id" Type="Int32" />
+          <Property Name="Zone_Id" Type="Int32" />
+          <Property Name="Range_Id" Type="Int32" />
+          <Property Name="District_Id" Type="Int32" />
+          <Property Name="PS_Id" Type="Int32" />
+          <Property Name="ExamineCenterName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FIRNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FIRDate" Type="DateTime" Precision="3" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="AccusedName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FIRDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FileUploadName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -403,6 +447,28 @@
                 <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
                 <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACEntries">
+            <EntityTypeMapping TypeName="upprbDbModel.PACEntry">
+              <MappingFragment StoreEntitySet="PACEntry">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FileUploadName" ColumnName="FileUploadName" />
+                <ScalarProperty Name="FileURL" ColumnName="FileURL" />
+                <ScalarProperty Name="FIRDetails" ColumnName="FIRDetails" />
+                <ScalarProperty Name="AccusedName" ColumnName="AccusedName" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="FIRDate" ColumnName="FIRDate" />
+                <ScalarProperty Name="FIRNo" ColumnName="FIRNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ExamineCenterName" ColumnName="ExamineCenterName" />
+                <ScalarProperty Name="PS_Id" ColumnName="PS_Id" />
+                <ScalarProperty Name="District_Id" ColumnName="District_Id" />
+                <ScalarProperty Name="Range_Id" ColumnName="Range_Id" />
+                <ScalarProperty Name="Zone_Id" ColumnName="Zone_Id" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

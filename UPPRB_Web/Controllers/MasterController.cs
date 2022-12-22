@@ -31,5 +31,40 @@ namespace UPPRB_Web.Controllers
             var allnotice = detail.GetNoticeDetail(noticeId, CategoryId);
             return Json(allnotice, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetStateDetail()
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetStateDetail();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetZoneDetail(int stateId)
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetZoneDetail(stateId);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetRangeDetail(int zoneId)
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetRangeDetail(zoneId);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetDistrictDetail(int rangeId)
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetDistrictDetail(rangeId);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPoliceStationDetail(int districtId)
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetPoliceStationDetail(districtId);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
