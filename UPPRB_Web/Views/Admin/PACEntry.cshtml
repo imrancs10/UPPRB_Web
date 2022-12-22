@@ -16,8 +16,8 @@
 
         <div class="col-lg-12 col-sm-3">
             <section class="card">
-                <header class="card-header">
-                   PAC Entry
+                <header class="card-header" style="text-align: center; color: #fd7e14; font-weight:400">
+                    <strong>Preventive Action Cell (PAC) Entry Form</strong>
                 </header>
                 <div class="card-body left">
 
@@ -30,15 +30,15 @@
                                 </select>
                             </div>
                             <div class="col-lg-6">
-                                <label for="exampleInputEmail1">Range</label>
-                                <select class="form-control mb-3" style="" id="State" name="State">
+                                <label for="exampleInputEmail1">Zone</label>
+                                <select class="form-control mb-3" style="" id="Zone" name="Zone">
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="exampleInputEmail1">Zone</label>
-                                <select class="form-control mb-3" id="Zone" name="Zone">
+                                <label for="exampleInputEmail1">Range</label>
+                                <select class="form-control mb-3" id="Range" name="Range">
                                 </select>
                             </div>
                             <div class="col-lg-6">
@@ -54,8 +54,8 @@
                                 </select>
                             </div>
                             <div class="col-lg-6">
-                                <label for="exampleInputEmail1">Examination Center Name</label>
-                                <textarea type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examination Center Name" name="Examination Center Name"> </textarea>
+                                <label for="exampleInputEmail1">Examine Center Name</label>
+                                <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="Examine Center Name"> </input>
                             </div>
                         </div>
                         <div class="row">
@@ -67,27 +67,27 @@
                                 <label for="exampleInputEmail1">FIR No.</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
                             </div>
-                        </div>
+                        </div><br />
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">FIR Date</label>
                                 <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
                             </div>
                             <div class="col-lg-6">
+                                <label for="exampleInputPassword1">Publish Date</label>
+                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
+                            </div>                            
+                        </div><br />
+                        <div class="row">
+                            <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Accused Name</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">FIR Details</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
                             </div>
-                            <div class="col-lg-6">
-                                <label for="exampleInputPassword1">Publish Date</label>
-                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="NoticeDate">
-                            </div>
-                        </div>
+                        </div><br />
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="custom-control custom-radio custom-control-inline">
@@ -118,15 +118,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div><br />                        
                             <div class="checkbox">
                                 <label>
                                     <input class="form-check-input" type="checkbox" id="highlightNew" name="highlightNew" checked> Highlight as New
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>                        
                     }
                 </div>
             </section>
