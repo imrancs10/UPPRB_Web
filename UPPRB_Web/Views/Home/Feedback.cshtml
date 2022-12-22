@@ -14,7 +14,7 @@
                 <hr>
                 <div class="clr"></div><center>
                     <div style="width: 600px; height:500px">
-                        @using (Html.BeginForm("FeedbackForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Feedback", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="row">
                                 <label class="required" for="name">Name:&nbsp;&nbsp;  </label><br />
@@ -59,7 +59,6 @@
         </div>
     </div>
 </section>
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');

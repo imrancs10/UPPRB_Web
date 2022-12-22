@@ -500,3 +500,4 @@ Error Number:53,State:0,Class:20
    at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass41_0.<GetResults>b__0()
    at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
 2022-12-19 10:24:09,032 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2022-12-22 16:06:27,149 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 

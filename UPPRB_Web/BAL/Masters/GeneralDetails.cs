@@ -233,6 +233,13 @@ namespace UPPRB_Web.BAL.Masters
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
+        public Enums.CrudStatus SaveFeedback(Feedback feedback)
+        {
+            _db = new upprbDbEntities();
+            _db.Entry(feedback).State = EntityState.Added;
+            int _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
         public List<PACEntryModel> GetAllPACDetail()
         {
             _db = new upprbDbEntities();

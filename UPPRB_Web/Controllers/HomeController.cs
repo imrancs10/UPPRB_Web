@@ -183,6 +183,27 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Feedback(string name, string mobile, string email, string address, string subject, string message)
+        {
+            Feedback feedback = new Feedback()
+            {
+                CreatedDate = DateTime.Today,
+                Address = address,
+                Subject = subject,
+                Email = email,
+                Message = message,
+                Mobile = mobile,
+                Name = name
+            };
+            GeneralDetails detail = new GeneralDetails();
+            var saveStatus = detail.SaveFeedback(feedback);
+            if (saveStatus == Enums.CrudStatus.Saved)
+                SetAlertMessage("Feedback Submitted", "Success");
+            else
+                SetAlertMessage("Feedback not Submitted", "Failed");
+            return View();
+        }
         public ActionResult Tender()
         {
             var detail = new GeneralDetails();
