@@ -51,46 +51,121 @@
     <link href="~/Content/css/simple.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/css/whack.css?v=1.0">
     <script type="text/javascript" language="javascript">
-    function renderTime() {
-    var currentdate = new Date();
-    var currentTime = new Date();
-    var diem = "AM";
-    var h = currentTime.getHours();
-    var m = currentTime.getMinutes();
-    var s = currentTime.getSeconds();
-    var TodayDate = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
-    setTimeout('renderTime()', 1000);
-    if (h == 0) {
-    h = 12;
-    } else if (h > 12) {
-    h = h - 12;
-    diem = "PM";
-    }
-    if (h < 10) {
-    h = "0" + h;
-    }
-    if (m < 10) {
-    m = "0" + m;
-    }
-    if (s < 10) {
-    s = "0" + s;
-    }
-    var myClock = document.getElementById('clockDisplay');
+        function renderTime() {
+            var currentdate = new Date();
+            var currentTime = new Date();
+            var diem = "AM";
+            var h = currentTime.getHours();
+            var m = currentTime.getMinutes();
+            var s = currentTime.getSeconds();
+            var TodayDate = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
+            setTimeout('renderTime()', 1000);
+            if (h == 0) {
+                h = 12;
+            } else if (h > 12) {
+                h = h - 12;
+                diem = "PM";
+            }
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+            var myClock = document.getElementById('clockDisplay');
 
-    var d = new Date();
-    var month = d.getMonth() + 1;
-    var day = d.getDate();
-    var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
 
-    myClock.innerHTML = "Today Date -" + output + ' ' + " Time -" + h + ":" + m + ":" + s + " " + diem;
-    }
-    renderTime();
+            myClock.innerHTML = "Today Date -" + output + ' ' + " Time -" + h + ":" + m + ":" + s + " " + diem;
+        }
+        renderTime();
+    </script>
+    <script>
+        function orangecolor() {
+
+            $(".common-wrapper").css("backgroundColor", "#b33d2f");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
+            });
+            $(".headline").css("backgroundColor", "#b33d2f");
+            $(".slogan-name").css("color", "#912c1f");
+
+
+            $(".themecolor").css("color", "#b33d2f");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#fa961e");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#5ab3f4");
+
+        }
+
+        function bluecolor() {
+            $(".common-wrapper").css("backgroundColor", "#124dac");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#3a96ce), to(#266184))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#3a96ce), to(#266184))"
+            });
+            $(".headline").css("backgroundColor", "#124dac");
+            $(".slogan-name").css("color", "#124dac");
+
+
+            $(".themecolor").css("color", "#124dac");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#2c729c");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#5ab3f4");
+
+        }
+
+        function blackcolor() {
+            $(".common-wrapper").css("backgroundColor", "#000000");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#747474), to(#000000))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#747474), to(#000000))"
+            });
+            $(".headline").css("backgroundColor", "#747474");
+            $(".slogan-name").css("color", "#000000");
+
+
+            $(".themecolor").css("color", "#000000");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#000000");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#000000");
+
+        }
+
     </script>
 </head>
 <body>
-
-
-
     <script src="bundles/MsAjaxJs?v=c42ygB2U07n37m_Sfa8ZbLGVu4Rr2gsBo7MvUEnJeZ81" type="text/javascript"></script>
     <script src="~/Scripts/library/js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="~/Scripts/library/js/bootstrap.min.js" type="text/javascript"></script>
