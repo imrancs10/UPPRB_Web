@@ -6,6 +6,10 @@ $(document).ready(function () {
     //FillNoticeCategory();
     //FillNoticeSubCategory();
     FillState();
+    $('[id*=customRadioInline2]').prop("checked", true);
+    /*$('[name*=customRadioInline1]').change();*/
+    $('[name*=fileURL]').prop("disabled", true);
+    $('[name*=postedFile]').removeAttr('disabled');
     function FillState(selectedStateId = null) {
         let dropdown = $('#State');
         dropdown.empty();
