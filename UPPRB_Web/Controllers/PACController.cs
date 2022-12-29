@@ -18,6 +18,7 @@ using iTextSharp.text;
 using System.Text;
 using UPPRB_Web.Models.Masters;
 using System.Security.Principal;
+using iTextSharp.tool.xml.html;
 
 namespace UPPRB_Web.Controllers
 {
@@ -78,6 +79,17 @@ namespace UPPRB_Web.Controllers
             PdfWriter.GetInstance(doc, workStream).CloseStream = false;
             doc.Open();
 
+            string imageURL = Server.MapPath("~/Content/images/logo3.jpg");
+            iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(imageURL);
+            //Resize image depend upon your need
+            jpg.ScaleToFit(280f, 240f);
+            //Give space before image
+            jpg.SpacingBefore = 10f;
+            //Give some space after the image
+            jpg.SpacingAfter = 1f;
+            jpg.Alignment = Element.ALIGN_CENTER;
+            doc.Add(jpg);
+
             //Add Content to PDF   
             doc.Add(Add_Content_To_PDF(tableLayout));
 
@@ -101,12 +113,13 @@ namespace UPPRB_Web.Controllers
 
             List<PACEntryModel> pacDetailList = detail.GetAllPACDetail();
 
-            tableLayout.AddCell(new PdfPCell(new Phrase("Uttar Pradesh Police Recruitment & Promotion Board - Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 8, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
+            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 12, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 12,
                 Border = 0,
-                PaddingBottom = 5,
-                HorizontalAlignment = Element.ALIGN_CENTER
+                PaddingBottom = 10,
+                PaddingLeft = 5,
+                HorizontalAlignment = Element.ALIGN_LEFT
             });
 
             ////Add header  
