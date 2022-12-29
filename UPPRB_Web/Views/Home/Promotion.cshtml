@@ -1,29 +1,135 @@
-﻿
+﻿@using UPPRB_Web.Models.Masters;
 @{
     ViewBag.Title = "Promotion";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
 
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
-            <!--
-                        @Html.Partial("_Contact_SideMenu")-->
-            <div class="col-lg-12 w_content pt-20 mt-0">
-                <h2 class="w-bgph" style="text-align:center">Under Maintanance</h2>
-                <hr>
-                <div class="clr"></div>
-                <h4 style="text-align: center">उत्तर प्रदेश पुलिस सेवा भर्ती एवं प्रोन्नति बोर्ड</h4>
-                <h4 style="text-align: center">Uttar Pradesh Police Recruitment & Promotion Board</h4>
-                <div class="clr"></div>
-                <article style="text-align:center">
-                    <h2>Page is under construction.</h2>
-                    <p style="text-align:center">Scheduled maintenance is currently in progress. Please check back soon.</p>
-                    <p style="text-align:center">We apologize for any inconvenience.</p>
-                    <p id="signature" style="text-align:center">&mdash; <a href="mailto:[Email]">[Administrator]</a></p>
-                </article>
-                <hr>
+            @Html.Partial("_Promotion_SideMenu", noticeType)
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h3 class="w-bgph">Promotion</h3>
+                <table class="table table-bordered">
 
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:bold">Sr. No</td>
+                            <td style="font-weight:bold">Advertisement No.</td>
+                            <td style="font-weight:bold">Name of Post</td>
+                            <td style="font-weight:bold">Requisition Date</td>
+                            <td style="font-weight:bold">Vacancy</td>
+                            <td style="font-weight:bold">Recruitment/Selection Year</td>
+                            <td style="font-weight:bold">Status</td>
+                            <!--<td style="font-weight:bold">User Instruction</td>
+                            <td style="font-weight:bold">View Advt.</td>
+                            <td style="font-weight:bold">Apply</td>-->
+                        </tr>
+                        <tr>
+
+                            <td>1</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-search" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+                        <tr>
+
+                            <td>2</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+    <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+
+                        <tr>
+
+                            <td>3</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+    <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+                        <tr>
+
+                            <td>4</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+    <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+                        <tr>
+
+                            <td>5</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+    <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+                        <tr>
+
+                            <td>6</td>
+                            <td>14-07-2022_Advt._16</td>
+                            <td>Head Constable</td>
+                            <td>16-07-2022</td>
+                            <td>32</td>
+                            <td>2022</td>
+                            <td>As per the requisition received, the eligibility list/application forms of 2204 personnel have been received. The external agency has been selected for the selection process. In this case the written examination has been completed on 31-10-2021. Objections were sought from the personnel till 15-11-2021. A committee was constituted to settle the objections received from the external agency, whose meeting has been held on 06-12-2021. Case is in vogue for further action.</td>
+                            <!--<td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
+    <td><i class="fa fa-search" aria-hidden="true"></i></td>
+    <td><i class="fa fa-desktop" aria-hidden="true"></i></td>-->
+
+                        </tr>
+                    </tbody>
+                </table>
+                @* @foreach (var item in noticeType)
+        {
+            <h3 class="w-hd-u">@item.LookupName</h3>
+            <ul class="w_ul">
+                @foreach (var category in item.NoticeCategories)
+                {
+                    <li>
+                        <a href="/Home/Manual_Detail?noticeId=@item.LookupId&categoryId=@category.LookupId">
+                            @category.LookupName
+                            @*<img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                </a>
+                </li>
+                }
+                </ul>
+                <br>
+                }*@
+                <div class="clearfix"></div>
             </div>
 
             <div class="clearfix"></div>

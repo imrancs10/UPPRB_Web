@@ -68,10 +68,16 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult DirectRecruitment()
         {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
         public ActionResult Promotion()
         {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
         public ActionResult GovernmentOrders()

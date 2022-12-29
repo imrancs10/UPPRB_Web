@@ -1,0 +1,61 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "PromotionDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+<script src="~/Scripts/Masters/noticePage.js"></script>
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_Promotion_SideMenu", noticeType)
+
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h3 class="w-hd-u">
+                    Promotion:
+                    @if (noticeData.Count > 0)
+                    {
+                        @noticeData[0].NoticeTypeName <span> | </span> @noticeData[0].NoticeCategoryName
+                    }
+                </h3>
+                <ul class="w_ul">
+                    @foreach (var item in noticeData)
+                    {
+                        <li>
+                            @if (!string.IsNullOrEmpty(item.filename))
+                            {
+                                <a href="~/FilesUploaded/RecruitmentRules/@item.filename" target="_blank">
+                                    @item.Subject
+                                    @if (item.IsNew == true)
+                                    {
+                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                    }
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@item.fileURL" target="_blank">
+                                    @item.Subject
+                                    @if (item.IsNew == true)
+                                    {
+                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                    }
+                                </a>
+                            }
+                        </li>
+                    }
+                </ul><br>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/Notice"]').parent().addClass('active')
+    });
+</script>
