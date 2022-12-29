@@ -66,6 +66,7 @@ namespace UPPRB_Web.BAL.Masters
             var _list = (from not in _db.Notices
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
+                          && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(not.NoticeDate.Value.AddMonths(1))
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -89,6 +90,7 @@ namespace UPPRB_Web.BAL.Masters
             var _list = (from not in _db.Notices
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
+                          && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(not.NoticeDate.Value.AddMonths(1))
                          select new NoticeModel
                          {
                              filename = not.filename,

@@ -24,6 +24,7 @@ using static iTextSharp.tool.xml.html.HTML;
 using UPPRB_Web.BAL.Login;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.IO;
+using System.Data.Entity;
 
 namespace UPPRB_Web.Controllers
 {
@@ -48,7 +49,7 @@ namespace UPPRB_Web.Controllers
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Notice" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Notice" && currentDate >= x.NoticeDate && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(x.NoticeDate.Value.AddMonths(1))).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -59,7 +60,7 @@ namespace UPPRB_Web.Controllers
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result" && currentDate >= x.NoticeDate && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(x.NoticeDate.Value.AddMonths(1))).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -84,7 +85,7 @@ namespace UPPRB_Web.Controllers
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "GO" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "GO" && currentDate >= x.NoticeDate && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(x.NoticeDate.Value.AddMonths(1))).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetGONoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -214,7 +215,7 @@ namespace UPPRB_Web.Controllers
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "Tender" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "Tender" && currentDate >= x.NoticeDate && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(x.NoticeDate.Value.AddMonths(1))).ToList();
             ViewData["NoticeData"] = allnotice;
             return View();
         }
