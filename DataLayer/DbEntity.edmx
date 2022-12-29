@@ -58,10 +58,10 @@
           </Key>
           <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LookupType" Type="varchar" MaxLength="500" />
-          <Property Name="LookupName" Type="varchar" MaxLength="500" />
+          <Property Name="LookupName" Type="nvarchar" MaxLength="500" />
           <Property Name="ParentLookupId" Type="int" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="LookupNameImmutable" Type="varchar" MaxLength="500" />
+          <Property Name="LookupNameImmutable" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Notice">
           <Key>
@@ -71,7 +71,7 @@
           <Property Name="NoticeType" Type="int" />
           <Property Name="NoticeCategoryId" Type="int" />
           <Property Name="EntryTypeId" Type="int" />
-          <Property Name="Subject" Type="varchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
           <Property Name="NoticeDate" Type="datetime" />
           <Property Name="fileURL" Type="varchar" MaxLength="500" />
           <Property Name="filename" Type="varchar" MaxLength="500" />
@@ -178,7 +178,6 @@
         <EntityContainer Name="upprbDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <EntitySet Name="Lookups" EntityType="upprbDbModel.Lookup" />
-          <EntitySet Name="Notices" EntityType="upprbDbModel.Notice" />
           <EntitySet Name="PACUsers" EntityType="upprbDbModel.PACUser" />
           <EntitySet Name="Enquiries" EntityType="upprbDbModel.Enquiry" />
           <EntitySet Name="Feedbacks" EntityType="upprbDbModel.Feedback" />
@@ -188,6 +187,7 @@
           <EntitySet Name="StateMasters" EntityType="upprbDbModel.StateMaster" />
           <EntitySet Name="ZoneMasters" EntityType="upprbDbModel.ZoneMaster" />
           <EntitySet Name="PACEntries" EntityType="upprbDbModel.PACEntry" />
+          <EntitySet Name="Notices" EntityType="upprbDbModel.Notice" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -195,26 +195,10 @@
           </Key>
           <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LookupType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ParentLookupId" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
-          <Property Name="LookupNameImmutable" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Notice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NoticeType" Type="Int32" />
-          <Property Name="NoticeCategoryId" Type="Int32" />
-          <Property Name="EntryTypeId" Type="Int32" />
-          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
-          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="LookupNameImmutable" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PACUser">
           <Key>
@@ -315,6 +299,22 @@
           <Property Name="FileUploadName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeType" Type="Int32" />
+          <Property Name="NoticeCategoryId" Type="Int32" />
+          <Property Name="EntryTypeId" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
+          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="IsNew" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -344,23 +344,6 @@
                 <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupId" ColumnName="LookupId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Notices">
-            <EntityTypeMapping TypeName="upprbDbModel.Notice">
-              <MappingFragment StoreEntitySet="Notice">
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="filename" ColumnName="filename" />
-                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
-                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
-                <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
-                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -468,6 +451,23 @@
                 <ScalarProperty Name="Range_Id" ColumnName="Range_Id" />
                 <ScalarProperty Name="Zone_Id" ColumnName="Zone_Id" />
                 <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="upprbDbModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
+                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
+                <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
+                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -27,7 +27,6 @@ namespace DataLayer
     
         public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
-        public virtual DbSet<Notice> Notices { get; set; }
         public virtual DbSet<PACUser> PACUsers { get; set; }
         public virtual DbSet<Enquiry> Enquiries { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
@@ -37,5 +36,6 @@ namespace DataLayer
         public virtual DbSet<StateMaster> StateMasters { get; set; }
         public virtual DbSet<ZoneMaster> ZoneMasters { get; set; }
         public virtual DbSet<PACEntry> PACEntries { get; set; }
+        public virtual DbSet<Notice> Notices { get; set; }
     }
 }

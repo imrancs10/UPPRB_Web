@@ -44,6 +44,18 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="rblLanguage_0" name="languageSelection" class="custom-control-input" value="English" checked>
+                                    <label class="custom-control-label" for="rblLanguage_0">English</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="rblLanguage_1" name="languageSelection" class="custom-control-input" value="Hindi">
+                                    <label class="custom-control-label" for="rblLanguage_1">Hindi</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Subject</label>
                                 <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
@@ -144,4 +156,34 @@
             });
         }
     })
+</script>
+<style type="text/css">
+    @@font-face {
+        font-family: 'HindiFont';
+        /*src: url('~/content/font/k010.ttf');*/
+        src: url('<%= ResolveUrl("~/Content/font/k010.TTF") %>');
+    }
+    /* body
+    {
+        font-size: 20px;
+    }*/
+    .hindiFont {
+        /* Assign the font*/
+        font-family: 'HindiFont';
+        font-size: 16px !important;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('[id*=rblLanguage]').on("change", function () {
+            var selected = $(this).val();
+            var textBox = $('[id*=Subject]');
+            if (selected == "Hindi") {
+                $(textBox).addClass('hindiFont');
+            }
+            else {
+                $(textBox).removeClass('hindiFont');
+            }
+        });
+    });
 </script>
