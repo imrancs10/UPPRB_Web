@@ -14,6 +14,11 @@
                 <header class="card-header" style="text-align: center; color: #fd7e14; font-weight:400">
                     <strong>Preventive Action Cell (PAC) Details</strong>
                 </header>
+                <div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
+                    <a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
+                    @*<input type="button" id="btnPrint" value="Print" class="btn btn-success" style="float:left;width:100px" />*@
+                    &nbsp;&nbsp;
+                </div>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="table-responsive" style="overflow:auto!important;">
@@ -123,6 +128,24 @@
                 }
                 return;
             });
+    });
+    $(document).on('click', '#btnPrint', function () {
+        var pageTitle = 'Preventive Action Cell (PAC) Details';
+        stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
+        stylesheetDataTable = '//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css';
+        win = window.open('', 'Print', 'width=700,height=900');
+        var dd = $('.dataTables_scroll').clone();
+        //dd.find('tbody').append($('.table:eq(1) tbody tr').clone());
+
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '<link rel="stylesheet" href="' + stylesheetDataTable + '">' +
+            '</head><body style="font-size=11px;">' + dd.html() + '</body ></html>');
+        //'</head><body style="font-size=11px;"><hr/><div style="text-align:center;"><img src="' + $('#hdnHospitalLogo').val() + '"/></div><hr/> <table class="table table-bordered table-hover table-responsive table-striped">' + dd.html() + '</table></body ></html >
+        win.document.close();
+        win.print();
+        //win.close();
+        return false;
     });
     function strtrunc(str, max, add) {
         add = add || '...';
