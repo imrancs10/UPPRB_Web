@@ -167,6 +167,7 @@ namespace UPPRB_Web.Controllers
         public ActionResult PACEntry(HttpPostedFileBase postedFile, string State, string Zone,
        string Range, string District, string PoliceStation, string ExamineCenterName, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL)
         {
+            State = "1";
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
             PACEntry notice = new PACEntry()
             {
@@ -185,7 +186,7 @@ namespace UPPRB_Web.Controllers
                 FIRDetails = FIRDetails,
                 FIRNo = FIRNo,
                 PS_Id = !string.IsNullOrEmpty(PoliceStation) ? (int?)Convert.ToInt32(PoliceStation) : null,
-                
+
             };
             AdminDetails detail = new AdminDetails();
             var saveStatus = detail.SavePACEntry(notice);
