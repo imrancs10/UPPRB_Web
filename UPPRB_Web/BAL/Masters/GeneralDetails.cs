@@ -63,10 +63,11 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var currentDate = DateTime.Now;
+            var thresoldDate = currentDate.AddMonths(-1);
             var _list = (from not in _db.Notices
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
-                          && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(not.NoticeDate.Value.AddMonths(1))
+                          && DbFunctions.TruncateTime(thresoldDate) <= DbFunctions.TruncateTime(not.NoticeDate)
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -87,10 +88,11 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var currentDate = DateTime.Now;
+            var thresoldDate = currentDate.AddMonths(-1);
             var _list = (from not in _db.Notices
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
-                          && DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(not.NoticeDate.Value.AddMonths(1))
+                          && DbFunctions.TruncateTime(thresoldDate) <= DbFunctions.TruncateTime(not.NoticeDate)
                          select new NoticeModel
                          {
                              filename = not.filename,
