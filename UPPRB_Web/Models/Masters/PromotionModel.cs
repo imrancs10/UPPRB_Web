@@ -14,5 +14,6 @@ namespace UPPRB_Web.Models.Masters
         public string FileName { get; set; }
         public string FIleURL { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public List<PromotionModel> Children { get; set; }
     }
 }

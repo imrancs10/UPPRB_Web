@@ -7,6 +7,8 @@ using System.Data.Entity;
 using UPPRB_Web.Global;
 using UPPRB_Web.Models.Masters;
 using WebActivatorEx;
+using log4net.Repository.Hierarchy;
+using System.Reflection.Emit;
 
 namespace UPPRB_Web.BAL.Masters
 {
@@ -296,6 +298,55 @@ namespace UPPRB_Web.BAL.Masters
                              UpdatedDate = not.UpdatedDate.Value
                          }).OrderByDescending(x => x.UpdatedDate).ToList();
             return _list != null ? _list : new List<PromotionModel>();
+        }
+        public IEnumerable<PromotionModel> GetRecursivePromotionDetail()
+        {
+            _db = new upprbDbEntities();
+            List<PromotionModel> hierarchy = new List<PromotionModel>();
+            var categories = (from not in _db.PromotionDetails
+                              select new PromotionModel
+                              {
+                                  FileName = not.FileName,
+                                  FIleURL = not.FIleURL,
+                                  Id = not.Id,
+                                  Parent_Id = not.Parent_Id,
+                                  Subject = not.Subject,
+                                  UpdatedDate = not.UpdatedDate.Value
+                              }).OrderByDescending(x => x.Parent_Id).ToList();
+
+            return categories;
+
+            //hierarchy = categories
+            //         .Where(c => c.Parent_Id == null)
+            //         .Select(c => new PromotionModel()
+            //         {
+            //             Id = c.Id,
+            //             FileName = c.FileName,
+            //             Parent_Id = c.Parent_Id,
+            //             FIleURL = c.FIleURL,
+            //             Subject = c.Subject,
+            //             UpdatedDate = c.UpdatedDate,
+            //             Children = GetChildren(categories, c.Id)
+            //         })
+            //         .ToList();
+
+            //return hierarchy;
+        }
+        public List<PromotionModel> GetChildren(List<PromotionModel> comments, int parentId)
+        {
+            return comments
+                    .Where(c => c.Parent_Id == parentId)
+                    .Select(c => new PromotionModel
+                    {
+                        Id = c.Id,
+                        FileName = c.FileName,
+                        Parent_Id = c.Parent_Id,
+                        FIleURL = c.FIleURL,
+                        Subject = c.Subject,
+                        UpdatedDate = c.UpdatedDate,
+                        Children = GetChildren(comments, c.Id)
+                    })
+                    .ToList();
         }
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{

@@ -79,8 +79,8 @@ namespace UPPRB_Web.Controllers
         public ActionResult Promotion(int? promotionId)
         {
             var detail = new GeneralDetails();
-            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
-            ViewData["NoticeType"] = noticeTypeDetail;
+            var noticeTypeDetail = detail.GetRecursivePromotionDetail();
+            ViewData["PromotionType"] = noticeTypeDetail;
 
             var allnotice = detail.GetPromotionDetail(promotionId).ToList();
             ViewData["PromotionDetail"] = allnotice;

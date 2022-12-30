@@ -2,21 +2,21 @@
 @{
     ViewBag.Title = "Promotion";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+    var PromotionType = ViewData["PromotionType"] as IEnumerable<PromotionModel>;
     var PromotionDetail = ViewData["PromotionDetail"] as List<PromotionModel>;
 }
 
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
-            @Html.Partial("_Promotion_SideMenu", noticeType)
+            @Html.Partial("_Promotion_SideMenu", PromotionType)
             <div class="col-lg-10 w_content pt-20 mt-0">
                 <h3 class="w-bgph">Promotion</h3>
                 <hr><br />
                 <div class="clr"></div>
                 @foreach (var promotion in PromotionDetail)
                 {
-                    <h4>
+                    <h6>
                         @if (!string.IsNullOrEmpty(promotion.FileName))
                         {
                             <a href='~/FilesUploaded/Promotion/@promotion.FileName' title='Click to view more' target='_blank'>
@@ -33,8 +33,7 @@
                         {
                             <a href="/Home/Promotion?promotionId=@promotion.Id" style="text-align: center; color: #191970">@promotion.Subject</a>
                         }
-
-                    </h4><br />
+                    </h6>
                     <hr><br />
                 }
                 @*<h4><a href="/Home/InfoAboutPromotion" style="text-align: center; color: #191970">Important information about Promotion<br /> (प्रोन्नति से संबंधित महत्वपूर्ण जानकारियाँ)</a></h4><br />
