@@ -33,6 +33,7 @@ namespace UPPRB_Web.BAL.Masters
                     }).OrderBy(x => x.StateName).ToList();
 
         }
+
         public IEnumerable<object> GetZoneDetail(int stateId)
         {
             _db = new upprbDbEntities();
@@ -46,7 +47,30 @@ namespace UPPRB_Web.BAL.Masters
                     }).OrderBy(x => x.ZoneName).ToList();
 
         }
+        public IEnumerable<object> GetPromotionSubject()
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.PromotionDetails
+                    select new
+                    {
+                        lookup.Subject,
+                        lookup.Id,
+                        lookup.Parent_Id
+                    }).OrderBy(x => x.Parent_Id).ToList();
 
+        }
+        public IEnumerable<object> GetDirectRecruitementSubject()
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.DirectRecruitementDetails
+                    select new
+                    {
+                        lookup.Subject,
+                        lookup.Id,
+                        lookup.Parent_Id
+                    }).OrderBy(x => x.Parent_Id).ToList();
+
+        }
         public IEnumerable<object> GetRangeDetail(int zoneId)
         {
             _db = new upprbDbEntities();

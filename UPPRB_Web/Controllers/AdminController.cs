@@ -206,6 +206,80 @@ namespace UPPRB_Web.Controllers
             SetAlertMessage("PAC Enrty Saved", "Success");
             return View();
         }
+
+        public ActionResult PromotionEntry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PromotionEntry(HttpPostedFileBase postedFile, string Subject, string fileURL, string promotionType)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            PromotionDetail notice = new PromotionDetail()
+            {
+                UpdatedDate = DateTime.Today,
+                FileName = filename,
+                FIleURL = fileURL,
+                Parent_Id = !string.IsNullOrEmpty(promotionType) ? (int?)Convert.ToInt32(promotionType) : null,
+                Subject = Subject
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SavePromotionEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                if (postedFile != null)
+                {
+
+                    string path = Server.MapPath("~/FilesUploaded/Promotion/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            SetAlertMessage("Promotion Entry Saved", "Success");
+            return View();
+        }
+
+        public ActionResult DirectRecruitementEntry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DirectRecruitementEntry(HttpPostedFileBase postedFile, string Subject, string fileURL, string promotionType)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            DirectRecruitementDetail notice = new DirectRecruitementDetail()
+            {
+                UpdatedDate = DateTime.Today,
+                FileName = filename,
+                FIleURL = fileURL,
+                Parent_Id = !string.IsNullOrEmpty(promotionType) ? (int?)Convert.ToInt32(promotionType) : null,
+                Subject = Subject
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveDirectRecruitementEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                if (postedFile != null)
+                {
+
+                    string path = Server.MapPath("~/FilesUploaded/DirectRecruitement/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            SetAlertMessage("Direct Recruitement Entry Saved", "Success");
+            return View();
+        }
+
+
         [HttpPost]
         public JsonResult GetAllFeedback()
         {

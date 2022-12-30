@@ -38,6 +38,21 @@ namespace UPPRB_Web.Controllers
             var data = _details.GetStateDetail();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult GetPromotionSubject()
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetPromotionSubject();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetDirectRecruitementSubject()
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetDirectRecruitementSubject();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public JsonResult GetZoneDetail(int stateId)
         {

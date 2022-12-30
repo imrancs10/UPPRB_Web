@@ -1,0 +1,123 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "PromotionEntry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/Masters/directRecruitementEntry.js"></script>
+<link href="~/Content/css/design1.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="wrapper">
+    <!--state overview start-->
+    <div class="row state-overview">
+
+        <div class="col-lg-12 col-sm-3">
+            <section class="card">
+                <header class="card-header" style="text-align: center; color: #fd7e14; font-weight:400">
+                    <strong>Direct Recruitement Entry Form</strong>
+                </header>
+                <div class="card-body left">
+
+                    @using (Html.BeginForm("DirectRecruitementEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Select Category</label>
+                                <select class="form-control mb-3" style="" id="promotionType" name="promotionType">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="exampleInputEmail1">Subject</label>
+                                <textarea type="text" class="form-control" id="Subject" placeholder="Enter Subject" name="Subject"> </textarea>
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="1">
+                                    <label class="custom-control-label" for="customRadioInline1">Upload Web Url</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="2">
+                                    <label class="custom-control-label" for="customRadioInline2">Upload File</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>File URL</label>
+                                <div>
+                                    <div class="custom-file">
+                                        <input type="text" class="form-control" disabled id="fileURL" placeholder="file" name="fileURL">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>File Upload</label>
+                                <div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" disabled id="customFile" name="postedFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br />
+                        <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+    <!--state overview end-->
+</section>
+<!--main content end-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(location.search);
+        const noticeId = urlParams.get('noticeId');
+        if (noticeId != null && noticeId != undefined) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{lookupTypeId: 0,lookupType: "UploadType" }',
+                url: '/Admin/GetNoticeForEdit?noticeId=' + noticeId,
+                success: function (data) {
+                    $('#hiddenId').val(data.Id);
+                    $('[name*=EntryTypeName]').val(data.EntryTypeName);
+                    $('[name*=hiddenNoticeID]').val(data.Id);
+                    //$('#btnSave').val('Update');
+                    $('#EntryType').val(data.EntryTypeId);
+                    //$('#NoticeType').val(NoticeType);
+                    FillNoticeType(data.EntryTypeId, data.NoticeType)
+                    FillNoticeCategory(data.NoticeType, data.NoticeCategoryId);
+                    //$('#NoticeCategory').val(NoticeCategoryId);
+                    $('#Subject').val(data.Subject);
+                    $('#NoticeDate').val(formatDateyyyyMMdd(data.NoticeDate));
+                    $('#fileURL').val(data.fileURL != "null" ? data.fileURL : "");
+                    //$('#customFile').val(filename);
+                    $('#EntryType').change();
+                    //if (EntryTypeName == 'Notice')
+                    //    $('#divNotice').css('display', '');
+                    //$('#btnAddNotice')[0].click();
+                    $('#myModal').modal('show');
+                    $('#highlightNew').prop('checked', data.IsNew)
+                    if (data.filename != null && data.filename != "" && data.filename != undefined && data.filename != "")
+                        $('[id*=customRadioInline2]').prop("checked", true);
+                    else
+                        $('[id*=customRadioInline1]').prop("checked", true);
+                    $('[name*=customRadioInline1]').change();
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        }
+    })
+</script>
