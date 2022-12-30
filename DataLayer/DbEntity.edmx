@@ -18,6 +18,17 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="DirectRecruitementDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Parent_Id" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FIleURL" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="DistrictMaster">
           <Key>
             <PropertyRef Name="DistrictId" />
@@ -95,7 +106,7 @@
           <Property Name="FIRDate" Type="datetime" />
           <Property Name="PublishDate" Type="datetime" />
           <Property Name="AccusedName" Type="varchar" MaxLength="500" />
-          <Property Name="FIRDetails" Type="varchar(max)" />
+          <Property Name="FIRDetails" Type="nvarchar(max)" />
           <Property Name="FileURL" Type="varchar" MaxLength="500" />
           <Property Name="FileUploadName" Type="varchar" MaxLength="500" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -112,6 +123,17 @@
           <Property Name="MobileNumber" Type="bigint" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PromotionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Parent_Id" Type="int" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FIleURL" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PSMaster">
           <Key>
@@ -146,6 +168,7 @@
         </EntityType>
         <EntityContainer Name="upprbDbModelStoreContainer">
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirectRecruitementDetail" EntityType="Self.DirectRecruitementDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
@@ -153,6 +176,7 @@
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACEntry" EntityType="Self.PACEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionDetail" EntityType="Self.PromotionDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PSMaster" EntityType="Self.PSMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RangeMaster" EntityType="Self.RangeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
@@ -186,8 +210,10 @@
           <EntitySet Name="RangeMasters" EntityType="upprbDbModel.RangeMaster" />
           <EntitySet Name="StateMasters" EntityType="upprbDbModel.StateMaster" />
           <EntitySet Name="ZoneMasters" EntityType="upprbDbModel.ZoneMaster" />
-          <EntitySet Name="PACEntries" EntityType="upprbDbModel.PACEntry" />
           <EntitySet Name="Notices" EntityType="upprbDbModel.Notice" />
+          <EntitySet Name="PACEntries" EntityType="upprbDbModel.PACEntry" />
+          <EntitySet Name="DirectRecruitementDetails" EntityType="upprbDbModel.DirectRecruitementDetail" />
+          <EntitySet Name="PromotionDetails" EntityType="upprbDbModel.PromotionDetail" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -278,6 +304,22 @@
           <Property Name="ZoneName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="StateId" Type="Int32" />
         </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeType" Type="Int32" />
+          <Property Name="NoticeCategoryId" Type="Int32" />
+          <Property Name="EntryTypeId" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
+          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="IsNew" Type="Boolean" />
+        </EntityType>
         <EntityType Name="PACEntry">
           <Key>
             <PropertyRef Name="Id" />
@@ -294,26 +336,32 @@
           <Property Name="FIRDate" Type="DateTime" Precision="3" />
           <Property Name="PublishDate" Type="DateTime" Precision="3" />
           <Property Name="AccusedName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="FIRDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FIRDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="FileUploadName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Notice">
+        <EntityType Name="DirectRecruitementDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NoticeType" Type="Int32" />
-          <Property Name="NoticeCategoryId" Type="Int32" />
-          <Property Name="EntryTypeId" Type="Int32" />
           <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NoticeDate" Type="DateTime" Precision="3" />
-          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="filename" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="Parent_Id" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FIleURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PromotionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Parent_Id" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FIleURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -433,6 +481,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="upprbDbModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
+                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
+                <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
+                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PACEntries">
             <EntityTypeMapping TypeName="upprbDbModel.PACEntry">
               <MappingFragment StoreEntitySet="PACEntry">
@@ -455,19 +520,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Notices">
-            <EntityTypeMapping TypeName="upprbDbModel.Notice">
-              <MappingFragment StoreEntitySet="Notice">
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="filename" ColumnName="filename" />
-                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
-                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+          <EntitySetMapping Name="DirectRecruitementDetails">
+            <EntityTypeMapping TypeName="upprbDbModel.DirectRecruitementDetail">
+              <MappingFragment StoreEntitySet="DirectRecruitementDetail">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="FIleURL" ColumnName="FIleURL" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="EntryTypeId" ColumnName="EntryTypeId" />
-                <ScalarProperty Name="NoticeCategoryId" ColumnName="NoticeCategoryId" />
-                <ScalarProperty Name="NoticeType" ColumnName="NoticeType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionDetails">
+            <EntityTypeMapping TypeName="upprbDbModel.PromotionDetail">
+              <MappingFragment StoreEntitySet="PromotionDetail">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="FIleURL" ColumnName="FIleURL" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

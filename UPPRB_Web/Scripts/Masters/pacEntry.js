@@ -105,7 +105,7 @@ $(document).ready(function () {
         });
     }
 
-    $('#Zone').on('change', function (e) {
+    $('#Range').on('change', function (e) {
         var valueSelected = this.value;
         FillDistrict(valueSelected);
     });

@@ -15,8 +15,10 @@
         <EntityTypeShape EntityType="upprbDbModel.RangeMaster" Width="1.5" PointX="7.75" PointY="6.75" />
         <EntityTypeShape EntityType="upprbDbModel.StateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="upprbDbModel.ZoneMaster" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="upprbDbModel.PACEntry" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="upprbDbModel.Notice" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="upprbDbModel.PACEntry" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="upprbDbModel.DirectRecruitementDetail" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="upprbDbModel.PromotionDetail" Width="1.5" PointX="10.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
