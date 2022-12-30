@@ -1,0 +1,32 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "PrevailingRecruitmentProcesses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_DR_SideMenu", noticeType)
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h2 class="w-bgph">Prevailing Recruitment Processes</h2>
+                <hr><br />
+                <div class="clr"></div>
+                <h4><a href="#!" style="color: #191970">Direct Recruitment to the posts of Sub-Inspector Civil Police and Platoon Commander PAC-2011<br /> (उपनिरीक्षक नागरिक पुलिस एवं प्लाटून कमांडर पी0ए0सी0 के पदों पर सीधी भर्ती -2011)</a></h4><br />
+                <hr><br />
+                <h4><a href="#!" style="color: #191970">Direct Recruitment on Police Constable and equivalent posts-2013<br /> (पुलिस आरक्षी एवं समकक्ष पदों पर सीधी भर्ती-2013)</a></h4><br />
+                <hr />
+                <div class="clr"></div>
+                <hr>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/DirectRecruitment"]').parent().addClass('active')
+    });
+</script>

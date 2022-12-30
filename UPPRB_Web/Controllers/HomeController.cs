@@ -122,6 +122,34 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
+        public ActionResult PrevailingRecruitmentProcesses()
+        {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+        public ActionResult InfoAboutDirectRecruitment()
+        {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+        public ActionResult PrevailingPromotionProcedures()
+        {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+        public ActionResult InfoAboutPromotion()
+        {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
         public ActionResult Contact()
         {
             return View();

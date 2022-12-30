@@ -1,0 +1,43 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "InfoAboutDirectRecruitment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @Html.Partial("_DR_SideMenu", noticeType)
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h2 class="w-bgph">Important Information About Promotion</h2>
+                <hr>                
+                <h6><a href="#!" style="color: #191970">General : Promotion Process<br /> (सामान्य : प्रोन्नति की प्रक्रिया)</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Format of service records of candidates eligible for promotion<br /> (प्रोन्नति के लिये अर्ह अभ्यर्थियों के सेवा अभिलेखों के प्रारूप )</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Evaluation of service records<br /> (सेवा अभिलेखों का मूल्यांकन)</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Assessment of suitability of personnel<br /> (कार्मिकों की उपयुक्तता का मूल्यांकन )</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Closed envelope process<br /> (बन्द लिफाफे की प्रकिया)</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Promotion process in Uttar Pradesh Civil Police<br /> (उत्तर प्रदेश नागरिक पुलिस में प्रोन्नति की प्रक्रिया)</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Promotion process in Uttar Pradesh Territorial Armed Constabulary<br /> (उत्तर प्रदेश प्रादेशिक आर्म्ड कॉन्स्टेबुलरी में प्रोन्नति की प्रक्रिया)</a></h6>
+                <hr>
+                <h6><a href="#!" style="color: #191970">Promotion process in Uttar Pradesh Fire Service<br /> (उत्तर प्रदेश अग्निशमन सेवा में प्रोन्नति की प्रक्रिया)</a></h6>
+                <hr>                                
+                <div class="clr"></div>                
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/DirectRecruitment"]').parent().addClass('active')
+    });
+</script>
