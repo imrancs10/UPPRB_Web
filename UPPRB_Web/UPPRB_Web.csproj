@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -249,6 +250,7 @@
     <Compile Include="Models\DischargeSummaryModel.cs" />
     <Compile Include="Models\Masters\FeedbackModel.cs" />
     <Compile Include="Models\Masters\EnquiryModel.cs" />
+    <Compile Include="Models\Masters\PromotionModel.cs" />
     <Compile Include="Models\Masters\PACEntryModel.cs" />
     <Compile Include="Models\PDModel.cs" />
     <Compile Include="Models\Masters\AppSettingModel.cs" />

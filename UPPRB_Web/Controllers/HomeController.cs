@@ -76,11 +76,15 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
-        public ActionResult Promotion()
+        public ActionResult Promotion(int? promotionId)
         {
             var detail = new GeneralDetails();
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
+
+            var allnotice = detail.GetPromotionDetail(promotionId).ToList();
+            ViewData["PromotionDetail"] = allnotice;
+
             return View();
         }
         public ActionResult GovernmentOrders()

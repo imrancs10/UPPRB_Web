@@ -280,7 +280,23 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new List<PACEntryModel>();
         }
 
-
+        public List<PromotionModel> GetPromotionDetail(int? promotionId = null)
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.PromotionDetails
+                         where ((promotionId == null && _db.PromotionDetails.Where(x => x.Parent_Id == null).FirstOrDefault().Id == not.Parent_Id)
+                            || (promotionId != null && not.Parent_Id == promotionId))
+                         select new PromotionModel
+                         {
+                             FileName = not.FileName,
+                             FIleURL = not.FIleURL,
+                             Id = not.Id,
+                             Parent_Id = not.Parent_Id,
+                             Subject = not.Subject,
+                             UpdatedDate = not.UpdatedDate.Value
+                         }).OrderByDescending(x => x.UpdatedDate).ToList();
+            return _list != null ? _list : new List<PromotionModel>();
+        }
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();
