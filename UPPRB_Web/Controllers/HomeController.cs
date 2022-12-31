@@ -69,11 +69,14 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
-        public ActionResult DirectRecruitment()
+        public ActionResult DirectRecruitment(int? drId)
         {
             var detail = new GeneralDetails();
-            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
-            ViewData["NoticeType"] = noticeTypeDetail;
+            var noticeTypeDetail = detail.GetRecursiveDirectRecruitmentDetail();
+            ViewData["DRType"] = noticeTypeDetail;
+
+            var allnotice = detail.GetDirectRecruitmentDetail(drId).ToList();
+            ViewData["DRDetail"] = allnotice;
             return View();
         }
         public ActionResult Promotion(int? promotionId)

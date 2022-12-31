@@ -1,138 +1,54 @@
 ﻿@using UPPRB_Web.Models.Masters;
 @{
-    ViewBag.Title = "DirectRecruitment";
+    ViewBag.Title = "Direct Recruitment";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+    var DirectRecruitmentType = ViewData["DRType"] as IEnumerable<DirectRecruitmentModel>;
+    var DirectRecruitmentDetail = ViewData["DRDetail"] as List<DirectRecruitmentModel>;
 }
 
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
-            @Html.Partial("_DR_SideMenu", noticeType)            
+            @Html.Partial("_DR_SideMenu", DirectRecruitmentType)
             <div class="col-lg-10 w_content pt-20 mt-0">
-                <h2 class="w-bgph">Direct Recruitment</h2>
+                <h3 class="w-bgph">
+                    @if (DirectRecruitmentDetail.Any())
+                    {
+                        <span>@DirectRecruitmentDetail.FirstOrDefault().ParentName</span>
+                    }
+
+                </h3>
                 <hr><br />
                 <div class="clr"></div>
-                <h4><a href="/Home/PrevailingRecruitmentProcesses" style="text-align: center; color: #191970">Prevailing Recruitment Processes<br /> (प्रचलित भर्ती प्रक्रियाएं)</a></h4><br />
-                <hr><br />
-                <h4><a href="/Home/InfoAboutDirectRecruitment" style="text-align: center; color: #191970">Important information about Direct Recruitment<br /> (सीधी भर्ती से संबंधित महत्वपूर्ण जानकारियाँ)</a></h4><br />
-                <hr />
+                @foreach (var DirectRecruitement in DirectRecruitmentDetail)
+                {
+                    <h6>
+                        @if (!string.IsNullOrEmpty(DirectRecruitement.FileName))
+                        {
+                            <a href='~/FilesUploaded/DirectRecruitement/@DirectRecruitement.FileName' title='Click to view more' target='_blank'>
+                                @DirectRecruitement.Subject
+                            </a>
+                        }
+                        else if (!string.IsNullOrEmpty(DirectRecruitement.FIleURL))
+                        {
+                            <a href='@DirectRecruitement.FIleURL' title='Click to view more' target='_blank'>
+                                @DirectRecruitement.Subject
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Home/DirectRecruitment?drId=@DirectRecruitement.Id" style="text-align: center; color: #191970">@DirectRecruitement.Subject</a>
+                        }
+                    </h6>
+                    <hr><br />
+                }
                 <div class="clr"></div>
                 <hr>
             </div>
-                <!--<table class="table table-bordered">
+            <div class="clearfix"></div>
+        </div>
 
-        <tbody>
-            <tr>
-
-                <td style="font-weight:bold">Sr. No</td>
-                <td style="font-weight:bold">
-                    Advertisement No.
-                </td>
-                <td style="font-weight:bold">Published Date</td>
-                <td style="font-weight:bold">Start Date</td>
-                <td style="font-weight:bold">Last Date</td>
-                <td style="font-weight:bold">User Instruction</td>
-                <td style="font-weight:bold">View Advt.</td>
-                <td style="font-weight:bold">Apply</td>
-            </tr>
-            <tr>
-
-                <td>1</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-            <tr>
-
-                <td>2</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-
-            <tr>
-
-                <td>3</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-            <tr>
-
-                <td>4</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-            <tr>
-
-                <td>5</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-            <tr>
-
-                <td>6</td>
-                <td>14-07-2022_Advt._16</td>
-                <td>14-07-2022</td>
-                <td>16-07-2022</td>
-                <td>05-08-2022</td>
-                <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
-                <td><i class="fa fa-search" aria-hidden="true"></i></td>
-                <td><i class="fa fa-desktop" aria-hidden="true"></i></td>
-
-            </tr>
-        </tbody>
-    </table>-->
-                <!--@foreach (var item in noticeType)
-        {
-            <h3 class="w-hd-u">@item.LookupName</h3>
-            <ul class="w_ul">
-                @foreach (var category in item.NoticeCategories)
-                {
-                    <li>
-                        <a href="/Home/Manual_Detail?noticeId=@item.LookupId&categoryId=@category.LookupId">
-                            @category.LookupName
-
-                        </a>
-                    </li>
-                }
-            </ul>
-            <br>
-        }
         <div class="clearfix"></div>
-
-    </div>-->
-
-                <div class="clearfix"></div>
-            </div>
     </div>
 </section>
 

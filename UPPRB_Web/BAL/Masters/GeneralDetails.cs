@@ -302,6 +302,45 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderByDescending(x => x.UpdatedDate).ToList();
             return _list != null ? _list : new List<PromotionModel>();
         }
+        public List<DirectRecruitmentModel> GetDirectRecruitmentDetail(int? drId = null)
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.DirectRecruitementDetails
+                         join parent in _db.DirectRecruitementDetails on not.Parent_Id equals parent.Id into parentDetail
+                         from parentDetail2 in parentDetail.DefaultIfEmpty()
+                         where ((drId == null && _db.DirectRecruitementDetails.Where(x => x.Parent_Id == null).FirstOrDefault().Id == not.Parent_Id)
+                            || (drId != null && not.Parent_Id == drId))
+                         select new DirectRecruitmentModel
+                         {
+                             FileName = not.FileName,
+                             FIleURL = not.FIleURL,
+                             Id = not.Id,
+                             Parent_Id = not.Parent_Id,
+                             ParentName = parentDetail2 != null ? parentDetail2.Subject : null,
+                             Subject = not.Subject,
+                             UpdatedDate = not.UpdatedDate.Value
+                         }).OrderByDescending(x => x.UpdatedDate).ToList();
+            return _list != null ? _list : new List<DirectRecruitmentModel>();
+        }
+        public IEnumerable<DirectRecruitmentModel> GetRecursiveDirectRecruitmentDetail()
+        {
+            _db = new upprbDbEntities();
+            List<DirectRecruitmentModel> hierarchy = new List<DirectRecruitmentModel>();
+            var categories = (from not in _db.PromotionDetails
+                              where (not.FileName == null || not.FileName == "") && (not.FIleURL == null || not.FIleURL == "")
+                              select new DirectRecruitmentModel
+                              {
+                                  FileName = not.FileName,
+                                  FIleURL = not.FIleURL,
+                                  Id = not.Id,
+                                  Parent_Id = not.Parent_Id,
+                                  Subject = not.Subject,
+                                  UpdatedDate = not.UpdatedDate.Value
+                              }).OrderByDescending(x => x.Parent_Id).ToList();
+
+            return categories;
+
+        }
         public IEnumerable<PromotionModel> GetRecursivePromotionDetail()
         {
             _db = new upprbDbEntities();
