@@ -11,7 +11,13 @@
         <div class="row">
             @Html.Partial("_Promotion_SideMenu", PromotionType)
             <div class="col-lg-10 w_content pt-20 mt-0">
-                <h3 class="w-bgph">Promotion</h3>
+                <h3 class="w-bgph">
+                    @if (PromotionDetail.Any())
+                    {
+                        <span>@PromotionDetail.FirstOrDefault().ParentName</span>
+                    }
+
+                </h3>
                 <hr><br />
                 <div class="clr"></div>
                 @foreach (var promotion in PromotionDetail)

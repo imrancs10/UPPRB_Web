@@ -9,7 +9,7 @@
     <h2 class="w-bgph ">UPPRPB</h2>
     <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
         <ul class="nav flex-column flex-nowrap overflow-hidden">
-            <li class="nav-item"><a class="nav-link text-truncate" href="/Home/Promotion">Promotion</a></li>
+            @*<li class="nav-item"><a class="nav-link text-truncate" href="/Home/Promotion">Promotion</a></li>*@
             <li>
                 @DisplayTree(Model.Where(e => e.Parent_Id == null).OrderBy(e => e.Id), index)
                 @helper DisplayTree(IEnumerable<PromotionModel> promotion, int index)
@@ -21,17 +21,21 @@
                                 @foreach (var element in promotion)
                                 {
                                     <li class="nav-item">
-                                        @*<a class="nav-link text-truncate" href="/Home/Promotion?promotionId=@element.Id">
-                                                @element.Subject
-                                            </a>*@
-                                        @{ index = index + 1;}
-                                        <a class="nav-link collapsed py-1" href="#submenu1sub@(index)" data-toggle="collapse" data-target="#submenu1sub@(index)">@element.Subject</a>
                                         @{
+                                            index = index + 1;
                                             var children = Model.Where(e => e.Parent_Id == element.Id).OrderBy(e => e.Id);
-                                            if (children.Count() > 0)
-                                            {
-                                                @DisplayTree(children, index)
-                                            }
+                                        }
+
+                                        @if (children.Count() > 0)
+                                        {
+                                            <a class="nav-link collapsed py-1" href="#submenu1sub@(index)" data-toggle="collapse" data-target="#submenu1sub@(index)">@element.Subject</a>
+                                            @DisplayTree(children, index)
+                                        }
+                                        else
+                                        {
+                                            <a class="nav-link text-truncate" href="/Home/Promotion?promotionId=@element.Id">
+                                                @element.Subject
+                                            </a>
                                         }
                                     </li>
                                 }
@@ -45,17 +49,20 @@
                                 @foreach (var element in promotion)
                                 {
                                     <li class="nav-item">
-                                        @*<a class="nav-link text-truncate" href="/Home/Promotion?promotionId=@element.Id">
-                                                @element.Subject
-                                            </a>*@
-                                        @{ index = index + 1;}
-                                        <a class="nav-link collapsed py-1" href="#submenu1sub@(index)" data-toggle="collapse" data-target="#submenu1sub@(index)">@element.Subject</a>
                                         @{
+                                            index = index + 1;
                                             var children = Model.Where(e => e.Parent_Id == element.Id).OrderBy(e => e.Id);
-                                            if (children.Count() > 0)
-                                            {
-                                                @DisplayTree(children, index)
-                                            }
+                                        }
+                                        @if (children.Count() > 0)
+                                        {
+                                            <a class="nav-link collapsed py-1" href="#submenu1sub@(index)" data-toggle="collapse" data-target="#submenu1sub@(index)">@element.Subject</a>
+                                            @DisplayTree(children, index)
+                                        }
+                                        else
+                                        {
+                                            <a class="nav-link text-truncate" href="/Home/Promotion?promotionId=@element.Id">
+                                                @element.Subject
+                                            </a>
                                         }
                                     </li>
                                 }

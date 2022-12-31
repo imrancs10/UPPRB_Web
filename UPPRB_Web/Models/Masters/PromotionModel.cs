@@ -11,6 +11,7 @@ namespace UPPRB_Web.Models.Masters
         public int Id { get; set; }
         public string Subject { get; set; }
         public Nullable<int> Parent_Id { get; set; }
+        public string ParentName { get; set; }
         public string FileName { get; set; }
         public string FIleURL { get; set; }
         public DateTime UpdatedDate { get; set; }

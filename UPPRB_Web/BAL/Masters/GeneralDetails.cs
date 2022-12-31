@@ -286,6 +286,8 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.PromotionDetails
+                         join parent in _db.PromotionDetails on not.Parent_Id equals parent.Id into parentDetail
+                         from parentDetail2 in parentDetail.DefaultIfEmpty()
                          where ((promotionId == null && _db.PromotionDetails.Where(x => x.Parent_Id == null).FirstOrDefault().Id == not.Parent_Id)
                             || (promotionId != null && not.Parent_Id == promotionId))
                          select new PromotionModel
@@ -294,6 +296,7 @@ namespace UPPRB_Web.BAL.Masters
                              FIleURL = not.FIleURL,
                              Id = not.Id,
                              Parent_Id = not.Parent_Id,
+                             ParentName = parentDetail2 != null ? parentDetail2.Subject : null,
                              Subject = not.Subject,
                              UpdatedDate = not.UpdatedDate.Value
                          }).OrderByDescending(x => x.UpdatedDate).ToList();
@@ -304,6 +307,7 @@ namespace UPPRB_Web.BAL.Masters
             _db = new upprbDbEntities();
             List<PromotionModel> hierarchy = new List<PromotionModel>();
             var categories = (from not in _db.PromotionDetails
+                              where (not.FileName == null || not.FileName == "") && (not.FIleURL == null || not.FIleURL == "")
                               select new PromotionModel
                               {
                                   FileName = not.FileName,
