@@ -112,6 +112,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#customFile').on('change', function () {
+            files = $(this)[0].files;
+            name = '';
+            for (var i = 0; i < files.length; i++) {
+                name += '\"' + files[i].name + '\"' + (i != files.length - 1 ? ", " : "");
+            } $(".custom-file-label").html(name);
+        });
+
+
         const urlParams = new URLSearchParams(location.search);
         const noticeId = urlParams.get('noticeId');
         if (noticeId != null && noticeId != undefined) {
@@ -141,8 +150,19 @@
                     //$('#btnAddNotice')[0].click();
                     $('#myModal').modal('show');
                     $('#highlightNew').prop('checked', data.IsNew)
-                    if (data.filename != null && data.filename != "" && data.filename != undefined && data.filename != "")
+
+                    if (data.filename != null && data.filename != "" && data.filename != undefined && data.filename != "") {
                         $('[id*=customRadioInline2]').prop("checked", true);
+                        //add upload document link
+                        $('#customFile').parent().find('a').remove();
+                        $('#customFile').addClass('hidden');
+                        var fileUrl = '/FilesUploaded/' + data.EntryTypeName + '/' + encodeURIComponent(data.filename);
+                        var truncatedFileName = (data.filename.length > 50) ? data.filename.substring(0, 50) + '...' : data.filename
+                        var html = "<a href='" + fileUrl + "' target='_blank'>'" + truncatedFileName + "'</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
+                        $(html).insertAfter('#customFile');
+                        $('#btnSave').val('Update');
+                        $('#customFile').removeAttr('required');
+                    }
                     else
                         $('[id*=customRadioInline1]').prop("checked", true);
                     $('[name*=customRadioInline1]').change();
@@ -156,6 +176,13 @@
             });
         }
     })
+    function RemoveFile() {
+        $('#customFile').removeClass('hidden');
+        $('#customFile').parent().find('a').remove();
+        $('#customFile').attr('required');
+        $('[name*=postedFile]').removeAttr('disabled');
+        return false;
+    }
 </script>
 <style type="text/css">
     @@font-face {

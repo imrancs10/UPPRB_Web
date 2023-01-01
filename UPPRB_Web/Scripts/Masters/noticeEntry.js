@@ -64,6 +64,13 @@ $(document).ready(function () {
             $('[name*=fileURL]').prop("disabled", true);
             $('[name*=postedFile]').removeAttr('disabled');
         }
+
+        const urlParams = new URLSearchParams(location.search);
+        const noticeId = urlParams.get('noticeId');
+        if (noticeId != null && noticeId != undefined) {
+            $('[name*=postedFile]').prop("disabled", true);
+        }
+
     });
     $('#NoticeType').on('change', function (e) {
         var valueSelected = this.value;
