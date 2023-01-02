@@ -326,7 +326,7 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             List<DirectRecruitmentModel> hierarchy = new List<DirectRecruitmentModel>();
-            var categories = (from not in _db.PromotionDetails
+            var categories = (from not in _db.DirectRecruitementDetails
                               where (not.FileName == null || not.FileName == "") && (not.FIleURL == null || not.FIleURL == "")
                               select new DirectRecruitmentModel
                               {
