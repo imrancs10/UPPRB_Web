@@ -121,9 +121,11 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult PhotoGallery(int? Id = null)
         {
+            TimeZoneInfo India_Standard_Time = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            DateTime dateTime_Indian = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, India_Standard_Time);
+
             var detail = new GeneralDetails();
-            var currentDate = DateTime.Now;
-            var allnotice = detail.GetNoticeDetail(Id).Where(x => x.EntryTypeName == "PhotoGalary" && currentDate >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail(Id).Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
