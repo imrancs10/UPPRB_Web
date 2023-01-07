@@ -5699,7 +5699,8 @@ p {
 	20. Start Footer CSS
 ===============================*/
 .footer {
-    background: #222;
+    /*background: #222;*/
+    background: #173064;
 }
 
     .footer .about {
@@ -5710,7 +5711,7 @@ p {
         font-size: 17px;
         font-weight: 600;
         color: #fff;
-        color: #d61111;
+        /*color: #d61111;*/
         text-transform: capitalize;
         margin-bottom: 30px;
     }
@@ -6386,7 +6387,7 @@ p {
     position: relative;
     margin: 0 auto;
     display: block;
-    max-width: 1220px;
+    max-width: 1030px;
 }
 
 .top-wrapper {

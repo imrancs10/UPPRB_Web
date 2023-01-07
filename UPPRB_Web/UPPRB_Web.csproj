@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -400,6 +399,7 @@
     <Content Include="Content\Images\5.jpg" />
     <Content Include="Content\Images\500_icon.png" />
     <Content Include="Content\Images\a60a1.jpg" />
+    <Content Include="Content\Images\ajadilogo.png" />
     <Content Include="Content\Images\arrow-up.png" />
     <Content Include="Content\Images\avatar1_small.jpg" />
     <Content Include="Content\Images\banner1.jpg" />
@@ -452,6 +452,7 @@
     <Content Include="Content\Images\flags\fr.png" />
     <Content Include="Content\Images\flags\ru.png" />
     <Content Include="Content\Images\flags\us.png" />
+    <Content Include="Content\Images\G20_India_Logo.png" />
     <Content Include="Content\Images\gallery\1015073-up-police.jpg" />
     <Content Include="Content\Images\gallery\16.jpg" />
     <Content Include="Content\Images\gallery\17.jpg" />
@@ -484,6 +485,7 @@
     <Content Include="Content\Images\right-arrow.png" />
     <Content Include="Content\Images\search-icon-white.png" />
     <Content Include="Content\Images\search-icon.png" />
+    <Content Include="Content\Images\yogisir.png" />
     <Content Include="Content\js\active.js" />
     <Content Include="Content\js\advanced-form-components.js" />
     <Content Include="Content\js\all-chartjs.js" />
