@@ -6069,7 +6069,9 @@ p {
 
 @media (max-width:731px) {
     .logo img {
-        max-width: 150px;
+        /*max-width: 150px;*/
+        width: 300px;
+        height: 40px;
     }
 
     .w-banhight {
