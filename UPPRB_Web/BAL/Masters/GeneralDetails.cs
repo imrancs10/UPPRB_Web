@@ -9,6 +9,8 @@ using UPPRB_Web.Models.Masters;
 using WebActivatorEx;
 using log4net.Repository.Hierarchy;
 using System.Reflection.Emit;
+using System.Security.Policy;
+using System.Web.UI;
 
 namespace UPPRB_Web.BAL.Masters
 {
@@ -250,11 +252,16 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from pac in _db.PACEntries
-                         join state in _db.StateMasters on pac.State_Id equals state.StateId
-                         join zone in _db.ZoneMasters on pac.Zone_Id equals zone.ZoneId
-                         join range in _db.RangeMasters on pac.Range_Id equals range.RangeId
-                         join district in _db.DistrictMasters on pac.District_Id equals district.DistrictId
-                         join ps in _db.PSMasters on pac.PS_Id equals ps.PSId
+                         join state in _db.StateMasters on pac.State_Id equals state.StateId into state1
+                         from state2 in state1.DefaultIfEmpty()
+                         join zone in _db.ZoneMasters on pac.Zone_Id equals zone.ZoneId into zone1
+                         from zone2 in zone1.DefaultIfEmpty()
+                         join range in _db.RangeMasters on pac.Range_Id equals range.RangeId into range1
+                         from range2 in range1.DefaultIfEmpty()
+                         join district in _db.DistrictMasters on pac.District_Id equals district.DistrictId into district1
+                         from district2 in district1.DefaultIfEmpty()
+                         join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
+                         from ps2 in ps1.DefaultIfEmpty()
                          select new PACEntryModel
                          {
                              FileUploadName = pac.FileUploadName != null ? pac.FileUploadName : "",
@@ -266,18 +273,18 @@ namespace UPPRB_Web.BAL.Masters
                              PS_Id = pac.PS_Id,
                              Address = pac.Address,
                              District_Id = pac.District_Id,
-                             District_Name = district.DistrictName,
+                             District_Name = district2 != null ? district2.DistrictName : "",
                              ExamineCenterName = pac.ExamineCenterName,
                              FIRDate = pac.FIRDate,
                              FIRDetails = pac.FIRDetails,
                              FIRNo = pac.FIRNo,
-                             PS_Name = ps.PSName,
+                             PS_Name = ps2 != null ? ps2.PSName : "",
                              Range_Id = pac.Range_Id,
-                             Range_Name = range.RangeName,
+                             Range_Name = range2 != null ? range2.RangeName : "",
                              State_Id = pac.State_Id,
-                             State_Name = state.StateName,
+                             State_Name = state2 != null ? state2.StateName : "",
                              Zone_Id = pac.Zone_Id,
-                             Zone_Name = zone.ZoneName
+                             Zone_Name = zone2 != null ? zone2.ZoneName : ""
                          }).OrderByDescending(x => x.PublishDate).ToList();
             return _list != null ? _list : new List<PACEntryModel>();
         }
