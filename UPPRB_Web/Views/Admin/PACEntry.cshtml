@@ -69,11 +69,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">FIR Date</label>
-                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="FIRDate">
+                                <input type="date" class="form-control" id="FIRDate" placeholder="Notice Date" name="FIRDate">
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputPassword1">PAC Entry Date</label>
-                                <input type="date" class="form-control" id="NoticeDate" placeholder="Notice Date" name="PublishDate">
+                                <input type="date" class="form-control" id="PACDate" placeholder="Notice Date" name="PublishDate"
+                                       onload="getTodayDate()">
                             </div>
                         </div><br />
                         <div class="row">
@@ -173,4 +174,8 @@
             });
         }
     })
+    function getTodayDate() {
+        var today = new Date();
+        document.getElementById("PACDate").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+    }
 </script>

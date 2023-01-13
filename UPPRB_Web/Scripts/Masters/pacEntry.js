@@ -6,6 +6,7 @@ $(document).ready(function () {
     //FillNoticeCategory();
     //FillNoticeSubCategory();
     FillState();
+    FillDistrict(0);
     $('[id*=customRadioInline2]').prop("checked", true);
     /*$('[name*=customRadioInline1]').change();*/
     $('[name*=fileURL]').prop("disabled", true);
@@ -107,6 +108,8 @@ $(document).ready(function () {
 
     $('#Range').on('change', function (e) {
         var valueSelected = this.value;
+        if (valueSelected == "")
+            valueSelected = 0;
         FillDistrict(valueSelected);
     });
 

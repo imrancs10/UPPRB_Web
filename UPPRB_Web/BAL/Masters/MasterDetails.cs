@@ -89,7 +89,7 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             return (from lookup in _db.DistrictMasters
-                    where lookup.RangeId == rangeId
+                    where rangeId == 0 || lookup.RangeId == rangeId
                     select new
                     {
                         lookup.DistrictId,
