@@ -102,9 +102,10 @@
 
 <div class="headline">
     <div class="container-fluid">
-        <div class="row">
-            <!--<div class="col-md-2 col-sm-12 col-lg-12 col-xs-12"><a><u>Latest News</u></a></div>-->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <div class="row">            
+            @*<div class="col-md-2 col-sm-12 col-lg-12 col-xs-12">
+                <a href="~/FilesUploaded/PhotoGalary/Ethletic_Event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a></a></div>*@
+            <div class="col-md-10 col-sm-12 col-lg-12 col-xs-12">
                 <div class="modern-ticker mt-round">
                     <div class="mt-body">
                         <div class="mt-news">
@@ -112,6 +113,7 @@
                             {
                                 <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
                                     <p>
+                                        @*<a href="~/filesuploaded/photogalary/ethletic_event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>watch video || </span></a>*@
                                         @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
                                         {
                                             <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank" style="color: #03749d">
