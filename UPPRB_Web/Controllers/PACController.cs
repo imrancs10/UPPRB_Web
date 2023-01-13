@@ -107,7 +107,7 @@ namespace UPPRB_Web.Controllers
             var detail = new GeneralDetails();
             float[] headers = { 5, 10, 10, 10, 10, 15, 15, 15, 10, 10, 15, 50 }; //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
-            tableLayout.WidthPercentage = 100; //Set the PDF File witdh percentage  
+            tableLayout.WidthPercentage = 95; //Set the PDF File witdh percentage  
             tableLayout.HeaderRows = 1;
             //Add Title to the PDF file at the top  
 
@@ -119,7 +119,7 @@ namespace UPPRB_Web.Controllers
                 Border = 0,
                 PaddingBottom = 10,
                 PaddingLeft = 5,
-                HorizontalAlignment = Element.ALIGN_LEFT
+                HorizontalAlignment = Element.ALIGN_CENTER
             });
 
             ////Add header  
@@ -150,7 +150,7 @@ namespace UPPRB_Web.Controllers
                 AddCellToBody(tableLayout, emp.AccusedName);
                 AddCellToBody(tableLayout, emp.ExamineCenterName);
                 AddCellToBody(tableLayout, emp.FIRNo);
-                AddCellToBody(tableLayout, emp.FIRDate.Value.ToString("dd/MMM/yyyy"));
+                AddCellToBody(tableLayout, emp.FIRDate != null ? emp.FIRDate.Value.ToString("dd/MMM/yyyy") : "");
                 AddCellToBody(tableLayout, emp.Address);
                 AddCellToBody(tableLayout, emp.FIRDetails);
                 index++;
