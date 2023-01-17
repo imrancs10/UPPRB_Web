@@ -67,6 +67,18 @@ namespace UPPRB_Web.BAL.Masters
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public bool IsDuplicateFIR(PACEntry pac)
+        {
+            _db = new upprbDbEntities();
+            var _list = (from en in _db.PACEntries
+                         where en.FIRNo == pac.FIRNo && en.District_Id == pac.District_Id && en.PS_Id == pac.PS_Id
+                         select new
+                         {
+                             id = en.Id
+                         }).ToList();
+            return _list.Any();
+        }
         public Enums.CrudStatus SavePromotionEntry(PromotionDetail notice)
         {
             _db = new upprbDbEntities();

@@ -189,21 +189,31 @@ namespace UPPRB_Web.Controllers
 
             };
             AdminDetails detail = new AdminDetails();
-            var saveStatus = detail.SavePACEntry(notice);
-            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            bool isDuplicate = detail.IsDuplicateFIR(notice);
+            if(isDuplicate== false)
             {
-                if (postedFile != null)
+                var saveStatus = detail.SavePACEntry(notice);
+                if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
                 {
-
-                    string path = Server.MapPath("~/FilesUploaded/PAC/");
-                    if (!Directory.Exists(path))
+                    if (postedFile != null)
                     {
-                        Directory.CreateDirectory(path);
+
+                        string path = Server.MapPath("~/FilesUploaded/PAC/");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+                        postedFile.SaveAs(path + Path.GetFileName(filename));
                     }
-                    postedFile.SaveAs(path + Path.GetFileName(filename));
                 }
+                SetAlertMessage("PAC Enrty Saved", "Success");
             }
-            SetAlertMessage("PAC Enrty Saved", "Success");
+            else
+            {
+                SetAlertMessage("PAC Enrty is duplicate", "Failed");
+
+            }
+
             return View();
         }
 
