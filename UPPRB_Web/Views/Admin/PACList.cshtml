@@ -1,7 +1,7 @@
-﻿@using UPPRB_Web.Models.Masters;
+﻿
 @{
-    ViewBag.Title = "PAC Notice";
-    Layout = "~/Views/Shared/_PACLayout.cshtml";
+    ViewBag.Title = "PACList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <link href="~/Content/css/design1.css" rel="stylesheet" />
@@ -14,11 +14,10 @@
                 <header class="card-header" style="text-align: center; color: #fd7e14; font-weight:400">
                     <strong>Preventive Action Cell (PAC) Details</strong>
                 </header>
-                <div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
+                @*<div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
                     <a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
-                    @*<input type="button" id="btnPrint" value="Print" class="btn btn-success" style="float:left;width:100px" />*@
                     &nbsp;&nbsp;
-                </div>
+                </div>*@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="table-responsive" style="overflow:auto!important;">
@@ -53,8 +52,12 @@
             },
             "columns": [
                 { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
-
-                /*  { "data": "State_Name", "name": "State_Name", "autoWidth": true, "title": "State" },*/
+                //{
+                //    "title": "Action",
+                //    "render": function (data, type, full, meta) {
+                //        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>';
+                //    }
+                //},
                 { "data": "Zone_Name", "name": "Zone_Name", "autoWidth": true, "title": "Zone" },
                 { "data": "Range_Name", "name": "Range_Name", "autoWidth": true, "title": "Range" },
                 { "data": "District_Name", "name": "District_Name", "autoWidth": true, "title": "District" },
@@ -83,17 +86,6 @@
                 //        }
                 //    }
                 //},
-                {
-                    "title": "Download File",
-                    "render": function (data, type, full, meta) {
-                        if (full.FileUploadName) {
-                            var truncatedFileName = (full.FileUploadName.length > 20) ? full.FileUploadName.substring(0, 20) + '...' : full.FileUploadName
-                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/PAC/' + encodeURIComponent(full.FileUploadName) + '><i class="fa fa-download" style="color:black;cursor: pointer;"></i></a>';
-                        } else {
-                            return '';
-                        }
-                    }
-                }
             ],
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 var pageNumber = 0;
@@ -171,14 +163,16 @@
     #tablePACDoc td, #tablePACDoc th {
         white-space: nowrap;
     }
-  /*  #tablePACDoc thead th:nth-child(11) {
+
+   /* #tablePACDoc thead th:nth-child(11) {
         white-space: normal !important;
         word-break: break-all;
         width: 400px
     }
+
     #tablePACDoc tbody td:nth-child(11) {
-        white-space: normal!important;
-        word-break:break-all;
-        width:400px
+        white-space: normal !important;
+        word-break: break-all;
+        width: 400px
     }*/
 </style>

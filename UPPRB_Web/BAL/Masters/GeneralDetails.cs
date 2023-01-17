@@ -248,7 +248,7 @@ namespace UPPRB_Web.BAL.Masters
             int _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
-        public List<PACEntryModel> GetAllPACDetail()
+        public List<PACEntryModel> GetAllPACDetail(int? Id = null)
         {
             _db = new upprbDbEntities();
             var _list = (from pac in _db.PACEntries
@@ -262,6 +262,7 @@ namespace UPPRB_Web.BAL.Masters
                          from district2 in district1.DefaultIfEmpty()
                          join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
                          from ps2 in ps1.DefaultIfEmpty()
+                         where (Id == null || (Id != null && pac.Id == Id))
                          select new PACEntryModel
                          {
                              FileUploadName = pac.FileUploadName != null ? pac.FileUploadName : "",

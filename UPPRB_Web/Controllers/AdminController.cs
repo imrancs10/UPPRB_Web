@@ -217,6 +217,17 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
+        public ActionResult PACList()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult GetPACForEdit(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.GetAllPACDetail(Id).FirstOrDefault();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult PromotionEntry()
         {
             return View();

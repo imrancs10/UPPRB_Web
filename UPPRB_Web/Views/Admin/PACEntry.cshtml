@@ -131,14 +131,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
         const urlParams = new URLSearchParams(location.search);
-        const noticeId = urlParams.get('noticeId');
+        const noticeId = urlParams.get('Id');
         if (noticeId != null && noticeId != undefined) {
             $.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 type: 'POST',
-                data: '{lookupTypeId: 0,lookupType: "UploadType" }',
-                url: '/Admin/GetNoticeForEdit?noticeId=' + noticeId,
+                data: '{}',
+                url: '/Admin/GetPACForEdit?Id=' + noticeId,
                 success: function (data) {
                     $('#hiddenId').val(data.Id);
                     $('[name*=EntryTypeName]').val(data.EntryTypeName);
