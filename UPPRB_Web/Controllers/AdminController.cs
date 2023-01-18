@@ -164,13 +164,14 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult PACEntry(HttpPostedFileBase postedFile, string State, string Zone,
+        public ActionResult PACEntry(string hiddenId,HttpPostedFileBase postedFile, string State, string Zone,
        string Range, string District, string PoliceStation, string ExamineCenterName, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL)
         {
             State = "1";
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
             PACEntry notice = new PACEntry()
             {
+                Id = !string.IsNullOrEmpty(hiddenId) ? Convert.ToInt32(hiddenId) : 0,
                 CreatedDate = DateTime.Today,
                 FileUploadName = filename,
                 FileURL = fileURL,

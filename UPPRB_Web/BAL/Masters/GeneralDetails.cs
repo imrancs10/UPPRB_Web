@@ -286,7 +286,7 @@ namespace UPPRB_Web.BAL.Masters
                              State_Name = state2 != null ? state2.StateName : "",
                              Zone_Id = pac.Zone_Id,
                              Zone_Name = zone2 != null ? zone2.ZoneName : ""
-                         }).OrderByDescending(x => x.PublishDate).ToList();
+                         }).OrderByDescending(x => x.CreatedDate).ToList();
             return _list != null ? _list : new List<PACEntryModel>();
         }
 

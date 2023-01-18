@@ -143,31 +143,28 @@ function FillDistrict(rangeId, selectedDisctrictId = null) {
     dropdown.empty();
     dropdown.append('<option value="">Select</option>');
     dropdown.prop('selectedIndex', 0);
-    if (rangeId != null) {
-        $.ajax({
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            type: 'POST',
-            data: '{rangeId: "' + rangeId + '" }',
-            url: '/Master/GetDistrictDetail',
-            success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.DistrictId).text(entry.DistrictName));
-                });
-                if (selectedDisctrictId != null) {
-                    dropdown.val(selectedDisctrictId);
-                }
-            },
-            failure: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log(response.responseText);
+    rangeId = rangeId == null ? 0 : rangeId;
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        data: '{rangeId: "' + rangeId + '" }',
+        url: '/Master/GetDistrictDetail',
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.DistrictId).text(entry.DistrictName));
+            });
+            if (selectedDisctrictId != null) {
+                dropdown.val(selectedDisctrictId);
             }
-        });
-    }
-    if (selectedDisctrictId != null)
-        dropdown.val(selectedDisctrictId);
+        },
+        failure: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response.responseText);
+        }
+    });
 }
 
 function FillPoliceStation(districtId, selectedPoliceStationId = null) {

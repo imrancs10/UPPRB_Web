@@ -48,21 +48,26 @@ namespace UPPRB_Web.BAL.Masters
                 _db.Entry(notice).State = EntityState.Added;
             else
             {
-                //var _deptRow = _db.Notices.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
-                //if (_deptRow != null)
-                //{
-                //    _deptRow.fileURL = notice.fileURL;
-                //    _deptRow.Subject = notice.Subject;
-                //    _deptRow.NoticeDate = notice.NoticeDate;
-                //    _deptRow.NoticeCategoryId = notice.NoticeCategoryId;
-                //    _deptRow.EntryTypeId = notice.EntryTypeId;
-                //    _deptRow.filename = !string.IsNullOrEmpty(notice.filename) ? notice.filename : _deptRow.filename;
-                //    _deptRow.IsNew = notice.IsNew;
-                //    _deptRow.NoticeType = notice.NoticeType;
-                //    _db.Entry(_deptRow).State = EntityState.Modified;
-                //    _effectRow = _db.SaveChanges();
-                //    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
-                //}
+                var _deptRow = _db.PACEntries.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Address = notice.Address;
+                    _deptRow.FIRDate = notice.FIRDate;
+                    _deptRow.PublishDate = notice.PublishDate;
+                    _deptRow.AccusedName = notice.AccusedName;
+                    _deptRow.District_Id = notice.District_Id;
+                    _deptRow.FileUploadName = !string.IsNullOrEmpty(notice.FileUploadName) ? notice.FileUploadName : _deptRow.FileUploadName;
+                    _deptRow.ExamineCenterName = notice.ExamineCenterName;
+                    _deptRow.FIRDetails = notice.FIRDetails;
+                    _deptRow.FIRNo = notice.FIRNo;
+                    _deptRow.PS_Id = notice.PS_Id;
+                    _deptRow.Range_Id = notice.Range_Id;
+                    _deptRow.State_Id = notice.State_Id;
+                    _deptRow.Zone_Id = notice.Zone_Id;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
             }
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
@@ -72,7 +77,7 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from en in _db.PACEntries
-                         where en.FIRNo == pac.FIRNo && en.District_Id == pac.District_Id && en.PS_Id == pac.PS_Id
+                         where en.FIRNo == pac.FIRNo && en.District_Id == pac.District_Id && en.PS_Id == pac.PS_Id && ((pac.Id != 0 && en.Id != pac.Id) || pac.Id == 0)
                          select new
                          {
                              id = en.Id
