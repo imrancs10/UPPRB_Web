@@ -45,11 +45,43 @@ $(document).ready(function () {
         FillZone(valueSelected);
     });
 
-    function FillZone(StateId, selectedZoneId = null) {
-        let dropdown = $('#Zone');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
+    $('#Zone').on('change', function (e) {
+        var valueSelected = this.value;
+        FillRange(valueSelected);
+    });
+
+    $('#Range').on('change', function (e) {
+        var valueSelected = this.value;
+        if (valueSelected == "")
+            valueSelected = 0;
+        FillDistrict(valueSelected);
+    });
+
+    $('#District').on('change', function (e) {
+        var valueSelected = this.value;
+        FillPoliceStation(valueSelected);
+    });
+
+    $('[name*=customRadioInline1]').on('change', function (e) {
+        var valueSelected = this.value;
+        if (valueSelected == 1) {
+            $('[name*=fileURL]').removeAttr('disabled');
+            $('[name*=postedFile]').prop("disabled", true);
+            $('[name*=postedFile]').val(null);
+        }
+        else {
+            $('[name*=fileURL]').prop("disabled", true);
+            $('[name*=postedFile]').removeAttr('disabled');
+        }
+    });
+});
+
+function FillZone(StateId, selectedZoneId = null) {
+    let dropdown = $('#Zone');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    if (StateId != null) {
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -73,16 +105,14 @@ $(document).ready(function () {
         });
     }
 
-    $('#Zone').on('change', function (e) {
-        var valueSelected = this.value;
-        FillRange(valueSelected);
-    });
+}
 
-    function FillRange(ZoneId, selectedRangeId = null) {
-        let dropdown = $('#Range');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
+function FillRange(ZoneId, selectedRangeId = null) {
+    let dropdown = $('#Range');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    if (ZoneId != null) {
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -106,18 +136,14 @@ $(document).ready(function () {
         });
     }
 
-    $('#Range').on('change', function (e) {
-        var valueSelected = this.value;
-        if (valueSelected == "")
-            valueSelected = 0;
-        FillDistrict(valueSelected);
-    });
+}
 
-    function FillDistrict(rangeId, selectedDisctrictId = null) {
-        let dropdown = $('#District');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
+function FillDistrict(rangeId, selectedDisctrictId = null) {
+    let dropdown = $('#District');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    if (rangeId != null) {
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -140,16 +166,16 @@ $(document).ready(function () {
             }
         });
     }
-    $('#District').on('change', function (e) {
-        var valueSelected = this.value;
-        FillPoliceStation(valueSelected);
-    });
+    if (selectedDisctrictId != null)
+        dropdown.val(selectedDisctrictId);
+}
 
-    function FillPoliceStation(districtId, selectedPoliceStationId = null) {
-        let dropdown = $('#PoliceStation');
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        dropdown.prop('selectedIndex', 0);
+function FillPoliceStation(districtId, selectedPoliceStationId = null) {
+    let dropdown = $('#PoliceStation');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    if (districtId != null) {
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -172,20 +198,7 @@ $(document).ready(function () {
             }
         });
     }
-
-    $('[name*=customRadioInline1]').on('change', function (e) {
-        var valueSelected = this.value;
-        if (valueSelected == 1) {
-            $('[name*=fileURL]').removeAttr('disabled');
-            $('[name*=postedFile]').prop("disabled", true);
-            $('[name*=postedFile]').val(null);
-        }
-        else {
-            $('[name*=fileURL]').prop("disabled", true);
-            $('[name*=postedFile]').removeAttr('disabled');
-        }
-    });
-});
+}
 
 function formatDate(noticeDate) {
     var milli = noticeDate.replace(/\/Date\((-?\d+)\)\//, '$1');
@@ -198,18 +211,21 @@ function formatDate(noticeDate) {
     return today;
 }
 function formatDateyyyyMMdd(noticeDate) {
-    var milli = 0;
-    if (noticeDate.source) {
-        milli = noticeDate.source.replace("Date(", "").replace(")", "");
-    }
-    else {
-        milli = noticeDate.replace("Date(", "").replace(")", "").replaceAll("/", "");
-    }
-    var now = new Date(parseInt(milli));
+    if (noticeDate != null) {
+        var milli = 0;
+        if (noticeDate.source) {
+            milli = noticeDate.source.replace("Date(", "").replace(")", "");
+        }
+        else {
+            milli = noticeDate.replace("Date(", "").replace(")", "").replaceAll("/", "");
+        }
+        var now = new Date(parseInt(milli));
 
-    var day = ("0" + now.getDate()).slice(-2);
-    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-    var today = now.getFullYear() + "-" + (month) + "-" + (day);
-    return today;
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        return today;
+    }
+    return '';
 }

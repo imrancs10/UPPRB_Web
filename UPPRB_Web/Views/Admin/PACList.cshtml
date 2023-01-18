@@ -52,12 +52,12 @@
             },
             "columns": [
                 { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
-                //{
-                //    "title": "Action",
-                //    "render": function (data, type, full, meta) {
-                //        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>';
-                //    }
-                //},
+                {
+                    "title": "Action",
+                    "render": function (data, type, full, meta) {
+                        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>';
+                    }
+                },
                 { "data": "Zone_Name", "name": "Zone_Name", "autoWidth": true, "title": "Zone" },
                 { "data": "Range_Name", "name": "Range_Name", "autoWidth": true, "title": "Range" },
                 { "data": "District_Name", "name": "District_Name", "autoWidth": true, "title": "District" },
