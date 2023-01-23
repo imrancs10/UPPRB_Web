@@ -399,6 +399,22 @@ namespace UPPRB_Web.BAL.Masters
                     })
                     .ToList();
         }
+
+        public Enums.CrudStatus DeletePACEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.PACEntries.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.PACEntries.Remove(_deptRow);
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
+
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();

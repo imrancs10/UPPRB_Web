@@ -15,9 +15,9 @@
                     <strong>Preventive Action Cell (PAC) Details</strong>
                 </header>
                 @*<div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
-                    <a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
-                    &nbsp;&nbsp;
-                </div>*@
+                        <a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
+                        &nbsp;&nbsp;
+                    </div>*@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="table-responsive" style="overflow:auto!important;">
@@ -55,7 +55,7 @@
                 {
                     "title": "Action",
                     "render": function (data, type, full, meta) {
-                        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>';
+                        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>&nbsp;&nbsp;<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeletePAC(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>';
                     }
                 },
                 { "data": "Zone_Name", "name": "Zone_Name", "autoWidth": true, "title": "Zone" },
@@ -157,6 +157,28 @@
         else
             return "";
     }
+    function DeletePAC(Id) {
+        if (confirm("Are you sure want to Delete") == true) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{Id: "' + Id + '" }',
+                url: '/Admin/DeletePACEntry',
+                success: function (data) {
+                    utility.alert.setAlert("Delete", "Successfully Deleted");
+                    location.reload();
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        } 
+        
+    }
 </script>
 
 <style type="text/css">
@@ -164,7 +186,7 @@
         white-space: nowrap;
     }
 
-   /* #tablePACDoc thead th:nth-child(11) {
+    /* #tablePACDoc thead th:nth-child(11) {
         white-space: normal !important;
         word-break: break-all;
         width: 400px

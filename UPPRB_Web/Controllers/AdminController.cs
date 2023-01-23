@@ -229,6 +229,15 @@ namespace UPPRB_Web.Controllers
             var result = detail.GetAllPACDetail(Id).FirstOrDefault();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult DeletePACEntry(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.DeletePACEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult PromotionEntry()
         {
             return View();
