@@ -77,7 +77,10 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from en in _db.PACEntries
-                         where en.FIRNo == pac.FIRNo && en.District_Id == pac.District_Id && en.PS_Id == pac.PS_Id && ((pac.Id != 0 && en.Id != pac.Id) || pac.Id == 0)
+                         where en.FIRNo == pac.FIRNo && en.District_Id == pac.District_Id
+                         && en.PS_Id == pac.PS_Id && en.ExamineCenterName == pac.ExamineCenterName
+                         && en.AccusedName == pac.AccusedName
+                         && ((pac.Id != 0 && en.Id != pac.Id) || pac.Id == 0)
                          select new
                          {
                              id = en.Id
