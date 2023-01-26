@@ -262,7 +262,7 @@ namespace UPPRB_Web.BAL.Masters
                          from district2 in district1.DefaultIfEmpty()
                          join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
                          from ps2 in ps1.DefaultIfEmpty()
-                         where (Id == null || (Id != null && pac.Id == Id))
+                         where (Id == null || (Id != null && pac.Id == Id)) && pac.IsDeleted == false
                          select new PACEntryModel
                          {
                              FileUploadName = pac.FileUploadName != null ? pac.FileUploadName : "",
@@ -407,7 +407,9 @@ namespace UPPRB_Web.BAL.Masters
             var _deptRow = _db.PACEntries.Where(x => x.Id.Equals(Id)).FirstOrDefault();
             if (_deptRow != null)
             {
-                _db.PACEntries.Remove(_deptRow);
+                _deptRow.IsDeleted = true;
+                //db.PACEntries.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Modified;
                 _effectRow = _db.SaveChanges();
                 return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
             }

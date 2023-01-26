@@ -187,7 +187,6 @@ namespace UPPRB_Web.Controllers
                 FIRDetails = FIRDetails,
                 FIRNo = FIRNo,
                 PS_Id = !string.IsNullOrEmpty(PoliceStation) ? (int?)Convert.ToInt32(PoliceStation) : null,
-
             };
             AdminDetails detail = new AdminDetails();
             bool isDuplicate = detail.IsDuplicateFIR(notice);

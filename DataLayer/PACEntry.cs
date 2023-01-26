@@ -30,5 +30,7 @@ namespace DataLayer
         public string FileURL { get; set; }
         public string FileUploadName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string PACNumber { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     }
 }

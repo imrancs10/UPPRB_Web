@@ -6,6 +6,7 @@ using DataLayer;
 using System.Data.Entity;
 using UPPRB_Web.Global;
 using UPPRB_Web.Models.Masters;
+using iTextSharp.text.pdf;
 
 namespace UPPRB_Web.BAL.Masters
 {
@@ -45,7 +46,23 @@ namespace UPPRB_Web.BAL.Masters
             _db = new upprbDbEntities();
             int _effectRow = 0;
             if (notice.Id == 0)
+            {
+                var _deptRow = _db.PACEntries.OrderByDescending(x => x.Id).FirstOrDefault();
+                var lastPACNumber = _deptRow.PACNumber;
+                if (lastPACNumber.Substring(3, 4) == DateTime.UtcNow.Year.ToString())
+                {
+                    var lastNumber = Convert.ToInt32(lastPACNumber.Substring(7, 4));
+                    int addPad = 4 - (lastNumber + 1).ToString().Length;
+                    var padNumber = (lastNumber + 1).ToString().PadLeft((lastNumber + 1).ToString().Length + addPad, '0');
+                    notice.PACNumber = "PAC" + DateTime.UtcNow.Year.ToString() + padNumber;
+                }
+                else
+                {
+                    notice.PACNumber = "PAC" + DateTime.UtcNow.Year.ToString() + "0001";
+                }
                 _db.Entry(notice).State = EntityState.Added;
+
+            }
             else
             {
                 var _deptRow = _db.PACEntries.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
