@@ -35,7 +35,7 @@ $(document).ready(function () {
     }
     $('#EntryType').on('change', function (e) {
         var valueSelected = $("#EntryType option:selected").text();
-        if (valueSelected == 'Notice' || valueSelected == 'RecruitmentRules') {
+        if (valueSelected == 'Notice' || valueSelected == 'RecruitmentRules' || valueSelected == 'Court') {
             FillNoticeType(this.value);
             $('#divNotice').css('display', '');
             $('#divNoticeCategory').css('display', '');
