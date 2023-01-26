@@ -105,7 +105,7 @@ namespace UPPRB_Web.Controllers
         protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout)
         {
             var detail = new GeneralDetails();
-            float[] headers = { 5, 10, 10, 10, 10, 15, 15, 15, 10, 10, 15, 50 }; //Header Widths  
+            float[] headers = { 5, 16, 10, 10, 10, 15, 15, 15, 10, 15, 15, 50 }; //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
             tableLayout.WidthPercentage = 95; //Set the PDF File witdh percentage  
             tableLayout.HeaderRows = 1;
@@ -124,7 +124,8 @@ namespace UPPRB_Web.Controllers
 
             ////Add header  
             AddCellToHeader(tableLayout, "Sr No");
-            AddCellToHeader(tableLayout, "State");
+            AddCellToHeader(tableLayout, "PAC Number");
+            //AddCellToHeader(tableLayout, "State");
             AddCellToHeader(tableLayout, "Zone");
             AddCellToHeader(tableLayout, "Range");
             AddCellToHeader(tableLayout, "District");
@@ -141,7 +142,8 @@ namespace UPPRB_Web.Controllers
             foreach (var emp in pacDetailList)
             {
                 AddCellToBody(tableLayout, index.ToString());
-                AddCellToBody(tableLayout, emp.State_Name);
+                AddCellToBody(tableLayout, emp.PACNumber);
+                //AddCellToBody(tableLayout, emp.State_Name);
                 AddCellToBody(tableLayout, emp.Zone_Name);
                 AddCellToBody(tableLayout, emp.Range_Name);
                 AddCellToBody(tableLayout, emp.District_Name);

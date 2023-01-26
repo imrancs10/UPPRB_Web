@@ -29,5 +29,7 @@ namespace UPPRB_Web.Models.Masters
         public string FileURL { get; set; }
         public string FileUploadName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string PACNumber { get; set; }
+
     }
 }
