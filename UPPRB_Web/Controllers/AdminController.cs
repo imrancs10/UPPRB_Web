@@ -190,8 +190,8 @@ namespace UPPRB_Web.Controllers
 
             };
             AdminDetails detail = new AdminDetails();
-            bool isDuplicate = detail.IsDuplicateFIR(notice);
-            if(isDuplicate== false)
+            //bool isDuplicate = detail.IsDuplicateFIR(notice);
+            //if(isDuplicate== false)
             {
                 var saveStatus = detail.SavePACEntry(notice);
                 if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
@@ -209,11 +209,10 @@ namespace UPPRB_Web.Controllers
                 }
                 SetAlertMessage("PAC Enrty Saved", "Success");
             }
-            else
-            {
-                SetAlertMessage("PAC Enrty is duplicate", "Failed");
-
-            }
+            //else
+            //{
+            //    SetAlertMessage("PAC Enrty is duplicate", "Failed");
+            //}
 
             return View();
         }
