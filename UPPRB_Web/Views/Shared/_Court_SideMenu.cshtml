@@ -1,0 +1,128 @@
+﻿@{
+    var noticeData = Model as List<UPPRB_Web.Models.Masters.NoticeTypeModel>;
+}
+<div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
+    <h2 class="w-bgph ">UPPRPB</h2>
+    <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
+        <ul class="nav flex-column flex-nowrap overflow-hidden">
+            <li class="nav-item"><a class="nav-link text-truncate" href="/Home/ImportantCourtDecision">Court</a></li>
+            @for (int i = 0; i < noticeData.Count; i++)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed py-1" href="#submenu1sub@(i+1)" data-toggle="collapse" data-target="#submenu1sub@(i+1)">@noticeData[i].LookupName</a>
+                    <div class="collapse" id="submenu1sub@(i+1)" aria-expanded="false">
+                        <ul class="flex-column nav pl-4">
+                            @foreach (var item in noticeData[i].NoticeCategories)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" id="btnNotice" onclick="onClickNotice(@noticeData[i].LookupId,@item.LookupId)" href="#">@item.LookupName</a>
+                                </li>
+                            }
+                            @*<li class="nav-item">
+                                    <a class="nav-link p-1" href="#!">Latest News</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="#!">Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="#!">Tender</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1" href="#!">GOs</a>
+                                </li>*@
+                        </ul>
+                    </div>
+                </li>
+            }
+            @*<li class="nav-item">
+                    <a class="nav-link collapsed py-1" href="#submenu1sub4" data-toggle="collapse" data-target="#submenu1sub4">General Notices</a>
+                    <div class="collapse" id="submenu1sub4" aria-expanded="false">
+                        <ul class="flex-column nav pl-4">
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Latest News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Tender</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">GOs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed py-1" href="#submenu1sub7" data-toggle="collapse" data-target="#submenu1sub7">Recruitment Notices</a>
+                    <div class="collapse" id="submenu1sub7" aria-expanded="false">
+                        <ul class="flex-column nav pl-4">
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Sub Inspector Notices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Constable Civil Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">P.A.C.</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Radio Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Fire Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Jail Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Computer Cadre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Ministrial Cadre</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed py-1" href="#submenu1sub8" data-toggle="collapse" data-target="#submenu1sub8">Promotion Notices</a>
+                    <div class="collapse" id="submenu1sub8" aria-expanded="false">
+                        <ul class="flex-column nav pl-4">
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Sub Inspector Notices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Constable Civil Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">P.A.C.</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Radio Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Fire Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Jail Police</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Computer Cadre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-1" href="#!">Ministrial Cadre</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>*@
+            <!-- <li class="nav-item"><a class="nav-link text-truncate" href="#!">Sub Inspector Notices</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Constable Civil Police</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">P.A.C.</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Radio Police</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Fire Police</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Jail Police</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Computer Cadre</a></li>
+            <li class="nav-item"><a class="nav-link text-truncate" href="#!">Ministrial Cadre</a></li>-->
+        </ul>
+    </div>
+</div>

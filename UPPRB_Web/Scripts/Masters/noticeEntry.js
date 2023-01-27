@@ -51,6 +51,10 @@ $(document).ready(function () {
             $('#NoticeCategory').val("");
             $('#NoticeType').val("");
         }
+        if (valueSelected == 'Court')
+            $('#lblPublishDate').text('Judgement Date')
+        else
+            $('#lblPublishDate').text('Publish Date')
         $('[name*=EntryTypeName]').val(valueSelected);
     });
     $('[name*=customRadioInline1]').on('change', function (e) {

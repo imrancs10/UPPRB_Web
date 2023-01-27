@@ -300,6 +300,18 @@ namespace UPPRB_Web.Controllers
             }
         }
 
+        public ActionResult ImportantCourtDecision(int? noticeId = null, int? categoryId = null)
+        {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var thresoldDate = currentDate.AddMonths(-1);
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Court" && x.NoticeTypeName == "Important Court Decisions").ToList();
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetCourtHirarchyDetail().Where(x=>x.LookupName == "Important Court Decisions").ToList();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+
         private void setUserClaim()
         {
             CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
