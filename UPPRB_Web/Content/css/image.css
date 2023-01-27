@@ -1,0 +1,64 @@
+﻿.portfolio-section figure .inner-overlay-content.with-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 42px;
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 0;
+}
+.portfolio-section figure .inner-overlay-content.with-icons {
+    text-align: center;
+}
+.portfolio-section figure .overlay {
+    z-index: 2;
+    transition: all .2s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+.portfolio-section figure .inner-overlay-content {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    padding: 20px 40px;
+}
+    .portfolio-section figure .inner-overlay-content.with-icons {
+        text-align: center;
+    }
+.portfolio-section figure .inner-overlay {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.portfolio-section.port-col figure .overlay-background {
+    background-color: #000;
+}
+
+element.style {
+}
+
+.portfolio-section.port-col figure .overlay-background {
+    background-color: #000;
+}
+
+.portfolio-section figure .overlay-background {
+    z-index: 1;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+}

@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -305,6 +304,7 @@
     <Content Include="Content\css\hover.css" />
     <Content Include="Content\css\icons.css" />
     <Content Include="Content\css\image-crop.css" />
+    <Content Include="Content\css\image.css" />
     <Content Include="Content\css\index.css" />
     <Content Include="Content\css\invoice-print.css" />
     <Content Include="Content\css\jquery-ui.css" />
