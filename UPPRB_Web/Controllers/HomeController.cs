@@ -159,6 +159,10 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
+        public ActionResult FAQ()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             return View();

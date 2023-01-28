@@ -1098,6 +1098,7 @@
     <Content Include="Views\Shared\_Court_SideMenu.cshtml" />
     <Content Include="Views\Home\DisposedRepresentation.cshtml" />
     <Content Include="Views\Shared\_CourtDR_SideMenu.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
