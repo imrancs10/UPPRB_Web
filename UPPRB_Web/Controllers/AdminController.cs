@@ -125,7 +125,14 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
-
+        public ActionResult AddFAQ()
+        {
+            return View();
+        }
+        public ActionResult AddPSDetails()
+        {
+            return View();
+        }
         public ActionResult EnquiryList()
         {
             return View();
