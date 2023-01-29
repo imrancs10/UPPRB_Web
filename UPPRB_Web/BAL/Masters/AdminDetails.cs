@@ -195,6 +195,74 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderBy(x => x.DistrictName).ToList();
             return _list != null ? _list : new List<PSEntryModel>();
         }
+        public Enums.CrudStatus DeletePSEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.PSMasters.Where(x => x.PSId.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.PSMasters.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Deleted;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
+        public Enums.CrudStatus SaveFAQEntry(FAQDetail notice)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (notice.Id == 0)
+                _db.Entry(notice).State = EntityState.Added;
+            else
+            {
+                var _deptRow = _db.FAQDetails.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.FAQ_Question = notice.FAQ_Question;
+                    _deptRow.FAQ_Answer = notice.FAQ_Answer;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+
+        public List<FAQEntryModel> GetFAQEntry()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.FAQDetails
+                         where lookEntry.IsActive == true
+                         select new FAQEntryModel
+                         {
+                             Id = lookEntry.Id,
+                             CreatedDate = lookEntry.CreatedDate,
+                             FAQ_Answer = lookEntry.FAQ_Answer,
+                             FAQ_Question = lookEntry.FAQ_Question,
+                             IsActive = lookEntry.IsActive,
+                         }).OrderBy(x => x.FAQ_Question).ToList();
+            return _list != null ? _list : new List<FAQEntryModel>();
+        }
+        public Enums.CrudStatus DeleteFAQEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.FAQDetails.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _deptRow.IsActive = false;
+                //_db.FAQDetails.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();

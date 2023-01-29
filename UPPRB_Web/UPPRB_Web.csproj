@@ -251,6 +251,7 @@
     <Compile Include="Models\Masters\FeedbackModel.cs" />
     <Compile Include="Models\Masters\EnquiryModel.cs" />
     <Compile Include="Models\Masters\DirectRecruitmentModel.cs" />
+    <Compile Include="Models\Masters\FAQEntryModel.cs" />
     <Compile Include="Models\Masters\PSEntryModel.cs" />
     <Compile Include="Models\Masters\PromotionModel.cs" />
     <Compile Include="Models\Masters\PACEntryModel.cs" />

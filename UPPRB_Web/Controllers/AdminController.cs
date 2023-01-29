@@ -124,7 +124,40 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult AddFAQ()
         {
+            var detail = new AdminDetails();
+            ViewData["FAQData"] = detail.GetFAQEntry();
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddFAQ(string Question, string Answer, string hiddenID)
+        {
+            FAQDetail notice = new FAQDetail()
+            {
+                Id = !string.IsNullOrEmpty(hiddenID) ? Convert.ToInt32(hiddenID) : 0,
+                FAQ_Question = Question,
+                IsActive = true,
+                CreatedDate = DateTime.UtcNow,
+                FAQ_Answer = Answer,
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveFAQEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("FAQ Entry Saved", "Success");
+            }
+            else
+            {
+                SetAlertMessage("FAQ Entry Failed", "Error");
+
+            }
+            return RedirectToAction("AddFAQ");
+        }
+        [HttpPost]
+        public JsonResult DeleteFAQEntry(int Id)
+        {
+            var detail = new AdminDetails();
+            var result = detail.DeleteFAQEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddPSDetails()
         {
@@ -157,7 +190,7 @@ namespace UPPRB_Web.Controllers
         [HttpPost]
         public JsonResult DeletePSEntry(int Id)
         {
-            var detail = new GeneralDetails();
+            var detail = new AdminDetails();
             var result = detail.DeletePSEntry(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
