@@ -125,7 +125,19 @@ namespace UPPRB_Web.Controllers
             DateTime dateTime_Indian = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, India_Standard_Time);
 
             var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail(Id).Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate).ToList();
+            var allnotice = detail.GetNoticeDetail(Id).Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate).GroupBy(x => x.Subject).Select(x => x.First()).ToList();
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+        public ActionResult PhotoGalleryDetail(string Subject = null)
+        {
+            TimeZoneInfo India_Standard_Time = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+            DateTime dateTime_Indian = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, India_Standard_Time);
+
+            var detail = new GeneralDetails();
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate && (x.Subject == Subject || Subject == null)).GroupBy(x => x.Subject).Select(x => x.First()).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
@@ -311,7 +323,7 @@ namespace UPPRB_Web.Controllers
             var detail = new GeneralDetails();
             var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Court" && x.NoticeTypeName == "Important Court Decisions").ToList();
             ViewData["NoticeData"] = allnotice;
-            var noticeTypeDetail = detail.GetCourtHirarchyDetail().Where(x=>x.LookupName == "Important Court Decisions").ToList();
+            var noticeTypeDetail = detail.GetCourtHirarchyDetail().Where(x => x.LookupName == "Important Court Decisions").ToList();
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
