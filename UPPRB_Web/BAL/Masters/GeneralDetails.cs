@@ -440,6 +440,21 @@ namespace UPPRB_Web.BAL.Masters
             else
                 return Enums.CrudStatus.DataNotFound;
         }
+        public Enums.CrudStatus DeletePSEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.PSMasters.Where(x => x.PSId.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.PSMasters.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Deleted;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
 
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{

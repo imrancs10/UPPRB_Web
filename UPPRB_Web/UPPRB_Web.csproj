@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -1065,7 +1066,6 @@
     <Content Include="Scripts\library\js\bootstrap.min.js.map" />
     <Content Include="Views\Home\EnquiryForm.cshtml" />
     <Content Include="Views\Home\Result.cshtml" />
-    <Content Include="Views\Admin\AddNotice.cshtml" />
     <Content Include="Views\Home\PACLogin.cshtml" />
     <Content Include="Views\Home\Manual.cshtml" />
     <Content Include="Views\Shared\_Manual_SideMenu.cshtml" />

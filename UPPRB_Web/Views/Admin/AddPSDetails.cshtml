@@ -21,6 +21,7 @@
                         <div class="clr"></div><br />
                         @using (Html.BeginForm("AddPSDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
+                            <input type="hidden" id="hiddenID" value="" name="hiddenID" />
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="col-lg-6">
@@ -31,7 +32,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Enter Police Station Name</label>
-                                    <textarea type="text" class="form-control" id="exampleInputEmail3" name="PSName"
+                                    <textarea type="text" class="form-control" id="PSName" name="PSName"
                                               placeholder="Enter Police Station Name"></textarea>
                                 </div>
                             </div>
@@ -47,7 +48,7 @@
             <div class="col-lg-12">
                 <section class="card">
                     <header class="card-header" style="color:black; font-weight:bold">
-                        All FAQ Details
+                        All Police Station Details
                     </header>
                     <table class="table table-striped table-advance table-hover">
                         <thead>
@@ -66,11 +67,11 @@
                                     <td><a>@data.DistrictName</a></td>
                                     <td class="hidden-phone">@data.PSName</td>
                                     <td>
-                                        <i class="fa fa-pencil"></i>&nbsp;
-                                        <i class="fa fa-trash-o "></i>
+                                        <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditPS(@data.PSId,@data.DistrictId,'@data.PSName')"></i>&nbsp;
+                                        <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeletePS(@data.PSId)"></i>
                                     </td>
                                     @{
-                                        index= index + 1;
+                                        index = index + 1;
                                     }
                                 </tr>
                             }
@@ -156,6 +157,35 @@
                 console.log(response.responseText);
             }
         });
+    }
+    function EditPS(id, districtId, PSName) {
+        $('#hiddenID').val(id);
+        $('#District').val(districtId);
+        $('#PSName').val(PSName);
+        window.scrollTo(0, 0);
+    }
+
+    function DeletePS(Id) {
+        if (confirm("Are you sure want to Delete") == true) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{Id: "' + Id + '" }',
+                url: '/Admin/DeletePSEntry',
+                success: function (data) {
+                    utility.alert.setAlert("Delete", "Successfully Deleted");
+                    location.reload();
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        }
+
     }
 </script>
 

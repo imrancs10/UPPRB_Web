@@ -122,10 +122,6 @@ namespace UPPRB_Web.Controllers
             SetAlertMessage("Notice Saved", "Success");
             return View();
         }
-        public ActionResult AddNotice()
-        {
-            return View();
-        }
         public ActionResult AddFAQ()
         {
             return View();
@@ -137,10 +133,11 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddPSDetails(string District, string PSName)
+        public ActionResult AddPSDetails(string District, string PSName, string hiddenID)
         {
             PSMaster notice = new PSMaster()
             {
+                PSId = !string.IsNullOrEmpty(hiddenID) ? Convert.ToInt32(hiddenID) : 0,
                 PSName = PSName,
                 DistrictId = !string.IsNullOrEmpty(District) ? (int?)Convert.ToInt32(District) : null,
             };
@@ -155,7 +152,14 @@ namespace UPPRB_Web.Controllers
                 SetAlertMessage("PS Entry Failed", "Error");
 
             }
-            return View();
+            return RedirectToAction("AddPSDetails");
+        }
+        [HttpPost]
+        public JsonResult DeletePSEntry(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.DeletePSEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult EnquiryList()
         {
@@ -301,7 +305,7 @@ namespace UPPRB_Web.Controllers
             }
             SetAlertMessage("Promotion Entry Saved", "Success");
             return View();
-        }      
+        }
         public ActionResult DirectRecruitementEntry()
         {
             return View();
