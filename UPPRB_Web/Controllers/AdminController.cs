@@ -301,11 +301,7 @@ namespace UPPRB_Web.Controllers
             }
             SetAlertMessage("Promotion Entry Saved", "Success");
             return View();
-        }
-        public ActionResult AddPoliceStation()
-        {
-            return View();
-        }
+        }      
         public ActionResult DirectRecruitementEntry()
         {
             return View();
