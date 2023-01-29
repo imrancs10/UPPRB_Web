@@ -161,6 +161,8 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult FAQ()
         {
+            var detail = new AdminDetails();
+            ViewData["FAQData"] = detail.GetFAQEntry();
             return View();
         }
         public ActionResult Contact()
