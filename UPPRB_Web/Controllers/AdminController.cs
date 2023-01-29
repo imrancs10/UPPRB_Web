@@ -14,6 +14,7 @@ using UPPRB_Web.BAL.Masters;
 using UPPRB_Web.Infrastructure.Authentication;
 using static iTextSharp.tool.xml.html.HTML;
 using Newtonsoft.Json.Linq;
+using System.Xml.Linq;
 
 namespace UPPRB_Web.Controllers
 {
@@ -131,6 +132,29 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult AddPSDetails()
         {
+            var detail = new AdminDetails();
+            ViewData["PSData"] = detail.GetPSEntry();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddPSDetails(string District, string PSName)
+        {
+            PSMaster notice = new PSMaster()
+            {
+                PSName = PSName,
+                DistrictId = !string.IsNullOrEmpty(District) ? (int?)Convert.ToInt32(District) : null,
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SavePSEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("PS Entry Saved", "Success");
+            }
+            else
+            {
+                SetAlertMessage("PS Entry Failed", "Error");
+
+            }
             return View();
         }
         public ActionResult EnquiryList()
@@ -171,7 +195,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult PACEntry(string hiddenId,HttpPostedFileBase postedFile, string State, string Zone,
+        public ActionResult PACEntry(string hiddenId, HttpPostedFileBase postedFile, string State, string Zone,
        string Range, string District, string PoliceStation, string ExamineCenterName, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL)
         {
             State = "1";
@@ -242,7 +266,7 @@ namespace UPPRB_Web.Controllers
             var result = detail.DeletePACEntry(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        
+
         public ActionResult PromotionEntry()
         {
             return View();

@@ -1,54 +1,48 @@
-﻿
+﻿@using UPPRB_Web.Models.Masters;
 @{
     ViewBag.Title = "PSEntry";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var psData = ViewData["PSData"] as List<PSEntryModel>;
+    int index = 1;
 }
-<script src="~/Scripts/Masters/noticeEntry.js"></script>
-<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-    <section id="main-content" style="margin-left:10px">
-        <section class="wrapper">
-            <!--state overview start-->
-            <div class="row state-overview">
+@*<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />*@
+<section id="main-content" style="margin-left:10px">
+    <section class="wrapper">
+        <!--state overview start-->
+        <div class="row state-overview">
 
-                <div class="col-lg-12 col-sm-3">
-                    @*  *@
+            <div class="col-lg-12 col-sm-3">
+                @*  *@
                 <section class="card">
                     <div class="card-body left">
                         <header class="card-header" style="color:black; font-weight:bold">
                             Add New Police Station
                         </header>
                         <div class="clr"></div><br />
-                        <form role="form">
+                        @using (Html.BeginForm("AddPSDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="col-lg-6">
                                         <label for="exampleInputEmail1">Select District</label>
-                                        <select class="form-control mb-3">
-                                            <option value="1">Agra</option>
-                                            <option value="2">Aligarh</option>
-                                            <option value="3">Azamgarh</option>
-
+                                        <select class="form-control mb-3" id="District" name="District">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Enter Police Station Name</label>
-                                    <textarea type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Police Station Name"></textarea>
+                                    <textarea type="text" class="form-control" id="exampleInputEmail3" name="PSName"
+                                              placeholder="Enter Police Station Name"></textarea>
                                 </div>
                             </div>
                             <br />
-                            @*<div class="checkbox">
-                            <label>
-                                <input type="checkbox" checked> Highlight as New
-                            </label>
-                        </div>*@
                             <center><button type="submit" class="btn btn-default">Submit</button></center>
-                        </form>
+                        }
                     </div>
                 </section>
             </div>
         </div>
-        <!--state overview end-->  
+        <!--state overview end-->
         <div class="row">
             <div class="col-lg-12">
                 <section class="card">
@@ -65,107 +59,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10 </td>
-                                <td><a>Vector Ltd</a></td>
-                                <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                <td>
-                                    <i class="fa fa-pencil"></i>&nbsp;
-                                    <i class="fa fa-trash-o "></i>
-                                </td>
-                            </tr>
+                            @foreach (var data in psData)
+                            {
+                                <tr>
+                                    <td>@index </td>
+                                    <td><a>@data.DistrictName</a></td>
+                                    <td class="hidden-phone">@data.PSName</td>
+                                    <td>
+                                        <i class="fa fa-pencil"></i>&nbsp;
+                                        <i class="fa fa-trash-o "></i>
+                                    </td>
+                                    @{
+                                        index= index + 1;
+                                    }
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </section>
             </div>
         </div>
-        </section>
+    </section>
     <!--main content end-->
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="../Content/js/jquery.js"></script>
+<!--<script src="../Content/js/jquery.js"></script>
 <script src="../Content/js/bootstrap.bundle.min.js"></script>
 <script class="include" type="text/javascript" src="../Content/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="../Content/js/jquery.scrollTo.min.js"></script>
@@ -174,18 +93,15 @@
 
 <script src="../Content/js/owl.carousel.js"></script>
 <script src="../Content/js/jquery.customSelect.min.js"></script>
-<script src="../Content/js/respond.min.js"></script>
-
+<script src="../Content/js/respond.min.js"></script>-->
 <!--right slidebar-->
-<script src="../Content/js/slidebars.min.js"></script>
-
+<!--<script src="../Content/js/slidebars.min.js"></script>-->
 <!--common script for all pages-->
-<script src="../Content/js/common-scripts.js"></script>
-
+<!--<script src="../Content/js/common-scripts.js"></script>-->
 <!--script for this page-->
-<script src="../Content/js/sparkline-chart.js"></script>
+<!--<script src="../Content/js/sparkline-chart.js"></script>
 <script src="../Content/js/easy-pie-chart.js"></script>
-<script src="../Content/js/count.js"></script>
+<script src="../Content/js/count.js"></script>-->
 
 <script>
 
@@ -212,7 +128,35 @@
         var owl = $("#owl-demo").data("owlCarousel");
         owl.reinit();
     });
-
+    FillDistrict();
+    function FillDistrict(rangeId, selectedDisctrictId = null) {
+        let dropdown = $('#District');
+        dropdown.empty();
+        dropdown.append('<option value="">Select</option>');
+        dropdown.prop('selectedIndex', 0);
+        rangeId = rangeId == null ? 0 : rangeId;
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{rangeId: "' + rangeId + '" }',
+            url: '/Master/GetDistrictDetail',
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.DistrictId).text(entry.DistrictName));
+                });
+                if (selectedDisctrictId != null) {
+                    dropdown.val(selectedDisctrictId);
+                }
+            },
+            failure: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    }
 </script>
 
 

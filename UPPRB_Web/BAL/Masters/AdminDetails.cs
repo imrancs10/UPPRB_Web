@@ -158,6 +158,43 @@ namespace UPPRB_Web.BAL.Masters
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public Enums.CrudStatus SavePSEntry(PSMaster notice)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (notice.PSId == 0)
+                _db.Entry(notice).State = EntityState.Added;
+            else
+            {
+                var _deptRow = _db.PSMasters.Where(x => x.PSId.Equals(notice.PSId)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.PSName = notice.PSName;
+                    _deptRow.DistrictId = notice.DistrictId;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+
+        public List<PSEntryModel> GetPSEntry()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.PSMasters
+                         join dis in _db.DistrictMasters on lookEntry.DistrictId equals dis.DistrictId
+                         select new PSEntryModel
+                         {
+                             DistrictId = lookEntry.DistrictId,
+                             PSName = lookEntry.PSName,
+                             DistrictName = dis.DistrictName,
+                             PSId = lookEntry.PSId,
+                         }).OrderBy(x => x.DistrictName).ToList();
+            return _list != null ? _list : new List<PSEntryModel>();
+        }
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
         //    _db = new upprbDbEntities();

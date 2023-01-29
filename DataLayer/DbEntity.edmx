@@ -50,6 +50,16 @@
           <Property Name="Message" Type="varchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="FAQDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQ_Question" Type="nvarchar(max)" />
+          <Property Name="FAQ_Answer" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Feedback">
           <Key>
             <PropertyRef Name="Id" />
@@ -173,6 +183,7 @@
           <EntitySet Name="DirectRecruitementDetail" EntityType="Self.DirectRecruitementDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQDetail" EntityType="Self.FAQDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
@@ -216,6 +227,7 @@
           <EntitySet Name="PACEntries" EntityType="upprbDbModel.PACEntry" />
           <EntitySet Name="DirectRecruitementDetails" EntityType="upprbDbModel.DirectRecruitementDetail" />
           <EntitySet Name="PromotionDetails" EntityType="upprbDbModel.PromotionDetail" />
+          <EntitySet Name="FAQDetails" EntityType="upprbDbModel.FAQDetail" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -366,6 +378,16 @@
           <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FIleURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FAQDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQ_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FAQ_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -546,6 +568,17 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQDetails">
+            <EntityTypeMapping TypeName="upprbDbModel.FAQDetail">
+              <MappingFragment StoreEntitySet="FAQDetail">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FAQ_Answer" ColumnName="FAQ_Answer" />
+                <ScalarProperty Name="FAQ_Question" ColumnName="FAQ_Question" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

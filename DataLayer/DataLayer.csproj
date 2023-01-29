@@ -80,6 +80,9 @@
     <Compile Include="Enquiry.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAQDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Feedback.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
