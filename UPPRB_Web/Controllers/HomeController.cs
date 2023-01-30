@@ -181,6 +181,22 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult Privacy_Policy()
+        {
+            return View();
+        }
+        public ActionResult Terms_Conditions()
+        {
+            return View();
+        }
+        public ActionResult Copyright_Statement()
+        {
+            return View();
+        }
+        public ActionResult Disclaimer()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             return View();
