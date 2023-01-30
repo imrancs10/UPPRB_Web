@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -286,6 +285,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.min1.css" />
     <Content Include="Content\css\boxstyle.css" />
+    <Content Include="Content\css\Component.css" />
     <Content Include="Content\css\custom-bootstrap-margin-padding.css" />
     <Content Include="Content\css\dash1.css" />
     <Content Include="Content\css\dashboard.css" />
@@ -1103,6 +1103,7 @@
     <Content Include="Views\Admin\AddFAQ.cshtml" />
     <Content Include="Views\Admin\AddPSDetails.cshtml" />
     <Content Include="Views\Home\PhotoGalleryDetail.cshtml" />
+    <Content Include="Views\Home\SpecialDates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

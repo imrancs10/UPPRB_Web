@@ -177,6 +177,10 @@ namespace UPPRB_Web.Controllers
             ViewData["FAQData"] = detail.GetFAQEntry();
             return View();
         }
+        public ActionResult SpecialDates()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             return View();

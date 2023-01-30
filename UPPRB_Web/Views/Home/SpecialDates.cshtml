@@ -1,0 +1,175 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "Tender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+}
+<link rel="stylesheet" href="~/Content/css/Component.css">
+<section class="blog-single section">
+    <div class="container  wsh">
+        <div class="w_content pt-20 mt-0">
+            <h2 class="w-bgph ">Calender Events With Special Date</h2>
+            <div class="container">
+                <div class="content-padding">                    
+                    <div class="main">
+                        <ul class="cbp_tmtimeline">
+
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>2022</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>OCTOBER 2022</h2>
+                                    <div class="sp-dates">
+                                        <ul>
+                                            <li>26 - 31st October 2022 <span>Diwali Week</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-13 05:36"> <span>2022</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-mail"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>NOVEMBER  2022</h2>
+                                    <div class="sp-dates">
+                                        <ul>
+                                            <li>7 - 8 - 9th November 2022 – <span> 1st Full Moon</span></li>
+                                            <li>23rd November 2022 – <span> 1st Dark Moon</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-16 21:30"> <span>2022</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>DECEMBER  2022</h2>
+                                    <div class="sp-dates">
+                                        <ul>
+                                            <li>6 - 7 - 8th December 2022 – <span>2nd Full Moon</span></li>
+                                            <li>23rd December 2022 – <span>2nd Dark Moon</span></li>
+                                            <li>24 - 25 - 26th December 2022 – <span>Christmas Week</span></li>
+                                            <li>31st Dec '22 - 1 - 2nd Jan '23 – <span>New Year Weekend</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-16 21:30"> <span>2023</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>JANUARY  2023</h2>
+                                    <div class="sp-dates">
+                                        <ul>
+                                            <li>5 - 6 - 7th January 2023 – <span>3rd Full Moon</span></li>
+                                            <li>14 - 15th January 2023 – <span>Uttarayan</span></li>
+                                            <li>21st January 2023 – <span>3rd Dark Moon</span></li>
+                                            <li>26th January 2023 – <span>Republic Day</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <time class="cbp_tmtime" datetime="2013-04-16 21:30"> <span>2023</span></time>
+                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                                <div class="cbp_tmlabel">
+                                    <h2>FEBRUARY 2023</h2>
+                                    <div class="sp-dates">
+                                        <ul>
+                                            <li>4 - 5 - 6th February 2023 – <span>Season's Last Full Moon</span></li>
+                                            <li>14th February 2023 – <span>Valentine's Day</span></li>
+                                            <li>20th February 2023 – <span>Season's Last Dark Moon</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--<div class="shedule-table">
+
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                       <tbody>
+                         <thead>
+                            <tr>
+                           <td align="center" valign="top">NOVEMBER 2015 </td>
+                           <td align="center" valign="top">DECEMBER 2015</td>
+                           </tr>
+                         </thead>
+                         <tr>
+                           <td align="center" valign="top">11 th November 2015 – Deepavali Celebrations</td>
+                           <td align="center" valign="top">	23rd, 24th & 25th December 2015 – Full Moon Night</td>
+                         </tr>
+                         <tr>
+                           <td align="center" valign="top">23rd, 24th, &amp; 25th November 2015 – Full Moon Night</td>
+                           <td align="center" valign="top">30th &amp; 31st December 2015 – New Year Eve Celebrations</td>
+                         </tr>
+                         <tr>
+                           <td align="center" valign="top"><strong>NOV - WEEKEND DATES</strong></td>
+                           <td align="center" valign="top"><strong>DEC - WEEKEND DATES</strong></td>
+                         </tr>
+                         <tr>
+                           <td align="center" valign="top">14th &amp; 15th November 2015</td>
+                           <td align="center" valign="top">05th &amp; 06th December 2015</td>
+                         </tr>
+                         <tr>
+                           <td align="center" valign="top">21st &amp; 22nd November 2015</td>
+                           <td align="center" valign="top">12th &amp; 13th December 2015</td>
+                         </tr>
+                         <tr>
+                           <td align="center" valign="top">28th &amp; 29th November 2015</td>
+                           <td align="center" valign="top">19th &amp; 20th December 2015</td>
+                         </tr>
+                          <tr>
+                           <td align="center" valign="top">&nbsp;</td>
+                           <td align="center" valign="top">26th &amp; 27th December 2015</td>
+                         </tr>
+                       </tbody>
+                     </table>
+
+                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                       <tbody>
+                       <thead>
+                            <tr>
+                           <td align="center" valign="top">JANUARY 2016</td>
+                           <td align="center" valign="top">FEBRUARY 2016</td>
+                           </tr>
+                       </thead>
+                           <tr>
+                           <td align="center" valign="top">14th &amp; 15th January 2016 – Kite Flying Festival</td>
+                           <td align="center" valign="top">13th &amp; 14th February 2016 - Valentine Day</td>
+                         </tr>
+                           <tr>
+                           <td align="center" valign="top">14th &amp; 15th January 2016 – Kite Flying Festival</td>
+                           <td align="center" valign="top">20th, 21st &amp; 22nd February 2016 – Full Moon Night</td>
+                         </tr>
+                           <tr>
+                           <td align="center" valign="top"><strong>JAN – WEEKEND DATES</strong></td>
+                           <td align="center" valign="top"><strong>	FEB – WEEKEND DATES</strong></td>
+                         </tr>
+                           <tr>
+                           <td align="center" valign="top">02nd &amp; 03rd January 2016</td>
+                           <td align="center" valign="top">06th &amp; 07th February 2016</td>
+                         </tr>
+                           <tr>
+                           <td align="center" valign="top">09th &amp; 10th January 2016</td>
+                           <td align="center" valign="top">13th &amp; 14th February 2016</td>
+                         </tr>
+                          <tr>
+                           <td align="center" valign="top">16th &amp; 17th January 2016</td>
+                           <td align="center" valign="top">20th &amp; 21st February 2016</td>
+                         </tr>
+                          <tr>
+                           <td align="center" valign="top">23rd &amp; 24th January 2016</td>
+                           <td align="center" valign="top">&nbsp;</td>
+                         </tr>
+                       </tbody>
+                 </table>
+            </div>-->
+                </div>
+            </div>
+        </div>
+            </div>
+</section>
+<!--/ End Blog Single -->
