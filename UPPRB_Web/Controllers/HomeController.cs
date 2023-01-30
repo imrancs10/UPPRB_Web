@@ -137,7 +137,7 @@ namespace UPPRB_Web.Controllers
             DateTime dateTime_Indian = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, India_Standard_Time);
 
             var detail = new GeneralDetails();
-            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate && (x.Subject == Subject || Subject == null)).GroupBy(x => x.Subject).Select(x => x.First()).ToList();
+            var allnotice = detail.GetNoticeDetail().Where(x => x.EntryTypeName == "PhotoGalary" && dateTime_Indian >= x.NoticeDate && (x.Subject.Trim() == Subject.Trim() || Subject == null)).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
