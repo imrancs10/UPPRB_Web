@@ -101,64 +101,91 @@
                         <li class="sub-menu">
                             <a href="javascript:;">
                                 <i class="fa fa-laptop"></i>
-                                <span>Master Data Management</span>
+                                <span>Upload Data Management</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="/Admin/NoticeEntry">Upload New Entry</a></li>
+                                <li><a href="/Admin/NoticeEntry">Upload Data Entry</a></li>
                                 @foreach (var entry in entryType)
                                 {
                                     <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeDisplayName</a></li>
                                 }
                             </ul>
                         </li>
-                        <li>
-                            <a href="/Admin/EnquiryList">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Enquiry</span>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-laptop"></i>
+                                <span>PAC Data Management</span>
                             </a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="/Admin/PACEntry">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>PAC Entry</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/PACList">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>PAC List</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="/Admin/FeedbackList">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Feedback</span>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-laptop"></i>
+                                <span>Master Data Management</span>
                             </a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="/Admin/AddFAQ">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>FAQ Master</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/EnquiryList">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Enquiry Master</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/FeedbackList">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Feedback Master</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/AddPSDetails">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Police Station Master</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="/Admin/PACEntry">
-                                <i class="fa fa-dashboard"></i>
-                                <span>PAC Entry</span>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-laptop"></i>
+                                <span>Master Page Management</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/PACList">
-                                <i class="fa fa-dashboard"></i>
-                                <span>PAC List</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/PromotionEntry">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Promotion Entry</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/DirectRecruitementEntry">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Direct Recruitement Entry</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/AddFAQ">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Add FAQ</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/AddPSDetails">
-                                <i class="fa fa-dashboard"></i>
-                                <span>PS Entry</span>
-                            </a>
-                        </li>
+                            <ul class="sub">
+                                <li>
+                                    <a href="/Admin/PromotionEntry">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Promotion Entry</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/DirectRecruitementEntry">
+                                        <i class="fa fa-dashboard"></i>
+                                        <span>Direct Recruitement Entry</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>                    
+                                                
                         <li>
                             <a href="/Admin/Logout">
                                 <i class="fa fa-dashboard"></i>
