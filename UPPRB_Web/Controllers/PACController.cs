@@ -105,7 +105,7 @@ namespace UPPRB_Web.Controllers
         protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout)
         {
             var detail = new GeneralDetails();
-            float[] headers = { 5, 16, 10, 10, 10, 15, 15, 15, 10, 15, 15, 50 }; //Header Widths  
+            float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
             tableLayout.WidthPercentage = 95; //Set the PDF File witdh percentage  
             tableLayout.HeaderRows = 1;
