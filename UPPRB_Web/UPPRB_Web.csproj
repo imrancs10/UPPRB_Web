@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -564,6 +565,8 @@
     <Content Include="Content\js\toucheffects.js" />
     <Content Include="Content\js\tree.js" />
     <Content Include="Content\js\waypoints.min.js" />
+    <Content Include="Content\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\lightbox.min.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
@@ -579,6 +582,10 @@
     <Content Include="FilesUploaded\Result\photod7c02a35-0da3-4a6b-8313-b11cddedb57a.jpeg" />
     <Content Include="FilesUploaded\Result\photof52602cf-a9ce-4fe2-8410-334e3826ecba.jpeg" />
     <Content Include="Global.asax" />
+    <Content Include="images\close.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\next.png" />
+    <Content Include="images\prev.png" />
     <Content Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
     <Content Include="logs\test.log" />
     <Content Include="Scripts\App\Global\App.js" />

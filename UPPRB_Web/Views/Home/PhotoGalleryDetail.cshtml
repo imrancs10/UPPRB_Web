@@ -1,73 +1,577 @@
 ﻿@using UPPRB_Web.Models.Masters;
 @{
     ViewBag.Title = "PhotoGallery";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
     var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
-<section class="hero-slider">
-    <div class="pr-15 pl-15">
-        <div class="row">
-            @Html.Partial("_Galary_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">
-                <h2 class="w-bgph ">Photo Gallery</h2>
-                <hr>
-                <div class="clr"></div>
-                <div>
-                   
-                <div class="full-img" id="FullImgBox">
-                    <img src="Image/img1.jpg" id="FullImg">
-                    <span onclick="closeFullImg()">x</span>
-                </div>                       
-                        <span id="DataList1" class="row" EmptyDataText="Empty">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lightbox Gallery</title>
+    <script src="~/Content/lightbox-plus-jquery.min.js"></script>
+    <link href="~/Content/lightbox.min.css" rel="stylesheet" />
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        .gallery {
+            margin: 10px 40px;
+        }
+
+            .gallery img {
+                width: 200px;
+                height: 50px;
+                transition: 1s;
+                padding: 5px;
+            }
+
+                .gallery img:hover {
+                    filter: drop-shadow(4px 4px 6px gray);
+                    transform: scale(1.1);
+                }
+    </style>
+    <script type="text/javascript" language="javascript">
+        function renderTime() {
+            var currentdate = new Date();
+            var currentTime = new Date();
+            var diem = "AM";
+            var h = currentTime.getHours();
+            var m = currentTime.getMinutes();
+            var s = currentTime.getSeconds();
+            var TodayDate = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
+            setTimeout('renderTime()', 1000);
+            if (h == 0) {
+                h = 12;
+            } else if (h > 12) {
+                h = h - 12;
+                diem = "PM";
+            }
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+            var myClock = document.getElementById('clockDisplay');
+
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
+
+            myClock.innerHTML = "Today Date -" + output + ' ' + " Time -" + h + ":" + m + ":" + s + " " + diem;
+        }
+        renderTime();
+    </script>
+    <script>
+        function orangecolor() {
+
+            $(".common-wrapper").css("backgroundColor", "#b33d2f");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
+            });
+            $(".headline").css("backgroundColor", "#b33d2f");
+            $(".slogan-name").css("color", "#912c1f");
+
+
+            $(".themecolor").css("color", "#b33d2f");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#fa961e");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#5ab3f4");
+
+        }
+
+        function bluecolor() {
+            $(".common-wrapper").css("backgroundColor", "#124dac");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#3a96ce), to(#266184))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#3a96ce), to(#266184))"
+            });
+            $(".headline").css("backgroundColor", "#124dac");
+            $(".slogan-name").css("color", "#124dac");
+
+
+            $(".themecolor").css("color", "#124dac");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#2c729c");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#5ab3f4");
+
+        }
+
+        function blackcolor() {
+            $(".common-wrapper").css("backgroundColor", "#000000");
+            $(".menu-area").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#747474), to(#000000))"
+            });
+
+
+            $(".menu-area, h4").css({
+                background: "-webkit-gradient(linear, left top, left bottom, from(#747474), to(#000000))"
+            });
+            $(".headline").css("backgroundColor", "#747474");
+            $(".slogan-name").css("color", "#000000");
+
+
+            $(".themecolor").css("color", "#000000");
+            $(".stickysocial").css("backgroundColor", "rgb(90, 179, 244)");
+            $(".section-title12 h1").css("backgroundColor", "#5ab3f4");
+            $(".footer").css("backgroundColor", "#0689E9");
+            $(".dropdown-menu").css("backgroundColor", "#266184");
+            $(".mainmenu .active a").css("backgroundColor", "#000000");
+
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#000000");
+
+        }
+
+    </script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="~/Content/css/jquery.fancybox.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="~/Content/css/themify-icons.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="~/Content/css/niceselect.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="~/Content/css/flexslider.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css">
+    <link rel="stylesheet" href="~/Content/css/all.min.css">
+
+
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="~/Content/css/reset.css">
+    <link href="~/Content/css/hover.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/css/custom-bootstrap-margin-padding.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link href="~/Content/css/simple.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/whack.css?v=1.0">
+    <link rel="stylesheet" href="~/Content/css/image.css">
+</head>
+
+<body>
+    <div class="region region-header-top">
+
+        <div id="block-cmf-content-header-region-block" class="block block-cmf-content first last odd">
+
+            <div class="container-fluid common-container four_content top-header">
+                <div class="common-left clearfix">
+                    <ul>
+                        <li>
+                            <p id="clockDisplay" class="datep"></p>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="common-right clearfix">
+                    <ul id="header-nav">
+
+                        <li class="ico-skip cf">
+                            <a href="/Home/Index" title=""><i class="fa fa-home"></i>   मुख्य पृष्ठ</a>
+                        </li>
+
+
+                        <li class="ico-skip cf w-sm-hide">
+                            <a href="#skipCont" title="">Skip to main content</a>
+                        </li>
+
+                        <li class="ico-skip cf">
+                            <a href="#skipCont" title="">Screen Reader</a>
+                        </li>
+
+                        <li class="ico-accessibility cf">
+                            <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
+                                <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top " src="~/Content/images/orange.png" alt="Orange Theme">
+                                    </a>
+                                </li>
+                                <li> <a onclick="blackcolor()" title="Black Theme" href="javascript:void(0);" class="alinktheme"> <img class="top" src="~/Content/images/black.png" alt="Black Theme">  </a> </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="ico-accessibility cf">
+                            <a href="javascript:void(0);" id="toggleAccessibility" title="Accessibility Dropdown">
+                                <img class="top" src="~/Content/images/ico-accessibility.png" alt="Accessibility Dropdown">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a onclick="set_font_size(increase)" title="Increase font size" href="javascript:void(0);">
+                                        A<sup>+</sup>
+                                    </a>
+                                </li>
+                                <li> <a onclick="set_font_size()" title="Reset font size" href="javascript:void(0);">A<sup>&nbsp;</sup></a> </li>
+                                <li> <a onclick="set_font_size(decrease)" title="Decrease font size" href="javascript:void(0);">A<sup>-</sup></a> </li>
+                                <li> <a href="javascript:void(0);" class="high-contrast dark" title="High Contrast">A</a> </li>
+                                <li> <a href="javascript:void(0);" class="high-contrast light" title="Normal Contrast" style="display: none;">A</a> </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="ico-social cf w-sm-hide">
+                            <a href="javascript:void(0);" id="toggleSocial" title="Social Medias">
+                                <img class="top" src="~/Content/images/ico-social.png" alt="Social Medias">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://www.facebook.com/profile.php?id=100089212700306"><img alt="Facebook Page" src="~/Content/images/ico-facebook.png"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://twitter.com/"><img alt="Twitter Page" src="~/Content/images/ico-twitter.png"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://www.youtube.com/channel/UCGS-CVdV-Em0GYu7cIa-s7A"><img alt="youtube Page" src="~/Content/images/ico-youtube.png"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="ico-sitemap cf">
+                            <a href="/Home/Sitemap" target="_blank" title="Sitemap">
+                                <img class="top" src="~/Content/images/ico-sitemap.png" alt="Sitemap">
+                            </a>
+                        </li>
+                        <li class="hindi cmf_lan d-hide">
+                            <label class="de-lag">
+                                <span style="display: none;">Language</span>
+                                <select title="Select Language">
+                                    <option>हिन्दी</option>
+                                    <option>English</option>
+                                </select>
+                            </label>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Header -->
+        <header class="header shop">
+
+            <!-- Topbar -->
+            <!-- End Topbar -->
+            <div class="middle-inner">
+                <div class="container" style="max-width: 99%;">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-12 p-0">
+                            <!-- Logo -->
+                            <div class="logo mt-0">
+                                <a href="/Home/Index">
+                                    <img src="~/Content/images/logo3.jpg" alt="Uttar Pradesh Police Recruitment & Promotion Board">
+                                </a>
+                            </div>
+
+                            <!--/ End Search Form -->
+                            <div class="mobile-nav"></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-12 p-0 w-sm-hide">
+                            <div class="header-right">
+                                <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-12 p-0 w-sm-hide">
+
+
+                            <!--<div class="float-element">
+                                                                    <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 150px;
+                            height:60px;">
+                                                                </div>-->
+
+                            <div class="float-element">
+                                <img src="~/Content/images/G20_India_Logo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Header Inner -->
+            <div class="header-inner">
+
+                <div class="pr-15 pl-15">
+                    <div class="row ">
+
+
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="cat-nav-head">
+                                <div class="menu-area">
+                                    <!-- Main Menu -->
+                                    <nav class="navbar navbar-expand-lg">
+                                        <div class="navbar-collapse">
+                                            <div class="nav-inner">
+                                                <ul class="nav nav-menu main-menu1  menu navbar-nav">
+                                                    <li class="active"><a href="/Home/Index"><i class="fa fa-home fa-2x m-1 wf18"></i>Home</a></li>
+                                                    <li><a href="/Home/About">About us</a></li>
+                                                    <li><a href="/Home/Notice">Notices</a></li>
+                                                    <li><a href="/Home/DirectRecruitment">Direct Recruitment</a></li>
+                                                    <li><a href="/Home/Promotion">Promotion</a></li>
+                                                    <li><a href="/Home/GovernmentOrders">Government Orders</a></li>
+                                                    <li><a href="/Home/Manual">Selection Procedure</a></li>
+                                                    <li><a href="/Home/Administration">Administration</a></li>
+                                                    <li><a href="/Home/PhotoGallery">Photo Gallery</a></li>
+                                                    <li><a href="/Home/Contact">Contact</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <!--/ End Main Menu -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/ End Header Inner -->
+        </header>
+        <!--/ End Header -->
+
+
+
+
+    </div>
+    <div>
+        <section class="hero-slider">
+            <div class="pr-15 pl-15">
+                <div class="row">
+                    @Html.Partial("_Galary_SideMenu", noticeType)
+                    <div class="col-lg-10 w_content pt-20 mt-0">
+                        <h2 class="w-bgph ">Photo Gallery</h2>
+                        <hr>
+                        <div class="clr"></div>
+                        <div class="gallery">
                             @foreach (var item in noticeData)
                             {
-                                <span class="col-md-3">
-                                    <div style="height: 160px; overflow: hidden; border: 1px solid #CCCCCC; margin-bottom: 10px;">
-                                        <div class="img-gallery" style="text-align: center; background-color: #F8F8F8;  padding: 0px; margin: 5px; height: 120px; width:100%; overflow:hidden; ">
-                                            @if (!string.IsNullOrEmpty(item.filename))
-                                            {
-                                                <img title="@item.Subject" src="~/FilesUploaded/PhotoGalary/@item.filename" onclick="openFullImg(this.src)" style="max-width:100%;max-height:100%">
-                                            }
-                                            else
-                                            {
-                                                <img title="@item.Subject" src="@item.fileURL" style="max-width:100%;max-height:100%">
-                                            }
-                                        </div>
-                                        <a id="LinkButton" href="#" style=" margin-left: 2%;">@item.Subject</a>
-                                        <a id="LinkButton" href="#" style=" margin-right: 2%;">@item.NoticeDate.Value.ToString("dd/MM/yyyy")</a>
-                                    </div>
-                                </span>
+                                if (!string.IsNullOrEmpty(item.filename))
+                                {
+                                    <a href="~/FilesUploaded/PhotoGalary/@item.filename"
+                                       data-lightbox="mygallery">
+                                        <img src="~/FilesUploaded/PhotoGalary/@item.filename" title="@item.Subject">
+                                    </a>
+                                    @*<img title="@item.Subject" src="~/FilesUploaded/PhotoGalary/@item.filename" onclick="openFullImg(this.src)" style="max-width:100%;max-height:100%">*@
+                                }
+                                else
+                                {
+                                    <a src="@item.fileURL"
+                                       data-lightbox="mygallery">
+                                        <img title="@item.Subject" src="@item.fileURL">
+                                    </a>
+                                    @*<img title="@item.Subject" src="@item.fileURL" style="max-width:100%;max-height:100%">*@
+                                }
                             }
-                            <br />
-                        </span>
+
+                            @*<a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142254/html9.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143104/html10.png">
+        </a>
+        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142245/CSS8.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143101/CSS9.png">
+        </a>
+        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142240/Bootstrap5.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143058/Bootstrap6.png">
+        </a>
+        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142257/JavaScript2.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143106/JavaScript3.png">
+        </a>
+        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142303/jquery.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143108/jquery4.png">
+        </a>
+        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142309/php7.png"
+           data-lightbox="mygallery">
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143112/php8.png">
+        </a>*@
+                        </div>
 
                     </div>
 
+                    <div class="clearfix"></div>
                 </div>
-
-            <div class="clearfix"></div>
-        </div>
+            </div>
+        </section>
     </div>
-</section>
-<script>
+    <!-- Start Footer Area -->
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top section" style="padding-bottom:0px !important">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-10 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <a>
+                                        Tulsi Ganga Complex, 19-C Vidhan Shabha Marg, Lucknow
+                                        <br />Uttar Pradesh - 226001
+                                        <br />
+                                        <b>Email: sampark@uppbpb.gov.in</b>
+                                        <br />
+                                        <b>Phone: 0522-2235752</b>
+                                        <br />
+                                        @*<b>Fax: 0522-2235806</b>
+                                            <br />*@
+                                        <b>C.U.G.: +91 - 9454404786</b>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- <div class="single-footer social">
+                                 <ul>
+                                     <h4 class=" pull-left">Get In Touch : </h4>
+                                     <li class="hasdrop"><a href="https://www.facebook.com/mmmut.ac.in" target="_blank"><i class="ti-facebook"></i></a></li>
+                                     <li class="hasdrop"><a href="https://twitter.com/MmmutOfficial" target="_blank"><i class="ti-twitter"></i></a></li>
+                                     <li class="hasdrop"><a href="https://www.linkedin.com/school/madan-mohan-malaviya-university-of-technology/" target="_blank"><i class="ti-linkedin"></i></a></li>
+                                     <li class="hasdrop"><a href="https://www.youtube.com/user/mmmut1" target="_blank"><i class=" ti-youtube"></i></a></li>
+                                 </ul>
+                             </div>-->
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-10 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Get In Touch</h4>
+                            <ul>
+                                <li><a href="https://www.facebook.com/profile.php?id=100089212700306">Facebook </a><i class="ti-facebook"></i></li>
+                                <li><a href="#!">Twitter </a><i class="ti-twitter"></i></li>
+                                <li><a href="#!">Linkedin </a><i class="ti-linkedin"></i></li>
+                                <li><a href="https://www.youtube.com/channel/UCGS-CVdV-Em0GYu7cIa-s7A">Youtube </a><i class=" ti-youtube"></i></li>
+                                <li><a href="#!">Instagram </a><i class=" ti-instagram"></i></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
 
-    var FullImgBox = document.getElementById("FullImgBox")
-    var FullImg = document.getElementById("FullImg")
+                    <div class="col-lg-3 col-md-6 mb-10 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Media</h4>
+                            <ul>
+                                <li><a href="/Home/PhotoGallery">Photo Gallery</a></li>
+                                <li><a href="/Home/PhotoGallery">Video Gallery</a></li>
+                                <li><a href="/Home/PhotoGallery">Media Coverage</a></li>
+                                <li><a href="#!">Site Map </a></li>
+                                <li><a href="#!">Term & Conditions </a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-10 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="/Home/Feedback">Feedback  </a></li>
+                                <li><a href="/Home/FAQ">FAQs</a></li>
+                                <li><a href="/Home/Contact">Contact- Control Room</a></li>
+                                <li><a href="/Home/HowToReach">Get in touch</a></li>
+                                <li><a href="fonts.zip" target="_blank">Download Hindi Font</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <!--<div class="col-lg-3 col-md-6 mb-10 col-12">
 
-    function openFullImg(pic) {
-        FullImgBox.style.display = "flex";
-        FullImg.src = pic;
-    }
+                        <div class="single-footer social">
+                            <h4>Get In Tuch</h4>
 
-    function closeFullImg() {
-        FullImgBox.style.display = "none";
-    }
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.navbar-nav').find('li').removeClass('active');
-        $('a[href="/Home/PhotoGallery"]').parent().addClass('active')
-    });
-</script>
+                            <ul>
+                                <li class="hasdrop"><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li class="hasdrop"><a href="#"><i class="ti-twitter"></i></a></li>
+                                <li class="hasdrop"><a href="#"><i class="ti-flickr"></i></a></li>
+                                <li class="hasdrop"><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
 
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <div class="copyright">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <div class="left ">
+
+                                <p style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">
+                                    This is the official Website of Uttar Pradesh Police Recruitment & Promotion Board. |
+                                    Best viewed in 1366*768 pixel resolution.
+                                </p>
+                                <p style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">
+                                    &nbsp;<a>Copyright Statement </a>| <a>Hyperlinking Policy</a> | <a>
+                                        Terms &amp; Conditions
+                                    </a>|<a href="#!" target="_blank"> Privacy Policy </a>|<a> Disclaimer </a>
+                                </p>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!--<div class="right">
+                                <img src="~/Content/images/payments.png" alt="#">
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.navbar-nav').find('li').removeClass('active');
+            $('a[href="/Home/PhotoGallery"]').parent().addClass('active')
+        });
+    </script>
+</body>
+
+</html>
