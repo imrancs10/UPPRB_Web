@@ -389,7 +389,7 @@
                                 {
                                     <a href="~/FilesUploaded/PhotoGalary/@item.filename"
                                        data-lightbox="mygallery">
-                                        <img src="~/FilesUploaded/PhotoGalary/@item.filename" title="@item.Subject">
+                                        <img src="~/FilesUploaded/PhotoGalary/@item.filename" title="@item.Subject" style="max-width:100%;max-height:100%">
                                     </a>
                                     @*<img title="@item.Subject" src="~/FilesUploaded/PhotoGalary/@item.filename" onclick="openFullImg(this.src)" style="max-width:100%;max-height:100%">*@
                                 }
@@ -397,7 +397,7 @@
                                 {
                                     <a src="@item.fileURL"
                                        data-lightbox="mygallery">
-                                        <img title="@item.Subject" src="@item.fileURL">
+                                        <img title="@item.Subject" src="@item.fileURL" style="max-width:100%;max-height:100%">
                                     </a>
                                     @*<img title="@item.Subject" src="@item.fileURL" style="max-width:100%;max-height:100%">*@
                                 }
