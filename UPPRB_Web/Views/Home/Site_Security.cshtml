@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Site Security";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+
+            @Html.Partial("_Policy_SideMenu")
+
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h2 class="w-bgph ">Site Security</h2>
+                @*<img class="d-block w-100" src="~/Content/images/2.jpg" alt="UPPRPB">
+        <br>
+        <h3 class="w-hd-u">Privacy Policy</h3>*@
+            <p style="text-align:justify">For site security purposes and to ensure that this service remains available to all users, the Government computer system employs commercial software programs to monitor network traffic to identify unauthorised attempts to upload or change information, or otherwise cause damage.</p>
+            <p style="text-align:justify">Except for authorised law enforcement investigations, no other attempts are made to identify individual users or their usage habits. Raw data logs are used for no other purposes and are scheduled for regular deletion.</p>
+            <p style="text-align:justify">Unauthorised attempts to upload information or change information on this service are strictly prohibited and may be punishable under the Indian IT Act.</p>                
+                <br>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/About"]').parent().addClass('active')
+    });
+</script>*@
