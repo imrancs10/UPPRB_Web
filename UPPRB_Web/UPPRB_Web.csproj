@@ -410,6 +410,7 @@
     <Content Include="Content\Images\banner1.jpg" />
     <Content Include="Content\Images\banner11.jpg" />
     <Content Include="Content\Images\banner2.jpg" />
+    <Content Include="Content\Images\banner3.jpg" />
     <Content Include="Content\Images\black.png" />
     <Content Include="Content\Images\blue.png" />
     <Content Include="Content\Images\chart-texture.jpg" />
