@@ -26,6 +26,10 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
+        public ActionResult SearchPACList()
+        {
+            return View();
+        }
         public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();
