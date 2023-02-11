@@ -74,6 +74,12 @@
                         return '<span>' + formatDate(full.FIRDate) + '</span>';
                     }
                 },
+                {
+                    "title": "Created Date",
+                    "render": function (data, type, full, meta) {
+                        return '<span>' + formatDate(full.CreatedDate) + '</span>';
+                    }
+                },
                 { "data": "Address", "name": "Address", "autoWidth": true, "title": "Address" },
                 { "data": "FIRDetails", "name": "FIRDetails", "autoWidth": true, "title": "FIR Details" },
                 //{

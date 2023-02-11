@@ -50,6 +50,12 @@ namespace UPPRB_Web.Controllers
             {
                 result = result.Where(x => x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
                                          || x.PS_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.Zone_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.Range_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.FIRNo.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.Solver_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.Address.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
                                          || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
             }
 
