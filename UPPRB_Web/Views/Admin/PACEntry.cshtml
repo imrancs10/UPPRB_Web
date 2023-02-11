@@ -21,7 +21,7 @@
 
                     @using (Html.BeginForm("PACEntry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <input type="hidden" value="" name="hiddenId" id="hiddenId"/>
+                        <input type="hidden" value="" name="hiddenId" id="hiddenId" />
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">State</label>
@@ -54,7 +54,13 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Examine Center Name</label>
-                                <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName"> </input>
+                                <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Solver Name</label>
+                                <input type="text" class="form-control" id="Solver_Name" placeholder="Enter Solver Name" name="Solver_Name" />
                             </div>
                         </div>
                         <div class="row">
@@ -149,6 +155,7 @@
                     FillPoliceStation(data.District_Id, data.PS_Id);
                     //$('#NoticeCategory').val(NoticeCategoryId);
                     $('#Exam_Center_Name').val(data.ExamineCenterName);
+                    $('#Solver_Name').val(data.Solver_Name);
                     $('#Address').val(data.Address);
                     $('#FIRNo').val(data.FIRNo);
                     $('#AccusedName').val(data.AccusedName);

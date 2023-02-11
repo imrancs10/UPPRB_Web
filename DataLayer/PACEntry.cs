@@ -32,5 +32,6 @@ namespace DataLayer
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string PACNumber { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public string Solver_Name { get; set; }
     }
 }

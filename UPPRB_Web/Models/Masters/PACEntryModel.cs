@@ -20,6 +20,7 @@ namespace UPPRB_Web.Models.Masters
         public int? PS_Id { get; set; }
         public string PS_Name { get; set; }
         public string ExamineCenterName { get; set; }
+        public string Solver_Name { get; set; }
         public string Address { get; set; }
         public string FIRNo { get; set; }
         public Nullable<System.DateTime> FIRDate { get; set; }

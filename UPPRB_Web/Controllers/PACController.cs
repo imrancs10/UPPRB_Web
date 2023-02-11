@@ -68,7 +68,7 @@ namespace UPPRB_Web.Controllers
             Document doc = new Document();
             doc.SetMargins(0f, 0f, 0f, 0f);
             //Create PDF Table with 12 columns  
-            PdfPTable tableLayout = new PdfPTable(12);
+            PdfPTable tableLayout = new PdfPTable(13);
             doc.SetMargins(0f, 0f, 0f, 0f);
             //Create PDF Table  
             doc.SetPageSize(PageSize.A4.Rotate());
@@ -105,7 +105,7 @@ namespace UPPRB_Web.Controllers
         protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout)
         {
             var detail = new GeneralDetails();
-            float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
+            float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
             tableLayout.WidthPercentage = 95; //Set the PDF File witdh percentage  
             tableLayout.HeaderRows = 1;
@@ -115,7 +115,7 @@ namespace UPPRB_Web.Controllers
 
             tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 12, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
-                Colspan = 12,
+                Colspan = 13,
                 Border = 0,
                 PaddingBottom = 10,
                 PaddingLeft = 5,
@@ -132,6 +132,7 @@ namespace UPPRB_Web.Controllers
             AddCellToHeader(tableLayout, "Police Station");
             AddCellToHeader(tableLayout, "Accused Name");
             AddCellToHeader(tableLayout, "Examine Center");
+            AddCellToHeader(tableLayout, "Solver Name");
             AddCellToHeader(tableLayout, "FIR No");
             AddCellToHeader(tableLayout, "FIR Date");
             AddCellToHeader(tableLayout, "Address");
@@ -151,6 +152,7 @@ namespace UPPRB_Web.Controllers
 
                 AddCellToBody(tableLayout, emp.AccusedName);
                 AddCellToBody(tableLayout, emp.ExamineCenterName);
+                AddCellToBody(tableLayout, emp.Solver_Name);
                 AddCellToBody(tableLayout, emp.FIRNo);
                 AddCellToBody(tableLayout, emp.FIRDate != null ? emp.FIRDate.Value.ToString("dd/MMM/yyyy") : "");
                 AddCellToBody(tableLayout, emp.Address);

@@ -75,6 +75,7 @@ namespace UPPRB_Web.BAL.Masters
                     _deptRow.District_Id = notice.District_Id;
                     _deptRow.FileUploadName = !string.IsNullOrEmpty(notice.FileUploadName) ? notice.FileUploadName : _deptRow.FileUploadName;
                     _deptRow.ExamineCenterName = notice.ExamineCenterName;
+                    _deptRow.Solver_Name = notice.Solver_Name;
                     _deptRow.FIRDetails = notice.FIRDetails;
                     _deptRow.FIRNo = notice.FIRNo;
                     _deptRow.PS_Id = notice.PS_Id;

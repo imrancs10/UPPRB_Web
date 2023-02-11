@@ -299,6 +299,7 @@ namespace UPPRB_Web.BAL.Masters
                              District_Id = pac.District_Id,
                              District_Name = district2 != null ? district2.DistrictName : "",
                              ExamineCenterName = pac.ExamineCenterName,
+                             Solver_Name = pac.Solver_Name,
                              FIRDate = pac.FIRDate,
                              FIRDetails = pac.FIRDetails,
                              FIRNo = pac.FIRNo,
@@ -440,7 +441,7 @@ namespace UPPRB_Web.BAL.Masters
             else
                 return Enums.CrudStatus.DataNotFound;
         }
-        
+
 
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{
