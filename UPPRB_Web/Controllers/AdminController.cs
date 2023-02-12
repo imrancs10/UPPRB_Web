@@ -30,6 +30,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult AddMedalDetails()
+        {
+            return View();
+        }
         public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();
