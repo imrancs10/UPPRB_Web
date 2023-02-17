@@ -43,26 +43,29 @@
         <div class="form-signin">
             <center><img src="~/Content/Images/LOGO.bmp" style="width:100px; height:100px" alt="Uttar Pradesh Police Recruitment & Promotion Board"></center>
             <h2 class="form-signin-heading">Uttar Pradesh Police Recruitment & Promotion Board</h2>
-            <div class="login-wrap">
+            <div id="captcha" class="login-wrap">
                 @using (Html.BeginForm("GetLogin", "Login", FormMethod.Post))
                 {
                     <input type="text" class="form-control" placeholder="User ID" autofocus name="username">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
-                    <label class="checkbox">
-                        @*<input type="checkbox" value="remember-me"> Remember me*@
-                        <span class="pull-right">
-                            <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-                        </span>
-                    </label>
+                    <input type="password" class="form-control" placeholder="Password" name="password">                    
+                    <input type="text" id="captcha_form" class="form-control" placeholder="Enter Captcha">
+                    <label class="form_label_captcha" style="border:unset; text-align:right; width:150px"> A s P D f b</label>
+                    <button class="captcha_refersh">
+                        <i class="fa fa-refresh"></i>
+                    </button>                
                     <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
-                    <p></p>
+                    <p>
+                        <span class="pull-right">
+                        <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
+                        </span>
+                    </p>
                 }
 
-                <div class="registration">
+                @*<div class="registration">
                     <a class="" href="/">
                         Go Back to Home Page
                     </a>
-                </div>
+                </div>*@
 
             </div>
 
