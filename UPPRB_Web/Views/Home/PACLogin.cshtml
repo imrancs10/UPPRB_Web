@@ -1,6 +1,8 @@
-﻿
+﻿@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
 @{
     Layout = null;
+    bool IsCaptchaEnable = GetCaptchEnable();
 }
 
 <!DOCTYPE html>
@@ -76,6 +78,14 @@
                                                     <div class="input-group flex-nowrap">
                                                         <span class="input-group-text" id="addon-wrapping"><i class="bx bx-lock"></i></span>
                                                         <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="input-group flex-nowrap">
+                                                        if (IsCaptchaEnable == true)
+                                                        {
+                                                            @Html.Captcha(5)
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div class="col-4 offset-md-8">

@@ -25,6 +25,7 @@ using UPPRB_Web.BAL.Login;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.IO;
 using System.Data.Entity;
+using CaptchaMvc.HtmlHelpers;
 
 namespace UPPRB_Web.Controllers
 {
@@ -334,19 +335,28 @@ namespace UPPRB_Web.Controllers
         [HttpPost]
         public ActionResult PACLogin(string username, string password)
         {
-            LoginDetails _details = new LoginDetails();
-            string _response = string.Empty;
-            Enums.LoginMessage message = _details.PACLogin(username, password);
-            _response = LoginResponse(message);
-            if (message == Enums.LoginMessage.Authenticated)
+            // Code for validating the CAPTCHA  
+            if (this.IsCaptchaValid("Captcha is not valid"))
             {
-                setUserClaim();
-                return RedirectToAction("PACDocument", "PAC");
+                LoginDetails _details = new LoginDetails();
+                string _response = string.Empty;
+                Enums.LoginMessage message = _details.PACLogin(username, password);
+                _response = LoginResponse(message);
+                if (message == Enums.LoginMessage.Authenticated)
+                {
+                    setUserClaim();
+                    return RedirectToAction("PACDocument", "PAC");
+                }
+                else
+                {
+                    SetAlertMessage(_response, "Login Response");
+                    return View("PACLogin");
+                }
             }
             else
             {
-                SetAlertMessage(_response, "Login Response");
-                return View("PACLogin");
+                SetAlertMessage("Captcha is not valid", "Login Response");
+                return View("index");
             }
         }
 
