@@ -8,6 +8,8 @@ using System.Web.Security;
 using UPPRB_Web.BAL.Login;
 using UPPRB_Web.Global;
 using UPPRB_Web.Infrastructure.Authentication;
+using CaptchaMvc.HtmlHelpers;
+using Swashbuckle.Swagger;
 
 namespace UPPRB_Web.Controllers
 {
@@ -21,18 +23,27 @@ namespace UPPRB_Web.Controllers
 
         public ActionResult GetLogin(string username, string password)
         {
-            LoginDetails _details = new LoginDetails();
-            string _response = string.Empty;
-            Enums.LoginMessage message = _details.GetLogin(username, password);
-            _response = LoginResponse(message);
-            if (message == Enums.LoginMessage.Authenticated)
+            // Code for validating the CAPTCHA  
+            if (this.IsCaptchaValid("Captcha is not valid"))
             {
-                setUserClaim();
-                return RedirectToAction("Dashboard", "Admin");
+                LoginDetails _details = new LoginDetails();
+                string _response = string.Empty;
+                Enums.LoginMessage message = _details.GetLogin(username, password);
+                _response = LoginResponse(message);
+                if (message == Enums.LoginMessage.Authenticated)
+                {
+                    setUserClaim();
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                else
+                {
+                    SetAlertMessage(_response, "Login Response");
+                    return View("index");
+                }
             }
             else
             {
-                SetAlertMessage(_response, "Login Response");
+                SetAlertMessage("Captcha is not valid", "Login Response");
                 return View("index");
             }
         }
