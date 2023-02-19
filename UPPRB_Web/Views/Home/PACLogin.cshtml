@@ -81,12 +81,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="input-group flex-nowrap">
-                                                        if (IsCaptchaEnable == true)
-                                                        {
-                                                            @Html.Captcha(5)
-                                                        }
-                                                    </div>
+                                                    @if (IsCaptchaEnable == true)
+                                                    {
+                                                        @Html.Captcha(5)
+                                                    }
                                                 </div>
                                                 <div class="col-4 offset-md-8">
                                                     <div class="d-grid gap-3">
