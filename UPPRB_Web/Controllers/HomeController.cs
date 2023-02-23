@@ -356,7 +356,7 @@ namespace UPPRB_Web.Controllers
             else
             {
                 SetAlertMessage("Captcha is not valid", "Login Response");
-                return View("index");
+                return View("PACLogin");
             }
         }
 

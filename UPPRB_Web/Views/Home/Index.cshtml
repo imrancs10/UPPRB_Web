@@ -61,35 +61,39 @@
 
                     <marquee scrollamount="5" direction="up" onmouseover="this.stop()" onmouseout="this.start()" style="height: 200px;">
                         <ul class="ultxt1">
-                            @foreach (var item in LatestEvent)
+                            @if (LatestEvent != null)
                             {
-                                <li class="p-10" style="width: 95%">
-                                    <h6>
+                                foreach (var item in LatestEvent)
+                                {
+                                    <li class="p-10" style="width: 95%">
+                                        <h6>
 
-                                        @if (item.IsNew == true)
+                                            @if (item.IsNew == true)
+                                            {
+                                                <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                            }
+                                            <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (@item.NoticeDate.Value.ToString("dd/MM/yyyy"))</span>
+                                        </h6>
+                                        @if (!string.IsNullOrEmpty(item.filename))
                                         {
-                                            <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                            <p style="text-align: justify">
+                                                <a href='~/FilesUploaded/Notice/@item.filename' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                            </p>
+                                            <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
                                         }
-                                        <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (@item.NoticeDate.Value.ToString("dd/MM/yyyy"))</span>
-                                    </h6>
-                                    @if (!string.IsNullOrEmpty(item.filename))
-                                    {
-                                        <p style="text-align: justify">
-                                            <a href='~/FilesUploaded/Notice/@item.filename' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
-                                        </p>
-                                        <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
-                                    }
-                                    else
-                                    {
-                                        <p style="text-align: justify">
-                                            <a href='@item.fileURL' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
-                                        </p>
-                                        <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
-                                    }
-                                    <div class="clearfix">
-                                    </div>
-                                </li>
+                                        else
+                                        {
+                                            <p style="text-align: justify">
+                                                <a href='@item.fileURL' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                            </p>
+                                            <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
+                                        }
+                                        <div class="clearfix">
+                                        </div>
+                                    </li>
+                                }
                             }
+
                         </ul>
                     </marquee>
 
@@ -102,7 +106,7 @@
 
 <div class="headline">
     <div class="container-fluid">
-        <div class="row">            
+        <div class="row">
             @*<div class="col-md-2 col-sm-12 col-lg-12 col-xs-12">
                 <a href="~/FilesUploaded/PhotoGalary/Ethletic_Event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a></a></div>*@
             <div class="col-md-10 col-sm-12 col-lg-12 col-xs-12">
@@ -351,13 +355,13 @@
                                                 </a>
                                             </div>
                                             @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a>
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/download.png"><br />
-                                                        Forms
-                                                    </div>
-                                                </a>
-                                            </div>*@
+                                                    <a>
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/download.png"><br />
+                                                            Forms
+                                                        </div>
+                                                    </a>
+                                                </div>*@
                                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
                                                 <a href="/Home/FAQ">
                                                     <div class="icon-box iconbox-border p-5">
@@ -391,7 +395,7 @@
                                                         Syllabus
                                                     </div>
                                                 </a>
-                                            </div>                                           
+                                            </div>
                                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
                                                 <a>
                                                     <div class="icon-box iconbox-border p-5">
@@ -427,56 +431,56 @@
                                                 </a>
                                             </div>
                                             @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                                <a href="/Login" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/ERP-Login.png"><br />
-                                                        Admin Login
-                                                    </div>
-                                                </a>
-                                            </div>*@                                            
+                                                    <a href="/Login" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/ERP-Login.png"><br />
+                                                            Admin Login
+                                                        </div>
+                                                    </a>
+                                                </div>*@
                                         </div>
                                     </div>
                                     @*<div class="tab-pane fade" id="Admission" role="tabpanel" aria-labelledby="Admission-tab">
-                                        <div class="row text-center wutil mx-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                            <div class="row text-center wutil mx-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
 
-                                                <a href="#!" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5 ">
-                                                        <img alt="" src="~/Content/icon/Syllabus1.png"><br />
-                                                        Syllabus
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="#!" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5 ">
+                                                            <img alt="" src="~/Content/icon/Syllabus1.png"><br />
+                                                            Syllabus
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
 
-                                                <a href="#!">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/press.png"><br />
-                                                        News
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="#!">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/broucher.png"><br />
-                                                        Sample Papers
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="#!" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/stat.png"><br />
-                                                        Statistics
-                                                        <img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">
-                                                    </div>
-                                                </a>
+                                                    <a href="#!">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/press.png"><br />
+                                                            News
+                                                        </div>
+                                                    </a>
+                                                </div>
 
-                                            </div>                                           
-                                          </div>
-                                    </div>*@
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="#!">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/broucher.png"><br />
+                                                            Sample Papers
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="#!" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/stat.png"><br />
+                                                            Statistics
+                                                            <img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">
+                                                        </div>
+                                                    </a>
+
+                                                </div>
+                                              </div>
+                                        </div>*@
                                 </div>
                             </div>
                         </div>
@@ -494,7 +498,7 @@
 
                             @*<li class="nav-item"><a class="nav-link text-truncate" href="#!"><i class="fas fa-flag"></i> Geographical Mapping System of Examination Centers </a></li>
 
-                              <li class="nav-item"><a class="nav-link text-truncate" href="#!"> <i class="fas fa-joint"></i> Instructions for Use of Geographic Mapping System</a></li>*@
+                                <li class="nav-item"><a class="nav-link text-truncate" href="#!"> <i class="fas fa-joint"></i> Instructions for Use of Geographic Mapping System</a></li>*@
                         </ul>
                     </div>
                 </div>
