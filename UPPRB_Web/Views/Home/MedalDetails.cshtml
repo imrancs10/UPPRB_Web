@@ -1,0 +1,237 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "MedalDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+    var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+}
+
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            @*@Html.Partial("_Galary_SideMenu", noticeType)*@
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                
+                <h2 class="w-bgph ">Medal Gallery</h2>
+                <hr>
+                <div class="clr"></div>
+                <div>
+                    <div class="table-responsive">
+                        <div>
+                            <table class="table" cellspacing="0" id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1" style="border-color:White;border-style:None;border-collapse:collapse;">
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" allowfullscreen></iframe>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                                @*<p style="vertical-align: text-top">
+            <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label2_0"></span>
+        </p>*@
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" gesture="media" allowfullscreen></iframe>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row mb-20">
+                                            <div class="col-md-6" style="padding: 0px; margin: 0px">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe width="560" height="315" src="~/FilesUploaded/PhotoGalary/IMG-20230126-WA01403026f13a-5b1c-4ecb-8cdb-703ae45d07de.jpg" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pl-20" style="padding: 0px; margin: 0px">
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Medal Name: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Given By: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Date: </span>
+                                                </h5>
+                                                <h5>
+                                                    <span id="ContentPlaceHolder2_ContentPlaceHolder3_GridView1_Label1_0">Description: </span>
+                                                </h5>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<script>
+
+    var FullImgBox = document.getElementById("FullImgBox")
+    var FullImg = document.getElementById("FullImg")
+
+    function openFullImg(subject) {
+        window.location.href = "/Home/PhotoGalleryDetail?Subject=" + subject;
+        //FullImgBox.style.display = "flex";
+        //FullImg.src = pic;
+    }
+
+    function closeFullImg() {
+        FullImgBox.style.display = "none";
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav').find('li').removeClass('active');
+        $('a[href="/Home/PhotoGallery"]').parent().addClass('active')
+    });
+</script>

@@ -120,6 +120,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult MedalDetails()
+        {
+            return View();
+        }
         public ActionResult PhotoGallery(int? Id = null)
         {
             TimeZoneInfo India_Standard_Time = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
