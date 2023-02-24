@@ -10,6 +10,7 @@ using UPPRB_Web.Global;
 using UPPRB_Web.Infrastructure.Authentication;
 using CaptchaMvc.HtmlHelpers;
 using Swashbuckle.Swagger;
+using System.Configuration;
 
 namespace UPPRB_Web.Controllers
 {
@@ -24,7 +25,7 @@ namespace UPPRB_Web.Controllers
         public ActionResult GetLogin(string username, string password)
         {
             // Code for validating the CAPTCHA  
-            if (this.IsCaptchaValid("Captcha is not valid"))
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
             {
                 LoginDetails _details = new LoginDetails();
                 string _response = string.Empty;

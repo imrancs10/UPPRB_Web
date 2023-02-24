@@ -315,6 +315,63 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new List<PACEntryModel>();
         }
 
+        public List<PACEntryModel> SearchPACDetail(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
+        {
+            int? ZoneId = !string.IsNullOrEmpty(ZoneID) && ZoneID != "null" ? (int?)Convert.ToInt32(ZoneID) : null;
+            int? RangeId = !string.IsNullOrEmpty(RangeID) && RangeID != "null" ? (int?)Convert.ToInt32(RangeID) : null;
+            int? DistrictId = !string.IsNullOrEmpty(DistrictID) && DistrictID != "null" ? (int?)Convert.ToInt32(DistrictID) : null;
+            int? PSId = !string.IsNullOrEmpty(PSID) && PSID != "null" ? (int?)Convert.ToInt32(PSID) : null;
+            DateTime? dateFrom = !string.IsNullOrEmpty(FIRDateFrom) ? (DateTime?)Convert.ToDateTime(FIRDateFrom) : null;
+            DateTime? dateTo = !string.IsNullOrEmpty(FIRDateTo) ? (DateTime?)Convert.ToDateTime(FIRDateTo) : null;
+            _db = new upprbDbEntities();
+            var _list = (from pac in _db.PACEntries
+                         join state in _db.StateMasters on pac.State_Id equals state.StateId into state1
+                         from state2 in state1.DefaultIfEmpty()
+                         join zone in _db.ZoneMasters on pac.Zone_Id equals zone.ZoneId into zone1
+                         from zone2 in zone1.DefaultIfEmpty()
+                         join range in _db.RangeMasters on pac.Range_Id equals range.RangeId into range1
+                         from range2 in range1.DefaultIfEmpty()
+                         join district in _db.DistrictMasters on pac.District_Id equals district.DistrictId into district1
+                         from district2 in district1.DefaultIfEmpty()
+                         join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
+                         from ps2 in ps1.DefaultIfEmpty()
+                         where pac.IsDeleted == false
+                         && ((ZoneID != null && pac.Zone_Id == ZoneId) || ZoneId == null)
+                         && ((RangeId != null && pac.Range_Id == RangeId) || RangeId == null)
+                         && ((DistrictId != null && pac.District_Id == DistrictId) || DistrictId == null)
+                         && ((PSId != null && pac.PS_Id == PSId) || PSId == null)
+                         && ((ExamineCenter != "" && pac.ExamineCenterName == ExamineCenter) || ExamineCenter == "")
+                         && ((FIRNo != "" && pac.FIRNo == FIRNo) || FIRNo == "")
+                         && ((SolverName != "" && pac.Solver_Name == SolverName) || SolverName == "")
+                         && ((dateFrom != null && dateTo != null && pac.FIRDate >= dateFrom && pac.FIRDate <= dateTo) || dateFrom == null || dateTo == null)
+                         select new PACEntryModel
+                         {
+                             FileUploadName = pac.FileUploadName != null ? pac.FileUploadName : "",
+                             CreatedDate = pac.CreatedDate,
+                             FileURL = pac.FileURL != null ? pac.FileURL : "",
+                             Id = pac.Id,
+                             AccusedName = pac.AccusedName,
+                             PublishDate = pac.PublishDate,
+                             PS_Id = pac.PS_Id,
+                             Address = pac.Address,
+                             District_Id = pac.District_Id,
+                             District_Name = district2 != null ? district2.DistrictName : "",
+                             ExamineCenterName = pac.ExamineCenterName,
+                             Solver_Name = pac.Solver_Name,
+                             FIRDate = pac.FIRDate,
+                             FIRDetails = pac.FIRDetails,
+                             FIRNo = pac.FIRNo,
+                             PS_Name = ps2 != null ? ps2.PSName : "",
+                             Range_Id = pac.Range_Id,
+                             Range_Name = range2 != null ? range2.RangeName : "",
+                             State_Id = pac.State_Id,
+                             State_Name = state2 != null ? state2.StateName : "",
+                             Zone_Id = pac.Zone_Id,
+                             Zone_Name = zone2 != null ? zone2.ZoneName : "",
+                             PACNumber = pac.PACNumber
+                         }).OrderByDescending(x => x.Id).ToList();
+            return _list != null ? _list : new List<PACEntryModel>();
+        }
         public List<PromotionModel> GetPromotionDetail(int? promotionId = null)
         {
             _db = new upprbDbEntities();

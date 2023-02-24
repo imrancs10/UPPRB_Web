@@ -340,7 +340,7 @@ namespace UPPRB_Web.Controllers
         public ActionResult PACLogin(string username, string password)
         {
             // Code for validating the CAPTCHA  
-            if (this.IsCaptchaValid("Captcha is not valid"))
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
             {
                 LoginDetails _details = new LoginDetails();
                 string _response = string.Empty;

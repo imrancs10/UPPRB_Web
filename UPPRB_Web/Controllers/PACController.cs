@@ -19,6 +19,8 @@ using System.Text;
 using UPPRB_Web.Models.Masters;
 using System.Security.Principal;
 using iTextSharp.tool.xml.html;
+using Newtonsoft.Json.Linq;
+using UPPRB_Web.Models.Common;
 
 namespace UPPRB_Web.Controllers
 {
@@ -32,6 +34,43 @@ namespace UPPRB_Web.Controllers
         public ActionResult PACDocument()
         {
             return View();
+        }
+        [HttpPost]
+        public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
+        {
+            try
+            {
+                var detail = new GeneralDetails();
+                string draw = Request.Form.GetValues("draw").FirstOrDefault();
+                string start = Request.Form.GetValues("start").FirstOrDefault();
+                string length = Request.Form.GetValues("length").FirstOrDefault();
+                int pageSize = length != null ? Convert.ToInt32(length) : 0;
+                int skip = start != null ? Convert.ToInt32(start) : 0;
+                int recordsTotal = 0;
+                string filterText = Request["search[value]"];
+                var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo);
+
+                if (!string.IsNullOrEmpty(filterText))
+                {
+                    result = result.Where(x => x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.PS_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.Zone_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.Range_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.FIRNo.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.Solver_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.Address.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                             || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                }
+
+                recordsTotal = result.Count();
+                var data = result.Skip(skip).Take(pageSize).ToList();
+                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         [HttpPost]
         public JsonResult GetAllPAC()

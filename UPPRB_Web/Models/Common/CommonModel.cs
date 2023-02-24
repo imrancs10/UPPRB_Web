@@ -8,6 +8,10 @@ namespace UPPRB_Web.Models.Common
     public class CommonModel
     {
     }
+    public class PACSearchModel
+    {
+        public int Zone { get; set; }
+    }
     public class DayModel
     {
         public int DayId { get; set; }
