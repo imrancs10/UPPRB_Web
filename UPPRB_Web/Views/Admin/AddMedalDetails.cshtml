@@ -19,31 +19,36 @@
                             Add Medal Details
                         </header>
                         <div class="clr"></div><br />
-                        @using (Html.BeginForm("AddPSDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("AddMedalDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <input type="hidden" id="hiddenID" value="" name="hiddenID" />
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="col-lg-6">
                                         <label for="exampleInputEmail1">Select Medal Category</label>
-                                        <select class="form-control mb-3" id="District" name="District">
+                                        <select class="form-control mb-3" id="MedalCategory" name="MedalCategory">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Given By</label>
-                                    <input type="text" class="form-control" id="PSName" name="PSName"
+                                    <input type="text" class="form-control" id="GivenBY" name="GivenBY"
                                            placeholder="Enter Given By">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">To Whom</label>
-                                    <input type="text" class="form-control" id="PSName" name="PSName"
+                                    <input type="text" class="form-control" id="ToWhom" name="ToWhom"
                                            placeholder="Enter To Whom">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Medal Details (Max 500 words)</label>
-                                    <textarea type="text" class="form-control" id="PSName" name="PSName"
+                                    <textarea type="text" class="form-control" id="MedalDescription" name="MedalDescription"
                                               placeholder="Enter Medal Details"></textarea>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="exampleInputPassword1">Medal Given Date</label>
+                                    <input type="date" class="form-control" id="MedalDate" placeholder="Medal Date" name="MedalDate"
+                                           onload="getTodayDate()">
                                 </div>
                             </div>
                             <div class="row">
@@ -84,20 +89,20 @@
                         </thead>
                         <tbody>
                             @*@foreach (var data in psData)
-                            {
-                                <tr>
-                                    <td>@index </td>
-                                    <td><a>@data.DistrictName</a></td>
-                                    <td class="hidden-phone">@data.PSName</td>
-                                    <td>
-                                        <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditPS(@data.PSId,@data.DistrictId,'@data.PSName')"></i>&nbsp;
-                                        <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeletePS(@data.PSId)"></i>
-                                    </td>
-                                    @{
-                                        index = index + 1;
-                                    }
-                                </tr>
-                            }*@
+                                {
+                                    <tr>
+                                        <td>@index </td>
+                                        <td><a>@data.DistrictName</a></td>
+                                        <td class="hidden-phone">@data.PSName</td>
+                                        <td>
+                                            <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditPS(@data.PSId,@data.DistrictId,'@data.PSName')"></i>&nbsp;
+                                            <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeletePS(@data.PSId)"></i>
+                                        </td>
+                                        @{
+                                            index = index + 1;
+                                        }
+                                    </tr>
+                                }*@
                         </tbody>
                     </table>
                 </section>
@@ -152,25 +157,24 @@
         var owl = $("#owl-demo").data("owlCarousel");
         owl.reinit();
     });
-    FillDistrict();
-    function FillDistrict(rangeId, selectedDisctrictId = null) {
-        let dropdown = $('#District');
+    FillMedalCategory();
+    function FillMedalCategory(rangeId, selectedMedalId = null) {
+        let dropdown = $('#MedalCategory');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
         dropdown.prop('selectedIndex', 0);
-        rangeId = rangeId == null ? 0 : rangeId;
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             type: 'POST',
-            data: '{rangeId: "' + rangeId + '" }',
-            url: '/Master/GetDistrictDetail',
+            data: '{lookupTypeId: 0,lookupType: "MedalCategory" }',
+            url: '/Master/GetLookupDetail',
             success: function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.DistrictId).text(entry.DistrictName));
+                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
-                if (selectedDisctrictId != null) {
-                    dropdown.val(selectedDisctrictId);
+                if (selectedEntryTypeId != null) {
+                    dropdown.val(selectedEntryTypeId);
                 }
             },
             failure: function (response) {
@@ -183,7 +187,7 @@
     }
     function EditPS(id, districtId, PSName) {
         $('#hiddenID').val(id);
-        $('#District').val(districtId);
+        $('#MedalCategory').val(districtId);
         $('#PSName').val(PSName);
         window.scrollTo(0, 0);
     }

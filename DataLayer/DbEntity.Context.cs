@@ -40,5 +40,6 @@ namespace DataLayer
         public virtual DbSet<DirectRecruitementDetail> DirectRecruitementDetails { get; set; }
         public virtual DbSet<PromotionDetail> PromotionDetails { get; set; }
         public virtual DbSet<FAQDetail> FAQDetails { get; set; }
+        public virtual DbSet<MedalDetail> MedalDetails { get; set; }
     }
 }

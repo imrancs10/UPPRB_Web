@@ -54,11 +54,11 @@ namespace UPPRB_Web.BAL.Masters
                     var lastNumber = Convert.ToInt32(lastPACNumber.Substring(7, 4));
                     int addPad = 4 - (lastNumber + 1).ToString().Length;
                     var padNumber = (lastNumber + 1).ToString().PadLeft((lastNumber + 1).ToString().Length + addPad, '0');
-                    notice.PACNumber = "PAC" + DateTime.UtcNow.Year.ToString() + padNumber;
+                    notice.PACNumber = "CSPAC" + DateTime.UtcNow.Year.ToString() + padNumber;
                 }
                 else
                 {
-                    notice.PACNumber = "PAC" + DateTime.UtcNow.Year.ToString() + "0001";
+                    notice.PACNumber = "CSPAC" + DateTime.UtcNow.Year.ToString() + "0001";
                 }
                 _db.Entry(notice).State = EntityState.Added;
 
@@ -196,6 +196,26 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderBy(x => x.DistrictName).ToList();
             return _list != null ? _list : new List<PSEntryModel>();
         }
+        public List<MedalEntryModel> GetMedalEntry()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.MedalDetails
+                         join dis in _db.Lookups on lookEntry.MedalCategoryId equals dis.LookupId
+                         select new MedalEntryModel
+                         {
+                             FileName = lookEntry.FileName,
+                             GivenBy = lookEntry.GivenBy,
+                             Id = lookEntry.Id,
+                             IsActive = lookEntry.IsActive,
+                             MedalCategoryId = lookEntry.MedalCategoryId,
+                             MedalCategoryName = dis.LookupName,
+                             MedalDescription = lookEntry.MedalDescription,
+                             MedalGivenDate = lookEntry.MedalGivenDate,
+                             ToWhom = lookEntry.ToWhom,
+                             UpdatedDate = lookEntry.UpdatedDate
+                         }).OrderByDescending(x => x.MedalGivenDate).ToList();
+            return _list != null ? _list : new List<MedalEntryModel>();
+        }
         public Enums.CrudStatus DeletePSEntry(int Id)
         {
             _db = new upprbDbEntities();
@@ -210,6 +230,34 @@ namespace UPPRB_Web.BAL.Masters
             }
             else
                 return Enums.CrudStatus.DataNotFound;
+        }
+        public Enums.CrudStatus SaveMedalEntry(MedalDetail notice)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (notice.Id == 0)
+            {
+                _db.Entry(notice).State = EntityState.Added;
+            }
+            else
+            {
+                var _deptRow = _db.MedalDetails.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.FileName = !string.IsNullOrEmpty(notice.FileName) ? notice.FileName : _deptRow.FileName;
+                    _deptRow.UpdatedDate = notice.UpdatedDate;
+                    _deptRow.MedalGivenDate = notice.MedalGivenDate;
+                    _deptRow.MedalDescription = notice.MedalDescription;
+                    _deptRow.MedalCategoryId = notice.MedalCategoryId;
+                    _deptRow.ToWhom = notice.ToWhom;
+                    _deptRow.GivenBy = notice.GivenBy;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
         public Enums.CrudStatus SaveFAQEntry(FAQDetail notice)
         {

@@ -32,8 +32,48 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult AddMedalDetails()
         {
+            var detail = new AdminDetails();
+            ViewData["MedalData"] = detail.GetMedalEntry();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddMedalDetails(string hiddenID, HttpPostedFileBase postedFile, string MedalCategory, string GivenBY,
+                                                string ToWhom, string MedalDescription, string MedalDate)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            MedalDetail notice = new MedalDetail()
+            {
+                IsActive = true,
+                Id = !string.IsNullOrEmpty(hiddenID) ? Convert.ToInt32(hiddenID) : 0,
+                UpdatedDate = DateTime.Today,
+                FileName = filename,
+                MedalCategoryId = !string.IsNullOrEmpty(MedalCategory) ? (int?)Convert.ToInt32(MedalCategory) : null,
+                MedalGivenDate = !string.IsNullOrEmpty(MedalDate) ? (DateTime?)Convert.ToDateTime(MedalDate) : null,
+                GivenBy = GivenBY,
+                ToWhom = ToWhom,
+                MedalDescription = MedalDescription
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveMedalEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                if (postedFile != null)
+                {
+
+                    string path = Server.MapPath("~/FilesUploaded/Medal/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            SetAlertMessage("Medal Enrty Saved", "Success");
+
+            return View();
+        }
+
         public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();

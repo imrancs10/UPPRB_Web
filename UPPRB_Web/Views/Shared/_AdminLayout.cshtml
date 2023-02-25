@@ -49,6 +49,7 @@
 </head>
 
 <body class="light-sidebar-nav">
+    <input type="hidden" value="@UserData.UserId" id="hdnUserId" />
     @if ((User as CustomPrincipal) != null && UserData.UserId != 0)
     {
         <section id="container">
@@ -196,8 +197,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>                    
-                                                
+                        </li>
+
                         <li>
                             <a href="/Admin/Logout">
                                 <i class="fa fa-dashboard"></i>
@@ -205,34 +206,34 @@
                             </a>
                         </li>
                         <!--
-    <li>
-        <a href="#!">
-            <i class="fa fa-user"></i>
-            <span>Latest News</span>
-        </a>
-    </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-user"></i>
+                                <span>Latest News</span>
+                            </a>
+                        </li>
 
-    <li>
-        <a href="#!">
-            <i class="fa fa-user"></i>
-            <span>Gallery</span>
-        </a>
-    </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-user"></i>
+                                <span>Gallery</span>
+                            </a>
+                        </li>
 
 
-    <li>
-        <a href="#!">
-            <i class="fa fa-user"></i>
-            <span>Video</span>
-        </a>
-    </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-user"></i>
+                                <span>Video</span>
+                            </a>
+                        </li>
 
-    <li>
-        <a href="#!">
-            <i class="fa fa-user"></i>
-            <span>Notification</span>
-        </a>
-    </li>-->
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-user"></i>
+                                <span>Notification</span>
+                            </a>
+                        </li>-->
 
 
                     </ul>
@@ -564,7 +565,16 @@
             $('#hiddenID').val(Id);
             return false;
         }
-
+        $(document).ready(function () {
+            var userId = $('#hdnUserId').val();
+            if (userId == "" || userId == undefined || userId == null || userId == 0) {
+                var url = "/Login/Index";
+                window.location.href = url;
+                window.location.assign(url);
+                window.location = url;
+                window.location.replace = url;
+            }
+        });
     </script>
     <input type="hidden" id="hiddenID" value="" />
 </body>

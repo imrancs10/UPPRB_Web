@@ -84,6 +84,20 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="LookupNameImmutable" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="MedalDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedalCategoryId" Type="int" />
+          <Property Name="GivenBy" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToWhom" Type="nvarchar" MaxLength="500" />
+          <Property Name="MedalDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="MedalGivenDate" Type="datetime" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="Notice">
           <Key>
             <PropertyRef Name="Id" />
@@ -187,6 +201,7 @@
           <EntitySet Name="FAQDetail" EntityType="Self.FAQDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedalDetails" EntityType="Self.MedalDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACEntry" EntityType="Self.PACEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
@@ -229,6 +244,7 @@
           <EntitySet Name="DirectRecruitementDetails" EntityType="upprbDbModel.DirectRecruitementDetail" />
           <EntitySet Name="PromotionDetails" EntityType="upprbDbModel.PromotionDetail" />
           <EntitySet Name="FAQDetails" EntityType="upprbDbModel.FAQDetail" />
+          <EntitySet Name="MedalDetails" EntityType="upprbDbModel.MedalDetail" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -390,6 +406,20 @@
           <Property Name="FAQ_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MedalDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedalCategoryId" Type="Int32" />
+          <Property Name="GivenBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToWhom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MedalDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MedalGivenDate" Type="DateTime" Precision="3" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -582,6 +612,21 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="FAQ_Answer" ColumnName="FAQ_Answer" />
                 <ScalarProperty Name="FAQ_Question" ColumnName="FAQ_Question" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedalDetails">
+            <EntityTypeMapping TypeName="upprbDbModel.MedalDetail">
+              <MappingFragment StoreEntitySet="MedalDetails">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="MedalGivenDate" ColumnName="MedalGivenDate" />
+                <ScalarProperty Name="MedalDescription" ColumnName="MedalDescription" />
+                <ScalarProperty Name="ToWhom" ColumnName="ToWhom" />
+                <ScalarProperty Name="GivenBy" ColumnName="GivenBy" />
+                <ScalarProperty Name="MedalCategoryId" ColumnName="MedalCategoryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

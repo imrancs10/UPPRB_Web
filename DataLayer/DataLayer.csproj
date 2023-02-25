@@ -89,6 +89,9 @@
     <Compile Include="Lookup.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="MedalDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Notice.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
