@@ -50,19 +50,6 @@ namespace UPPRB_Web.Controllers
                 string filterText = Request["search[value]"];
                 var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo);
 
-                if (!string.IsNullOrEmpty(filterText))
-                {
-                    result = result.Where(x => x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.PS_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.Zone_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.Range_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.FIRNo.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.Solver_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.Address.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                             || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                }
-
                 recordsTotal = result.Count();
                 var data = result.Skip(skip).Take(pageSize).ToList();
                 return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
@@ -103,7 +90,7 @@ namespace UPPRB_Web.Controllers
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public FileResult CreatePdf()
+        public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "")
         {
             MemoryStream workStream = new MemoryStream();
             StringBuilder status = new StringBuilder("");
@@ -136,7 +123,7 @@ namespace UPPRB_Web.Controllers
             doc.Add(jpg);
 
             //Add Content to PDF   
-            doc.Add(Add_Content_To_PDF(tableLayout));
+            doc.Add(Add_Content_To_PDF(tableLayout, IsSearching, ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo));
 
             // Closing the document  
             doc.Close();
@@ -147,7 +134,7 @@ namespace UPPRB_Web.Controllers
             return File(workStream, "application/pdf", strPDFFileName);
         }
 
-        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout)
+        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, bool IsSearching, string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
         {
             var detail = new GeneralDetails();
             float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
@@ -156,7 +143,11 @@ namespace UPPRB_Web.Controllers
             tableLayout.HeaderRows = 1;
             //Add Title to the PDF file at the top  
 
-            List<PACEntryModel> pacDetailList = detail.GetAllPACDetail();
+            List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
+            if (IsSearching)
+                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo);
+            else
+                pacDetailList = detail.GetAllPACDetail();
 
             tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 12, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {

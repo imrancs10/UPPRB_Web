@@ -68,7 +68,9 @@
                     </div>
                 </div>
                 <div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
-                    <a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
+                    @*<a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
+                        &nbsp;&nbsp;*@
+                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Download Report</button>
                     &nbsp;&nbsp;
                     <button type="submit" id="btnSearch" class="btn btn-success" style="float: right; margin-right: 3%;">Search</button>
                     &nbsp;&nbsp;
@@ -87,10 +89,16 @@
 <!--main content end-->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        //$('#tablePACDoc').DataTable();
+    $('#btnReport').click(function () {
+        var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
+            "&FIRDateTo=" + $('#FIRDateTo').val();
+        window.location.href = url;
+        window.location.assign(url);
+        window.location = url;
+        window.location.replace = url;
     });
-
     $('#btnSearch').click(function () {
         getData();
     });
@@ -251,6 +259,9 @@
         white-space: nowrap;
     }
 
+    .dataTables_filter {
+        display: none;
+    }
     /* #tablePACDoc thead th:nth-child(11) {
         white-space: normal !important;
         word-break: break-all;
