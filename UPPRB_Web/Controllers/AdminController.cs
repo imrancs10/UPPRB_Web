@@ -30,6 +30,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
         public ActionResult AddMedalDetails()
         {
             var detail = new AdminDetails();
