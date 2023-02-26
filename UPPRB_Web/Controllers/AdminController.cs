@@ -71,9 +71,15 @@ namespace UPPRB_Web.Controllers
             }
             SetAlertMessage("Medal Enrty Saved", "Success");
 
-            return View();
+            return RedirectToAction("AddMedalDetails");
         }
-
+        [HttpPost]
+        public JsonResult DeleteMedalDetailEntry(int Id)
+        {
+            var detail = new AdminDetails();
+            var result = detail.DeleteMedalDetailEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();

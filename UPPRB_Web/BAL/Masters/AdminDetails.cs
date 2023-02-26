@@ -231,6 +231,21 @@ namespace UPPRB_Web.BAL.Masters
             else
                 return Enums.CrudStatus.DataNotFound;
         }
+        public Enums.CrudStatus DeleteMedalDetailEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.MedalDetails.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.MedalDetails.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Deleted;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
         public Enums.CrudStatus SaveMedalEntry(MedalDetail notice)
         {
             _db = new upprbDbEntities();

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "MedalDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    var psData = ViewData["PSData"] as List<PSEntryModel>;
+    var psData = ViewData["MedalData"] as List<MedalEntryModel>;
     int index = 1;
 }
 @*<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />*@
@@ -88,21 +88,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var data in psData)
-                                {
-                                    <tr>
-                                        <td>@index </td>
-                                        <td><a>@data.DistrictName</a></td>
-                                        <td class="hidden-phone">@data.PSName</td>
-                                        <td>
-                                            <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditPS(@data.PSId,@data.DistrictId,'@data.PSName')"></i>&nbsp;
-                                            <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeletePS(@data.PSId)"></i>
-                                        </td>
-                                        @{
-                                            index = index + 1;
-                                        }
-                                    </tr>
-                                }*@
+                            @foreach (var data in psData)
+                            {
+                                <tr>
+                                    <td>@index </td>
+                                    <td><a>@data.MedalCategoryName</a></td>
+                                    <td class="hidden-phone">@data.GivenBy</td>
+                                    <td class="hidden-phone">@data.ToWhom</td>
+                                    <td class="hidden-phone">@data.MedalDescription</td>
+                                    <td>
+                                        <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditMedalDetail(@data.Id,@data.MedalCategoryId,'@data.GivenBy','@data.ToWhom','@data.MedalDescription','@data.MedalGivenDate','@data.FileName')"></i>&nbsp;
+                                        <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeleteMedalDetail(@data.Id)"></i>
+                                    </td>
+                                    @{
+                                        index = index + 1;
+                                    }
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </section>
@@ -157,6 +159,15 @@
         var owl = $("#owl-demo").data("owlCarousel");
         owl.reinit();
     });
+
+    $('#customFile').on('change', function () {
+        files = $(this)[0].files;
+        name = '';
+        for (var i = 0; i < files.length; i++) {
+            name += '\"' + files[i].name + '\"' + (i != files.length - 1 ? ", " : "");
+        } $(".custom-file-label").html(name);
+    });
+
     FillMedalCategory();
     function FillMedalCategory(rangeId, selectedMedalId = null) {
         let dropdown = $('#MedalCategory');
@@ -185,21 +196,40 @@
             }
         });
     }
-    function EditPS(id, districtId, PSName) {
+    function EditMedalDetail(id, MedalCategoryId, GivenBy, ToWhom, MedalDescription, MedalDate, filename) {
         $('#hiddenID').val(id);
-        $('#MedalCategory').val(districtId);
-        $('#PSName').val(PSName);
+        $('#MedalCategory').val(MedalCategoryId);
+        $('#GivenBY').val(GivenBy);
+        $('#ToWhom').val(ToWhom);
+        $('#MedalDescription').val(MedalDescription);
+        $('#MedalDate').val(formatDateyyyyMMdd(MedalDate));
+        if (filename != null && filename != "" && filename != undefined && filename != "") {
+            //add upload document link
+            $('#customFile').parent().find('a').remove();
+            $('#customFile').addClass('hidden');
+            var fileUrl = '/FilesUploaded/Medal/' + encodeURIComponent(filename);
+            var truncatedFileName = (filename.length > 50) ? filename.substring(0, 50) + '...' : filename
+            var html = "<a href='" + fileUrl + "' target='_blank'>" + truncatedFileName + "</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
+            $(html).insertAfter('#customFile');
+            $('#customFile').removeAttr('required');
+        }
         window.scrollTo(0, 0);
     }
-
-    function DeletePS(Id) {
+    function RemoveFile() {
+        $('#customFile').removeClass('hidden');
+        $('#customFile').parent().find('a').remove();
+        $('#customFile').attr('required');
+        $('[name*=postedFile]').removeAttr('disabled');
+        return false;
+    }
+    function DeleteMedalDetail(Id) {
         if (confirm("Are you sure want to Delete") == true) {
             $.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 type: 'POST',
                 data: '{Id: "' + Id + '" }',
-                url: '/Admin/DeletePSEntry',
+                url: '/Admin/DeleteMedalDetailEntry',
                 success: function (data) {
                     utility.alert.setAlert("Delete", "Successfully Deleted");
                     location.reload();
@@ -213,6 +243,22 @@
             });
         }
 
+    }
+    function formatDateyyyyMMdd(noticeDate) {
+        var milli = 0;
+        if (noticeDate.source) {
+            milli = noticeDate.source.replace("Date(", "").replace(")", "");
+        }
+        else {
+            milli = noticeDate.replace("Date(", "").replace(")", "").replaceAll("/", "");
+        }
+        var now = new Date(parseInt(milli));
+
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        return today;
     }
 </script>
 
