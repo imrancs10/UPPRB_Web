@@ -21,7 +21,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
-
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
         public ActionResult GetLogin(string username, string password)
         {
             // Code for validating the CAPTCHA  

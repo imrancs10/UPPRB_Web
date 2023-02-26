@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -575,6 +574,8 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="FilesUploaded\Medal\a60a13399301f-fcfb-4ab7-aa2b-5043d20c6f93.jpg" />
+    <Content Include="FilesUploaded\Medal\mage 2023-01-15 at 13.53.4500d23551-510f-4fb9-bd19-8b13366be840.jpg" />
     <Content Include="FilesUploaded\Notice\declaration1fc00352-cb22-43cb-8fb9-8df5b2586007.jpeg" />
     <Content Include="FilesUploaded\Notice\declaration6abc4975-2745-4724-b4fa-5ae802337c03.jpeg" />
     <Content Include="FilesUploaded\Notice\photo31edcbb5-af35-4a73-934a-67854158b398.jpeg" />
@@ -852,6 +853,7 @@
     <Content Include="Views\Admin\SearchPACList.cshtml" />
     <Content Include="Views\Admin\AddMedalDetails.cshtml" />
     <Content Include="Views\Home\MedalDetails.cshtml" />
+    <Content Include="Views\Login\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
