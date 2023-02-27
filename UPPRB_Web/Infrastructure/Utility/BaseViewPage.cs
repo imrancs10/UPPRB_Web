@@ -45,6 +45,13 @@ namespace UPPRB_Web.Infrastructure.Utility
             return _details.GetEntryType();
         }
 
+        public virtual List<string> GetUserPermission()
+        {
+            int roleId = (int)User.RoleId;
+            GeneralDetails _details = new GeneralDetails();
+            return _details.GetUserPermission(roleId);
+        }
+
         public virtual bool GetCaptchEnable()
         {
             return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]);

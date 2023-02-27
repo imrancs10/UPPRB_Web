@@ -23,6 +23,7 @@ namespace UPPRB_Web.Infrastructure.Authentication
         public string PINCode { get; set; }
         public string Religion { get; set; }
         public string Department { get; set; }
+        public int? RoleId { get; set; }
 
     }
 }

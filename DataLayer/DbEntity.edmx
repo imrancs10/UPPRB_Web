@@ -17,6 +17,7 @@
           <Property Name="MobileNumber" Type="bigint" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
         </EntityType>
         <EntityType Name="DirectRecruitementDetail">
           <Key>
@@ -151,6 +152,13 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionName" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="PromotionDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,12 +186,27 @@
           <Property Name="RangeName" Type="varchar" MaxLength="500" />
           <Property Name="ZoneId" Type="int" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="StateMaster">
           <Key>
             <PropertyRef Name="StateId" />
           </Key>
           <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StateName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="PermissionId" Type="int" />
         </EntityType>
         <EntityType Name="ZoneMaster">
           <Key>
@@ -205,10 +228,13 @@
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACEntry" EntityType="Self.PACEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromotionDetail" EntityType="Self.PromotionDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PSMaster" EntityType="Self.PSMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RangeMaster" EntityType="Self.RangeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -227,6 +253,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmailID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MobileNumber" Type="Int64" />
+          <Property Name="RoleId" Type="Int32" />
         </EntityType>
         <EntityContainer Name="upprbDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
@@ -245,6 +272,9 @@
           <EntitySet Name="PromotionDetails" EntityType="upprbDbModel.PromotionDetail" />
           <EntitySet Name="FAQDetails" EntityType="upprbDbModel.FAQDetail" />
           <EntitySet Name="MedalDetails" EntityType="upprbDbModel.MedalDetail" />
+          <EntitySet Name="Permissions" EntityType="upprbDbModel.Permission" />
+          <EntitySet Name="Roles" EntityType="upprbDbModel.Role" />
+          <EntitySet Name="UserRoles" EntityType="upprbDbModel.UserRole" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -421,6 +451,28 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="PermissionId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -430,6 +482,7 @@
           <EntitySetMapping Name="AdminUsers">
             <EntityTypeMapping TypeName="upprbDbModel.AdminUser">
               <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="EmailID" ColumnName="EmailID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -628,6 +681,31 @@
                 <ScalarProperty Name="GivenBy" ColumnName="GivenBy" />
                 <ScalarProperty Name="MedalCategoryId" ColumnName="MedalCategoryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="upprbDbModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="upprbDbModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="upprbDbModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,12 +11,34 @@ using log4net.Repository.Hierarchy;
 using System.Reflection.Emit;
 using System.Security.Policy;
 using System.Web.UI;
+using System.Security.Cryptography;
 
 namespace UPPRB_Web.BAL.Masters
 {
     public class GeneralDetails
     {
         upprbDbEntities _db = null;
+        public List<string> GetUserPermission(int roleId)
+        {
+            _db = new upprbDbEntities();
+            var superAdminRoleName = _db.Roles.Where(x => x.RoleId == roleId).Select(x => x.RoleName).FirstOrDefault();
+            var _list = (from permission in _db.Permissions
+                         join userRole in _db.UserRoles on permission.PermissionId equals userRole.PermissionId into userRole1
+                         from userRole2 in userRole1.DefaultIfEmpty()
+                         join role in _db.Roles on userRole2.RoleId equals role.RoleId into role1
+                         from role2 in role1.DefaultIfEmpty()
+                         where userRole2.RoleId == roleId || superAdminRoleName == "SuperAdmin"
+                         select permission.PermissionName).ToList();
+
+
+            //(from userRole in _db.UserRoles
+            //         join role in _db.Roles on userRole.RoleId equals role.RoleId into role1
+            //         from role2 in role1.DefaultIfEmpty()
+            //         join permission in _db.Permissions on userRole.PermissionId equals permission.PermissionId
+            //         where userRole.RoleId == roleId || superAdminRoleName == "SuperAdmin"
+            //         select permission.PermissionName).ToList();
+            return _list != null ? _list : new List<string>();
+        }
         public List<NoticeModel> GetEntryType()
         {
             _db = new upprbDbEntities();

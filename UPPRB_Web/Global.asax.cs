@@ -17,7 +17,7 @@ namespace UPPRB_Web
         {
             if (!Request.IsLocal)
             {
-               // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+                // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
             }
         }
         protected void Application_Start()
@@ -58,7 +58,8 @@ namespace UPPRB_Web
                         MiddleName = serializeModel.MiddleName,
                         LastName = serializeModel.LastName,
                         Email = serializeModel.Email,
-                        Mobile = serializeModel.Mobile
+                        Mobile = serializeModel.Mobile,
+                        RoleId = serializeModel.RoleId
                     };
 
                     HttpContext.Current.User = newUser;

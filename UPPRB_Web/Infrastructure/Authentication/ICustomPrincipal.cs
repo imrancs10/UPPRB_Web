@@ -10,6 +10,7 @@ namespace UPPRB_Web.Infrastructure.Authentication
     public interface ICustomPrincipal : IPrincipal
     {
         int Id { get; set; }
+        int? RoleId { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
         string LastName { get; set; }

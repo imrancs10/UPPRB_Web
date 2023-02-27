@@ -16,6 +16,7 @@ namespace UPPRB_Web.Infrastructure.Authentication
             this.Identity = new GenericIdentity(email);
         }
         public int Id { get; set; }
+        public int? RoleId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

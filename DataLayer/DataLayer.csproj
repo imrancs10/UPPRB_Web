@@ -101,6 +101,9 @@
     <Compile Include="PACUser.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PromotionDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -111,7 +114,13 @@
     <Compile Include="RangeMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="StateMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="ZoneMaster.cs">

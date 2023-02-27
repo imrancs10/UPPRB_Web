@@ -18,12 +18,28 @@ $(document).ready(function () {
             data: '{lookupTypeId: 0,lookupType: "UploadType" }',
             url: '/Master/GetLookupDetail',
             success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                //get user role
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '/Master/GetUserPermission',
+                    success: function (permissionData) {
+                        $.each(data, function (key, entry) {
+                            if (permissionData.includes(entry.LookupName))
+                                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                        });
+                        if (selectedEntryTypeId != null) {
+                            dropdown.val(selectedEntryTypeId);
+                        }
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
                 });
-                if (selectedEntryTypeId != null) {
-                    dropdown.val(selectedEntryTypeId);
-                }
             },
             failure: function (response) {
                 console.log(response);

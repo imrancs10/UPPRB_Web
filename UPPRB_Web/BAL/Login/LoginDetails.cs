@@ -37,6 +37,7 @@ namespace UPPRB_Web.BAL.Login
                 UserData.Name = _userLogin.Name;
                 UserData.MobileNumber = Convert.ToString(_userLogin.MobileNumber);
                 UserData.Email = _userLogin.EmailID;
+                UserData.RoleId = _userLogin.RoleId;
                 return Enums.LoginMessage.Authenticated;
             }
             else

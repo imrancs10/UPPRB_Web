@@ -81,5 +81,12 @@ namespace UPPRB_Web.Controllers
             var data = _details.GetPoliceStationDetail(districtId);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetUserPermission()
+        {
+            int roleId = (int)User.RoleId;
+            GeneralDetails _details = new GeneralDetails();
+            return Json(_details.GetUserPermission(roleId), JsonRequestBehavior.AllowGet);
+        }
     }
 }

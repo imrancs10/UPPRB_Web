@@ -72,6 +72,18 @@ namespace UPPRB_Web.Global
             }
             set { HttpContext.Current.Session["Email"] = value; }
         }
-
+        public static int? RoleId
+        {
+            get
+            {
+                if (System.Web.HttpContext.Current.Session["RoleId"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["RoleId"]);
+                }
+                else
+                    return null;
+            }
+            set { HttpContext.Current.Session["RoleId"] = value; }
+        }
     }
 }

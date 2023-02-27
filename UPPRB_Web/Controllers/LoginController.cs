@@ -60,6 +60,7 @@ namespace UPPRB_Web.Controllers
             serializeModel.Mobile = string.IsNullOrEmpty(UserData.MobileNumber) ? string.Empty : UserData.MobileNumber;
             serializeModel.LastName = string.IsNullOrEmpty(UserData.Username) ? string.Empty : UserData.Username;
             serializeModel.Email = string.IsNullOrEmpty(UserData.Email) ? string.Empty : UserData.Email;
+            serializeModel.RoleId = UserData.RoleId != null ? UserData.RoleId : 0;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 

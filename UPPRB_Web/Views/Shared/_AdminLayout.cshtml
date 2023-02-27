@@ -2,6 +2,7 @@
 @using UPPRB_Web.Infrastructure.Authentication;
 @{
     var entryType = GetEntryTypeDetail();
+    var userPermission = GetUserPermission();
 }
 
 <!DOCTYPE html>
@@ -70,7 +71,7 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <img alt="" src="img/avatar1_small.jpg">
-                                <span class="username">Admin</span>
+                                <span class="username">@UserData.Name</span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu extended logout dropdown-menu-right">
@@ -99,112 +100,130 @@
                             </a>
                         </li>
 
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-laptop"></i>
-                                <span>Upload Data Management</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="/Admin/NoticeEntry">Upload Data Entry</a></li>
-                                @foreach (var entry in entryType)
-                                {
-                                    <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeDisplayName</a></li>
-                                }
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-laptop"></i>
-                                <span>PAC Data Management</span>
-                            </a>
-                            <ul class="sub">
-                                <li>
-                                    <a href="/Admin/PACEntry">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>PAC Entry</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/PACList">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>PAC List</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/SearchPACList">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Search PAC List</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-laptop"></i>
-                                <span>Master Data Management</span>
-                            </a>
-                            <ul class="sub">
-                                <li>
-                                    <a href="/Admin/CreateUser">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Create User</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/AddFAQ">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>FAQ Master</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/EnquiryList">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Enquiry Master</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/FeedbackList">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Feedback Master</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/AddPSDetails">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Police Station Master</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/AddMedalDetails">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Add Medal Details</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-laptop"></i>
-                                <span>Master Page Management</span>
-                            </a>
-                            <ul class="sub">
-                                <li>
-                                    <a href="/Admin/PromotionEntry">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Promotion Entry</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/DirectRecruitementEntry">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Direct Recruitement Entry</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
+                        @if (userPermission.Contains("UploadDataManagement"))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Upload Data Management</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="/Admin/NoticeEntry">Upload Data Entry</a></li>
+                                    @foreach (var entry in entryType)
+                                    {
+                                        if (userPermission.Contains(entry.EntryTypeName))
+                                        {
+                                            <li><a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId">@entry.EntryTypeDisplayName</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (userPermission.Contains("PACDataManagement"))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>PAC Data Management</span>
+                                </a>
+                                <ul class="sub">
+                                    <li>
+                                        <a href="/Admin/PACEntry">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>PAC Entry</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/PACList">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>PAC List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/SearchPACList">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Search PAC List</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (userPermission.Contains("MasterDataManagement"))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Master Data Management</span>
+                                </a>
+                                <ul class="sub">
+                                    <li>
+                                        <a href="/Admin/CreateUser">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Create User</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/AddFAQ">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>FAQ Master</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/EnquiryList">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Enquiry Master</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/FeedbackList">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Feedback Master</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/AddPSDetails">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Police Station Master</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Admin/AddMedalDetails">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span>Add Medal Details</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (userPermission.Contains("MasterPageManagement"))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Master Page Management</span>
+                                </a>
+                                <ul class="sub">
+                                    @if (userPermission.Contains("PromotionEntry"))
+                                    {
+                                        <li>
+                                            <a href="/Admin/PromotionEntry">
+                                                <i class="fa fa-dashboard"></i>
+                                                <span>Promotion Entry</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (userPermission.Contains("DirectRecruitementEntry"))
+                                    {
+                                        <li>
+                                            <a href="/Admin/DirectRecruitementEntry">
+                                                <i class="fa fa-dashboard"></i>
+                                                <span>Direct Recruitement Entry</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
                         <li>
                             <a href="/Admin/Logout">
                                 <i class="fa fa-dashboard"></i>

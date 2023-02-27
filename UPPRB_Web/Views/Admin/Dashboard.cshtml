@@ -4,6 +4,7 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var entryType = GetEntryTypeDetail();
+    var userPermission = GetUserPermission();
 }
 
 <section class="wrapper">
@@ -11,38 +12,44 @@
     <center><h2 class="w-bgph">Dashboard</h2></center>
     <hr>
     <div class="row state-overview">
-        <div class="col-lg-3 col-sm-6">
-            <section class="card">
-                <div class="symbol terques">
-                    <i class="fa fa-clipboard"></i>
-                </div>
-                <div class="value">
-                    <!--<h1 class="count">
-                    0
-                </h1>-->
-                    <a href="/Admin/NoticeEntry"><h3 style="color:brown">Upload Data Entry</h3></a>
-                    <i class="fa fa-pencil"></i>
-                </div>
-            </section>
-        </div>
-        @foreach (var entry in entryType)
+        @if (userPermission.Contains("UploadDataManagement"))
         {
             <div class="col-lg-3 col-sm-6">
                 <section class="card">
-                    <div class="symbol red">
-                        <i class="fa fa-tags"></i>
+                    <div class="symbol terques">
+                        <i class="fa fa-clipboard"></i>
                     </div>
                     <div class="value">
-                        <!--<h1 class=" count2">
-                        0
-                    </h1>-->
-                        <a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId"><h3 style="color:brown">@entry.EntryTypeDisplayName</h3></a>
-                        <i class="fa fa-list"></i>
+                        <!--<h1 class="count">
+                            0
+                        </h1>-->
+                        <a href="/Admin/NoticeEntry"><h3 style="color:brown">Upload Data Entry</h3></a>
+                        <i class="fa fa-pencil"></i>
                     </div>
                 </section>
             </div>
         }
-      
+        @foreach (var entry in entryType)
+        {
+            if (userPermission.Contains(entry.EntryTypeName))
+            {
+                <div class="col-lg-3 col-sm-6">
+                    <section class="card">
+                        <div class="symbol red">
+                            <i class="fa fa-tags"></i>
+                        </div>
+                        <div class="value">
+                            <!--<h1 class=" count2">
+                                0
+                            </h1>-->
+                            <a href="/Admin/NoticeEntryList?entryTypeId=@entry.EntryTypeId"><h3 style="color:brown">@entry.EntryTypeDisplayName</h3></a>
+                            <i class="fa fa-list"></i>
+                        </div>
+                    </section>
+                </div>
+            }
+        }
+
         <div class="col-lg-3 col-sm-6">
             <section class="card">
                 <div class="symbol blue">
@@ -50,8 +57,8 @@
                 </div>
                 <div class="value">
                     <!--<h1 class=" count4">
-        0
-    </h1>-->
+                        0
+                    </h1>-->
                     <a href="/Admin/EnquiryList"><h3 style="color:brown">Enquiry</h3></a>
                     <i class="fa fa-list"></i>
                 </div>
@@ -65,8 +72,8 @@
                 </div>
                 <div class="value">
                     <!--<h1 class=" count4">
-        0
-    </h1>-->
+                        0
+                    </h1>-->
                     <a href="/Admin/FeedbackList"><h3 style="color:brown">Feedback</h3></a>
                     <i class="fa fa-list"></i>
                 </div>
