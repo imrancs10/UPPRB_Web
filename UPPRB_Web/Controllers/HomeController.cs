@@ -122,6 +122,11 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult MedalDetails()
         {
+            var detail = new GeneralDetails();
+            var noticeTypeDetail = detail.GetPhotoGalaryNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            var admindetail = new AdminDetails();
+            ViewData["MedalData"] = admindetail.GetMedalEntry();
             return View();
         }
         public ActionResult PhotoGallery(int? Id = null)
