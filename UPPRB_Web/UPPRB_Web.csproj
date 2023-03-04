@@ -280,6 +280,13 @@
     <Compile Include="Infrastructure\Utility\MultipleButtonAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\calender\css\demo.css" />
+    <Content Include="Content\calender\css\theme1.css" />
+    <Content Include="Content\calender\css\theme2.css" />
+    <Content Include="Content\calender\css\theme3.css" />
+    <Content Include="Content\calender\js\caleandar.js" />
+    <Content Include="Content\calender\js\caleandar.min.js" />
+    <Content Include="Content\calender\js\demo.js" />
     <Content Include="Content\css\all.min.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-extended.css" />

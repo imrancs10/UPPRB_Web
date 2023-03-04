@@ -5,159 +5,96 @@
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
 }
 <link rel="stylesheet" href="~/Content/css/Component.css">
+<link href="~/Content/calender/css/theme3.css" rel="stylesheet" />
 <section class="blog-single section">
-    <div class="container  wsh"style="min-height:500px">
+    <div class="container  wsh" style="min-height:500px">
         <div class="w_content pt-20 mt-0">
             <h2 class="w-bgph ">Calender Events With Special Date</h2>
             <div class="container">
-                <div class="content-padding">                    
-                    <div class="main">
-                        <ul class="cbp_tmtimeline">
-
-                            <li>
-                                <time class="cbp_tmtime" datetime="2023-01-06 18:30"><span>2023</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>JANUARY 2023</h2>
-                                    <div class="sp-dates">
-                                        <ul>
-                                            <li>5 - 6th January 2023 <span>Table Tenis Events</span></li>
-                                            <li>7 - 8th January 2023 – <span> Document Verification in Athletics</span></li>
-                                            <li>15 - 16th January 2023 – <span> Cross Country Events</span></li>
-                                            <li>26th January 2023 – <span> Republic Day Celebaration</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>                           
-                            <li>
-                                <time class="cbp_tmtime" datetime="2023-02-10 21:30"> <span>2023</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>FEBRUARY  2023</h2>
-                                    <div class="sp-dates">
-                                        <ul>
-                                            <li>10th February 2023 – <span>Meeting with Bihar Police Officers</span></li>
-                                            <li>17th February 2023 – <span>Football Events</span></li>
-                                            <li>20th February 2023 – <span>Kabaddi Events</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <time class="cbp_tmtime" datetime="2023-03-10 21:30"> <span>2023</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>MARCH  2023</h2>
-                                    <div class="sp-dates">
-                                        <ul>
-                                            <li>5 - 6 - 7th March 2023 – <span>xxxxxxx</span></li>
-                                            <li>14 - 15th March 2023 – <span>xxxxxx</span></li>
-                                            <li>21st March 2023 – <span>xxxxxxxx</span></li>                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="cbp_tmtime" datetime="2013-04-16 21:30"> <span>2023</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-earth"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>APRIL 2023</h2>
-                                    <div class="sp-dates">
-                                        <ul>
-                                            <li>4 - 5 - 6th April 2023 – <span>xxxxxxxx</span></li>
-                                            <li>14th April 2023 – <span>xxxxxxx</span></li>
-                                            <li>20th April 2023 – <span>xxxxxxx</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!--<div class="shedule-table">
-
-                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                       <tbody>
-                         <thead>
-                            <tr>
-                           <td align="center" valign="top">NOVEMBER 2015 </td>
-                           <td align="center" valign="top">DECEMBER 2015</td>
-                           </tr>
-                         </thead>
-                         <tr>
-                           <td align="center" valign="top">11 th November 2015 – Deepavali Celebrations</td>
-                           <td align="center" valign="top">	23rd, 24th & 25th December 2015 – Full Moon Night</td>
-                         </tr>
-                         <tr>
-                           <td align="center" valign="top">23rd, 24th, &amp; 25th November 2015 – Full Moon Night</td>
-                           <td align="center" valign="top">30th &amp; 31st December 2015 – New Year Eve Celebrations</td>
-                         </tr>
-                         <tr>
-                           <td align="center" valign="top"><strong>NOV - WEEKEND DATES</strong></td>
-                           <td align="center" valign="top"><strong>DEC - WEEKEND DATES</strong></td>
-                         </tr>
-                         <tr>
-                           <td align="center" valign="top">14th &amp; 15th November 2015</td>
-                           <td align="center" valign="top">05th &amp; 06th December 2015</td>
-                         </tr>
-                         <tr>
-                           <td align="center" valign="top">21st &amp; 22nd November 2015</td>
-                           <td align="center" valign="top">12th &amp; 13th December 2015</td>
-                         </tr>
-                         <tr>
-                           <td align="center" valign="top">28th &amp; 29th November 2015</td>
-                           <td align="center" valign="top">19th &amp; 20th December 2015</td>
-                         </tr>
-                          <tr>
-                           <td align="center" valign="top">&nbsp;</td>
-                           <td align="center" valign="top">26th &amp; 27th December 2015</td>
-                         </tr>
-                       </tbody>
-                     </table>
-
-                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                       <tbody>
-                       <thead>
-                            <tr>
-                           <td align="center" valign="top">JANUARY 2016</td>
-                           <td align="center" valign="top">FEBRUARY 2016</td>
-                           </tr>
-                       </thead>
-                           <tr>
-                           <td align="center" valign="top">14th &amp; 15th January 2016 – Kite Flying Festival</td>
-                           <td align="center" valign="top">13th &amp; 14th February 2016 - Valentine Day</td>
-                         </tr>
-                           <tr>
-                           <td align="center" valign="top">14th &amp; 15th January 2016 – Kite Flying Festival</td>
-                           <td align="center" valign="top">20th, 21st &amp; 22nd February 2016 – Full Moon Night</td>
-                         </tr>
-                           <tr>
-                           <td align="center" valign="top"><strong>JAN – WEEKEND DATES</strong></td>
-                           <td align="center" valign="top"><strong>	FEB – WEEKEND DATES</strong></td>
-                         </tr>
-                           <tr>
-                           <td align="center" valign="top">02nd &amp; 03rd January 2016</td>
-                           <td align="center" valign="top">06th &amp; 07th February 2016</td>
-                         </tr>
-                           <tr>
-                           <td align="center" valign="top">09th &amp; 10th January 2016</td>
-                           <td align="center" valign="top">13th &amp; 14th February 2016</td>
-                         </tr>
-                          <tr>
-                           <td align="center" valign="top">16th &amp; 17th January 2016</td>
-                           <td align="center" valign="top">20th &amp; 21st February 2016</td>
-                         </tr>
-                          <tr>
-                           <td align="center" valign="top">23rd &amp; 24th January 2016</td>
-                           <td align="center" valign="top">&nbsp;</td>
-                         </tr>
-                       </tbody>
-                 </table>
-            </div>-->
+                <div id="caleandar" style=" margin-left: 15%;">
                 </div>
+                @*<div class="content-padding">
+            <div class="main">
+                <ul class="cbp_tmtimeline">
+
+                    <li>
+                        <time class="cbp_tmtime" datetime="2023-01-06 18:30"><span>2023</span></time>
+                        <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                        <div class="cbp_tmlabel">
+                            <h2>JANUARY 2023</h2>
+                            <div class="sp-dates">
+                                <ul>
+                                    <li>5 - 6th January 2023 <span>Table Tenis Events</span></li>
+                                    <li>7 - 8th January 2023 – <span> Document Verification in Athletics</span></li>
+                                    <li>15 - 16th January 2023 – <span> Cross Country Events</span></li>
+                                    <li>26th January 2023 – <span> Republic Day Celebaration</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="2023-02-10 21:30"> <span>2023</span></time>
+                        <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                        <div class="cbp_tmlabel">
+                            <h2>FEBRUARY  2023</h2>
+                            <div class="sp-dates">
+                                <ul>
+                                    <li>10th February 2023 – <span>Meeting with Bihar Police Officers</span></li>
+                                    <li>17th February 2023 – <span>Football Events</span></li>
+                                    <li>20th February 2023 – <span>Kabaddi Events</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <time class="cbp_tmtime" datetime="2023-03-10 21:30"> <span>2023</span></time>
+                        <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                        <div class="cbp_tmlabel">
+                            <h2>MARCH  2023</h2>
+                            <div class="sp-dates">
+                                <ul>
+                                    <li>5 - 6 - 7th March 2023 – <span>xxxxxxx</span></li>
+                                    <li>14 - 15th March 2023 – <span>xxxxxx</span></li>
+                                    <li>21st March 2023 – <span>xxxxxxxx</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="2013-04-16 21:30"> <span>2023</span></time>
+                        <div class="cbp_tmicon cbp_tmicon-earth"></div>
+                        <div class="cbp_tmlabel">
+                            <h2>APRIL 2023</h2>
+                            <div class="sp-dates">
+                                <ul>
+                                    <li>4 - 5 - 6th April 2023 – <span>xxxxxxxx</span></li>
+                                    <li>14th April 2023 – <span>xxxxxxx</span></li>
+                                    <li>20th April 2023 – <span>xxxxxxx</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>*@
             </div>
         </div>
-            </div>
+    </div>
 </section>
 <!--/ End Blog Single -->
+<script src="~/Content/calender/js/caleandar.js"></script>
+<script type="text/javascript">
+    //month is start from 0 so for jan provide 0,for feb provide 1 
+    //yyyy,mm-1,dd
+    var events = [
+        { 'Date': new Date(2023, 2, 4), 'Title': 'Doctor appointment at 3:25pm.' },
+        { 'Date': new Date(2023, 2, 18), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com' },
+        { 'Date': new Date(2016, 6, 27), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts' },
+    ];
+    var settings = {};
+    var element = document.getElementById('caleandar');
+    caleandar(element, events, settings);
+
+</script>
