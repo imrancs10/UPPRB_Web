@@ -88,5 +88,12 @@ namespace UPPRB_Web.Controllers
             GeneralDetails _details = new GeneralDetails();
             return Json(_details.GetUserPermission(roleId), JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetCalenderEvent()
+        {
+            var detail = new AdminDetails();
+            var data = detail.GetEventCalender();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
