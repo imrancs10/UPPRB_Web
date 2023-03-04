@@ -255,6 +255,7 @@
     <Compile Include="Models\Masters\EnquiryModel.cs" />
     <Compile Include="Models\Masters\DirectRecruitmentModel.cs" />
     <Compile Include="Models\Masters\FAQEntryModel.cs" />
+    <Compile Include="Models\Masters\EventCalenderModel.cs" />
     <Compile Include="Models\Masters\MedalEntryModel.cs" />
     <Compile Include="Models\Masters\UserRoleModel.cs" />
     <Compile Include="Models\Masters\PSEntryModel.cs" />
@@ -857,6 +858,7 @@
     <Content Include="Views\Home\MedalDetails.cshtml" />
     <Content Include="Views\Login\ForgetPassword.cshtml" />
     <Content Include="Views\Admin\CreateUser.cshtml" />
+    <Content Include="Views\Admin\AddEventCalender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

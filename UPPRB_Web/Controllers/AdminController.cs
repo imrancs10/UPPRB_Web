@@ -84,6 +84,55 @@ namespace UPPRB_Web.Controllers
             var result = detail.DeleteMedalDetailEntry(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult AddEventCalender()
+        {
+            var detail = new AdminDetails();
+            ViewData["EventData"] = detail.GetEventCalender();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddEventCalender(string hiddenID, HttpPostedFileBase postedFile, string EventTitle, string EventDescription,
+                                               string EventDate)
+        {
+            string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            EventCalender notice = new EventCalender()
+            {
+                IsActive = true,
+                Id = !string.IsNullOrEmpty(hiddenID) ? Convert.ToInt32(hiddenID) : 0,
+                UpdatedDate = DateTime.Today,
+                FileName = filename,
+                EventDate = !string.IsNullOrEmpty(EventDate) ? (DateTime?)Convert.ToDateTime(EventDate) : null,
+                EventTitle = EventTitle,
+                EventDescription = EventDescription
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveEventCalender(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                if (postedFile != null)
+                {
+
+                    string path = Server.MapPath("~/FilesUploaded/EventCalender/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    postedFile.SaveAs(path + Path.GetFileName(filename));
+                }
+            }
+            SetAlertMessage("Event Calender Saved", "Success");
+
+            return RedirectToAction("AddEventCalender");
+        }
+        [HttpPost]
+        public JsonResult DeleteEventCalender(int Id)
+        {
+            var detail = new AdminDetails();
+            var result = detail.DeleteEventCalender(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult NoticeEntry(int? noticeId)
         {
             //var detail = new GeneralDetails();

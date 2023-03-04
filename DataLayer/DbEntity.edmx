@@ -51,6 +51,18 @@
           <Property Name="Message" Type="varchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="EventCalender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventTitle" Type="nvarchar" MaxLength="500" />
+          <Property Name="EventDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="FAQDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -221,6 +233,7 @@
           <EntitySet Name="DirectRecruitementDetail" EntityType="Self.DirectRecruitementDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enquiry" EntityType="Self.Enquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventCalender" EntityType="Self.EventCalender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQDetail" EntityType="Self.FAQDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
@@ -275,6 +288,7 @@
           <EntitySet Name="Permissions" EntityType="upprbDbModel.Permission" />
           <EntitySet Name="Roles" EntityType="upprbDbModel.Role" />
           <EntitySet Name="UserRoles" EntityType="upprbDbModel.UserRole" />
+          <EntitySet Name="EventCalenders" EntityType="upprbDbModel.EventCalender" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -472,6 +486,18 @@
           <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleId" Type="Int32" />
           <Property Name="PermissionId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EventCalender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EventDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Precision="3" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -706,6 +732,19 @@
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventCalenders">
+            <EntityTypeMapping TypeName="upprbDbModel.EventCalender">
+              <MappingFragment StoreEntitySet="EventCalender">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

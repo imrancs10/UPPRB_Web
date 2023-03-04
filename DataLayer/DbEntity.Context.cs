@@ -44,5 +44,6 @@ namespace DataLayer
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<EventCalender> EventCalenders { get; set; }
     }
 }

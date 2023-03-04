@@ -274,6 +274,64 @@ namespace UPPRB_Web.BAL.Masters
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public Enums.CrudStatus DeleteEventCalender(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.EventCalenders.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.EventCalenders.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Deleted;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
+        public Enums.CrudStatus SaveEventCalender(EventCalender notice)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (notice.Id == 0)
+            {
+                _db.Entry(notice).State = EntityState.Added;
+            }
+            else
+            {
+                var _deptRow = _db.EventCalenders.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.FileName = !string.IsNullOrEmpty(notice.FileName) ? notice.FileName : _deptRow.FileName;
+                    _deptRow.UpdatedDate = notice.UpdatedDate;
+                    _deptRow.EventDate = notice.EventDate;
+                    _deptRow.EventDescription = notice.EventDescription;
+                    _deptRow.EventTitle = notice.EventTitle;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+        public List<EventCalenderModel> GetEventCalender()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.EventCalenders
+                         select new EventCalenderModel
+                         {
+                             FileName = lookEntry.FileName,
+                             EventTitle = lookEntry.EventTitle,
+                             Id = lookEntry.Id,
+                             IsActive = lookEntry.IsActive,
+                             EventDescription = lookEntry.EventDescription,
+                             EventDate = lookEntry.EventDate,
+                             UpdatedDate = lookEntry.UpdatedDate
+                         }).OrderByDescending(x => x.EventDate).ToList();
+            return _list != null ? _list : new List<EventCalenderModel>();
+        }
         public Enums.CrudStatus SaveFAQEntry(FAQDetail notice)
         {
             _db = new upprbDbEntities();
