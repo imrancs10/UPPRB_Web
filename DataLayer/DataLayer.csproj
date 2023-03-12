@@ -126,6 +126,9 @@
     <Compile Include="UserRole.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Visitor_Detail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="ZoneMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
