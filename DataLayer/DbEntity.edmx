@@ -220,6 +220,17 @@
           <Property Name="RoleId" Type="int" />
           <Property Name="PermissionId" Type="int" />
         </EntityType>
+        <EntityType Name="Visitor_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_IP_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Session_Start_Date" Type="datetime" />
+          <Property Name="Browser_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Device_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Operating_System" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ZoneMaster">
           <Key>
             <PropertyRef Name="ZoneId" />
@@ -248,6 +259,7 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitor_Detail" EntityType="Self.Visitor_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZoneMaster" EntityType="Self.ZoneMaster" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -289,6 +301,7 @@
           <EntitySet Name="Roles" EntityType="upprbDbModel.Role" />
           <EntitySet Name="UserRoles" EntityType="upprbDbModel.UserRole" />
           <EntitySet Name="EventCalenders" EntityType="upprbDbModel.EventCalender" />
+          <EntitySet Name="Visitor_Detail" EntityType="upprbDbModel.Visitor_Detail" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -498,6 +511,17 @@
           <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Visitor_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_IP_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Session_Start_Date" Type="DateTime" Precision="3" />
+          <Property Name="Browser_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Device_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operating_System" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -744,6 +768,18 @@
                 <ScalarProperty Name="EventDate" ColumnName="EventDate" />
                 <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
                 <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitor_Detail">
+            <EntityTypeMapping TypeName="upprbDbModel.Visitor_Detail">
+              <MappingFragment StoreEntitySet="Visitor_Detail">
+                <ScalarProperty Name="Operating_System" ColumnName="Operating_System" />
+                <ScalarProperty Name="Device_Type" ColumnName="Device_Type" />
+                <ScalarProperty Name="Browser_Type" ColumnName="Browser_Type" />
+                <ScalarProperty Name="Session_Start_Date" ColumnName="Session_Start_Date" />
+                <ScalarProperty Name="Client_IP_Address" ColumnName="Client_IP_Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

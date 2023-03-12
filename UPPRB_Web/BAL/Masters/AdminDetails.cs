@@ -216,6 +216,24 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderByDescending(x => x.MedalGivenDate).ToList();
             return _list != null ? _list : new List<MedalEntryModel>();
         }
+        public List<AdminUserModel> GetAdminUser()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from lookEntry in _db.AdminUsers
+                         join dis in _db.Roles on lookEntry.RoleId equals dis.RoleId
+                         select new AdminUserModel
+                         {
+                             Id = lookEntry.Id,
+                             IsActive = lookEntry.IsActive,
+                             EmailID = lookEntry.EmailID,
+                             MobileNumber = lookEntry.MobileNumber,
+                             Name = lookEntry.Name,
+                             RoleId = lookEntry.RoleId,
+                             RoleName = dis.RoleName,
+                             UserName = lookEntry.UserName
+                         }).OrderByDescending(x => x.Name).ToList();
+            return _list != null ? _list : new List<AdminUserModel>();
+        }
         public Enums.CrudStatus DeletePSEntry(int Id)
         {
             _db = new upprbDbEntities();
@@ -239,6 +257,22 @@ namespace UPPRB_Web.BAL.Masters
             if (_deptRow != null)
             {
                 _db.MedalDetails.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Deleted;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
+
+        public Enums.CrudStatus DeleteUserDetailEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.AdminUsers.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _db.AdminUsers.Remove(_deptRow);
                 _db.Entry(_deptRow).State = EntityState.Deleted;
                 _effectRow = _db.SaveChanges();
                 return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
@@ -274,7 +308,33 @@ namespace UPPRB_Web.BAL.Masters
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
-
+        public Enums.CrudStatus SaveNewUserEntry(AdminUser notice)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (notice.Id == 0)
+            {
+                _db.Entry(notice).State = EntityState.Added;
+            }
+            else
+            {
+                var _deptRow = _db.AdminUsers.Where(x => x.Id.Equals(notice.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.MobileNumber = notice.MobileNumber;
+                    _deptRow.UserName = notice.UserName;
+                    _deptRow.Name = notice.Name;
+                    _deptRow.EmailID = notice.EmailID;
+                    _deptRow.RoleId = notice.RoleId;
+                    _deptRow.IsActive = notice.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
         public Enums.CrudStatus DeleteEventCalender(int Id)
         {
             _db = new upprbDbEntities();

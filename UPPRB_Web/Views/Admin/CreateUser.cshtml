@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "CreateUser";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    var psData = ViewData["MedalData"] as List<MedalEntryModel>;
+    var psData = ViewData["UserData"] as List<AdminUserModel>;
     int index = 1;
 }
 @*<link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />*@
@@ -22,12 +22,12 @@
                         @using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <input type="hidden" id="hiddenID" value="" name="hiddenID" />
-                            <div class="row">                                
+                            <div class="row">
                                 <div class="col-lg-6">
-                                   <label for="exampleInputEmail1">User Name</label>
-                                   <input type="text" class="form-control" id="username" name="UserName"
-                                          placeholder="Enter User Name">
-                                </div>                                
+                                    <label for="exampleInputEmail1">User Name</label>
+                                    <input type="text" class="form-control" id="username" name="UserName"
+                                           placeholder="Enter User Name">
+                                </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" class="form-control" id="name" name="Name"
@@ -44,17 +44,16 @@
                                            placeholder="Enter Email Id">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="exampleInputPassword1">Date of Birth</label>
-                                    <input type="date" class="form-control" id="DOB" placeholder="DOB" name="DOB">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label for="exampleInputEmail1">Select Designation</label>
-                                    <select class="form-control mb-3" id="Designation" name="Designation" style="width:450px">
+                                    <label for="exampleInputEmail1">Select Role</label>
+                                    <select class="form-control mb-3" id="ddlRole" name="Role" style="width:450px">
                                     </select>
                                 </div>
-                            </div>                            
+                            </div>
                             <br />
-                            <center><button type="submit" class="btn btn-default">Submit</button></center>
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" id="resetButton" class="btn btn-warning">Reset</button>
+                            </div>
                         }
                     </div>
                 </section>
@@ -75,32 +74,30 @@
                                 <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> User Name</th>
                                 <th class="hidden-phone" style="color:black"><i class="fa fa-question-circle"></i> Mobile No.</th>
                                 <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> Email Id</th>
-                                <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> DOB</th>
-                                <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> Designation</th>
+                                <th style="color:black"><i class="fa fa-bookmark" style="color:black"></i> Role</th>
                                 <th style="color:black; width:10px"><i class=" fa fa-act" style="color:black"></i> Action</th>
                             </tr>
                         </thead>
-                        @*<tbody>
+                        <tbody>
                             @foreach (var data in psData)
                             {
                                 <tr>
                                     <td>@index </td>
-                                    <td><a>@data.MedalCategoryName</a></td>
-                                    <td class="hidden-phone">@data.GivenBy</td>
-                                    <td class="hidden-phone">@data.ToWhom</td>
-                                    <td class="hidden-phone">@data.MedalDescription</td>
-                                    <td class="hidden-phone">@data.MedalDescription</td>
-                                    <td class="hidden-phone">@data.MedalDescription</td>
+                                    <td><a>@data.Name</a></td>
+                                    <td class="hidden-phone">@data.UserName</td>
+                                    <td class="hidden-phone">@data.MobileNumber</td>
+                                    <td class="hidden-phone">@data.EmailID</td>
+                                    <td class="hidden-phone">@data.RoleName</td>
                                     <td>
-                                        <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditMedalDetail(@data.Id,@data.MedalCategoryId,'@data.GivenBy','@data.ToWhom','@data.MedalDescription','@data.MedalGivenDate','@data.FileName')"></i>&nbsp;
-                                        <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeleteMedalDetail(@data.Id)"></i>
+                                        <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditUserDetail(@data.Id,@data.RoleId,'@data.Name','@data.UserName','@data.MobileNumber','@data.EmailID')"></i>&nbsp;
+                                        <i class="fa fa-trash-o" style="cursor:pointer;color:red" onclick="DeleteUserDetail(@data.Id)"></i>
                                     </td>
                                     @{
                                         index = index + 1;
                                     }
                                 </tr>
                             }
-                        </tbody>*@
+                        </tbody>
                     </table>
                 </section>
             </div>
@@ -108,31 +105,8 @@
     </section>
     <!--main content end-->
 </section>
-
-<!-- js placed at the end of the document so the pages load faster -->
-<!--<script src="../Content/js/jquery.js"></script>
-<script src="../Content/js/bootstrap.bundle.min.js"></script>
-<script class="include" type="text/javascript" src="../Content/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="../Content/js/jquery.scrollTo.min.js"></script>
-<script src="../Content/js/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="../Content/js/jquery.sparkline.js" type="text/javascript"></script>
-
-<script src="../Content/js/owl.carousel.js"></script>
-<script src="../Content/js/jquery.customSelect.min.js"></script>
-<script src="../Content/js/respond.min.js"></script>-->
-<!--right slidebar-->
-<!--<script src="../Content/js/slidebars.min.js"></script>-->
-<!--common script for all pages-->
-<!--<script src="../Content/js/common-scripts.js"></script>-->
-<!--script for this page-->
-<!--<script src="../Content/js/sparkline-chart.js"></script>
-<script src="../Content/js/easy-pie-chart.js"></script>
-<script src="../Content/js/count.js"></script>-->
-
 <script>
-
     //owl carousel
-
     $(document).ready(function () {
         $("#owl-demo").owlCarousel({
             navigation: true,
@@ -163,9 +137,9 @@
         } $(".custom-file-label").html(name);
     });
 
-    FillMedalCategory();
-    function FillMedalCategory(rangeId, selectedMedalId = null) {
-        let dropdown = $('#MedalCategory');
+    FillRole();
+    function FillRole(selectedRoleId = null) {
+        let dropdown = $('#ddlRole');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
         dropdown.prop('selectedIndex', 0);
@@ -173,14 +147,13 @@
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             type: 'POST',
-            data: '{lookupTypeId: 0,lookupType: "MedalCategory" }',
-            url: '/Master/GetLookupDetail',
+            url: '/Master/GetUserRole',
             success: function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                    dropdown.append($('<option></option>').attr('value', entry.RoleId).text(entry.RoleName));
                 });
-                if (selectedEntryTypeId != null) {
-                    dropdown.val(selectedEntryTypeId);
+                if (selectedRoleId != null) {
+                    dropdown.val(selectedRoleId);
                 }
             },
             failure: function (response) {
@@ -191,40 +164,23 @@
             }
         });
     }
-    function EditMedalDetail(id, MedalCategoryId, GivenBy, ToWhom, MedalDescription, MedalDate, filename) {
+    function EditUserDetail(id, RoleId, Name, UserName, MobileNumber, EmailID) {
         $('#hiddenID').val(id);
-        $('#MedalCategory').val(MedalCategoryId);
-        $('#GivenBY').val(GivenBy);
-        $('#ToWhom').val(ToWhom);
-        $('#MedalDescription').val(MedalDescription);
-        $('#MedalDate').val(formatDateyyyyMMdd(MedalDate));
-        if (filename != null && filename != "" && filename != undefined && filename != "") {
-            //add upload document link
-            $('#customFile').parent().find('a').remove();
-            $('#customFile').addClass('hidden');
-            var fileUrl = '/FilesUploaded/Medal/' + encodeURIComponent(filename);
-            var truncatedFileName = (filename.length > 50) ? filename.substring(0, 50) + '...' : filename
-            var html = "<a href='" + fileUrl + "' target='_blank'>" + truncatedFileName + "</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
-            $(html).insertAfter('#customFile');
-            $('#customFile').removeAttr('required');
-        }
+        $('#ddlRole').val(RoleId);
+        $('#username').val(UserName);
+        $('#name').val(Name);
+        $('#mobile').val(MobileNumber);
+        $('#email').val(EmailID);
         window.scrollTo(0, 0);
     }
-    function RemoveFile() {
-        $('#customFile').removeClass('hidden');
-        $('#customFile').parent().find('a').remove();
-        $('#customFile').attr('required');
-        $('[name*=postedFile]').removeAttr('disabled');
-        return false;
-    }
-    function DeleteMedalDetail(Id) {
+    function DeleteUserDetail(Id) {
         if (confirm("Are you sure want to Delete") == true) {
             $.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 type: 'POST',
                 data: '{Id: "' + Id + '" }',
-                url: '/Admin/DeleteMedalDetailEntry',
+                url: '/Admin/DeleteUserDetailEntry',
                 success: function (data) {
                     utility.alert.setAlert("Delete", "Successfully Deleted");
                     location.reload();
@@ -239,22 +195,9 @@
         }
 
     }
-    function formatDateyyyyMMdd(noticeDate) {
-        var milli = 0;
-        if (noticeDate.source) {
-            milli = noticeDate.source.replace("Date(", "").replace(")", "");
-        }
-        else {
-            milli = noticeDate.replace("Date(", "").replace(")", "").replaceAll("/", "");
-        }
-        var now = new Date(parseInt(milli));
-
-        var day = ("0" + now.getDate()).slice(-2);
-        var month = ("0" + (now.getMonth() + 1)).slice(-2);
-
-        var today = now.getFullYear() + "-" + (month) + "-" + (day);
-        return today;
-    }
+    $('#resetButton').click(function () {
+        location.reload();
+    })
 </script>
 
 
