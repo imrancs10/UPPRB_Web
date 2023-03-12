@@ -256,6 +256,7 @@
     <Compile Include="Models\Masters\DirectRecruitmentModel.cs" />
     <Compile Include="Models\Masters\FAQEntryModel.cs" />
     <Compile Include="Models\Masters\EventCalenderModel.cs" />
+    <Compile Include="Models\Masters\AdminUserModel.cs" />
     <Compile Include="Models\Masters\MedalEntryModel.cs" />
     <Compile Include="Models\Masters\UserRoleModel.cs" />
     <Compile Include="Models\Masters\PSEntryModel.cs" />

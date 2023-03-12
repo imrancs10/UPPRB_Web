@@ -32,7 +32,40 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult CreateUser()
         {
+            var detail = new AdminDetails();
+            ViewData["UserData"] = detail.GetAdminUser();
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreateUser(string hiddenID, string Role, string UserName,
+                                               string Name, string Mobile, string Email)
+        {
+            AdminUser notice = new AdminUser()
+            {
+                IsActive = true,
+                Id = !string.IsNullOrEmpty(hiddenID) ? Convert.ToInt32(hiddenID) : 0,
+                EmailID = Email,
+                MobileNumber = Convert.ToInt64(Mobile),
+                Name = Name,
+                Password = Convert.ToString(ConfigurationManager.AppSettings["DefaultPassword"]),
+                RoleId = !string.IsNullOrEmpty(Role) ? (int?)Convert.ToInt32(Role) : null,
+                UserName = UserName,
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SaveNewUserEntry(notice);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+                SetAlertMessage("User Created", "Success");
+            else
+                SetAlertMessage("User not Created", "Fail");
+
+            return RedirectToAction("CreateUser");
+        }
+        [HttpPost]
+        public JsonResult DeleteUserDetailEntry(int Id)
+        {
+            var detail = new AdminDetails();
+            var result = detail.DeleteUserDetailEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddMedalDetails()
         {

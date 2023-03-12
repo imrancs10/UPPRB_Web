@@ -29,15 +29,17 @@ namespace UPPRB_Web.BAL.Masters
                          from role2 in role1.DefaultIfEmpty()
                          where userRole2.RoleId == roleId || superAdminRoleName == "SuperAdmin"
                          select permission.PermissionName).ToList();
-
-
-            //(from userRole in _db.UserRoles
-            //         join role in _db.Roles on userRole.RoleId equals role.RoleId into role1
-            //         from role2 in role1.DefaultIfEmpty()
-            //         join permission in _db.Permissions on userRole.PermissionId equals permission.PermissionId
-            //         where userRole.RoleId == roleId || superAdminRoleName == "SuperAdmin"
-            //         select permission.PermissionName).ToList();
             return _list != null ? _list : new List<string>();
+        }
+        public IEnumerable<object> GetUserRole()
+        {
+            _db = new upprbDbEntities();
+            return (from role in _db.Roles
+                    select new
+                    {
+                        RoleId = role.RoleId,
+                        RoleName = role.RoleName
+                    }).OrderBy(x => x.RoleName).ToList();
         }
         public List<NoticeModel> GetEntryType()
         {
