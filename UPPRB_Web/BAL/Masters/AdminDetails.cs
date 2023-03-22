@@ -160,6 +160,25 @@ namespace UPPRB_Web.BAL.Masters
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
+        public Enums.CrudStatus ChangePassword(string oldPassword, string newPassword, string confirmPassword)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var userId = UserData.UserId;
+            if (!string.IsNullOrEmpty(oldPassword) && !string.IsNullOrEmpty(newPassword) && !string.IsNullOrEmpty(confirmPassword))
+            {
+                var existingData = _db.AdminUsers.FirstOrDefault(x => x.Id == userId && x.Password == oldPassword);
+                if (existingData == null)
+                    return Enums.CrudStatus.DataNotFound;
+                else
+                {
+                    existingData.Password = newPassword;
+                    _effectRow = _db.SaveChanges();
+                }
+            }
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+
         public Enums.CrudStatus SavePSEntry(PSMaster notice)
         {
             _db = new upprbDbEntities();

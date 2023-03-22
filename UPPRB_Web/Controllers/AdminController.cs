@@ -543,6 +543,37 @@ namespace UPPRB_Web.Controllers
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(string oldPassword, string newPassword, string confirmPassword)
+        {
+            AdminDetails detail = new AdminDetails();
+            if (newPassword.Trim() != confirmPassword.Trim())
+            {
+                SetAlertMessage("New Password and Confirm Password are not matched", "Error");
+                return RedirectToAction("ChangePassword");
+            }
+            var saveStatus = detail.ChangePassword(oldPassword, newPassword, confirmPassword);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("New Password Changed", "Success");
+                return RedirectToAction("ChangePassword");
+            }
+            else if (saveStatus == Enums.CrudStatus.DataNotFound)
+            {
+                SetAlertMessage("Old Password is not correct", "Success");
+                return RedirectToAction("ChangePassword");
+            }
+            else
+            {
+                SetAlertMessage("Some Error Occured", "Error");
+                return RedirectToAction("ChangePassword");
+            }
+        }
+
         [HttpPost]
         public ActionResult SaveDoctorType(int doctor, int doctortype)
         {
