@@ -18,7 +18,7 @@
                         {
                             <div class="row">
                                 <label class="required" for="name">Name:&nbsp;&nbsp;  </label><br />
-                                <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+                                <input id="name" class="input" name="name" onkeypress="return blockSpecialChar(event)" type="text" value="" size="30" /><br />
                                 <span id="name_validation" class="error_message"></span>
                             </div><br />
                             <div class="row">
@@ -64,4 +64,9 @@
         $('.navbar-nav').find('li').removeClass('active');
         $('a[href="/Home/Administration"]').parent().addClass('active')
     });
+    function blockSpecialChar(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    }
 </script>
