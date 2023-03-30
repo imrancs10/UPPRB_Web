@@ -25,6 +25,8 @@ namespace UPPRB_Web
             {
                 // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
             }
+            //restrict Click Jacking 
+            HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
         }
         protected void Application_Start()
         {
