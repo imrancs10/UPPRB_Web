@@ -41,10 +41,10 @@ namespace UPPRB_Web
         {
             Application.Lock();
             upprbDbEntities _db = new upprbDbEntities();
-            var totalUser = _db.Visitor_Detail.Count();
-            Application["Totaluser"] = totalUser + 1;
+            var totalUser = _db.Visitor_Detail.GroupBy(x => x.Client_IP_Address).Count();
+            Application["Totaluser"] = totalUser;
             var ipAddress = GetIPAddress();
-            if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
+            //if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
             {
                 var visitor = new Visitor_Detail()
                 {
