@@ -41,7 +41,7 @@ namespace UPPRB_Web
         {
             Application.Lock();
             upprbDbEntities _db = new upprbDbEntities();
-            var totalUser = _db.Visitor_Detail.GroupBy(x => x.Client_IP_Address).Count();
+            var totalUser = _db.Visitor_Detail.GroupBy(x => new { x.Client_IP_Address, x.Device_Type }).Count();
             Application["Totaluser"] = totalUser;
             var ipAddress = GetIPAddress();
             //if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
@@ -61,19 +61,20 @@ namespace UPPRB_Web
         }
         public string GetIPAddress()
         {
-            IPHostEntry Host = default(IPHostEntry);
-            string Hostname = null;
-            string ipAddress = string.Empty;
-            Hostname = System.Environment.MachineName;
-            Host = Dns.GetHostEntry(Hostname);
-            foreach (System.Net.IPAddress IP in Host.AddressList)
-            {
-                if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    ipAddress = Convert.ToString(IP);
-                }
-            }
-            return ipAddress;
+            //IPHostEntry Host = default(IPHostEntry);
+            //string Hostname = null;
+            //string ipAddress = string.Empty;
+            //Hostname = System.Environment.MachineName;
+            //Host = Dns.GetHostEntry(Hostname);
+            //foreach (System.Net.IPAddress IP in Host.AddressList)
+            //{
+            //    if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            //    {
+            //        ipAddress = Convert.ToString(IP);
+            //    }
+            //}
+            var ipAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()).GetValue(1);
+            return ipAddress != null ? ipAddress.ToString() : string.Empty;
         }
         public string GetBrowserDetails()
         {

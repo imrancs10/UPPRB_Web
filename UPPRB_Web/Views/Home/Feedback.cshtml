@@ -33,17 +33,17 @@
                             </div>
                             <div class="row">
                                 <label class="required" for="address">Address:&nbsp;  </label>
-                                <textarea id="address" class="input" name="address" rows="1" cols="30"></textarea><br />
+                                <textarea id="address" class="input" name="address" onkeypress="return blockXSSChar(event)" rows="1" cols="30"></textarea><br />
                                 <span id="message_validation" class="error_message"></span>
                             </div>
                             <div class="row">
                                 <label class="required" for="subject">Subject:&nbsp;  </label>
-                                <textarea id="subject" class="input" name="subject" rows="1" cols="30"></textarea><br />
+                                <textarea id="subject" class="input" name="subject" onkeypress="return blockXSSChar(event)" rows="1" cols="30"></textarea><br />
                                 <span id="message_validation" class="error_message"></span>
                             </div>
                             <div class="row">
                                 <label class="required" for="message">Feedback:&nbsp;  </label>
-                                <textarea id="message" class="input" name="message" rows="3" cols="30"></textarea><br />
+                                <textarea id="message" class="input" name="message" onkeypress="return blockXSSChar(event)" rows="3" cols="30"></textarea><br />
                                 <span id="message_validation" class="error_message"></span>
                             </div><br />
                             <input id="submit_button" type="submit" value="Submit" />
@@ -68,5 +68,12 @@
         var k;
         document.all ? k = e.keyCode : k = e.which;
         return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    }
+    function blockXSSChar(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)
+            || k == 58 || k == 59 || k == 63 || k == 64 || (k >= 91 && k <= 96) || (k >= 123 && k <= 127)
+            || (k >= 33 && k <= 47));
     }
 </script>
