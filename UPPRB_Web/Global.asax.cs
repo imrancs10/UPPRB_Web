@@ -26,7 +26,14 @@ namespace UPPRB_Web
                 // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
             }
             //restrict Click Jacking 
-            HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
+            //HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
+        }
+        protected void Application_PreSendRequestHeaders()
+        {
+            HttpContext.Current.Response.Headers.Add("X-Frame-Options", "DENY");
+            HttpContext.Current.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+            HttpContext.Current.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+            HttpContext.Current.Response.Headers.Remove("Server");
         }
         protected void Application_Start()
         {
