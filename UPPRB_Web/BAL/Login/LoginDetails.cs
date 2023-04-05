@@ -5,6 +5,8 @@ using System.Web;
 using DataLayer;
 using UPPRB_Web.Global;
 using System.Data.Entity;
+using System.Web.UI.WebControls;
+using log4net.Appender;
 
 namespace UPPRB_Web.BAL.Login
 {
@@ -65,6 +67,38 @@ namespace UPPRB_Web.BAL.Login
             }
             else
                 return Enums.LoginMessage.InvalidCreadential;
+        }
+
+        public bool InsertLoginDetail()
+        {
+            _db = new upprbDbEntities();
+            var login = new LoginDetail()
+            {
+                IsLogin = true,
+                LoginAt = DateTime.UtcNow,
+                UserId = UserData.UserId
+            };
+            _db.Entry(login).State = EntityState.Added;
+            _db.SaveChanges();
+            return true;
+        }
+        public bool UpdateLoginDetail()
+        {
+            _db = new upprbDbEntities();
+            var _userLogin = _db.LoginDetails.Where(x => x.UserId == UserData.UserId && x.IsLogin == true).ToList();
+            foreach (var login in _userLogin)
+            {
+                login.IsLogin = false;
+                login.LogoutAt = DateTime.UtcNow;
+            }
+            _db.SaveChanges();
+            return true;
+        }
+        public bool? ValidateLoginDetail()
+        {
+            _db = new upprbDbEntities();
+            var _userLogin = _db.LoginDetails.Where(x => x.UserId == UserData.UserId).OrderByDescending(x => x.LoginAt).FirstOrDefault();
+            return _userLogin?.IsLogin;
         }
     }
 }

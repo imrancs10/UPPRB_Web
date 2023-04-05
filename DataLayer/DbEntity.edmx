@@ -86,6 +86,16 @@
           <Property Name="Message" Type="varchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="LoginDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LoginAt" Type="datetime" />
+          <Property Name="LogoutAt" Type="datetime" />
+          <Property Name="IsLogin" Type="bit" />
+        </EntityType>
         <EntityType Name="Lookup">
           <Key>
             <PropertyRef Name="LookupId" />
@@ -247,6 +257,7 @@
           <EntitySet Name="EventCalender" EntityType="Self.EventCalender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQDetail" EntityType="Self.FAQDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginDetail" EntityType="Self.LoginDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedalDetails" EntityType="Self.MedalDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
@@ -302,6 +313,7 @@
           <EntitySet Name="UserRoles" EntityType="upprbDbModel.UserRole" />
           <EntitySet Name="EventCalenders" EntityType="upprbDbModel.EventCalender" />
           <EntitySet Name="Visitor_Detail" EntityType="upprbDbModel.Visitor_Detail" />
+          <EntitySet Name="LoginDetails" EntityType="upprbDbModel.LoginDetail" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -522,6 +534,16 @@
           <Property Name="Browser_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Device_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Operating_System" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LoginDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LoginAt" Type="DateTime" Precision="3" />
+          <Property Name="LogoutAt" Type="DateTime" Precision="3" />
+          <Property Name="IsLogin" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -780,6 +802,17 @@
                 <ScalarProperty Name="Browser_Type" ColumnName="Browser_Type" />
                 <ScalarProperty Name="Session_Start_Date" ColumnName="Session_Start_Date" />
                 <ScalarProperty Name="Client_IP_Address" ColumnName="Client_IP_Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginDetails">
+            <EntityTypeMapping TypeName="upprbDbModel.LoginDetail">
+              <MappingFragment StoreEntitySet="LoginDetail">
+                <ScalarProperty Name="IsLogin" ColumnName="IsLogin" />
+                <ScalarProperty Name="LogoutAt" ColumnName="LogoutAt" />
+                <ScalarProperty Name="LoginAt" ColumnName="LoginAt" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

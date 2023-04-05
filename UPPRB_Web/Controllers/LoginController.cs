@@ -37,6 +37,7 @@ namespace UPPRB_Web.Controllers
                 if (message == Enums.LoginMessage.Authenticated)
                 {
                     setUserClaim();
+                    _details.InsertLoginDetail();
                     return RedirectToAction("Dashboard", "Admin");
                 }
                 else
@@ -77,6 +78,8 @@ namespace UPPRB_Web.Controllers
             string encTicket = FormsAuthentication.Encrypt(authTicket);
             HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
             Response.Cookies.Add(faCookie);
+
+
         }
     }
 }

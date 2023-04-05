@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using UPPRB_Web.BAL.Masters;
 using static iTextSharp.tool.xml.html.HTML;
+using UPPRB_Web.BAL.Login;
 
 namespace UPPRB_Web.Controllers
 {
@@ -100,6 +101,16 @@ namespace UPPRB_Web.Controllers
             var detail = new AdminDetails();
             var data = detail.GetEventCalender();
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult LogoutUser()
+        {
+            LoginDetails _details = new LoginDetails();
+            _details.UpdateLoginDetail();
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

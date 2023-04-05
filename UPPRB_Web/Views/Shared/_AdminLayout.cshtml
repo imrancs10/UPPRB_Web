@@ -605,11 +605,25 @@
         $(document).ready(function () {
             var userId = $('#hdnUserId').val();
             if (userId == "" || userId == undefined || userId == null || userId == 0) {
-                var url = "/Login/Index";
-                window.location.href = url;
-                window.location.assign(url);
-                window.location = url;
-                window.location.replace = url;
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '/Master/LogoutUser',
+                    success: function (data) {
+                        var url = "/Login/Index";
+                        window.location.href = url;
+                        window.location.assign(url);
+                        window.location = url;
+                        window.location.replace = url;
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
             }
         });
     </script>

@@ -15,10 +15,12 @@ using UPPRB_Web.Infrastructure.Authentication;
 using static iTextSharp.tool.xml.html.HTML;
 using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
+using UPPRB_Web.BAL.Login;
 
 namespace UPPRB_Web.Controllers
 {
     [CustomAuthorize]
+    [UserValidate]
     public class AdminController : CommonController
     {
         public ActionResult Dashboard()
@@ -560,6 +562,8 @@ namespace UPPRB_Web.Controllers
             if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
             {
                 SetAlertMessage("New Password Changed", "Success");
+                LoginDetails _details = new LoginDetails();
+                _details.UpdateLoginDetail();
                 return RedirectToAction("ChangePassword");
             }
             else if (saveStatus == Enums.CrudStatus.DataNotFound)
@@ -635,6 +639,8 @@ namespace UPPRB_Web.Controllers
         }
         public ActionResult Logout()
         {
+            LoginDetails _details = new LoginDetails();
+            _details.UpdateLoginDetail();
             FormsAuthentication.SignOut();
             Session.Abandon();
             Session.Clear();

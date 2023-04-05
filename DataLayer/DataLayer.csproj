@@ -89,6 +89,9 @@
     <Compile Include="Feedback.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoginDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lookup.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
