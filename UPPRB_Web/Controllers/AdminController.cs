@@ -16,6 +16,7 @@ using static iTextSharp.tool.xml.html.HTML;
 using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
 using UPPRB_Web.BAL.Login;
+using System.Text.RegularExpressions;
 
 namespace UPPRB_Web.Controllers
 {
@@ -553,9 +554,36 @@ namespace UPPRB_Web.Controllers
         public ActionResult ChangePassword(string oldPassword, string newPassword, string confirmPassword)
         {
             AdminDetails detail = new AdminDetails();
+            int marks = GetPasswordStrength(newPassword);
+            string status = "";
+            switch (marks)
+            {
+                case 1:
+                    status = "Very Week";
+                    break;
+                case 2:
+                    status = "Week";
+                    break;
+                case 3:
+                    status = "Medium";
+                    break;
+                case 4:
+                    status = "Strong";
+                    break;
+                case 5:
+                    status = "Very Strong";
+                    break;
+                default:
+                    break;
+            }
             if (newPassword.Trim() != confirmPassword.Trim())
             {
                 SetAlertMessage("New Password and Confirm Password are not matched", "Error");
+                return RedirectToAction("ChangePassword");
+            }
+            else if (marks < 4)
+            {
+                SetAlertMessage("Strong or very Strong Password Required - Current Status is : " + status, "Error");
                 return RedirectToAction("ChangePassword");
             }
             var saveStatus = detail.ChangePassword(oldPassword, newPassword, confirmPassword);
@@ -636,6 +664,42 @@ namespace UPPRB_Web.Controllers
             //ReportDetails _details = new ReportDetails();
             //_details.SetLabReportData(PatientId, BillNo, RefNo, ReportPath, LabName, ReportDate, doctorId);
             return View("PatientLabReport");
+        }
+        private int GetPasswordStrength(string password)
+        {
+            int Marks = 0;
+            // here we will check password strength
+            if (password.Length < 6)
+            {
+                // Very Week
+                return 1;
+            }
+            else
+            {
+                Marks = 1;
+            }
+            if (Regex.IsMatch(password, "[a-z]"))
+            {
+                // 2    week
+                Marks++;
+            }
+            if (Regex.IsMatch(password, "[A-Z]"))
+            {
+                // 3    medium
+                Marks++;
+            }
+            if (Regex.IsMatch(password, "[0-9]"))
+            {
+                //4     strong
+                Marks++;
+            }
+            if (Regex.IsMatch(password, "[<,>,@,!,#,$,%,^,&,*,(,),_,+,\\[,\\],{,},?,:,;,|,',\\,.,/,~,`,-,=]"))
+            {
+                //5     very strong
+                Marks++;
+            }
+            return Marks;
+
         }
         public ActionResult Logout()
         {
