@@ -17,6 +17,7 @@ using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
 using UPPRB_Web.BAL.Login;
 using System.Text.RegularExpressions;
+using Microsoft.Ajax.Utilities;
 
 namespace UPPRB_Web.Controllers
 {
@@ -24,6 +25,10 @@ namespace UPPRB_Web.Controllers
     [UserValidate]
     public class AdminController : CommonController
     {
+        List<string> fileTypeAccepted = new List<string>()
+        {
+           "pdf","doc", "docx", "xls", "xlsx", "png", "bmp", "jpg", "jpeg"
+        };
         public ActionResult Dashboard()
         {
             return View();
@@ -229,6 +234,12 @@ namespace UPPRB_Web.Controllers
             string EntryTypeName, string hiddenNoticeID)
         {
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
+            var fileExtension = filename != null ? filename.Substring(filename.LastIndexOf('.') + 1, filename.Length - filename.LastIndexOf('.') - 1) : null;
+            if (postedFile != null && !fileTypeAccepted.Contains(fileExtension))
+            {
+                SetAlertMessage("Uploaded file is not accepted, please choose correct file type", "fail");
+                return View();
+            }
             Notice notice = new Notice()
             {
                 Id = !string.IsNullOrEmpty(hiddenNoticeID) ? Convert.ToInt32(hiddenNoticeID) : 0,
@@ -576,7 +587,12 @@ namespace UPPRB_Web.Controllers
                 default:
                     break;
             }
-            if (newPassword.Trim() != confirmPassword.Trim())
+            if (newPassword.Trim() == oldPassword.Trim())
+            {
+                SetAlertMessage("Old Password and New Password should not same", "Error");
+                return RedirectToAction("ChangePassword");
+            }
+            else if (newPassword.Trim() != confirmPassword.Trim())
             {
                 SetAlertMessage("New Password and Confirm Password are not matched", "Error");
                 return RedirectToAction("ChangePassword");
@@ -589,7 +605,7 @@ namespace UPPRB_Web.Controllers
             var saveStatus = detail.ChangePassword(oldPassword, newPassword, confirmPassword);
             if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
             {
-                SetAlertMessage("New Password Changed", "Success");
+                SetAlertMessage("Password Changed, Login again with new password", "Success");
                 LoginDetails _details = new LoginDetails();
                 _details.UpdateLoginDetail();
                 return RedirectToAction("ChangePassword");

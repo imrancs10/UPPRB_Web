@@ -25,22 +25,22 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">User Name</label>
-                                    <input type="text" class="form-control" id="username" name="UserName"
+                                    <input type="text" class="form-control" id="username" name="UserName" onkeypress="return blockSpecialChar(event)"
                                            placeholder="Enter User Name">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" id="name" name="Name"
+                                    <input type="text" class="form-control" id="name" name="Name" onkeypress="return blockSpecialChar(event)"
                                            placeholder="Enter Name">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobile" name="Mobile"
+                                    <input type="number" class="form-control" id="mobile" name="Mobile" size="10"
                                            placeholder="Enter Mobile Number">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1">Email Id</label>
-                                    <input type="text" class="form-control" id="email" name="Email"
+                                    <input type="text" class="form-control" id="email" name="Email" onkeypress="return blockXSSChar(event)"
                                            placeholder="Enter Email Id">
                                 </div>
                                 <div class="col-lg-6">
@@ -198,6 +198,32 @@
     $('#resetButton').click(function () {
         location.reload();
     })
+    function blockSpecialChar(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    }
+    function blockXSSChar(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)
+            || k == 58 || k == 59 || k == 63 || k == 64 || (k >= 91 && k <= 96) || (k >= 123 && k <= 127)
+            || (k >= 33 && k <= 47));
+    }
+    
+    $('#mobile').keydown(function (e) {
+        var max_chars = 10;
+        if ($(this).val().length >= max_chars) {
+            $(this).val($(this).val().substr(0, max_chars));
+        }
+    });
+
+    $('#mobile').keyup(function (e) {
+        var max_chars = 10;
+        if ($(this).val().length >= max_chars) {
+            $(this).val($(this).val().substr(0, max_chars));
+        }
+    });
 </script>
 
 

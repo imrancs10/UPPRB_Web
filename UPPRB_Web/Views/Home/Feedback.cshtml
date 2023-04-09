@@ -23,12 +23,12 @@
                             </div><br />
                             <div class="row">
                                 <label class="required" for="email">Mobile:&nbsp;&nbsp;  </label><br />
-                                <input id="mobile" class="input" name="mobile" type="text" value="" size="30" /><br />
+                                <input id="mobile" class="input" name="mobile" type="number" value="" size="30" /><br />
                                 <span id="email_validation" class="error_message"></span>
                             </div><br />
                             <div class="row">
                                 <label class="required" for="email">Email Id:&nbsp;  </label><br />
-                                <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+                                <input id="email" class="input" name="email" type="text" value="" size="30" onkeypress="return blockXSSChar(event)"/><br />
                                 <span id="email_validation" class="error_message"></span>
                             </div>
                             <div class="row">
@@ -76,4 +76,17 @@
             || k == 58 || k == 59 || k == 63 || k == 64 || (k >= 91 && k <= 96) || (k >= 123 && k <= 127)
             || (k >= 33 && k <= 47));
     }
+    $('#mobile').keydown(function (e) {
+        var max_chars = 10;
+        if ($(this).val().length >= max_chars) {
+            $(this).val($(this).val().substr(0, max_chars));
+        }
+    });
+
+    $('#mobile').keyup(function (e) {
+        var max_chars = 10;
+        if ($(this).val().length >= max_chars) {
+            $(this).val($(this).val().substr(0, max_chars));
+        }
+    });
 </script>
