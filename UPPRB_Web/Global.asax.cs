@@ -50,8 +50,9 @@ namespace UPPRB_Web
         {
             Application.Lock();
             upprbDbEntities _db = new upprbDbEntities();
-            var totalUser = _db.Visitor_Detail.GroupBy(x => new { x.Client_IP_Address, x.Device_Type }).Count();
-            Application["Totaluser"] = totalUser;
+            var totalUser = _db.Visitor_Detail.Count();
+            //GroupBy(x => new { x.Client_IP_Address, x.Device_Type }).Count();
+            Application["Totaluser"] = totalUser + 1;
             var ipAddress = GetIPAddress();
             //if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
             {
