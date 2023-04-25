@@ -49,9 +49,9 @@ namespace UPPRB_Web.BAL.Masters
             {
                 var _deptRow = _db.PACEntries.OrderByDescending(x => x.Id).FirstOrDefault();
                 var lastPACNumber = _deptRow.PACNumber;
-                if (lastPACNumber.Substring(3, 4) == DateTime.UtcNow.Year.ToString())
+                if (lastPACNumber.Substring(5, 4) == DateTime.UtcNow.Year.ToString())
                 {
-                    var lastNumber = Convert.ToInt32(lastPACNumber.Substring(7, 4));
+                    var lastNumber = Convert.ToInt32(lastPACNumber.Substring(9, 4));
                     int addPad = 4 - (lastNumber + 1).ToString().Length;
                     var padNumber = (lastNumber + 1).ToString().PadLeft((lastNumber + 1).ToString().Length + addPad, '0');
                     notice.PACNumber = "CSPAC" + DateTime.UtcNow.Year.ToString() + padNumber;
