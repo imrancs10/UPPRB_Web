@@ -35,6 +35,10 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult SearchPACList()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
         {
@@ -96,7 +100,7 @@ namespace UPPRB_Web.Controllers
             StringBuilder status = new StringBuilder("");
             DateTime dTime = DateTime.Now;
             //file name to be created   
-            string strPDFFileName = string.Format("Preventive Action Cell (PAC)" + dTime.ToString("yyyyMMdd") + "-" + ".pdf");
+            string strPDFFileName = string.Format("Preventive Action Cell (CSPAC)" + dTime.ToString("yyyyMMdd") + "-" + ".pdf");
             Document doc = new Document();
             doc.SetMargins(0f, 0f, 0f, 0f);
             //Create PDF Table with 12 columns  
@@ -149,7 +153,7 @@ namespace UPPRB_Web.Controllers
             else
                 pacDetailList = detail.GetAllPACDetail();
 
-            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 12, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
+            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 13,
                 Border = 0,
@@ -202,7 +206,7 @@ namespace UPPRB_Web.Controllers
         private static void AddCellToHeader(PdfPTable tableLayout, string cellText)
         {
 
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 8, 1, iTextSharp.text.BaseColor.WHITE)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 12, 1, iTextSharp.text.BaseColor.WHITE)))
             {
                 HorizontalAlignment = Element.ALIGN_LEFT,
                 Padding = 5,
@@ -213,7 +217,7 @@ namespace UPPRB_Web.Controllers
         // Method to add single cell to the body  
         private static void AddCellToBody(PdfPTable tableLayout, string cellText)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 8, 1, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 12, 1, iTextSharp.text.BaseColor.BLACK)))
             {
                 HorizontalAlignment = Element.ALIGN_LEFT,
                 Padding = 5,

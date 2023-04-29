@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "PACList";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "SearchPACList";
+    Layout = "~/Views/Shared/_PACLayout.cshtml";
 }
-
+<script src="~/Scripts/Masters/pacEntry.js"></script>
 <link href="~/Content/css/design1.css" rel="stylesheet" />
 <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
 
@@ -12,12 +12,69 @@
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header" style="text-align: center; color: #fd7e14; font-weight:400">
-                    <strong>Preventive Action Cell (PAC) Details</strong>
+                    <strong>Search Preventive Action Cell (CSPAC) Details</strong>
                 </header>
-                @*<div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
-                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Print</button>
+                <div class="card-body left">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">Zone</label>
+                            <select class="form-control mb-3" style="" id="Zone" name="Zone">
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">Range</label>
+                            <select class="form-control mb-3" id="Range" name="Range">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="exampleInputPassword1">District</label>
+                            <select class="form-control mb-3" id="District" name="District">
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputPassword1">FIR Police Station</label>
+                            <select class="form-control mb-3" id="PoliceStation" name="PoliceStation">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">Examine Center Name</label>
+                            <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">Solver Name</label>
+                            <input type="text" class="form-control" id="Solver_Name" placeholder="Enter Solver Name" name="Solver_Name" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">FIR No</label>
+                            <input type="text" class="form-control" id="FIRNo" placeholder="Enter FIRNo" name="FIRNo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">FIR Date From</label>
+                            <input type="date" class="form-control" id="FIRDateFrom" placeholder="Notice Date" name="FIRDate">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">FIR Date To</label>
+                            <input type="date" class="form-control" id="FIRDateTo" placeholder="Notice Date" name="NoticeDate">
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
+                    @*<a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
+                        &nbsp;&nbsp;*@
+                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Download Report</button>
                     &nbsp;&nbsp;
-                </div>*@
+                    <button type="submit" id="btnSearch" class="btn btn-success" style="float: right; margin-right: 3%;">Search</button>
+                    &nbsp;&nbsp;
+                </div>
                 <div class="col-md-12">
                     <div class="row">
                         <div class="table-responsive" style="overflow:auto!important;">
@@ -32,7 +89,22 @@
 <!--main content end-->
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $('#btnReport').click(function () {
+        var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
+            "&FIRDateTo=" + $('#FIRDateTo').val();
+        window.location.href = url;
+        window.location.assign(url);
+        window.location = url;
+        window.location.replace = url;
+    });
+    $('#btnSearch').click(function () {
+        getData();
+    });
+    function getData() {
+        var requestData = JSON.stringify({ "Zone": $('#Zone').val() });
+        //$('#tablePACDoc').DataTable().destroy();
         var tablePACDoc = $("#tablePACDoc").DataTable({
             "processing": true, // for show progress bar
             "serverSide": true, // for process server side
@@ -45,19 +117,24 @@
             "scrollCollapse": true,
             "className": 'dt-body-nowrap',
             "PaginationType": 'full_numbers',
+            "destroy": true,
             "ajax": {
-                "url": "/PAC/GetAllPAC",
+                "url": "/PAC/SearchPAC?ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
+                    "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+                    "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
+                    "&FIRDateTo=" + $('#FIRDateTo').val(),
                 "type": "POST",
-                "datatype": "json"
+                "datatype": "json",
+                /*"data": requestData,*/
             },
             "columns": [
                 { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
-                {
-                    "title": "Action",
-                    "render": function (data, type, full, meta) {
-                        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>&nbsp;&nbsp;<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeletePAC(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>';
-                    }
-                },
+                //{
+                //    "title": "Action",
+                //    "render": function (data, type, full, meta) {
+                //        return '<a style=" color: blue;white-space: nowrap;" href=/Admin/PACEntry?Id=' + encodeURIComponent(full.Id) + '><i class="fa fa-pencil" style="color:black;cursor: pointer;"></i></a>&nbsp;&nbsp;<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeletePAC(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>';
+                //    }
+                //},
                 { "data": "PACNumber", "name": "PACNumber", "autoWidth": true, "title": "CSPAC Number" },
                 { "data": "Zone_Name", "name": "Zone_Name", "autoWidth": true, "title": "Zone" },
                 { "data": "Range_Name", "name": "Range_Name", "autoWidth": true, "title": "Range" },
@@ -82,17 +159,6 @@
                 },
                 { "data": "Address", "name": "Address", "autoWidth": true, "title": "Address" },
                 { "data": "FIRDetails", "name": "FIRDetails", "autoWidth": true, "title": "FIR Details" },
-                //{
-                //    "title": "File URL",
-                //    "render": function (data, type, full, meta) {
-                //        if (full.FileURL) {
-                //            var truncatedFileName = (full.FileURL.length > 20) ? full.FileURL.substring(0, 20) + '...' : full.FileURL
-                //            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.FileURL + '">' + truncatedFileName + '</a>';
-                //        } else {
-                //            return '';
-                //        }
-                //    }
-                //},
             ],
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
                 var pageNumber = 0;
@@ -127,7 +193,7 @@
                 }
                 return;
             });
-    });
+    }
     $(document).on('click', '#btnPrint', function () {
         var pageTitle = 'Preventive Action Cell (PAC) Details';
         stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css';
@@ -183,19 +249,9 @@
                     console.log(response.responseText);
                 }
             });
-        } 
-        
+        }
+
     }
-    $('#btnReport').click(function () {
-        var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#tablePACDoc_filter').find('input').val() + "&RangeID=" + $('#tablePACDoc_filter').find('input').val() +
-            "&DistrictID=" + $('#tablePACDoc_filter').find('input').val() + "&PSID=" + $('#tablePACDoc_filter').find('input').val() + "&ExamineCenter=" + $('#tablePACDoc_filter').find('input').val() +
-            "&SolverName=" + $('#tablePACDoc_filter').find('input').val() + "&FIRNo=" + $('#tablePACDoc_filter').find('input').val() + "&FIRDateFrom=" + $('#tablePACDoc_filter').find('input').val() +
-            "&FIRDateTo=" + $('#tablePACDoc_filter').find('input').val();
-        window.location.href = url;
-        window.location.assign(url);
-        window.location = url;
-        window.location.replace = url;
-    });
 </script>
 
 <style type="text/css">
@@ -203,6 +259,9 @@
         white-space: nowrap;
     }
 
+    .dataTables_filter {
+        display: none;
+    }
     /* #tablePACDoc thead th:nth-child(11) {
         white-space: normal !important;
         word-break: break-all;
