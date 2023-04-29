@@ -153,7 +153,7 @@ namespace UPPRB_Web.Controllers
             else
                 pacDetailList = detail.GetAllPACDetail();
 
-            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (PAC) Details", new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
+            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (CSPAC) Details", new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 13,
                 Border = 0,
