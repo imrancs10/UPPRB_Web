@@ -399,6 +399,7 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from lookEntry in _db.EventCalenders
+                         where lookEntry.EventDate != null
                          select new EventCalenderModel
                          {
                              FileName = lookEntry.FileName,

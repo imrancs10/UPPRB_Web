@@ -81,7 +81,12 @@
                                 <tr>
                                     <td>@index </td>
                                     <td><a>@data.EventTitle</a></td>
-                                    <td class="hidden-phone">@data.EventDate.Value.ToString("dd/MM/yyyy")</td>
+                                    <td class="hidden-phone">
+                                        @if (data.EventDate != null)
+                                        {
+                                            <span>@data.EventDate.Value.ToShortDateString()</span>
+                                        }
+                                    </td>
                                     <td class="hidden-phone">@data.EventDescription</td>
                                     <td>
                                         <i class="fa fa-pencil" style="cursor:pointer;" onclick="EditEventDetail(@data.Id,'@data.EventTitle','@data.EventDate','@data.EventDescription','@data.FileName')"></i>&nbsp;
