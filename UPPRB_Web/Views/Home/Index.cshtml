@@ -55,7 +55,7 @@
 
                     <nav>
                         <div class="nav nav-tabs text-uppercase  d-flex bd-highlight" id="nav-tab" role="tablist">
-                            <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Events </b></a>
+                            <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>TOP 7 NOTICES </b></a>
                         </div>
                     </nav>
 
@@ -121,7 +121,7 @@
                                         @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
                                         {
                                             <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank" style="color: #03749d">
-                                                <u>LATEST NEWS: </u>
+                                                <u>LATEST NOTICE: </u>
                                                 @if (HighlightedNotice.IsNew == true)
                                                 {
                                                     <img src="~/Content/images/new.gif" alt="new" />
@@ -132,7 +132,7 @@
                                         else
                                         {
                                             <a href='@HighlightedNotice.fileURL' target="_blank" style="color: #03749d">
-                                                <u>LATEST NEWS: </u>
+                                                <u>LATEST NOTICE: </u>
                                                 @if (HighlightedNotice.IsNew == true)
                                                 {
                                                     <img src="~/Content/images/new.gif" alt="new" />

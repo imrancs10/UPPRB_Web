@@ -20,7 +20,13 @@
                     </div>
                     <br />
                     <iframe src="http://jawaharhmcgov.co.in/sihergallery/demo.php" style="width:100%;  height:800px; "></iframe>*@
-                <h2 class="w-bgph ">Photo Gallery</h2>
+                <h2 class="w-bgph ">
+                    Photo Gallery
+                    @if (noticeData.GroupBy(x => x.NoticeTypeName).Count() == 1)
+                    {
+                        <span> | @noticeData.GroupBy(x => x.NoticeTypeName).FirstOrDefault().Key </span>
+                    }
+                </h2>
                 <hr>
                 <div class="clr"></div>
                 <div>
