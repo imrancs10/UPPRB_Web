@@ -21,6 +21,7 @@ using Microsoft.Ajax.Utilities;
 using System.Threading.Tasks;
 using UPPRB_Web.Infrastructure;
 using UPPRB_Web.Infrastructure.Utility;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace UPPRB_Web.Controllers
 {
@@ -385,7 +386,18 @@ namespace UPPRB_Web.Controllers
             var detail = new GeneralDetails();
             var result = detail.GetEnquiryById(Id);
             ViewData["EquiryData"] = result;
+            ViewData["Id"] = Id;
             return View();
+        }
+        [HttpPost]
+        public ActionResult EnquiryResponseSubmit(int Id)
+        {
+            var detail = new GeneralDetails();
+            HttpRequestBase request = ControllerContext.HttpContext.Request;
+            string EmailResponse = request.Unvalidated.Form.Get("EmailResponse");
+            var result = detail.GetEnquiryById(Id);
+            SendMailFordeviceVerification(result.Name, result.Email, EmailResponse);
+            return RedirectToAction("EnquiryList");
         }
         public ActionResult FeedbackList()
         {
@@ -727,18 +739,17 @@ namespace UPPRB_Web.Controllers
             return Marks;
 
         }
-        private async Task SendMailFordeviceVerification(string firstname, string middlename, string lastname, string email, string verificationCode, string mobilenumber)
+        private async Task SendMailFordeviceVerification(string name, string emailId, string emailResponse)
         {
             await Task.Run(() =>
             {
                 //Send Email
                 Message msg = new Message()
                 {
-                    MessageTo = email,
-                    MessageNameTo = firstname + " " + middlename + (string.IsNullOrWhiteSpace(middlename) ? "" : " ") + lastname,
-                    OTP = verificationCode,
-                    Subject = "Verify Mobile Number",
-                    Body = EmailHelper.GetDeviceVerificationEmail(firstname, middlename, lastname, verificationCode)
+                    MessageTo = emailId,
+                    MessageNameTo = name,
+                    Subject = "UPPRBPB | Your Enquiry Response",
+                    Body = emailResponse
                 };
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
                 sendMessageStrategy.SendMessages();

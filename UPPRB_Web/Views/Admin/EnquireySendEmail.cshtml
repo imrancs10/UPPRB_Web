@@ -3,6 +3,7 @@
     ViewBag.Title = "Notice Entry List";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var enquiryData = ViewData["EquiryData"] as EnquiryModel;
+    var Id = Convert.ToInt32(ViewData["Id"]);
 }
 <script src="~/Scripts/Masters/noticeEntry.js"></script>
 @*<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
@@ -18,8 +19,9 @@
                     Enquiry - Send Response
                 </header>
                 <div class="col-md-12">
-                    @using (Html.BeginForm("EnquiryForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("EnquiryResponseSubmit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
+                        <input type="hidden" value="@Id" name="Id"/>
                         <div class="row" style="margin: 1% 0px; margin-left: -1%;">
                             <span><b>Equiry :</b> @enquiryData.Subject</span>
                         </div>
