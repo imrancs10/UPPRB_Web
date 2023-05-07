@@ -18,6 +18,9 @@ using System.Xml.Linq;
 using UPPRB_Web.BAL.Login;
 using System.Text.RegularExpressions;
 using Microsoft.Ajax.Utilities;
+using System.Threading.Tasks;
+using UPPRB_Web.Infrastructure;
+using UPPRB_Web.Infrastructure.Utility;
 
 namespace UPPRB_Web.Controllers
 {
@@ -377,6 +380,13 @@ namespace UPPRB_Web.Controllers
             var data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult EnquireySendEmail(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.GetEnquiryById(Id);
+            ViewData["EquiryData"] = result;
+            return View();
+        }
         public ActionResult FeedbackList()
         {
             return View();
@@ -716,6 +726,30 @@ namespace UPPRB_Web.Controllers
             }
             return Marks;
 
+        }
+        private async Task SendMailFordeviceVerification(string firstname, string middlename, string lastname, string email, string verificationCode, string mobilenumber)
+        {
+            await Task.Run(() =>
+            {
+                //Send Email
+                Message msg = new Message()
+                {
+                    MessageTo = email,
+                    MessageNameTo = firstname + " " + middlename + (string.IsNullOrWhiteSpace(middlename) ? "" : " ") + lastname,
+                    OTP = verificationCode,
+                    Subject = "Verify Mobile Number",
+                    Body = EmailHelper.GetDeviceVerificationEmail(firstname, middlename, lastname, verificationCode)
+                };
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+
+                //Send SMS
+                //msg.Body = "Hello " + string.Format("{0} {1}", firstname, lastname) + "\nAs you requested, here is a OTP " + verificationCode + " you can use it to verify your mobile number before 15 minutes.\n Regards:\n Patient Portal(RMLHIMS)";
+                //msg.MessageTo = mobilenumber;
+                //msg.MessageType = MessageType.OTP;
+                //sendMessageStrategy = new SendMessageStrategyForSMS(msg);
+                //sendMessageStrategy.SendMessages();
+            });
         }
         public ActionResult Logout()
         {

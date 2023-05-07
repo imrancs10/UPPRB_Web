@@ -47,6 +47,19 @@
             },
             "columns": [
                 { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
+                {
+                    "title": "Action",
+                    "render": function (data, type, full, meta) {
+                        var htmlDOM = "";
+                        htmlDOM = '<div class="form-group mt-lg">' +
+                            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
+                            "<a id='lnkEdit' href='/Admin/EnquireySendEmail?Id=" + full.Id + "'> Send Email</a>&nbsp;&nbsp;" +
+                            //'<a id="lnkDelete" onclick="javascript:return openDialogue(' + full.Id + ');" href="#" data-url="DeleteNotice"><i class="fa fa-trash-o" style="color:red"></i></a>' +
+                            '</div>' +
+                            '</div>';
+                        return htmlDOM;
+                    }
+                },
                 { "data": "Name", "name": "Name", "autoWidth": true, "title": "Name" },
                 { "data": "Address", "name": "Address", "autoWidth": true, "title": "Address" },
                 { "data": "Mobile", "name": "Mobile", "autoWidth": true, "title": "Mobile" },

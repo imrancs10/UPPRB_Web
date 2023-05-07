@@ -12,6 +12,8 @@ using System.Reflection.Emit;
 using System.Security.Policy;
 using System.Web.UI;
 using System.Security.Cryptography;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace UPPRB_Web.BAL.Masters
 {
@@ -260,6 +262,24 @@ namespace UPPRB_Web.BAL.Masters
                              CreatedDate = en.CreatedDate
                          }).OrderByDescending(x => x.Id).ToList();
             return _list != null ? _list : new List<EnquiryModel>();
+        }
+        public EnquiryModel GetEnquiryById(int Id)
+        {
+            _db = new upprbDbEntities();
+            var _list = (from en in _db.Enquiries
+                         where en.Id == Id
+                         select new EnquiryModel
+                         {
+                             Address = en.Address,
+                             Id = en.Id,
+                             Email = en.Email,
+                             Message = en.Message,
+                             Mobile = en.Mobile,
+                             Name = en.Name,
+                             Subject = en.Subject,
+                             CreatedDate = en.CreatedDate
+                         }).OrderByDescending(x => x.Id).FirstOrDefault();
+            return _list != null ? _list : new EnquiryModel();
         }
 
         public List<FeedbackModel> GetAllFeedback()

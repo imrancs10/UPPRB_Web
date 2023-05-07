@@ -1,0 +1,43 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "Notice Entry List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var enquiryData = ViewData["EquiryData"] as EnquiryModel;
+}
+<script src="~/Scripts/Masters/noticeEntry.js"></script>
+@*<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />*@
+<link href="~/Content/css/design1.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="card">
+                <header class="card-header">
+                    Enquiry - Send Response
+                </header>
+                <div class="col-md-12">
+                    @using (Html.BeginForm("EnquiryForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row" style="margin: 1% 0px; margin-left: -1%;">
+                            <span><b>Equiry :</b> @enquiryData.Subject</span>
+                        </div>
+                        <div class="row" style="margin-top: 1%; margin-left: -1%; border: 1px solid #333;width:1000px;">
+                            <textarea id="EmailResponse" class="ckeditor" name="EmailResponse" style="width:1000px;" cols="100"></textarea><br />
+                            <span id="message_validation" class="error_message"></span>
+                        </div>
+                        <div class="row" style="margin: 1% 0px; margin-left: -1%;">
+                            <input id="submit_button" type="submit" class="btn btn-success" value="Submit" />
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!--main content end-->
+
+<script type="text/javascript">
+
+</script>
