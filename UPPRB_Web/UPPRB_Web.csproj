@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -504,7 +503,9 @@
     <Content Include="Content\Images\logo3.jpg" />
     <Content Include="Content\Images\new.gif" />
     <Content Include="Content\Images\orange.png" />
+    <Content Include="Content\Images\Org_chart.JPG" />
     <Content Include="Content\Images\org_chart.png" />
+    <Content Include="Content\Images\org_chart1.png" />
     <Content Include="Content\Images\right-arrow.png" />
     <Content Include="Content\Images\search-icon-white.png" />
     <Content Include="Content\Images\search-icon.png" />
