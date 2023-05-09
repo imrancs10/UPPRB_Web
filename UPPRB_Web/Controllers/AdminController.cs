@@ -42,6 +42,15 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        public ActionResult SearchSolverList()
+        {
+            return View();
+        }
+
+        public ActionResult SearchBlacklistedList()
+        {
+            return View();
+        }
         public ActionResult CreateUser()
         {
             var detail = new AdminDetails();
