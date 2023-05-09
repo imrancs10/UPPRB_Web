@@ -62,7 +62,7 @@ namespace UPPRB_Web.Controllers
         {
             var detail = new GeneralDetails();
             var currentDate = DateTime.Now;
-            var thresoldDate = currentDate.AddMonths(-1);
+            var thresoldDate = currentDate.AddMonths(-6);
             var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Result" && currentDate >= x.NoticeDate && thresoldDate.Date <= x.NoticeDate.Value.Date).ToList();
             ViewData["NoticeData"] = allnotice;
             var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
