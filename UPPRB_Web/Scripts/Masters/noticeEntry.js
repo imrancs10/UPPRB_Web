@@ -185,8 +185,8 @@ function FillNoticeCategory(NoticeTypeId, selectedNoticeCategoryId = null) {
         }
     });
 }
-
-function EditNotice(Id, EntryTypeId, NoticeType, NoticeCategoryId, Subject, NoticeDate, fileURL, filename, IsNew, EntryTypeName) {
+//, EntryTypeId, NoticeType, NoticeCategoryId, Subject, NoticeDate, fileURL, filename, IsNew, EntryTypeName
+function EditNotice(Id) {
     window.location.href = '/Admin/NoticeEntry?noticeId=' + Id;
     //$('#hiddenId').val(Id);
     //$('[name*=EntryTypeName]').val(EntryTypeName);
