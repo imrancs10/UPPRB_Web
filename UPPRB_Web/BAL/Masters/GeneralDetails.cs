@@ -384,9 +384,9 @@ namespace UPPRB_Web.BAL.Masters
                          && ((RangeId != null && pac.Range_Id == RangeId) || RangeId == null)
                          && ((DistrictId != null && pac.District_Id == DistrictId) || DistrictId == null)
                          && ((PSId != null && pac.PS_Id == PSId) || PSId == null)
-                         && ((ExamineCenter != "" && pac.ExamineCenterName == ExamineCenter) || ExamineCenter == "")
+                         && ((ExamineCenter == "filterByExamineCenter" && pac.ExamineCenterName != null && pac.ExamineCenterName != "") || (ExamineCenter != "" && pac.ExamineCenterName == ExamineCenter) || ExamineCenter == "")
                          && ((FIRNo != "" && pac.FIRNo == FIRNo) || FIRNo == "")
-                         && ((SolverName != "" && pac.Solver_Name == SolverName) || SolverName == "")
+                         && ((SolverName == "filterBySolverName" && pac.Solver_Name != null && pac.Solver_Name != "") || (SolverName != "" && pac.Solver_Name == SolverName) || SolverName == "")
                          && ((dateFrom != null && dateTo != null && pac.FIRDate >= dateFrom && pac.FIRDate <= dateTo) || dateFrom == null || dateTo == null)
                          select new PACEntryModel
                          {
