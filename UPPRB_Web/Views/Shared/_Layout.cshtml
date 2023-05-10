@@ -84,7 +84,7 @@
             var day = d.getDate();
             var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
 
-            myClock.innerHTML = "Today Date -" + output + ' ' + " Time -" + h + ":" + m + ":" + s + " " + diem;
+            myClock.innerHTML = "Today:" + output + ' ' + " " + h + ":" + m + ":" + s + " " + diem;
         }
         renderTime();
     </script>
@@ -185,7 +185,7 @@
                         </li>
                         <li>
                             <p class="datep" style="color:red">
-                               | Total Number of visitors: @ApplicationInstance.Application["Totaluser"]
+                               | Visitors Count: @ApplicationInstance.Application["Totaluser"]
                             </p>
                         </li>
                     </ul>
