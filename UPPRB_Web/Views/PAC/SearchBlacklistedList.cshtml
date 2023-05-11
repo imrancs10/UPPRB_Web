@@ -41,10 +41,6 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Examine Center Name</label>
-                            <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName" />
-                        </div>
-                        <div class="col-lg-6">
                             <label for="exampleInputEmail1">Solver Name</label>
                             <input type="text" class="form-control" id="Solver_Name" placeholder="Enter Solver Name" name="Solver_Name" />
                         </div>
@@ -90,8 +86,9 @@
 
 <script type="text/javascript">
     $('#btnReport').click(function () {
+        var filterByExamineCenter = "filterByExamineCenter";
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
-            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + filterByExamineCenter +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
             "&FIRDateTo=" + $('#FIRDateTo').val();
         window.location.href = url;
@@ -104,6 +101,7 @@
     });
     function getData() {
         var requestData = JSON.stringify({ "Zone": $('#Zone').val() });
+        var filterByExamineCenter = "filterByExamineCenter";
         //$('#tablePACDoc').DataTable().destroy();
         var tablePACDoc = $("#tablePACDoc").DataTable({
             "processing": true, // for show progress bar
@@ -120,7 +118,7 @@
             "destroy": true,
             "ajax": {
                 "url": "/PAC/SearchPAC?ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
-                    "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+                    "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + filterByExamineCenter +
                     "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
                     "&FIRDateTo=" + $('#FIRDateTo').val(),
                 "type": "POST",

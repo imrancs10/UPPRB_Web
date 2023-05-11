@@ -86,8 +86,9 @@
 
 <script type="text/javascript">
     $('#btnReport').click(function () {
+        var filterByExamineCenter = "filterByExamineCenter";
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
-            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + filterByExamineCenter +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
             "&FIRDateTo=" + $('#FIRDateTo').val();
         window.location.href = url;
