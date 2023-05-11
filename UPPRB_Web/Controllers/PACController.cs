@@ -153,7 +153,12 @@ namespace UPPRB_Web.Controllers
             else
                 pacDetailList = detail.GetAllPACDetail();
 
-            tableLayout.AddCell(new PdfPCell(new Phrase("Preventive Action Cell (CSPAC) Details", new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
+            string pdfTitle = "Cyber Security & Preventive Action Cell (CSPAC) Details";
+            if (SolverName == "filterBySolverName")
+                pdfTitle += " - Solver Report";
+            else if (SolverName == "filterByExamineCenter")
+                pdfTitle += " - Blacklisted Report";
+            tableLayout.AddCell(new PdfPCell(new Phrase(pdfTitle, new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 13,
                 Border = 0,
@@ -224,7 +229,15 @@ namespace UPPRB_Web.Controllers
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }
+        public ActionResult SearchSolverList()
+        {
+            return View();
+        }
 
+        public ActionResult SearchBlacklistedList()
+        {
+            return View();
+        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
