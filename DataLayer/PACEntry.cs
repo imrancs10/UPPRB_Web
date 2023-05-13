@@ -33,5 +33,6 @@ namespace DataLayer
         public string PACNumber { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public string Solver_Name { get; set; }
+        public Nullable<int> recruitement_type { get; set; }
     }
 }
