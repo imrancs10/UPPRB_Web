@@ -51,7 +51,7 @@
     <link href="~/Content/css/simple.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/css/whack.css?v=1.0">
     <link rel="stylesheet" href="~/Content/css/image.css">
-    
+
     <script type="text/javascript" language="javascript">
         function renderTime() {
             var currentdate = new Date();
@@ -166,6 +166,30 @@
         }
 
     </script>
+    <script type="text/javascript">
+        // jQuery('.fontSizeEvent').trigger('fontSelected');
+
+        function set_font_size(fontEvent) {
+            event.stopPropagation();
+            event.preventDefault();
+            var fs = jQuery("body").css("font-size");
+            var fontSize = fs;
+            if (fontEvent == "increase") {
+                if (parseInt(fontSize) < 18) {
+                    fontSize = parseInt(fontSize) + 2;
+                }
+            } else if (fontEvent == "decrease") {
+                if (parseInt(fontSize) > 10) {
+                    fontSize = parseInt(fontSize) - 2;
+                }
+            } else {
+                fontSize = 14;
+            }
+
+            $(this).addClass('link-selected').parent().siblings().find('a').removeClass('link-selected')
+            jQuery("body").attr('style', 'font-size: ' + fontSize + 'px !important');
+        }
+    </script>
 </head>
 <body>
     <script src="bundles/MsAjaxJs?v=c42ygB2U07n37m_Sfa8ZbLGVu4Rr2gsBo7MvUEnJeZ81" type="text/javascript"></script>
@@ -185,7 +209,7 @@
                         </li>
                         <li>
                             <p class="datep" style="color:red">
-                               | Visitors Count: @ApplicationInstance.Application["Totaluser"]
+                                | Visitors Count: @ApplicationInstance.Application["Totaluser"]
                             </p>
                         </li>
                     </ul>
@@ -227,12 +251,12 @@
                             </a>
                             <ul style="visibility: hidden;">
                                 <li>
-                                    <a onclick="set_font_size(increase)" title="Increase font size" href="javascript:void(0);">
+                                    <a onclick="set_font_size('increase')" title="Increase font size" href="javascript:void(0);">
                                         A<sup>+</sup>
                                     </a>
                                 </li>
                                 <li> <a onclick="set_font_size()" title="Reset font size" href="javascript:void(0);">A<sup>&nbsp;</sup></a> </li>
-                                <li> <a onclick="set_font_size(decrease)" title="Decrease font size" href="javascript:void(0);">A<sup>-</sup></a> </li>
+                                <li> <a onclick="set_font_size('decrease')" title="Decrease font size" href="javascript:void(0);">A<sup>-</sup></a> </li>
                                 <li> <a href="javascript:void(0);" class="high-contrast dark" title="High Contrast">A</a> </li>
                                 <li> <a href="javascript:void(0);" class="high-contrast light" title="Normal Contrast" style="display: none;">A</a> </li>
                             </ul>
@@ -269,7 +293,7 @@
                                 </select>
                             </label>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -277,14 +301,14 @@
         </div>
 
         <!-- Header -->
-        <header class="header shop">
+        <header class="header shop" id="skipCont">
 
             <!-- Topbar -->
             <!-- End Topbar -->
             <div class="middle-inner">
                 <div class="container" style="max-width: 99%;">
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-12 p-0">
+                        <div class="col-lg-5 col-md-5 col-12 p-0" style="background-color:white;">
                             <!-- Logo -->
                             <div class="logo mt-0">
                                 <a href="/Home/Index">
@@ -482,7 +506,7 @@
                                     </a>|<a href="/Home/Privacy_Policy"> Privacy Policy </a>|<a href="/Home/Disclaimer"> Disclaimer </a>
                                 </p>
                                 <p style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">
-                                    Designed Developed and Maintained by | <a href="http://spit-tech.com/" target="_blank">SHAURYAPRABHATINFRATECH (SPIT)</a> 
+                                    Designed Developed and Maintained by | <a href="http://spit-tech.com/" target="_blank">SHAURYAPRABHATINFRATECH (SPIT)</a>
                                 </p>
 
                             </div>
@@ -580,6 +604,48 @@
             //        $(ele).parent().parent().show();
             //    }
             //});
+            function _getCookie(name) {
+                var arg = name + "=";
+                var alen = arg.length;
+                var clen = document.cookie.length;
+                var i = 0;
+                while (i < clen) {
+                    var j = i + alen;
+                    if (document.cookie.substring(i, j) == arg) {
+                        return _getCookieVal(j);
+                    }
+                    i = document.cookie.indexOf(" ", i) + 1;
+                    if (i == 0) break;
+                }
+                return null;
+            }
+
+            function _setCookie(name, value, expires, path, domain, secure) {
+                var vurl = true;
+                if (path != "" && path != undefined) {
+                    vurl = validUrl(path);
+                }
+                if (jQuery.type(name) == "string" && vurl) {
+                    document.cookie =
+                        name +
+                        "=" +
+                        escape(value) +
+                        (expires ? "; expires=" + expires.toGMTString() : "") +
+                        (path ? "; path=" + path : "") +
+                        (domain ? "; domain=" + domain : "") +
+                        (secure ? "; secure" : "");
+                }
+            }
+            if (_getCookie("fontSize") != null) {
+                var fontSize = _getCookie("fontSize");
+                jQuery("body").attr('style', 'font-size: ' + fontSize + 'px !important');
+            }
+            else {
+                var fs = jQuery("body").css("font-size");
+                var fontSize = fs;
+                jQuery("body").attr('style', 'font-size: ' + fontSize + 'px !important');
+            }
+
         })
     </script>
 </body>
