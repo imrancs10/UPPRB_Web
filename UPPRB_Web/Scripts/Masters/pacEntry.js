@@ -7,10 +7,39 @@ $(document).ready(function () {
     //FillNoticeSubCategory();
     FillState();
     FillDistrict(0);
+    FillRecruitementType();
     $('[id*=customRadioInline2]').prop("checked", true);
     /*$('[name*=customRadioInline1]').change();*/
     $('[name*=fileURL]').prop("disabled", true);
     $('[name*=postedFile]').removeAttr('disabled');
+
+    function FillRecruitementType(selectedRecruitementTypeId = null) {
+        let dropdown = $('#RecruitementType');
+        dropdown.empty();
+        dropdown.append('<option value="">Select</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{lookupTypeId: 2,lookupType: "NoticeCategory" }',
+            url: '/Master/GetLookupDetail',
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                });
+                if (selectedRecruitementTypeId != null) {
+                    dropdown.val(selectedRecruitementTypeId);
+                }
+            },
+            failure: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    }
     function FillState(selectedStateId = null) {
         let dropdown = $('#State');
         dropdown.empty();
