@@ -801,10 +801,5 @@ namespace UPPRB_Web.Controllers
             return null;
         }
 
-        public ActionResult Sitemap()
-        {
-            return View();
-        }
-
     }
 }
