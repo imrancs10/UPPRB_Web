@@ -112,7 +112,10 @@
                     var day = ("0" + now.getDate()).slice(-2);
                     var month = ("0" + (now.getMonth() + 1)).slice(-2);
                     var year = now.getFullYear();
-                    events.push({ 'Date': new Date(year, month - 1, day), 'Title': entry.EventTitle, 'Link': '/FilesUploaded/EventCalender/' + encodeURIComponent(entry.FileName) });
+                    if (entry.FileName != null && entry.FileName != undefined && entry.FileName != "")
+                        events.push({ 'Date': new Date(year, month - 1, day), 'Title': entry.EventTitle, 'Link': '/FilesUploaded/EventCalender/' + encodeURIComponent(entry.FileName) });
+                    else
+                        events.push({ 'Date': new Date(year, month - 1, day), 'Title': entry.EventTitle});
                     //var events = [
                     //    { 'Date': new Date(2023, 2, 4), 'Title': 'Doctor appointment at 3:25pm.' },
                     //    { 'Date': new Date(2023, 2, 18), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com' },
