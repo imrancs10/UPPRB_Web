@@ -6034,7 +6034,6 @@ p {
 
     .hero-slider {
         height: auto;
-        width:100%;
     }
 
     .whide {
@@ -6387,7 +6386,7 @@ p {
 }
 
 .container {
-    position: inherit;
+    position: relative;
     margin: 0 auto;
     display: block;
     max-width: 1030px;
@@ -7734,7 +7733,7 @@ a {
     font-size: 14px;
     white-space: nowrap;
     color: white;
-    line-height: 20px;
+    line-height: 40px;
     float: right;
     margin-top: 0px;
     overflow: hidden;
@@ -7798,7 +7797,7 @@ a {
 .padd_left1 {
     float: left;
     padding-left: 10px;
-    /*font-size: 15px;*/
+    font-size: 15px;
 }
 
 
@@ -7884,180 +7883,3 @@ a {
         color: #fff;
         cursor: pointer;
     }
-
-@media screen and (min-width: 480px) {
-    .rwd-break {
-        display: block ruby;
-        line-height: 40px;
-    }
-}
-
-
-
-#nav-btn {
-    fill: white;
-    height: 27px;
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    display: none;
-}
-
-.vertical-line {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 35px;
-    border-bottom: #F7F7F7 4px solid;
-}
-
-aside {
-   
-    float: left;
-    width: 20%;
-  padding:2em;
-    padding-top: 30px;
-   
-    background-color: white;
-    
-}
-
-article {
-    float: left;
-    margin-left: 20%;
-    margin-right: 9%;
-    padding-top: 200px;
-    width: 70%;
-    padding-bottom: 150px;
-}
-
-nav1 {
-    display: block;
-}
-
-    nav1 ul {
-    }
-
-        nav1 ul li {
-            line-height: 30px;
-        }
-            nav1 ul li a {
-                color: black;
-            }
-
-            
-
-                nav1 ul li a:hover {
-                    color: white;
-                }
-
-#products {
-    padding-top: 40px;
-    font-weight: bold;
-    color: #F7F7F7;
-}
-
-.text-blue {
-    color: #173064;
-}
-
-.colorchange {
-    background-color: white;
-    padding: 10px;
-    color: black;
-    border-bottom: 1px solid gray;
-    transition: 0.8s;
-}
-
-    .colorchange:hover {
-        background-color: #d61111;
-        color: white;
-    }
-
-
-@media (max-width: 730px) {
-
-
-
-    nav1 ul {
-    }
-
-        nav1 ul li {
-            line-height: 30px;
-        }
-
-           
-
-
-
-
-
-    .text-blue {
-        color: white !important;
-    }
-
-    aside {
-        float: left;
-        width: 100%;
-        padding-left: 5%;
-        position: relative;
-        float: left;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: #173064;
-    }
-
-    header1 {
-        float: left;
-        position: relative;
-        width: 95%;
-        padding-left: 5%;
-    }
-
-    nav1 {
-        display: none;
-    }
-
-    #nav-btn {
-        fill: white;
-        height: 27px;
-        width: 27px;
-        position: absolute;
-        top: 7px;
-        display: block;
-        cursor: pointer;
-    }
-
-    .vertical-line {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        display: none;
-    }
-
-    #products {
-        padding-top: 0;
-    }
-
-    article {
-        float: left;
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 50px;
-    }
-
-
-    .colorchange {
-        background-color: #173064;
-        color: white;
-    }
-
-        .colorchange:hover {
-            background-color: #d61111;
-            color: white;
-        }
-}
-
-
-
-    
-    
