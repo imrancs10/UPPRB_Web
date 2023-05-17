@@ -70,6 +70,7 @@ namespace UPPRB_Web.BAL.Masters
                          && (categoryId == null || (categoryId != null && not.NoticeCategoryId == categoryId))
                           && (entryTypeId == null || (entryTypeId != null && not.EntryTypeId == entryTypeId))
                            && (noticeId == null || (noticeId != null && not.Id == noticeId))
+                           && not.is_deleted == false
                          select new NoticeModel
                          {
                              filename = not.filename != null ? not.filename : "",
@@ -98,6 +99,7 @@ namespace UPPRB_Web.BAL.Masters
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
                           && DbFunctions.TruncateTime(thresoldDate) <= DbFunctions.TruncateTime(not.NoticeDate)
+                          && not.is_deleted == false
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -123,6 +125,7 @@ namespace UPPRB_Web.BAL.Masters
                          join look in _db.Lookups on not.EntryTypeId equals look.LookupId
                          where currentDate >= not.NoticeDate && look.LookupType == "UploadType" && look.LookupName == "Notice"
                           && DbFunctions.TruncateTime(thresoldDate) <= DbFunctions.TruncateTime(not.NoticeDate)
+                          && not.is_deleted == false
                          select new NoticeModel
                          {
                              filename = not.filename,
@@ -369,7 +372,7 @@ namespace UPPRB_Web.BAL.Masters
             int? RangeId = !string.IsNullOrEmpty(RangeID) && RangeID != "null" ? (int?)Convert.ToInt32(RangeID) : null;
             int? DistrictId = !string.IsNullOrEmpty(DistrictID) && DistrictID != "null" ? (int?)Convert.ToInt32(DistrictID) : null;
             int? PSId = !string.IsNullOrEmpty(PSID) && PSID != "null" ? (int?)Convert.ToInt32(PSID) : null;
-            int? RecruitementTypeId = !string.IsNullOrEmpty(RecruitementType) && RecruitementType != "null" ? (int?)Convert.ToInt32(RecruitementType) : null; 
+            int? RecruitementTypeId = !string.IsNullOrEmpty(RecruitementType) && RecruitementType != "null" ? (int?)Convert.ToInt32(RecruitementType) : null;
             DateTime? dateFrom = !string.IsNullOrEmpty(FIRDateFrom) ? (DateTime?)Convert.ToDateTime(FIRDateFrom) : null;
             DateTime? dateTo = !string.IsNullOrEmpty(FIRDateTo) ? (DateTime?)Convert.ToDateTime(FIRDateTo) : null;
             _db = new upprbDbEntities();
@@ -552,7 +555,22 @@ namespace UPPRB_Web.BAL.Masters
             else
                 return Enums.CrudStatus.DataNotFound;
         }
-
+        public Enums.CrudStatus DeleteNoticeEntry(int Id)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.Notices.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            if (_deptRow != null)
+            {
+                _deptRow.is_deleted = true;
+                //db.PACEntries.Remove(_deptRow);
+                _db.Entry(_deptRow).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Deleted : Enums.CrudStatus.NotDeleted;
+            }
+            else
+                return Enums.CrudStatus.DataNotFound;
+        }
 
         //public Enums.CrudStatus EditDept(string deptName, int deptId, string deptUrl,string  deptDesc)
         //{

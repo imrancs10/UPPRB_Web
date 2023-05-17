@@ -60,7 +60,7 @@
                         htmlDOM = '<div class="form-group mt-lg">' +
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
                             "<a style='margin-left: 35%;' id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + ")'> <i class='fa fa-pencil' style='color:black;cursor: pointer;'></i></a>&nbsp;&nbsp;" +
-                            //'<a id="lnkDelete" onclick="javascript:return openDialogue(' + full.Id + ');" href="#" data-url="DeleteNotice"><i class="fa fa-trash-o" style="color:red"></i></a>' +
+                            '<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeleteNotice(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;
@@ -157,6 +157,28 @@
         add = add || '...';
         return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
     };
+    function DeleteNotice(Id) {
+        if (confirm("Are you sure want to Delete") == true) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{Id: "' + Id + '" }',
+                url: '/Admin/DeleteNoticeEntry',
+                success: function (data) {
+                    utility.alert.setAlert("Delete", "Successfully Deleted");
+                    location.reload();
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        }
+
+    }
 </script>
 
 <style type="text/css">
