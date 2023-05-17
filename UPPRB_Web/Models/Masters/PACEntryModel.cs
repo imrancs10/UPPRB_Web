@@ -31,6 +31,7 @@ namespace UPPRB_Web.Models.Masters
         public string FileUploadName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string PACNumber { get; set; }
-
+        public int? RecruitementTypeId { get; set; }
+        public string RecruitementType { get; set; }
     }
 }

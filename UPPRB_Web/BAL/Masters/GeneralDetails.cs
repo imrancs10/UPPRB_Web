@@ -329,6 +329,8 @@ namespace UPPRB_Web.BAL.Masters
                          from district2 in district1.DefaultIfEmpty()
                          join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
                          from ps2 in ps1.DefaultIfEmpty()
+                         join look in _db.Lookups on pac.recruitement_type equals look.LookupId into look1
+                         from look2 in look1.DefaultIfEmpty()
                          where (Id == null || (Id != null && pac.Id == Id)) && pac.IsDeleted == false
                          select new PACEntryModel
                          {
@@ -354,17 +356,20 @@ namespace UPPRB_Web.BAL.Masters
                              State_Name = state2 != null ? state2.StateName : "",
                              Zone_Id = pac.Zone_Id,
                              Zone_Name = zone2 != null ? zone2.ZoneName : "",
-                             PACNumber = pac.PACNumber
+                             PACNumber = pac.PACNumber,
+                             RecruitementType = look2 != null ? look2.LookupName : "",
+                             RecruitementTypeId = look2 != null ? (int?)look2.LookupId : null,
                          }).OrderByDescending(x => x.Id).ToList();
             return _list != null ? _list : new List<PACEntryModel>();
         }
 
-        public List<PACEntryModel> SearchPACDetail(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
+        public List<PACEntryModel> SearchPACDetail(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType)
         {
             int? ZoneId = !string.IsNullOrEmpty(ZoneID) && ZoneID != "null" ? (int?)Convert.ToInt32(ZoneID) : null;
             int? RangeId = !string.IsNullOrEmpty(RangeID) && RangeID != "null" ? (int?)Convert.ToInt32(RangeID) : null;
             int? DistrictId = !string.IsNullOrEmpty(DistrictID) && DistrictID != "null" ? (int?)Convert.ToInt32(DistrictID) : null;
             int? PSId = !string.IsNullOrEmpty(PSID) && PSID != "null" ? (int?)Convert.ToInt32(PSID) : null;
+            int? RecruitementTypeId = !string.IsNullOrEmpty(RecruitementType) && RecruitementType != "null" ? (int?)Convert.ToInt32(RecruitementType) : null; 
             DateTime? dateFrom = !string.IsNullOrEmpty(FIRDateFrom) ? (DateTime?)Convert.ToDateTime(FIRDateFrom) : null;
             DateTime? dateTo = !string.IsNullOrEmpty(FIRDateTo) ? (DateTime?)Convert.ToDateTime(FIRDateTo) : null;
             _db = new upprbDbEntities();
@@ -379,11 +384,14 @@ namespace UPPRB_Web.BAL.Masters
                          from district2 in district1.DefaultIfEmpty()
                          join ps in _db.PSMasters on pac.PS_Id equals ps.PSId into ps1
                          from ps2 in ps1.DefaultIfEmpty()
+                         join look in _db.Lookups on pac.recruitement_type equals look.LookupId into look1
+                         from look2 in look1.DefaultIfEmpty()
                          where pac.IsDeleted == false
                          && ((ZoneID != null && pac.Zone_Id == ZoneId) || ZoneId == null)
                          && ((RangeId != null && pac.Range_Id == RangeId) || RangeId == null)
                          && ((DistrictId != null && pac.District_Id == DistrictId) || DistrictId == null)
                          && ((PSId != null && pac.PS_Id == PSId) || PSId == null)
+                         && ((RecruitementTypeId != null && pac.recruitement_type == RecruitementTypeId) || RecruitementTypeId == null)
                          && ((ExamineCenter == "filterByExamineCenter" && pac.ExamineCenterName != null && pac.ExamineCenterName != "") || (ExamineCenter != "" && pac.ExamineCenterName == ExamineCenter) || ExamineCenter == "")
                          && ((FIRNo != "" && pac.FIRNo == FIRNo) || FIRNo == "")
                          && ((SolverName == "filterBySolverName" && pac.Solver_Name != null && pac.Solver_Name != "") || (SolverName != "" && pac.Solver_Name == SolverName) || SolverName == "")
@@ -412,7 +420,9 @@ namespace UPPRB_Web.BAL.Masters
                              State_Name = state2 != null ? state2.StateName : "",
                              Zone_Id = pac.Zone_Id,
                              Zone_Name = zone2 != null ? zone2.ZoneName : "",
-                             PACNumber = pac.PACNumber
+                             PACNumber = pac.PACNumber,
+                             RecruitementType = look2 != null ? look2.LookupName : "",
+                             RecruitementTypeId = look2 != null ? (int?)look2.LookupId : null,
                          }).OrderByDescending(x => x.Id).ToList();
             return _list != null ? _list : new List<PACEntryModel>();
         }
