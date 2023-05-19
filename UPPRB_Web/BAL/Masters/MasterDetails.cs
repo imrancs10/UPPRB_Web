@@ -12,14 +12,15 @@ namespace UPPRB_Web.BAL.Masters
         public IEnumerable<object> GetLookupDetail(int? parentLookupId, string lookupTye)
         {
             _db = new upprbDbEntities();
-            return (from lookup in _db.Lookups.Where(x => (x.ParentLookupId == parentLookupId) && x.LookupType == lookupTye && x.IsActive == true)
-                    select new
-                    {
-                        lookup.LookupId,
-                        lookup.LookupName,
-                        lookup.LookupType,
-                        lookup.ParentLookupId,
-                    }).OrderBy(x => x.LookupName).ToList();
+            var result = (from lookup in _db.Lookups.Where(x => (x.ParentLookupId == parentLookupId) && x.LookupType == lookupTye && x.IsActive == true)
+                          select new
+                          {
+                              lookup.LookupId,
+                              lookup.LookupName,
+                              lookup.LookupType,
+                              lookup.ParentLookupId,
+                          }).OrderBy(x => x.LookupName).ToList();
+            return result;
 
         }
         public IEnumerable<object> GetStateDetail()

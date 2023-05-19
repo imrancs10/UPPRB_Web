@@ -70,6 +70,18 @@ namespace UPPRB_Web.Controllers
             return View();
         }
 
+        public ActionResult Syllabus(int? noticeId = null, int? categoryId = null)
+        {
+            var detail = new GeneralDetails();
+            var currentDate = DateTime.Now;
+            var thresoldDate = currentDate.AddMonths(-6);
+            var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Syllabus" && currentDate >= x.NoticeDate && thresoldDate.Date <= x.NoticeDate.Value.Date).ToList();
+            ViewData["NoticeData"] = allnotice;
+            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            ViewData["NoticeType"] = noticeTypeDetail;
+            return View();
+        }
+
         public ActionResult DirectRecruitment(int? drId)
         {
             var detail = new GeneralDetails();
