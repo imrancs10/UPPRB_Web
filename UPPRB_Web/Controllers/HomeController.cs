@@ -77,7 +77,7 @@ namespace UPPRB_Web.Controllers
             var thresoldDate = currentDate.AddMonths(-6);
             var allnotice = detail.GetNoticeDetail(noticeId, categoryId).Where(x => x.EntryTypeName == "Syllabus" && currentDate >= x.NoticeDate && thresoldDate.Date <= x.NoticeDate.Value.Date).ToList();
             ViewData["NoticeData"] = allnotice;
-            var noticeTypeDetail = detail.GetNoticeHirarchyDetail();
+            var noticeTypeDetail = detail.GetSyllabusHirarchyDetail();
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }

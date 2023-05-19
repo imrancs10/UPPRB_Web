@@ -6,64 +6,79 @@
     var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
 }
 <script src="~/Scripts/Masters/noticePage.js"></script>
-<section class="blog-single section">
-    <div class="container wsh"style="min-height:500px">
+
+
+
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
         <div class="row">
-            
-            <div class="col-lg-12 w_content pt-20 mt-0">                
-                    <div id="DivContent">
-                        <div id="Panel1">
-                            <h2 class="w-bgph "> Syllabus</h2>
-                            <div id="divSearch" style="display:block;">
-                                <div class="dynamic_update pageheight">
-                                    <ul id="noticeList">
-                                        @foreach (var item in noticeData)
-                                        {
-                                            @*<span id="spnLink"></span>*@
-                                            if (!string.IsNullOrEmpty(item.filename))
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
+            @Html.Partial("_Syllabus_SideMenu", noticeType)
+            <div class="col-lg-10 w_content pt-20 mt-0">
+                <h2 class="w-bgph ">
+                    Syllabus
+                    @if (noticeData.GroupBy(x => x.NoticeTypeName).Count() == 1)
+                    {
+                        <span> | @noticeData.GroupBy(x => x.NoticeTypeName).FirstOrDefault().Key </span>
+                    }
+                </h2>
+                <div class=" table-responsive">
+                    <div>
+                        <table cellspacing="4" cellpadding="4" id="ContentPlaceHolder2_GridView1" style="width:100%;">
+                            @foreach (var item in noticeData)
+                            {
+                                <tr align="left">
+                                    <td>
+                                        <table cellpadding="0" cellspacing="0"
+                                               style="text-align: left; background-color: #FBFBFB; border: 1px solid #EBEBEB; padding: 5px; margin-bottom: 5px; width: 100%">
+                                            <tr>
+                                                <td colspan="2" style="padding-left: 10px; padding-right: 5px">
+                                                    <b>Circular :&nbsp;</b> @item.Subject
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding-left: 10px; padding-right: 5px">
+                                                    Date:&nbsp;@item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td align="right" width="50%" style="padding-left: 10px; padding-right: 10px">
+                                                    Attachment:
+                                                    @if (!string.IsNullOrEmpty(item.filename))
                                                     {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                        <a id="HyperLink2_0" href="~/FilesUploaded/GO/@item.filename" target="_blank" style="color:#CC3300;">
+                                                            Download <i class="fa fa-download"> </i>
+                                                        </a>
                                                     }
-                                                    <a href='~/FilesUploaded/Syllabus/@item.filename' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
+                                                    else
                                                     {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                        <a id="HyperLink2_0" href="@item.fileURL" target="_blank" style="color:#CC3300;">
+                                                            Download <i class="fa fa-download"> </i>
+                                                        </a>
                                                     }
-                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            }
+                        </table>
                     </div>
-                    <div class="clearfix"></div>
-                
+
+
+
+                </div>
+
+                <br>
+
+
+                <div class="clearfix"></div>
+
+
             </div>
+
+            <div class="clearfix"></div>
         </div>
     </div>
+
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
