@@ -9,7 +9,7 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Manual_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">                
+            <div class="col-lg-9 w_content pt-20 mt-0">                
                 <h2 class="w-bgph">Recruitment Rules</h2>
                     @foreach (var item in noticeType)
                     {
@@ -34,6 +34,16 @@
         </div>
     </div>
 </section>
+
+
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {

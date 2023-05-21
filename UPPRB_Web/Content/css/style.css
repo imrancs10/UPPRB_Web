@@ -6053,9 +6053,9 @@ p {
         line-height: 22px;
     }
 
-    .w-bor-r {
+    /*.w-bor-r {
         display: none;
-    }
+    }*/
 
     .section {
         padding: 30px 0 30px 0;
@@ -7913,7 +7913,7 @@ a {
 aside {
    
     float: left;
-    width: 20%;
+    width: 22%;
   padding:2em;
     padding-top: 30px;
    
@@ -7962,9 +7962,9 @@ nav1 {
 
 .colorchange {
     background-color: white;
-    padding: 10px;
+    /*padding: 10px;*/
     color: black;
-    border-bottom: 1px solid gray;
+   /* border-bottom: 1px solid gray;*/
     transition: 0.8s;
 }
 

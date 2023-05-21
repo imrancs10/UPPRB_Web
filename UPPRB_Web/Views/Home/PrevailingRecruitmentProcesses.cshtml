@@ -8,7 +8,7 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_DR_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h2 class="w-bgph">Prevailing Recruitment Processes</h2>
                 <hr><br />
                 <div class="clr"></div>
@@ -29,4 +29,12 @@
         $('.navbar-nav').find('li').removeClass('active');
         $('a[href="/Home/DirectRecruitment"]').parent().addClass('active')
     });
+</script>
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
 </script>

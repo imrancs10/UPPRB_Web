@@ -10,61 +10,70 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Notice_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">                
-                    <div id="DivContent">
-                        <div id="Panel1">
-                            <h2 class="w-bgph ">Notice</h2>
-                            <div id="divSearch" style="display:block;">
-                                <div class="dynamic_update pageheight">
-                                    <ul id="noticeList">
-                                        @foreach (var item in noticeData)
+            <div class="col-lg-9 w_content pt-20 mt-0">
+                <div id="DivContent">
+                    <div id="Panel1">
+                        <h2 class="w-bgph ">Notice</h2>
+                        <div id="divSearch" style="display:block;">
+                            <div class="dynamic_update pageheight">
+                                <ul id="noticeList">
+                                    @foreach (var item in noticeData)
+                                    {
+                                        @*<span id="spnLink"></span>*@
+                                        if (!string.IsNullOrEmpty(item.filename))
                                         {
-                                            @*<span id="spnLink"></span>*@
-                                            if (!string.IsNullOrEmpty(item.filename))
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='~/FilesUploaded/Notice/@item.filename' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
+                                            <li>
+                                                @if (item.IsNew == true)
+                                                {
+                                                    <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                }
+                                                <a href='~/FilesUploaded/Notice/@item.filename' title='Click to view more' target='_blank'>
+                                                    @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                </a>
+                                                <p class="date">
+                                                    Date :
+                                                    @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </p>
+                                            </li>
                                         }
-                                    </ul>
-                                </div>
+                                        else
+                                        {
+                                            <li>
+                                                @if (item.IsNew == true)
+                                                {
+                                                    <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                }
+                                                <a href='@item.fileURL' title='Click to view more' target='_blank'>
+                                                    @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                </a>
+                                                <p class="date">
+                                                    Date :
+                                                    @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </p>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');

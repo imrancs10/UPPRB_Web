@@ -36,19 +36,24 @@
     <script src="~/Scripts/App/Global/App.js"></script>
     <script src="~/Scripts/App/Global/Utility.js"></script>
 
-</head>
 
+</head>
+<!--hello-->
 <body class="login-body">
     <div class="container">
         <div class="form-signin">
-            <center><img src="~/Content/Images/LOGO.bmp" style="width:100px; height:100px" alt="Uttar Pradesh Police Recruitment & Promotion Board"></center>
-            <h2 class="form-signin-heading">Uttar Pradesh Police Recruitment & Promotion Board</h2>
+            <center style="background-color: #d61111;">
+                
+                    <img src="~/Content/Images/LOGO.bmp" style="width:100px; height:100px; padding:10px;" alt="Uttar Pradesh Police Recruitment & Promotion Board">
+                </center>
+            <h2 class="form-signin-heading fw-bolder">Uttar Pradesh Police Recruitment & Promotion Board</h2>
             <div id="captcha" class="login-wrap">
                 @using (Html.BeginForm("GetLogin", "Login", FormMethod.Post))
                 {
                     <input type="text" class="form-control" placeholder="User ID" autofocus name="username">
+                    <i class="fa fa-eye icon" onclick="changeInputType('password')"></i>
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-                    <i class="fa fa-eye" style=" cursor: pointer; position: absolute; top: 64%; left: 60%;" onclick="changeInputType('password')"></i>
+
                     if (IsCaptchaEnable == true)
                     {
                         @Html.Captcha(5)
@@ -93,6 +98,7 @@
                 </div>
             </div>
             <!-- modal -->
+                  
         </div>
     </div>
     <!-- js placed at the end of the document so the pages load faster -->

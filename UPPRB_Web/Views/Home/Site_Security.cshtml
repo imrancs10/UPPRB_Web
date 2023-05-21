@@ -9,7 +9,7 @@
 
             @Html.Partial("_Policy_SideMenu")
 
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h2 class="w-bgph ">Site Security</h2>
                 @*<img class="d-block w-100" src="~/Content/images/2.jpg" alt="UPPRPB">
         <br>
@@ -24,7 +24,14 @@
         </div>
     </div>
 </section>
+<script>
 
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
 @*<script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');
