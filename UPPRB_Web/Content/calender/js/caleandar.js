@@ -241,8 +241,11 @@ function createCalendar(calendar, element, adjuster) {
                             }
                         }
                         title.appendChild(a);
-                    } else {
+                    } else if (calendar.Model[n].Link != undefined && calendar.Model[n].Link != null) {
                         title.innerHTML += '<a target="_blank" href="' + calendar.Model[n].Link + '">' + calendar.Model[n].Title + '</a>';
+                    }
+                    else {
+                        title.innerHTML += '<span style="color:#7B00FF;">' + calendar.Model[n].Title + '</span>';
                     }
                     number.appendChild(title);
                 }
