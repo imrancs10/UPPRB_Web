@@ -40,7 +40,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType)
+        public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace UPPRB_Web.Controllers
                 int skip = start != null ? Convert.ToInt32(start) : 0;
                 int recordsTotal = 0;
                 string filterText = Request["search[value]"];
-                var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+                var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo);
 
                 recordsTotal = result.Count();
                 var data = result.Skip(skip).Take(pageSize).ToList();
@@ -86,8 +86,7 @@ namespace UPPRB_Web.Controllers
                                          || x.AccusedName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
                                          || x.Solver_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
                                          || x.Address.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                         || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
-                                         || x.RecruitementType.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                                         || x.District_Name.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
             }
 
             recordsTotal = result.Count();
@@ -95,7 +94,7 @@ namespace UPPRB_Web.Controllers
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
+        public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "")
         {
             MemoryStream workStream = new MemoryStream();
             StringBuilder status = new StringBuilder("");
@@ -128,7 +127,7 @@ namespace UPPRB_Web.Controllers
             doc.Add(jpg);
 
             //Add Content to PDF   
-            doc.Add(Add_Content_To_PDF(tableLayout, IsSearching, ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType));
+            doc.Add(Add_Content_To_PDF(tableLayout, IsSearching, ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo));
 
             // Closing the document  
             doc.Close();
@@ -139,7 +138,7 @@ namespace UPPRB_Web.Controllers
             return File(workStream, "application/pdf", strPDFFileName);
         }
 
-        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, bool IsSearching, string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType)
+        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, bool IsSearching, string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo)
         {
             var detail = new GeneralDetails();
             float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
@@ -150,7 +149,7 @@ namespace UPPRB_Web.Controllers
 
             List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
             if (IsSearching)
-                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo);
             else
                 pacDetailList = detail.GetAllPACDetail();
 

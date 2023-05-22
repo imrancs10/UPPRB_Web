@@ -6034,6 +6034,7 @@ p {
 
     .hero-slider {
         height: auto;
+        width:100%;
     }
 
     .whide {
@@ -6386,7 +6387,7 @@ p {
 }
 
 .container {
-    position: relative;
+    position: inherit;
     margin: 0 auto;
     display: block;
     max-width: 1030px;
@@ -7733,7 +7734,7 @@ a {
     font-size: 14px;
     white-space: nowrap;
     color: white;
-    line-height: 40px;
+    line-height: 20px;
     float: right;
     margin-top: 0px;
     overflow: hidden;
@@ -7797,7 +7798,7 @@ a {
 .padd_left1 {
     float: left;
     padding-left: 10px;
-    font-size: 15px;
+    /*font-size: 15px;*/
 }
 
 

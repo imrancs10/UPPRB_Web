@@ -3832,3 +3832,10 @@ Error Number:53,State:0,Class:20
 2023-05-22 17:26:50,129 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
 2023-05-22 17:26:50,634 [6] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
 2023-05-22 17:28:18,774 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:28:21,229 [10] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:28:24,251 [9] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:28:24,298 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:28:24,326 [10] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:28:24,353 [10] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:29:00,827 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 
+2023-05-22 18:29:03,776 [8] ERROR UPPRB_Web.Infrastructure.Utility.CustomExceptionFilter 

@@ -265,9 +265,7 @@ namespace UPPRB_Web.Controllers
                 EntryTypeId = !string.IsNullOrEmpty(EntryType) ? (int?)Convert.ToInt32(EntryType) : null,
                 NoticeType = !string.IsNullOrEmpty(NoticeType) ? (int?)Convert.ToInt32(NoticeType) : null,
                 Subject = Subject,
-                IsNew = highlightNew == "on" ? true : false,
-                is_deleted = false,
-                is_published = true
+                IsNew = highlightNew == "on" ? true : false
             };
             AdminDetails detail = new AdminDetails();
             var saveStatus = detail.SaveNotice(notice);
@@ -420,7 +418,7 @@ namespace UPPRB_Web.Controllers
         }
         [HttpPost]
         public ActionResult PACEntry(string hiddenId, HttpPostedFileBase postedFile, string State, string Zone,
-       string Range, string District, string PoliceStation, string ExamineCenterName, string Solver_Name, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL, string RecruitementType)
+       string Range, string District, string PoliceStation, string ExamineCenterName, string Solver_Name, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL,string RecruitementType)
         {
             State = "1";
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
@@ -437,7 +435,7 @@ namespace UPPRB_Web.Controllers
                 Zone_Id = !string.IsNullOrEmpty(Zone) ? (int?)Convert.ToInt32(Zone) : null,
                 Range_Id = !string.IsNullOrEmpty(Range) ? (int?)Convert.ToInt32(Range) : null,
                 District_Id = !string.IsNullOrEmpty(District) ? (int?)Convert.ToInt32(District) : null,
-                recruitement_type = !string.IsNullOrEmpty(RecruitementType) ? (int?)Convert.ToInt32(RecruitementType) : null,
+                recruitement_type= !string.IsNullOrEmpty(RecruitementType) ? (int?)Convert.ToInt32(RecruitementType) : null,
                 AccusedName = AccusedName,
                 Address = Address,
                 ExamineCenterName = ExamineCenterName,
@@ -493,13 +491,7 @@ namespace UPPRB_Web.Controllers
             var result = detail.DeletePACEntry(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public JsonResult DeleteNoticeEntry(int Id)
-        {
-            var detail = new GeneralDetails();
-            var result = detail.DeleteNoticeEntry(Id);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+
         public ActionResult PromotionEntry()
         {
             return View();

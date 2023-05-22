@@ -1054,8 +1054,7 @@
     <Content Include="Views\PAC\SearchBlacklistedList.cshtml" />
     <Content Include="Views\Admin\SearchSolverList.cshtml" />
     <Content Include="Views\Admin\SearchBlacklistedList.cshtml" />
-    <Content Include="Views\Home\Syllabus.cshtml" />
-    <Content Include="Views\Shared\_Syllabus_SideMenu.cshtml" />
+    <Content Include="Views\Home\Sitemap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

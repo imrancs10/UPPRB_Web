@@ -72,14 +72,6 @@ $(document).ready(function () {
     $('#State').on('change', function (e) {
         var valueSelected = this.value;
         FillZone(valueSelected);
-        if ($("#State option:selected").text() == "Others") {
-            $('#Zone').attr('disabled', true);
-            $('#Range').attr('disabled', true);
-        }
-        else {
-            $('#Zone').attr('disabled', false);
-            $('#Range').attr('disabled', false);
-        }
     });
 
     $('#Zone').on('change', function (e) {
