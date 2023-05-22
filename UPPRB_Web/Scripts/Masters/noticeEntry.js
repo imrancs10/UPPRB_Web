@@ -56,7 +56,7 @@ $(document).ready(function () {
             $('#divNotice').css('display', '');
             $('#divNoticeCategory').css('display', '');
         }
-        else if (valueSelected == 'GO' || valueSelected == 'PhotoGalary') {
+        else if (valueSelected == 'GO' || valueSelected == 'PhotoGalary' || valueSelected == 'Syllabus') {
             FillNoticeType(this.value);
             $('#divNotice').css('display', '');
             $('#divNoticeCategory').css('display', 'none');
@@ -132,9 +132,6 @@ $(document).ready(function () {
 
 function FillNoticeType(entryTypeId = null, selectedNoticeTypeId = null) {
     let dropdown = $('#NoticeType');
-    dropdown.empty();
-    dropdown.append('<option value="">Select</option>');
-    dropdown.prop('selectedIndex', 0);
     $.ajax({
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
@@ -142,6 +139,9 @@ function FillNoticeType(entryTypeId = null, selectedNoticeTypeId = null) {
         data: '{lookupTypeId: "' + entryTypeId + '",lookupType: "NoticeType" }',
         url: '/Master/GetLookupDetail',
         success: function (data) {
+            dropdown.empty();
+            dropdown.append('<option value="">Select</option>');
+            dropdown.prop('selectedIndex', 0);
             $.each(data, function (key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
             });

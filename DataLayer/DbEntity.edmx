@@ -136,6 +136,8 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
           <Property Name="IsNew" Type="bit" />
+          <Property Name="is_deleted" Type="bit" />
+          <Property Name="is_published" Type="bit" />
         </EntityType>
         <EntityType Name="PACEntry">
           <Key>
@@ -420,6 +422,8 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="IsNew" Type="Boolean" />
+          <Property Name="is_deleted" Type="Boolean" />
+          <Property Name="is_published" Type="Boolean" />
         </EntityType>
         <EntityType Name="PACEntry">
           <Key>
@@ -669,6 +673,8 @@
           <EntitySetMapping Name="Notices">
             <EntityTypeMapping TypeName="upprbDbModel.Notice">
               <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="is_published" ColumnName="is_published" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

@@ -25,5 +25,7 @@ namespace DataLayer
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<bool> IsNew { get; set; }
+        public Nullable<bool> is_deleted { get; set; }
+        public Nullable<bool> is_published { get; set; }
     }
 }
