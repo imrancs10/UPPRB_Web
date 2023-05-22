@@ -9,7 +9,7 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_DR_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h2 class="w-bgph">Important Information About Direct Recruitment</h2>
                 <hr>                
                 <h6><a href="#!" style="color: #191970">Current system regarding skilled players<br /> (कुशल खिलाडियों के सम्बन्ध में वर्तमान व्यवस्था)</a></h6>
@@ -36,7 +36,14 @@
         </div>
     </div>
 </section>
+<script>
 
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');

@@ -1,0 +1,303 @@
+﻿
+@{
+    ViewBag.Title = "Sitemap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .sitemap > li > ul {
+        margin-top: 1.5rem;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+        ul li {
+            line-height: 1.5rem;
+            vertical-align: top;
+            position: relative;
+        }
+
+            ul li a {
+                text-decoration: none;
+                color: #f80;
+                display: inline-block;
+            }
+
+        ul ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+            ul ul li {
+                position: relative;
+            }
+
+                ul ul li::before {
+                    content: "";
+                    display: inline-block;
+                    width: 3rem;
+                    height: 100%;
+                    border-left: 1px #ccc solid;
+                    position: absolute;
+                    top: -0.75rem;
+                }
+
+                ul ul li::before {
+                    content: "";
+                    display: inline-block;
+                    width: 3rem;
+                    height: 1.5rem;
+                    border-bottom: 1px #ccc solid;
+                    position: absolute;
+                    top: -0.75rem;
+                }
+
+                ul ul li a {
+                    margin-left: 3.75rem;
+                }
+
+</style>
+<section class="hero-slider">
+    <div class="pr-15 pl-15">
+        <div class="row">
+            <div class="col-lg-12 w_content pt-20 mt-0">
+                <h2 class="w-bgph">Sitemap</h2>
+                <hr>
+                <div class="clr"></div>
+                <div class="panel-body">
+                    <ul class="sitemap">
+                        <li>
+                            <a href="" style="color:black;font-weight:600;">Home</a>
+                            <ul>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">About us</a>
+                                    <ul>
+                                        <li><a href="">About UPPRPB</a></li>
+                                        <li><a href="">DGs Message</a></li>
+                                        <li><a href="">Vision Mission</a></li>
+                                        <li><a href="">Logo</a></li>
+                                        <li><a href="">Organization Structure</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Notice</a>
+                                    <ul>
+                                        <li><a href="">General Notices</a></li>
+                                        <ul>
+                                            <li><a href="">Latest Notice</a></li>
+                                            <li><a href="">Events</a></li>
+                                            <li><a href="">Tender</a></li>
+                                            <li><a href="">GOs</a></li>
+                                        </ul>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">Recruitment Notices</a></li>
+                                        <ul>
+                                            <li><a href="">Sub Inspector Notices</a></li>
+                                            <li><a href="">Constable Civil Police</a></li>
+                                            <li><a href="">P.A.C.</a></li>
+                                            <li><a href="">Radio Police</a></li>
+                                            <li><a href="">Fire Police</a></li>
+                                            <li><a href="">Jail Police</a></li>
+                                            <li><a href="">Computer Cadre</a></li>
+                                            <li><a href="">Minister Cadre</a></li>
+                                        </ul>
+                                    </ul>
+
+                                    <ul>
+                                        <li><a href="">Promotion Notices</a></li>
+                                        <ul>
+                                            <li><a href="">Sub Inspector Notices</a></li>
+                                            <li><a href="">Constable Civil Police</a></li>
+                                            <li><a href="">P.A.C.</a></li>
+                                            <li><a href="">Radio Police</a></li>
+                                            <li><a href="">Fire Police</a></li>
+                                            <li><a href="">Jail Police</a></li>
+                                            <li><a href="">Computer Cadre</a></li>
+                                            <li><a href="">Minister Cadre</a></li>
+                                        </ul>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Direct Recruitment</a>
+                                    <ul>
+                                        <li><a href="">Prevailing Recruitment Processes</a></li>
+                                        <li><a href="">Important information about direct recruitment</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Promotion</a>
+                                    <ul>
+                                        <li><a href="">Requisition (अधियाचन )</a></li>
+                                        <li><a href="">Criteria for Promotion (पदोन्नति हेतु मानदण्ड)</a></li>
+                                        <li><a href="">Promotion Process (पदोन्नति की प्रक्रिया)</a></li>
+                                        <li><a href="">Relevant Government Order/Mandate (सुसंगत शासनादेश/आदेश)</a></li>
+                                        <li><a href="">Prevailing Promotion Proccedure (प्रचलित पदोन्नति प्रक्रिया)</a></li>
+                                        <li><a href="">Information Required for Promotion (पदोन्नति हेतु वांच्छिक सूचना/अभिलेख)</a></li>
+                                        <li><a href="">Gazette (नियमावलियाँ)</a></li>
+                                        <li><a href="">Other Details (अन्य विवरण)</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Government Orders</a>
+                                    <ul>
+                                        <li><a href="">Uttar Pradesh Police Recruitment & Promotion Board</a></li>
+                                        <li><a href="">Salary</a></li>
+                                        <li><a href="">Store purchase</a></li>
+                                        <li><a href="">Pension</a></li>
+                                        <li><a href="">Weedout</a></li>
+                                        <li><a href="">Private fund</a></li>
+                                        <li><a href="">Penalty and appeal</a></li>
+                                        <li><a href="">Medical</a></li>
+                                        <li><a href="">Welfare fund</a></li>
+                                        <li><a href="">Traveling allowance</a></li>
+                                        <li><a href="">Reservation</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Selection Procedure</a>
+                                    <ul>
+                                        <li><a href="">Civil Police</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Police Sub-Inspector and Inspector (Civilian Police)</a></li>
+                                            <li><a href="">Service Manual of Uttar Pradesh Civil Police Constable and Head Constable</a></li>
+                                        </ul>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">Territorial Armed Constabulary</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Territorial Armed Constabulary State Band Subordinate Officer</a></li>
+                                            <li><a href="">Service Manual of Uttar Pradesh Territorial Armed Constabulary Subordinate Officer</a></li>
+                                        </ul>
+                                    </ul>
+
+                                    <ul>
+                                        <li><a href="">Skill Player</a></li>
+                                        <ul>
+                                            <li><a href="">Recruitment and Promotion Process Rules of Skilled Sportspersons in Uttar Pradesh Civil Police/ Territorial Armed Constabulary</a></li>
+                                        </ul>
+                                    </ul>
+
+                                    <ul>
+                                        <li><a href="">Police Computer Staff</a></li>
+                                        <ul>
+                                            <li><a href="">○	Service Manual of Uttar Pradesh Police Computer Staff (Non-Gazetted)</a></li>
+                                        </ul>
+                                    </ul>
+
+                                    <ul>
+                                        <li><a href="">Uttar Pradesh Police Motor Transport Branch</a></li>
+                                        <ul>
+                                            <li><a href="">○	Uttar Pradesh Police Motor Transport Branch Subordinate Officer Service Rules, 2015</a></li>
+                                        </ul>
+                                    </ul>
+
+                                    <ul>
+                                        <li><a href="">Fire Service</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Fire Service</a></li>
+                                        </ul>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">Clerical Cadre</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Police Clerk, Accounts and Confidential Assistant Cadre Service (First Amendment)</a></li>
+                                            <li><a href="">Service Manual of Uttar Pradesh Police Clerk, Accounts and Confidential Assistant Cadre</a></li>
+                                            <li><a href="">Uttar Pradesh Police Recruitment and Promotion Board Rules</a></li>
+                                        </ul>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">Jail Police</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Jail Warder Service</a></li>
+
+                                        </ul>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">Radio Police</a></li>
+                                        <ul>
+                                            <li><a href="">Service Manual of Uttar Pradesh Radio Police Service</a></li>
+
+                                        </ul>
+                                    </ul>
+
+
+
+                                </li>
+
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Administration</a>
+                                    <ul>
+                                        <li><a href=""></a></li>                                        
+                                    </ul>
+                                </li> 
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Photo Gallery</a>
+                                    <ul>
+                                        <li><a href="">Media</a></li>                                        
+                                        <li><a href="">Events</a></li>                                        
+                                        <li><a href="">Newscutting</a></li>                                        
+                                        <li><a href="">Medal Gallery</a></li>                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Contact</a>
+                                    <ul>
+                                        <li><a href="">How To Reach</a></li>                                                 
+                                        <li><a href="">Enquiry</a></li>                                                                     
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Others Link</a>
+                                    <ul>
+                                        <li><a href="">FAQs</a></li>                                                 
+                                        <li><a href="">Feedback</a></li>                                                                     
+                                        <li><a href="">Results</a></li>                                                                     
+                                        <li><a href="">Events Caledar</a></li>                                                                     
+                                        <li><a href="">Syllabus</a></li>                                                                     
+                                    </ul>
+                                </li> 
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;">Miscellaneous/ Writ.</a>
+                                    <ul>
+                                        <li><a href="">Writ Management Software Link</a></li>                                                 
+                                        <li><a href="">Important Court Decisions</a></li>                                                                     
+                                        <li><a href="">Disposed Representation</a></li>                                                                     
+                                        <li><a href="">Cyber Security & Preventive Action Cell</a></li>                                                                     
+                                                                                                       
+                                    </ul>
+                                </li> 
+                                <li>
+                                    <a href="" style="color: #d61111; font-weight: 600;"> Policy</a>
+                                    <ul>
+                                        <li><a href="">Disclaimer</a></li>                                                 
+                                        <li><a href="">Terms and Conditions</a></li>                                                                     
+                                        <li><a href="">Privacy Policy</a></li>                                                                     
+                                        <li><a href="">Hyperlink Policy</a></li>                                                                     
+                                        <li><a href="">Copyright Statement</a></li>                                                                     
+                                        <li><a href="">Site Security</a></li>                                                                     
+                                        <li><a href="">Archiving Policy</a></li>                                                                     
+                                                                                                       
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                      
+                    </ul>
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

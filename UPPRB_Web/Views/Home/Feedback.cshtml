@@ -9,7 +9,7 @@
         <div class="row">
             @Html.Partial("_FAQ_SideMenu")
 
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h2 class="w-bgph">Feedback Form</h2>
                 <hr>
                 <div class="clr"></div><center>
@@ -89,4 +89,12 @@
             $(this).val($(this).val().substr(0, max_chars));
         }
     });
+</script>
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
 </script>

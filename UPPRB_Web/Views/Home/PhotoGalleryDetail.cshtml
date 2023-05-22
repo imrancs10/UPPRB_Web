@@ -378,7 +378,7 @@
             <div class="pr-15 pl-15">
                 <div class="row">
                     @Html.Partial("_Galary_SideMenu", noticeType)
-                    <div class="col-lg-10 w_content pt-20 mt-0">
+                    <div class="col-lg-9 w_content pt-20 mt-0">
                         <h2 class="w-bgph ">Photo Gallery</h2>
                         <hr>
                         <div class="clr"></div>
@@ -404,29 +404,29 @@
                             }
 
                             @*<a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142254/html9.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143104/html10.png">
-        </a>
-        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142245/CSS8.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143101/CSS9.png">
-        </a>
-        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142240/Bootstrap5.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143058/Bootstrap6.png">
-        </a>
-        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142257/JavaScript2.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143106/JavaScript3.png">
-        </a>
-        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142303/jquery.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143108/jquery4.png">
-        </a>
-        <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142309/php7.png"
-           data-lightbox="mygallery">
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143112/php8.png">
-        </a>*@
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143104/html10.png">
+                                </a>
+                                <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142245/CSS8.png"
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143101/CSS9.png">
+                                </a>
+                                <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142240/Bootstrap5.png"
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143058/Bootstrap6.png">
+                                </a>
+                                <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142257/JavaScript2.png"
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143106/JavaScript3.png">
+                                </a>
+                                <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142303/jquery.png"
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143108/jquery4.png">
+                                </a>
+                                <a href="https://media.geeksforgeeks.org/wp-content/uploads/20200318142309/php7.png"
+                                   data-lightbox="mygallery">
+                                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200318143112/php8.png">
+                                </a>*@
                         </div>
 
                     </div>
@@ -571,6 +571,14 @@
             $('.navbar-nav').find('li').removeClass('active');
             $('a[href="/Home/PhotoGallery"]').parent().addClass('active')
         });
+    </script>
+    <script>
+
+        $("#nav-btn").click(function () {
+            $("nav1").toggle("slow");
+        });
+
+
     </script>
 </body>
 

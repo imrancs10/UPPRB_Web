@@ -1,7 +1,38 @@
 ﻿@{
     var noticeData = Model as List<UPPRB_Web.Models.Masters.NoticeTypeModel>;
 }
-<div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
+
+
+<aside>
+    <a>
+        <svg version="1.1" id="nav-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+        <path id="list-view-icon" d="M462,108.857H50V50h412V108.857z M462,167.714H50v58.857h412V167.714z M462,285.429H50v58.857h412
+   V285.429z M462,403.143H50V462h412V403.143z" />
+  </svg>
+    </a>
+
+    <h4 class="text-blue">UPPRPB</h4>
+
+    <nav1 class="show  pt-2 pl-0 min-vh-100" id="sidebar">
+        <ul class="nav w-bor-r flex-column flex-nowrap overflow-hidden">
+            <li class="nav-item colorchange text-blue"> <a class="nav-link text-truncate" href="/Home/GovernmentOrders">Government Orders</a></li>
+            @for (int i = 0; i < noticeData.Count; i++)
+            {
+                <li class="nav-item colorchange text-blue">
+                    <a class="nav-link text-truncate" id="btnNotice" href="/Home/GovernmentOrders_Detail?noticeId=@noticeData[i].LookupId">@noticeData[i].LookupName</a>
+                </li>
+            }
+
+
+           
+        </ul>
+    </nav1>
+</aside>
+
+
+
+
+@*<div class="col-lg-2 pl-md-0 pr-md-0 w-bor-r  pb-50">
     <h2 class="w-bgph ">UPPRPB</h2>
     <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar" style="min-height:500px">
         <ul class="nav flex-column flex-nowrap overflow-hidden">
@@ -14,4 +45,4 @@
             }
         </ul>
     </div>
-</div>
+</div>*@

@@ -10,7 +10,7 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Galary_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 @*<div align="center">
                         <button class="btn btn-default filter-button" data-filter="all">All</button>
                         <button class="btn btn-default filter-button" data-filter="Students">Students</button>
@@ -65,6 +65,16 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
+
 <script>
 
     var FullImgBox = document.getElementById("FullImgBox")

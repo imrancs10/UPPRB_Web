@@ -91,17 +91,17 @@
 
 .w-bor-r {
     border-right: 1pt solid #f1f1f1;
-    margin-top: -40px;
+   /* margin-top: -40px;*/
     background-color: #fff;
-    -webkit-box-shadow: 0 0 15px 0 #E0E0E0;
-    box-shadow: 0 0 15px 0 #E0E0E0;
+   /* -webkit-box-shadow: 0 0 15px 0 #E0E0E0;
+    box-shadow: 0 0 15px 0 #E0E0E0;*/
 }
 
     /*==the university master side menu style in line wale */
     .w-bor-r .nav-link {
         border-bottom: 1pt solid #f1f1f1;
         width: 100%;
-        border-left: 2px solid #DEDEDE;
+        /*border-left: 2px solid #DEDEDE;*/
     }
 
         .w-bor-r .nav-link[data-toggle].collapsed:after {

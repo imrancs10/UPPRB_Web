@@ -54,31 +54,42 @@
                     <i class="fa fa-bars"></i>
                 </div>
                 <!--logo start-->
-                <a href="/Admin/Dashboard" class="logo"><img src="~/Content/Images/LOGO.bmp" style="width:60px; height:40px" alt="Uttar Pradesh Police Recruitment & Promotion Board"> Uttar Pradesh Police Recruitment & Promotion Board</a>
+                <a href="/Admin/Dashboard" class="logo" style="font-size:150%;"><img src="~/Content/Images/LOGO.bmp" style="width:60px; height:40px" alt="Uttar Pradesh Police Recruitment & Promotion Board"> UPPRPB</a>
                 <!--logo end-->
 
                 <div class="top-nav ">
+
                     <!--search & user info start-->
-                    <ul class="nav pull-right top-menu">
+                    <div class="nav pull-right top-menu" style="margin-right:4%;">
+
+                        <label class="dropdown">
+
+                            <div class="dd-button">
+                                
+                                    <img alt="" src="img/avatar1_small.jpg">
+                                    <span class="username">Admin</span>
+                                   
+                             
+
+                            </div>
+
+                            <input type="checkbox" class="dd-input" id="test">
+
+                            <ul class="dd-menu">
+                                <li ><a href="#" style="color:black;"><i class=" fa fa-suitcase"></i> Profile</a></li>
+                                <li><a href="#"  style="color:black;"><i class="fa fa-cog"></i> Settings</a></li>
+                                <li><a href="#"  style="color:black;"><i class="fa fa-bell-o"></i> Notification</a></li>
+                                <li><a href="/Admin/Logout"  style="color:black;"><i class="fa fa-key"></i> Log Out</a></li>
+                            </ul>
+
+                        </label>
 
                         <!-- user login dropdown start-->
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <img alt="" src="img/avatar1_small.jpg">
-                                <span class="username">Admin</span>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu extended logout dropdown-menu-right">
-                                <div class="log-arrow-up"></div>
-                                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                                <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                                <li><a href="/Admin/Logout"><i class="fa fa-key"></i> Log Out</a></li>
-                            </ul>
-                        </li>
 
-                    </ul>
+
+                    </div>
                     <!--search & user info end-->
+                   
                 </div>
             </header>
             <!--header end-->

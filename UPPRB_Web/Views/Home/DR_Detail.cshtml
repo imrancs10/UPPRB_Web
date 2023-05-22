@@ -11,7 +11,7 @@
         <div class="row">
             @Html.Partial("_DR_SideMenu", noticeType)
 
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h3 class="w-hd-u">
                     Direct Recruitment:
                     @if (noticeData.Count > 0)
@@ -53,6 +53,14 @@
         </div>
     </div>
 </section>
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');
