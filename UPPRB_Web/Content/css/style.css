@@ -7698,13 +7698,14 @@ a {
     /* box-shadow: 0px 5px 25px 0px rgb(0 0 0 / 20%); */
     /* -webkit-box-shadow: 0px 5px 25px 0px rgb(0 0 0 / 20%); */
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 15px 0px 10px 10px;
     /* border-radius: 25px; */
 }
 
 .info-box-content {
     padding: 0px 2px 8px 0;
-    /* margin-left: 90px; */
+  /* margin-left: 5px;
+    margin-top:10px;*/
 }
 
 .info-box-icon.push-bottom {
@@ -7734,11 +7735,11 @@ a {
     font-size: 14px;
     white-space: nowrap;
     color: white;
-    line-height: 20px;
+   /* line-height: 20px;*/
     float: right;
     margin-top: 0px;
     overflow: hidden;
-    text-overflow: ellipsis;
+   /* text-overflow: ellipsis;*/
     font-weight: 400;
 }
 
@@ -7813,6 +7814,7 @@ a {
 
     .bg-grey .boxicon1 {
         color: black;
+        margin:5px;
     }
 /*-----New css----*/
 .border_line {
@@ -7887,8 +7889,8 @@ a {
 
 @media screen and (min-width: 480px) {
     .rwd-break {
-        display: block ruby;
-        line-height: 40px;
+        display: contents;
+       /* line-height: 40px;*/
     }
 }
 
