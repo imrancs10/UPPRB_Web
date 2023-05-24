@@ -494,7 +494,13 @@ namespace UPPRB_Web.Controllers
             var result = detail.DeletePACEntry(Id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        public JsonResult DeleteNoticeEntry(int Id)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.DeleteNoticeEntry(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult PromotionEntry()
         {
             return View();
