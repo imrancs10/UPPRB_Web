@@ -13,7 +13,7 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Syllabus_SideMenu", noticeType)
-            <div class="col-lg-10 w_content pt-20 mt-0">
+            <div class="col-lg-9 w_content pt-20 mt-0">
                 <h2 class="w-bgph ">
                     Syllabus
                     @if (noticeData.GroupBy(x => x.NoticeTypeName).Count() == 1)
@@ -80,6 +80,14 @@
     </div>
 
 </section>
+<script>
+
+    $("#nav-btn").click(function () {
+        $("nav1").toggle("slow");
+    });
+
+
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');
