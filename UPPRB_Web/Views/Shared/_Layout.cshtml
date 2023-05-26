@@ -200,193 +200,187 @@
     <div class="region region-header-top">
 
         <div id="block-cmf-content-header-region-block" class="block block-cmf-content first last odd">
-            
-                <div class="container-fluid common-container four_content top-header">
-                    <div class="common-left clearfix">
-                        <ul>
-                            <li>
-                                <p id="clockDisplay" class="datep"></p>
-                            </li>
-                            <li>
-                                <p class="datep" style="color:red">
-                                    | Visitors Count: @ApplicationInstance.Application["Totaluser"]
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="common-right clearfix">
-                        <ul id="header-nav">
 
-                            <li class="ico-skip cf">
-                                <a href="/Home/Index" title=""><i class="fa fa-home"></i>   मुख्य पृष्ठ</a>
-                            </li>
-
-
-                            <li class="ico-skip cf w-sm-hide">
-                                <a href="#skipCont" title="">Skip to main content</a>
-                            </li>
-
-                            <li class="ico-skip cf">
-                                <a href="#skipCont" title="">Screen Reader</a>
-                            </li>
-
-                            <li class="ico-accessibility cf">
-                                <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
-                                    <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
-                                </a>
-                                <ul style="visibility: hidden;">
-                                    <li>
-                                        <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
-                                            <img class="top " src="~/Content/images/orange.png" alt="Orange Theme">
-                                        </a>
-                                    </li>
-                                    <li> <a onclick="blackcolor()" title="Black Theme" href="javascript:void(0);" class="alinktheme"> <img class="top" src="~/Content/images/black.png" alt="Black Theme">  </a> </li>
-
-                                </ul>
-                            </li>
-
-                            <li class="ico-accessibility cf">
-                                <a href="javascript:void(0);" id="toggleAccessibility" title="Accessibility Dropdown">
-                                    <img class="top" src="~/Content/images/ico-accessibility.png" alt="Accessibility Dropdown">
-                                </a>
-                                <ul style="visibility: hidden;">
-                                    <li>
-                                        <a onclick="set_font_size('increase')" title="Increase font size" href="javascript:void(0);">
-                                            A<sup>+</sup>
-                                        </a>
-                                    </li>
-                                    <li> <a onclick="set_font_size()" title="Reset font size" href="javascript:void(0);">A<sup>&nbsp;</sup></a> </li>
-                                    <li> <a onclick="set_font_size('decrease')" title="Decrease font size" href="javascript:void(0);">A<sup>-</sup></a> </li>
-                                    <li> <a href="javascript:void(0);" class="high-contrast dark" title="High Contrast">A</a> </li>
-                                    <li> <a href="javascript:void(0);" class="high-contrast light" title="Normal Contrast" style="display: none;">A</a> </li>
-                                </ul>
-                            </li>
-
-
-                            <li class="ico-social cf w-sm-hide">
-                                <a href="javascript:void(0);" id="toggleSocial" title="Social Medias">
-                                    <img class="top" src="~/Content/images/ico-social.png" alt="Social Medias">
-                                </a>
-                                <ul style="visibility: hidden;">
-                                    <li>
-                                        <a target="_blank" title="External Link that opens in a new window" href="https://www.facebook.com/profile.php?id=100089212700306"><img alt="Facebook Page" src="~/Content/images/ico-facebook.png"></a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="External Link that opens in a new window" href="https://twitter.com/"><img alt="Twitter Page" src="~/Content/images/ico-twitter.png"></a>
-                                    </li>
-                                    <li>
-                                        <a target="_blank" title="External Link that opens in a new window" href="https://www.youtube.com/channel/UCGS-CVdV-Em0GYu7cIa-s7A"><img alt="youtube Page" src="~/Content/images/ico-youtube.png"></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="ico-sitemap cf">
-                                <a href="/Home/Sitemap" target="_blank" title="Sitemap">
-                                    <img class="top" src="~/Content/images/ico-sitemap.png" alt="Sitemap">
-                                </a>
-                            </li>
-                            <li class="hindi cmf_lan d-hide">
-                                <label class="de-lag">
-                                    <span style="display: none;">Language</span>
-                                    <select title="Select Language">
-                                        <option>हिन्दी</option>
-                                        <option>English</option>
-                                    </select>
-                                </label>
-                            </li>
-
-                        </ul>
-                    </div>
+            <div class="container-fluid common-container four_content top-header">
+                <div class="common-left clearfix">
+                    <ul>
+                        <li>
+                            <p id="clockDisplay" class="datep"></p>
+                        </li>
+                        <li>
+                            <p class="datep" style="color:red">
+                                | Visitors Count: @ApplicationInstance.Application["Totaluser"]
+                            </p>
+                        </li>
+                    </ul>
                 </div>
+                <div class="common-right clearfix">
+                    <ul id="header-nav">
 
-            </div>
-            
-            <!-- Header -->
-            <header class="header shop" id="skipCont">
+                        <li class="ico-skip cf">
+                            <a href="/Home/Index" title=""><i class="fa fa-home"></i>   मुख्य पृष्ठ</a>
+                        </li>
 
-                <!-- Topbar -->
-                <!-- End Topbar -->
-                <div class="middle-inner">
-                    <div class="container" style="max-width: 99%;">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 col-12 p-0" style="background-color:white;">
-                                <!-- Logo -->
-                                <div class="logo mt-0">
-                                    <a href="/Home/Index">
-                                        <img src="~/Content/images/logo3.jpg" alt="Uttar Pradesh Police Recruitment & Promotion Board">
+
+                        <li class="ico-skip cf w-sm-hide">
+                            <a href="#skipCont" title="">Skip to main content</a>
+                        </li>
+
+                        <li class="ico-skip cf">
+                            <a href="#skipCont" title="">Screen Reader</a>
+                        </li>
+                        <li>
+                            <div id="google_translate_element"></div>
+                        </li>
+                        <li class="ico-accessibility cf">
+                            <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
+                                <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top " src="~/Content/images/orange.png" alt="Orange Theme">
                                     </a>
-                                </div>
+                                </li>
+                                <li> <a onclick="blackcolor()" title="Black Theme" href="javascript:void(0);" class="alinktheme"> <img class="top" src="~/Content/images/black.png" alt="Black Theme">  </a> </li>
 
-                                <!--/ End Search Form -->
-                                <div class="mobile-nav"></div>
-                            </div>
-                            <div class="col-lg-5 col-md-5 col-12 p-0 w-sm-hide">
-                                <div class="header-right">
-                                    <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-12 p-0 w-sm-hide">
+                            </ul>
+                        </li>
+
+                        <li class="ico-accessibility cf">
+                            <a href="javascript:void(0);" id="toggleAccessibility" title="Accessibility Dropdown">
+                                <img class="top" src="~/Content/images/ico-accessibility.png" alt="Accessibility Dropdown">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a onclick="set_font_size('increase')" title="Increase font size" href="javascript:void(0);">
+                                        A<sup>+</sup>
+                                    </a>
+                                </li>
+                                <li> <a onclick="set_font_size()" title="Reset font size" href="javascript:void(0);">A<sup>&nbsp;</sup></a> </li>
+                                <li> <a onclick="set_font_size('decrease')" title="Decrease font size" href="javascript:void(0);">A<sup>-</sup></a> </li>
+                                <li> <a href="javascript:void(0);" class="high-contrast dark" title="High Contrast">A</a> </li>
+                                <li> <a href="javascript:void(0);" class="high-contrast light" title="Normal Contrast" style="display: none;">A</a> </li>
+                            </ul>
+                        </li>
 
 
-                                <!--<div class="float-element">
-                                                                <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 150px;
-                        height:60px;">
-                                                            </div>-->
+                        <li class="ico-social cf w-sm-hide">
+                            <a href="javascript:void(0);" id="toggleSocial" title="Social Medias">
+                                <img class="top" src="~/Content/images/ico-social.png" alt="Social Medias">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://www.facebook.com/profile.php?id=100089212700306"><img alt="Facebook Page" src="~/Content/images/ico-facebook.png"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://twitter.com/"><img alt="Twitter Page" src="~/Content/images/ico-twitter.png"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="External Link that opens in a new window" href="https://www.youtube.com/channel/UCGS-CVdV-Em0GYu7cIa-s7A"><img alt="youtube Page" src="~/Content/images/ico-youtube.png"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="ico-sitemap cf">
+                            <a href="/Home/Sitemap" target="_blank" title="Sitemap">
+                                <img class="top" src="~/Content/images/ico-sitemap.png" alt="Sitemap">
+                            </a>
+                        </li>
 
-                                <div class="float-element">
-                                    <img src="~/Content/images/G20_India_Logo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
-                                </div>
 
-                            </div>
-
-                        </div>
-                    </div>
+                    </ul>
                 </div>
-                <!-- Header Inner -->
-                <div class="header-inner">
-
-                    <div class="pr-15 pl-15">
-                        <div class="row ">
-
-
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="cat-nav-head">
-                                    <div class="menu-area">
-                                        <!-- Main Menu -->
-                                        <nav class="navbar navbar-expand-lg">
-                                            <div class="navbar-collapse">
-                                                <div class="nav-inner">
-                                                    <ul class="nav nav-menu main-menu1  menu navbar-nav">
-                                                        <li class="active"><a href="/Home/Index"><i class="fa fa-home fa-2x m-1 wf18"></i>Home</a></li>
-                                                        <li><a href="/Home/About">About us</a></li>
-                                                        <li><a href="/Home/Notice">Notices</a></li>
-                                                        <li><a href="/Home/DirectRecruitment">Direct Recruitment</a></li>
-                                                        <li><a href="/Home/Promotion">Promotion</a></li>
-                                                        <li><a href="/Home/GovernmentOrders">Government Orders</a></li>
-                                                        <li><a href="/Home/Manual">Selection Procedure</a></li>
-                                                        <li><a href="/Home/Administration">Administration</a></li>
-                                                        <li><a href="/Home/PhotoGallery">Photo Gallery</a></li>
-                                                        <li><a href="/Home/Contact">Contact</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </nav>
-                                        <!--/ End Main Menu -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <!--/ End Header Inner -->
-            </header>
-            <!--/ End Header -->
-
-
-
+            </div>
 
         </div>
+
+        <!-- Header -->
+        <header class="header shop" id="skipCont">
+
+            <!-- Topbar -->
+            <!-- End Topbar -->
+            <div class="middle-inner">
+                <div class="container" style="max-width: 99%;">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-12 p-0" style="background-color:white;">
+                            <!-- Logo -->
+                            <div class="logo mt-0">
+                                <a href="/Home/Index">
+                                    <img src="~/Content/images/logo3.jpg" alt="Uttar Pradesh Police Recruitment & Promotion Board">
+                                </a>
+                            </div>
+
+                            <!--/ End Search Form -->
+                            <div class="mobile-nav"></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-12 p-0 w-sm-hide">
+                            <div class="header-right">
+                                <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-12 p-0 w-sm-hide">
+
+
+                            <!--<div class="float-element">
+                                                                    <img src="~/Content/Images/ajadilogo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 150px;
+                            height:60px;">
+                                                                </div>-->
+
+                            <div class="float-element">
+                                <img src="~/Content/images/G20_India_Logo.png" alt="उत्तर प्रदेश पुलिस भर्ती एवं प्रोन्नति बोर्ड" style="width: 130px; height:65px;">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Header Inner -->
+            <div class="header-inner">
+
+                <div class="pr-15 pl-15">
+                    <div class="row ">
+
+
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="cat-nav-head">
+                                <div class="menu-area">
+                                    <!-- Main Menu -->
+                                    <nav class="navbar navbar-expand-lg">
+                                        <div class="navbar-collapse">
+                                            <div class="nav-inner">
+                                                <ul class="nav nav-menu main-menu1  menu navbar-nav">
+                                                    <li class="active"><a href="/Home/Index"><i class="fa fa-home fa-2x m-1 wf18"></i>Home</a></li>
+                                                    <li><a href="/Home/About">About us</a></li>
+                                                    <li><a href="/Home/Notice">Notices</a></li>
+                                                    <li><a href="/Home/DirectRecruitment">Direct Recruitment</a></li>
+                                                    <li><a href="/Home/Promotion">Promotion</a></li>
+                                                    <li><a href="/Home/GovernmentOrders">Government Orders</a></li>
+                                                    <li><a href="/Home/Manual">Selection Procedure</a></li>
+                                                    <li><a href="/Home/Administration">Administration</a></li>
+                                                    <li><a href="/Home/PhotoGallery">Photo Gallery</a></li>
+                                                    <li><a href="/Home/Contact">Contact</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <!--/ End Main Menu -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/ End Header Inner -->
+        </header>
+        <!--/ End Header -->
+
+
+
+
+    </div>
     <div>
         @RenderBody()
     </div>
@@ -647,6 +641,16 @@
             }
 
         })
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
     </script>
 </body>
 </html>
