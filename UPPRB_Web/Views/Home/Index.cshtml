@@ -60,7 +60,7 @@
                     </nav>
 
                     <marquee scrollamount="5" direction="up" onmouseover="this.stop()" onmouseout="this.start()" style="height: 200px;">
-                        <ul class="ultxt1">
+                        <ul class="ultxt1 notranslate">
                             @if (LatestEvent != null)
                             {
                                 foreach (var item in LatestEvent)
@@ -116,7 +116,7 @@
                             @if (HighlightedNotice != null)
                             {
                                 <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
-                                    <p>
+                                    <p class="notranslate">
                                         @*<a href="~/filesuploaded/photogalary/ethletic_event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>watch video || </span></a>*@
                                         @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
                                         {
@@ -410,7 +410,7 @@
                                                 <a href="https://up.gov.in/" target="_blank">
                                                     <div class="icon-box iconbox-border p-5">
                                                         <img alt="UP Govt." src="~/Content/icon/UPlogo.png"><br />
-                                                        Govt. of Uttar Pradesh
+                                                        Government of Uttar Pradesh
                                                         @*<img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">*@
                                                     </div>
                                                 </a>
