@@ -3,6 +3,7 @@
 @{
     Layout = null;
     bool IsCaptchaEnable = GetCaptchEnable();
+    bool IsOTPEnable = GetOTPEnable();
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -43,23 +44,32 @@
     <div class="container">
         <div class="form-signin">
             <center style="background-color: #d61111;">
-                
-                    <img src="~/Content/Images/LOGO.bmp" style="width:100px; height:100px; padding:10px;" alt="Uttar Pradesh Police Recruitment & Promotion Board">
-                </center>
+
+                <img src="~/Content/Images/LOGO.bmp" style="width:100px; height:100px; padding:10px;" alt="Uttar Pradesh Police Recruitment & Promotion Board">
+            </center>
             <h2 class="form-signin-heading fw-bolder">Uttar Pradesh Police Recruitment & Promotion Board</h2>
             <div id="captcha" class="login-wrap">
                 @using (Html.BeginForm("GetLogin", "Login", FormMethod.Post))
                 {
-                    <input type="text" class="form-control" placeholder="User ID" autofocus name="username">
+                    <input type="text" class="form-control" placeholder="User ID" autofocus name="username" id="username">
                     <i class="fa fa-eye icon" onclick="changeInputType('password')"></i>
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-
                     if (IsCaptchaEnable == true)
                     {
                         @Html.Captcha(5)
                     }
-
-                    <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+                    if (IsOTPEnable)
+                    {
+                        <input type="hidden" value="@IsOTPEnable.ToString()" id="hdnIsOTPEnable" name="hdnIsOTPEnable" />
+                        <input type="text" style="display:none" class="form-control" placeholder="Enter OTP Here" autofocus name="otp" id="otpNumber">
+                        <button class="btn btn-lg btn-login btn-block" id="btnSignIn" style="display:none" type="button">Sign in</button>
+                        <button class="btn btn-success" type="button" id="btnGetOTP">Get OTP</button>
+                    }
+                    else
+                    {
+                        <input type="hidden" value="@IsOTPEnable.ToString()" id="hdnIsOTPEnable" name="hdnIsOTPEnable" />
+                        <button class="btn btn-lg btn-login btn-block" id="btnSignIn" type="button">Sign in</button>
+                    }
                     <p>
                         <span class="pull-right">
                             <a href="/Login/ForgetPassword"> Forgot Password?</a>
@@ -68,10 +78,10 @@
                 }
 
                 @*<div class="registration">
-            <a class="" href="/">
-                Go Back to Home Page
-            </a>
-        </div>*@
+                        <a class="" href="/">
+                            Go Back to Home Page
+                        </a>
+                    </div>*@
 
             </div>
 
@@ -98,7 +108,7 @@
                 </div>
             </div>
             <!-- modal -->
-                  
+
         </div>
     </div>
     <!-- js placed at the end of the document so the pages load faster -->
@@ -127,6 +137,106 @@
             }
         </script>*@
     <script>
+        $('#btnSignIn').click(function () {
+            var IsOTPEnable = $('#hdnIsOTPEnable').val();
+            var otpNumber = IsOTPEnable == "True" ? $('#otpNumber').val() : "0";
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            if (username != null && username.trim() != "" && username != undefined
+                && password != null && password.trim() != "" && password != undefined
+                && ((otpNumber != null && otpNumber.trim() != "" && otpNumber != undefined && IsOTPEnable == "True") || IsOTPEnable == "False")) {
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: ' + otpNumber + ' }',
+                    url: '/Login/GetLogin',
+                    success: function (data) {
+                        if (data == "Success") {
+                            //redirect to admin dashboard
+                            window.location.href = '/Admin/Dashboard';
+                        }
+                        else
+                            utility.alert.setAlert("Login", data);
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            }
+            else {
+                utility.alert.setAlert("Login", "Please enter Username, password and OTP");
+            }
+        });
+        function generateOTP() {
+            var digits = '0123456789';
+            var otpLength = 4;
+            var otp = '';
+            for (let i = 1; i <= otpLength; i++) {
+                var index = Math.floor(Math.random() * (digits.length));
+                otp = otp + digits[index];
+            }
+            return otp;
+        }
+        $('#btnGetOTP').click(function () {
+            var otpNumber = generateOTP();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if (username != null && username.trim() != "" && username != undefined && password != null && password.trim() != "" && password != undefined) {
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: ' + otpNumber + ' }',
+                    url: '/Login/SendOTP',
+                    success: function (data) {
+                        if (data == "UserNamePasswordInCorrect")
+                            utility.alert.setAlert("Login", "Username or password are incorrect");
+                        else {
+                            $('#btnGetOTP').css('display', 'none')
+                            $('#btnSignIn').css('display', '')
+                            $('#otpNumber').css('display', '')
+                        }
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            }
+            else {
+                utility.alert.setAlert("Login", "Please enter Username and password");
+            }
+
+
+
+            //var mobileNumber = 8882185465;
+            //var authKey = "009993265aca025f";
+            //var senderId = 8849;
+            ////var message = "Use%20%7B%23otp%23%7D%20as%20your%20OTP%20to%20access%20your%20%7B%23company%23%7D%2C%20OTP%20is%20confidential%20and%20valid%20for%205%20mins%20This%20sms%20sent%20by%20authkey.io";
+            //var url = "https://api.authkey.io/request?authkey=" + authKey + "&mobile=" + mobileNumber + "&country_code=91&sid=" + senderId + "&company=account&otp=" + otpNumber + "";
+            //var settings = {
+            //    "async": true,
+            //    "crossDomain": true,
+            //    "url": url,
+            //    "method": "GET"
+            //}
+
+            //$.ajax(settings).done(function (response) {
+            //    console.log(response);
+            //    alert(response)
+            //    window.localStorage.setItem("session_id", otpNumber);
+            //    $('#btnGetOTP').css('display', 'none')
+            //    $('#btnSignIn').css('display', '')
+            //    $('#otpNumber').css('display', '')
+            //});
+        });
         $(function () {
 
             $("#dialog").dialog({

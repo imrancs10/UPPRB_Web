@@ -56,7 +56,10 @@ namespace UPPRB_Web.Infrastructure.Utility
         {
             return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]);
         }
-
+        public virtual bool GetOTPEnable()
+        {
+            return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);
+        }
         //public virtual AppointmentModel GetAppointmentDetail()
         //{
         //    if (User != null)

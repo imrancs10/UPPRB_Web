@@ -23,5 +23,6 @@ namespace DataLayer
         public string EmailID { get; set; }
         public Nullable<long> MobileNumber { get; set; }
         public Nullable<int> RoleId { get; set; }
+        public Nullable<int> otp_number { get; set; }
     }
 }

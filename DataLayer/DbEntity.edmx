@@ -18,6 +18,7 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="otp_number" Type="int" />
         </EntityType>
         <EntityType Name="DirectRecruitementDetail">
           <Key>
@@ -293,6 +294,7 @@
           <Property Name="EmailID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MobileNumber" Type="Int64" />
           <Property Name="RoleId" Type="Int32" />
+          <Property Name="otp_number" Type="Int32" />
         </EntityType>
         <EntityContainer Name="upprbDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
@@ -560,6 +562,7 @@
           <EntitySetMapping Name="AdminUsers">
             <EntityTypeMapping TypeName="upprbDbModel.AdminUser">
               <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="otp_number" ColumnName="otp_number" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="EmailID" ColumnName="EmailID" />

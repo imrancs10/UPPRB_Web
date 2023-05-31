@@ -45,6 +45,19 @@ namespace UPPRB_Web.BAL.Login
             else
                 return Enums.LoginMessage.InvalidCreadential;
         }
+
+        public Enums.LoginMessage ValidateOTP(string UserName, int OTP)
+        {
+            _db = new upprbDbEntities();
+            var _userLogin = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.otp_number== OTP).FirstOrDefault();
+
+            if (_userLogin != null)
+            {
+                return Enums.LoginMessage.Authenticated;
+            }
+            else
+                return Enums.LoginMessage.InvalidCreadential;
+        }
         public Enums.LoginMessage PACLogin(string UserName, string Password)
         {
             _db = new upprbDbEntities();
@@ -91,6 +104,14 @@ namespace UPPRB_Web.BAL.Login
                 login.IsLogin = false;
                 login.LogoutAt = DateTime.UtcNow;
             }
+            _db.SaveChanges();
+            return true;
+        }
+        public bool UpdateLoginDetailWithOTP(string username, int otpNumber)
+        {
+            _db = new upprbDbEntities();
+            var _userLogin = _db.AdminUsers.Where(x => x.UserName == username).FirstOrDefault();
+            _userLogin.otp_number = otpNumber;
             _db.SaveChanges();
             return true;
         }
