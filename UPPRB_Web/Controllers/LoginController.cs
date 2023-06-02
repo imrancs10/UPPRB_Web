@@ -66,7 +66,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult SendOTP(string username, string password, int OTP)
+        public JsonResult SendOTP(string username, string password, string OTP)
         {
             LoginDetails _details = new LoginDetails();
             string _response = string.Empty;
@@ -102,7 +102,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult GetLogin(string username, string password, int otp)
+        public JsonResult GetLogin(string username, string password, string otp)
         {
             // Code for validating the CAPTCHA  
             bool isOTPENable = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);

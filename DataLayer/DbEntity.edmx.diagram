@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7efd045cb2de408dbb1b66f62a542be0" Name="Diagram1">
-        <EntityTypeShape EntityType="upprbDbModel.AdminUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="upprbDbModel.Lookup" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="upprbDbModel.PACUser" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="upprbDbModel.Enquiry" Width="1.5" PointX="5.375" PointY="0.75" />
@@ -27,6 +26,7 @@
         <EntityTypeShape EntityType="upprbDbModel.EventCalender" Width="1.5" PointX="12.375" PointY="3.75" />
         <EntityTypeShape EntityType="upprbDbModel.Visitor_Detail" Width="1.5" PointX="11.375" PointY="12.75" />
         <EntityTypeShape EntityType="upprbDbModel.LoginDetail" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="upprbDbModel.AdminUser" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

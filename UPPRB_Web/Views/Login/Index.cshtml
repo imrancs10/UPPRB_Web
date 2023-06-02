@@ -150,7 +150,7 @@
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
                     type: 'POST',
-                    data: '{username: "' + username + '",password: "' + password + '",OTP: ' + otpNumber + ' }',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: "' + otpNumber + '" }',
                     url: '/Login/GetLogin',
                     success: function (data) {
                         if (data == "Success") {
@@ -191,7 +191,7 @@
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
                     type: 'POST',
-                    data: '{username: "' + username + '",password: "' + password + '",OTP: ' + otpNumber + ' }',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: "' + otpNumber + '" }',
                     url: '/Login/SendOTP',
                     success: function (data) {
                         if (data == "UserNamePasswordInCorrect")

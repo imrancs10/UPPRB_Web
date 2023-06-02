@@ -25,7 +25,6 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<PACUser> PACUsers { get; set; }
         public virtual DbSet<Enquiry> Enquiries { get; set; }
@@ -47,5 +46,6 @@ namespace DataLayer
         public virtual DbSet<EventCalender> EventCalenders { get; set; }
         public virtual DbSet<Visitor_Detail> Visitor_Detail { get; set; }
         public virtual DbSet<LoginDetail> LoginDetails { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
     }
 }
