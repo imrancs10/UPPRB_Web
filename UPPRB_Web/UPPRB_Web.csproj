@@ -542,6 +542,7 @@
     <Content Include="Content\Images\input-spinner.gif" />
     <Content Include="Content\Images\largelogo.jpg" />
     <Content Include="Content\Images\left-arrow.png" />
+    <Content Include="Content\Images\loginbg.jpg" />
     <Content Include="Content\Images\LOGO.bmp" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo1.png" />
