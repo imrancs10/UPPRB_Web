@@ -177,6 +177,7 @@
           <Property Name="MobileNumber" Type="bigint" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserType" Type="varchar" MaxLength="500" />
+          <Property Name="otp_number" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -328,6 +329,7 @@
           <Property Name="MobileNumber" Type="Int64" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="UserType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="otp_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Enquiry">
           <Key>
@@ -574,6 +576,7 @@
           <EntitySetMapping Name="PACUsers">
             <EntityTypeMapping TypeName="upprbDbModel.PACUser">
               <MappingFragment StoreEntitySet="PACUser">
+                <ScalarProperty Name="otp_number" ColumnName="otp_number" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />

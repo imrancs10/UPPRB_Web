@@ -26,6 +26,9 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.IO;
 using System.Data.Entity;
 using CaptchaMvc.HtmlHelpers;
+using System.Net;
+using JsonResult = System.Web.Mvc.JsonResult;
+using static System.Net.WebRequestMethods;
 
 namespace UPPRB_Web.Controllers
 {
@@ -324,6 +327,76 @@ namespace UPPRB_Web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult SendOTP(string username, string password, string OTP)
+        {
+            LoginDetails _details = new LoginDetails();
+            string _response = string.Empty;
+            Enums.LoginMessage message = _details.PACLogin(username, password);
+            _response = LoginResponse(message);
+            if (message != Enums.LoginMessage.Authenticated)
+            {
+                return Json("UserNamePasswordInCorrect", JsonRequestBehavior.AllowGet);
+            }
+            _details.UpdatePACLoginDetailWithOTP(username, OTP);
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+            var mobileNumber = UserData.MobileNumber;
+            var authKey = "009993265aca025f";
+            var senderId = 8849;
+            var userAuthenticationURI = "https://api.authkey.io/request?authkey=" + authKey + "&mobile=" + mobileNumber + "&country_code=91&sid=" + senderId + "&company=account&otp=" + OTP + "";
+            if (!string.IsNullOrEmpty(userAuthenticationURI))
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(userAuthenticationURI);
+                request.Method = "GET";
+                request.ContentType = "application/json";
+                WebResponse response = request.GetResponse();
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var ApiStatus = reader.ReadToEnd();
+                }
+            }
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult PACLogin(string username, string password, string OTP)
+        {
+            // Code for validating the CAPTCHA  
+            bool isOTPENable = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
+            {
+                LoginDetails _details = new LoginDetails();
+                string _response = string.Empty;
+                Enums.LoginMessage otpmessage = _details.ValidatePACLoginOTP(username, OTP);
+                if (otpmessage == Enums.LoginMessage.Authenticated || isOTPENable == false)
+                {
+                    Enums.LoginMessage message = _details.PACLogin(username, password);
+                    _response = LoginResponse(message);
+                    if (message == Enums.LoginMessage.Authenticated)
+                    {
+                        setUserClaim();
+                        return Json("Success", JsonRequestBehavior.AllowGet);
+                        //return RedirectToAction("PACDocument", "PAC");
+                    }
+                    else
+                    {
+                        //SetAlertMessage(_response, "Login Response");
+                        //return View("PACLogin");
+                        return Json(_response, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    return Json("OTP is not valid", JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                //SetAlertMessage("Captcha is not valid", "Login Response");
+                //return View("PACLogin");
+                return Json("Captcha is not valid", JsonRequestBehavior.AllowGet);
+            }
+        }
         public ActionResult Manual()
         {
             var detail = new GeneralDetails();
@@ -341,34 +414,6 @@ namespace UPPRB_Web.Controllers
             ViewData["NoticeType"] = noticeTypeDetail;
             return View();
         }
-        [HttpPost]
-        public ActionResult PACLogin(string username, string password)
-        {
-            // Code for validating the CAPTCHA  
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
-            {
-                LoginDetails _details = new LoginDetails();
-                string _response = string.Empty;
-                Enums.LoginMessage message = _details.PACLogin(username, password);
-                _response = LoginResponse(message);
-                if (message == Enums.LoginMessage.Authenticated)
-                {
-                    setUserClaim();
-                    return RedirectToAction("PACDocument", "PAC");
-                }
-                else
-                {
-                    SetAlertMessage(_response, "Login Response");
-                    return View("PACLogin");
-                }
-            }
-            else
-            {
-                SetAlertMessage("Captcha is not valid", "Login Response");
-                return View("PACLogin");
-            }
-        }
-
         public ActionResult ImportantCourtDecision(int? noticeId = null, int? categoryId = null)
         {
             var detail = new GeneralDetails();

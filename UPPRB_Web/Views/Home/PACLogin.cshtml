@@ -3,6 +3,7 @@
 @{
     Layout = null;
     bool IsCaptchaEnable = GetCaptchEnable();
+    bool IsOTPEnable = GetOTPEnable();
 }
 
 <!DOCTYPE html>
@@ -71,13 +72,13 @@
                                                 <div class="col-12">
                                                     <div class="input-group flex-nowrap">
                                                         <span class="input-group-text" id="addon-wrapping"><i class="bx bx-user"></i></span>
-                                                        <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="input-group flex-nowrap">
                                                         <span class="input-group-text" id="addon-wrapping"><i class="bx bx-lock"></i></span>
-                                                        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -86,11 +87,22 @@
                                                         @Html.Captcha(5)
                                                     }
                                                 </div>
-                                                <div class="col-4 offset-md-8">
-                                                    <div class="d-grid gap-3">
-                                                        <button type="submit" class="btn  btn-lg btn-primary radius-30">login<i class="bx bx-right-arrow-alt"></i></button>
-                                                    </div>
+                                                <div class="col-12">
+                                                    @if (IsOTPEnable)
+                                                    {
+                                                        <input type="hidden" value="@IsOTPEnable.ToString()" id="hdnIsOTPEnable" name="hdnIsOTPEnable" />
+                                                        <input type="text" style="display:none" class="form-control" placeholder="Enter OTP Here" autofocus name="otp" id="otpNumber">
+                                                        <br />
+                                                        <button type="button" id="btnSignIn" class="btn  btn-lg btn-primary radius-30" style="display:none;width:100px;">Sign in<i class="bx bx-right-arrow-alt"></i></button>
+                                                        <button class="btn btn-success" type="button" id="btnGetOTP">Get OTP</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="hidden" value="@IsOTPEnable.ToString()" id="hdnIsOTPEnable" name="hdnIsOTPEnable" />
+                                                        <button type="button" id="btnSignIn" class="btn  btn-lg btn-primary radius-30" style="width: 100px;">Sign in<i class="bx bx-right-arrow-alt"></i></button>
+                                                    }
                                                 </div>
+
                                             </div>
                                         }
                                     </div>
@@ -132,6 +144,82 @@
     </div>
 
     <script>
+        $('#btnSignIn').click(function () {
+            var IsOTPEnable = $('#hdnIsOTPEnable').val();
+            var otpNumber = IsOTPEnable == "True" ? $('#otpNumber').val() : "0";
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if (username != null && username.trim() != "" && username != undefined
+                && password != null && password.trim() != "" && password != undefined
+                && ((otpNumber != null && otpNumber.trim() != "" && otpNumber != undefined && IsOTPEnable == "True") || IsOTPEnable == "False")) {
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: "' + otpNumber + '" }',
+                    url: '/Home/PACLogin',
+                    success: function (data) {
+                        if (data == "Success") {
+                            //redirect to admin dashboard
+                            window.location.href = '/PAC/PACDocument';
+                        }
+                        else
+                            utility.alert.setAlert("Login", data);
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            }
+            else {
+                utility.alert.setAlert("Login", "Please enter Username, password and OTP");
+            }
+        });
+        function generateOTP() {
+            var digits = '0123456789';
+            var otpLength = 4;
+            var otp = '';
+            for (let i = 1; i <= otpLength; i++) {
+                var index = Math.floor(Math.random() * (digits.length));
+                otp = otp + digits[index];
+            }
+            return otp;
+        }
+        $('#btnGetOTP').click(function () {
+            var otpNumber = generateOTP();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            if (username != null && username.trim() != "" && username != undefined && password != null && password.trim() != "" && password != undefined) {
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: '{username: "' + username + '",password: "' + password + '",OTP: "' + otpNumber + '" }',
+                    url: '/Home/SendOTP',
+                    success: function (data) {
+                        if (data == "UserNamePasswordInCorrect")
+                            utility.alert.setAlert("Login", "Username or password are incorrect");
+                        else {
+                            $('#btnGetOTP').css('display', 'none')
+                            $('#btnSignIn').css('display', '')
+                            $('#otpNumber').css('display', '')
+                        }
+                    },
+                    failure: function (response) {
+                        console.log(response);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            }
+            else {
+                utility.alert.setAlert("Login", "Please enter Username and password");
+            }
+        });
         $(function () {
 
             $("#dialog").dialog({

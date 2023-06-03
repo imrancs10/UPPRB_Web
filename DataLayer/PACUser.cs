@@ -22,5 +22,6 @@ namespace DataLayer
         public Nullable<long> MobileNumber { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string UserType { get; set; }
+        public string otp_number { get; set; }
     }
 }
