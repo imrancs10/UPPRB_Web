@@ -23,7 +23,7 @@ namespace UPPRB_Web
         {
             if (!Request.IsLocal)
             {
-                // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+                Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
             }
             //restrict Click Jacking 
             //HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
