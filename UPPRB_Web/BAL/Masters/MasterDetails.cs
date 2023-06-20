@@ -47,6 +47,19 @@ namespace UPPRB_Web.BAL.Masters
                     }).OrderBy(x => x.ZoneName).ToList();
 
         }
+
+        public IEnumerable<object> GetPACDetailByPSId(int psId)
+        {
+            _db = new upprbDbEntities();
+            return (from lookup in _db.PACEntries
+                    where lookup.PS_Id == psId
+                    select new
+                    {
+                        lookup.Id,
+                        lookup.PACNumber
+                    }).OrderBy(x => x.PACNumber).ToList();
+
+        }
         public IEnumerable<object> GetPromotionSubject()
         {
             _db = new upprbDbEntities();

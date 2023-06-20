@@ -91,6 +91,32 @@ $(document).ready(function () {
         FillPoliceStation(valueSelected);
     });
 
+    $('#PoliceStation').on('change', function (e) {
+        var valueSelected = this.value;
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{psId: ' + valueSelected + '}',
+            url: '/Master/GetPACDetailByPSId',
+            success: function (data) {
+                $('#tableCSPACNo tbody').empty();
+                var dom = "<tr>";
+                $.each(data, function (key, entry) {
+                    dom += "<td><a style='color: blue;white-space: nowrap;' href='/Admin/PACEntry?Id=" + entry.Id + "'>" + entry.PACNumber + "</a></td>";
+                });
+                dom += "</tr>";
+                $('#tableCSPACNo tbody').append(dom)
+            },
+            failure: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    });
+
     $('[name*=customRadioInline1]').on('change', function (e) {
         var valueSelected = this.value;
         if (valueSelected == 1) {

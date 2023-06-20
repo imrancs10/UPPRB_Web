@@ -112,5 +112,12 @@ namespace UPPRB_Web.Controllers
             Session.Clear();
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetPACDetailByPSId(int psId)
+        {
+            MasterDetails _details = new MasterDetails();
+            var data = _details.GetPACDetailByPSId(psId);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
