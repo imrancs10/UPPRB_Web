@@ -21,10 +21,10 @@ namespace UPPRB_Web
     {
         protected void Application_BeginRequest()
         {
-            if (!Request.IsLocal)
-            {
-                Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
-            }
+            //if (!Request.IsLocal)
+            //{
+            // Response.Redirect(Request.Url.AbsoluteUri.Replace("http://", "https://"));
+            //}
             //restrict Click Jacking 
             //HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
         }
@@ -33,7 +33,9 @@ namespace UPPRB_Web
             HttpContext.Current.Response.Headers.Add("X-Frame-Options", "DENY");
             HttpContext.Current.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
             HttpContext.Current.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+            HttpContext.Current.Response.Headers.Add("X-Content-Security-Policy", "frame-ancestors; none");
             HttpContext.Current.Response.Headers.Remove("Server");
+
         }
         protected void Application_Start()
         {
