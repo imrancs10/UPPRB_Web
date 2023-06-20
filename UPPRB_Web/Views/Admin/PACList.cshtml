@@ -15,14 +15,12 @@
                     <strong>Cyber Security and Preventive Action Cell (CSPAC) Details</strong>
                 </header>
                 @*<div style="padding-top:5px;padding-bottom:5px;padding-left:450px;">
-                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Print</button>
-                    &nbsp;&nbsp;
-                </div>*@
+                        <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Print</button>
+                        &nbsp;&nbsp;
+                    </div>*@
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="table-responsive" style="overflow:auto!important;">
-                            <table class="table table-bordered" id="tablePACDoc"></table>
-                        </div>
+                    <div class="table-responsive" style="overflow:auto!important;">
+                        <table class="table table-bordered" id="tablePACDoc"></table>
                     </div>
                 </div>
             </section>
@@ -184,8 +182,8 @@
                     console.log(response.responseText);
                 }
             });
-        } 
-        
+        }
+
     }
     $('#btnReport').click(function () {
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#tablePACDoc_filter').find('input').val() + "&RangeID=" + $('#tablePACDoc_filter').find('input').val() +

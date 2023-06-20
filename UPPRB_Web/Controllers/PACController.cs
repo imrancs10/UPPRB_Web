@@ -21,6 +21,7 @@ using System.Security.Principal;
 using iTextSharp.tool.xml.html;
 using Newtonsoft.Json.Linq;
 using UPPRB_Web.Models.Common;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace UPPRB_Web.Controllers
 {
@@ -159,6 +160,7 @@ namespace UPPRB_Web.Controllers
                 pdfTitle += " - Solver Report";
             else if (SolverName == "filterByExamineCenter")
                 pdfTitle += " - Blacklisted Report";
+
             tableLayout.AddCell(new PdfPCell(new Phrase(pdfTitle, new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
                 Colspan = 13,
@@ -186,8 +188,12 @@ namespace UPPRB_Web.Controllers
 
             ////Add body  
             int index = 1;
+
+            var fontPath = Server.MapPath("~/Content/MANGAL.TTF");
+            bool hasUnicode;
             foreach (var emp in pacDetailList)
             {
+
                 AddCellToBody(tableLayout, index.ToString());
                 AddCellToBody(tableLayout, emp.PACNumber);
                 //AddCellToBody(tableLayout, emp.State_Name);
@@ -202,11 +208,18 @@ namespace UPPRB_Web.Controllers
                 AddCellToBody(tableLayout, emp.FIRNo);
                 AddCellToBody(tableLayout, emp.FIRDate != null ? emp.FIRDate.Value.ToString("dd/MMM/yyyy") : "");
                 AddCellToBody(tableLayout, emp.Address);
-                AddCellToBody(tableLayout, emp.FIRDetails);
+                hasUnicode = ContainsUnicodeCharacter(emp.FIRDetails);
+                AddCellToBody(tableLayout, emp.FIRDetails, hasUnicode == true ? fontPath : null);
                 index++;
             }
 
             return tableLayout;
+        }
+        public bool ContainsUnicodeCharacter(string input)
+        {
+            const int MaxAnsiCode = 255;
+
+            return input.Any(c => c > MaxAnsiCode);
         }
         // Method to add single cell to the Header  
         private static void AddCellToHeader(PdfPTable tableLayout, string cellText)
@@ -221,14 +234,31 @@ namespace UPPRB_Web.Controllers
         }
 
         // Method to add single cell to the body  
-        private static void AddCellToBody(PdfPTable tableLayout, string cellText)
+        private static void AddCellToBody(PdfPTable tableLayout, string cellText, string fontPath = null)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 12, 1, iTextSharp.text.BaseColor.BLACK)))
+            if (fontPath == null)
             {
-                HorizontalAlignment = Element.ALIGN_LEFT,
-                Padding = 5,
-                BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
-            });
+                tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 10,Font.NORMAL)))
+                {
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    Padding = 5,
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
+                });
+            }
+            else
+            {
+                //add hindi font
+                BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, false);
+                //Set Font and Font Color
+                Font font = new Font(bf, 10, Font.NORMAL);
+
+                tableLayout.AddCell(new PdfPCell(new Phrase(cellText, font))
+                {
+                    HorizontalAlignment = Element.ALIGN_LEFT,
+                    Padding = 5,
+                    BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
+                });
+            }
         }
         public ActionResult SearchSolverList()
         {

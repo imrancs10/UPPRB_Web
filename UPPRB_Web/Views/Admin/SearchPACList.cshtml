@@ -83,10 +83,8 @@
                     &nbsp;&nbsp;
                 </div>
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="table-responsive" style="overflow:auto!important;">
-                            <table class="table table-bordered" id="tablePACDoc"></table>
-                        </div>
+                    <div class="table-responsive" style="overflow:auto!important;">
+                        <table class="table table-bordered" id="tablePACDoc"></table>
                     </div>
                 </div>
             </section>
@@ -100,7 +98,7 @@
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
             "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
-            "&FIRDateTo=" + $('#FIRDateTo').val();
+            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
         window.location.href = url;
         window.location.assign(url);
         window.location = url;
