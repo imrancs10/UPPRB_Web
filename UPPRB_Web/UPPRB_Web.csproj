@@ -69,6 +69,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -288,6 +291,7 @@
     <Compile Include="Infrastructure\Authentication\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Infrastructure\Authentication\ICustomPrincipal.cs" />
     <Compile Include="Infrastructure\Utility\BaseViewPage.cs" />
+    <Compile Include="Infrastructure\Utility\Common.cs" />
     <Compile Include="Infrastructure\Utility\CustomExceptionFilter.cs" />
     <Compile Include="Infrastructure\Utility\EmailHelper.cs" />
     <Compile Include="Infrastructure\Utility\KnownFolders.cs" />
@@ -869,6 +873,7 @@
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Content\MANGAL.TTF" />
     <Content Include="Content\Kruti_Dev_010.ttf" />
+    <Content Include="Resource\PAC_Details.xlsx" />
     <None Include="Scripts\library\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.min.js" />

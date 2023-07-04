@@ -22,6 +22,11 @@ using iTextSharp.tool.xml.html;
 using Newtonsoft.Json.Linq;
 using UPPRB_Web.Models.Common;
 using Org.BouncyCastle.Asn1.Ocsp;
+using System.Data;
+using System.Web.UI.WebControls;
+using UPPRB_Web.Infrastructure.Utility;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
 
 namespace UPPRB_Web.Controllers
 {
@@ -95,7 +100,104 @@ namespace UPPRB_Web.Controllers
             var data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
+        //public ActionResult CreateExcel(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
+        //{
+        //    var detail = new GeneralDetails();
+        //    List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
+        //    if (IsSearching)
+        //        pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+        //    else
+        //        pacDetailList = detail.GetAllPACDetail();
 
+        //    try
+        //    {
+
+        //        DataTable Dt = Common.ToDataTable(pacDetailList);
+        //        var memoryStream = new MemoryStream();
+        //        using (var excelPackage = new ExcelPackage(memoryStream))
+        //        {
+        //            var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+        //            worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+        //            worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+        //            worksheet.DefaultRowHeight = 18;
+
+
+        //            worksheet.Column(2).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+        //            worksheet.Column(6).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+        //            worksheet.Column(7).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+        //            worksheet.DefaultColWidth = 20;
+        //            worksheet.Column(2).AutoFit();
+
+        //            Session["DownloadExcel_FileManager"] = excelPackage.GetAsByteArray();
+        //            return Json("", JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
+        public void CreateExcel(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
+        {
+            var detail = new GeneralDetails();
+            List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
+            if (IsSearching)
+                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+            else
+                pacDetailList = detail.GetAllPACDetail();
+
+            var exporData = (from det in pacDetailList
+                             select new
+                             {
+                                 det.RecruitementType,
+                                 det.PACNumber,
+                                 det.State_Name,
+                                 det.Zone_Name,
+                                 det.Range_Name,
+                                 det.District_Name,
+                                 det.PS_Name,
+                                 det.ExamineCenterName,
+                                 det.Solver_Name,
+                                 det.Address,
+                                 det.FIRNo,
+                                 det.FIRDate,
+                                 det.PublishDate,
+                                 det.AccusedName,
+                                 det.FIRDetails,
+                                 det.CreatedDate
+                             }).ToList();
+
+            //ExcelPackage excel = new ExcelPackage();
+            string filePath = HttpContext.Server.MapPath("~/Resource/");
+            FileInfo template = new FileInfo(filePath + "PAC_Details.xlsx");
+            //var workSheet = excel.Workbook.Worksheets.Add("Sheet1");
+            using (ExcelPackage xlPackage = new ExcelPackage(template))
+            {
+                ExcelWorksheet workSheet = xlPackage.Workbook.Worksheets["PAC Detail"];
+                workSheet.Cells[2, 1].LoadFromCollection(exporData, false);
+                using (var memoryStream = new MemoryStream())
+                {
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    //here i have set filname as Students.xlsx
+                    Response.AddHeader("content-disposition", "attachment;  filename=PAC_Details.xlsx");
+                    xlPackage.SaveAs(memoryStream);
+                    memoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+            //workSheet.Cells[1, 1].LoadFromCollection(pacDetailList, true);
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            //    //here i have set filname as Students.xlsx
+            //    Response.AddHeader("content-disposition", "attachment;  filename=Students.xlsx");
+            //    excel.SaveAs(memoryStream);
+            //    memoryStream.WriteTo(Response.OutputStream);
+            //    Response.Flush();
+            //    Response.End();
+            //}
+        }
         public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
         {
             MemoryStream workStream = new MemoryStream();
@@ -238,7 +340,7 @@ namespace UPPRB_Web.Controllers
         {
             if (fontPath == null)
             {
-                tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 10,Font.NORMAL)))
+                tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL)))
                 {
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     Padding = 5,

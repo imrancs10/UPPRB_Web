@@ -77,7 +77,9 @@
                 <div style="padding-top:5px;padding-bottom:5px;">
                     @*<a href="/PAC/CreatePdf" target="_blank" class="btn btn-success" style="float: right; margin-right: 3%;">Print</a>
                         &nbsp;&nbsp;*@
-                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Download Report</button>
+                    <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Download PDF</button>
+                    &nbsp;&nbsp;
+                    <button type="submit" id="btnReportExcel" class="btn btn-success" style="float: right; margin-right: 3%;">Download Excel</button>
                     &nbsp;&nbsp;
                     <button type="submit" id="btnSearch" class="btn btn-success" style="float: right; margin-right: 3%;">Search</button>
                     &nbsp;&nbsp;
@@ -96,6 +98,16 @@
 <script type="text/javascript">
     $('#btnReport').click(function () {
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
+            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
+        window.location.href = url;
+        window.location.assign(url);
+        window.location = url;
+        window.location.replace = url;
+    });
+    $('#btnReportExcel').click(function () {
+        var url = "/PAC/CreateExcel?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
             "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
             "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
