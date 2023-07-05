@@ -174,7 +174,7 @@ namespace UPPRB_Web.Controllers
             using (ExcelPackage xlPackage = new ExcelPackage(template))
             {
                 ExcelWorksheet workSheet = xlPackage.Workbook.Worksheets["PAC Detail"];
-                workSheet.Cells[2, 1].LoadFromCollection(exporData, false);
+                workSheet.Cells[4, 1].LoadFromCollection(exporData, false);
                 using (var memoryStream = new MemoryStream())
                 {
                     Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
