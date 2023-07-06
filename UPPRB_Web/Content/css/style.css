@@ -6158,6 +6158,7 @@ p {
 }
 
 @media (max-width:360px) {
+
 }
 /*--------------------------w icons---------------------------*/
 .icon-box.iconbox-border {
@@ -8058,7 +8059,28 @@ nav1 {
             color: white;
         }
 }
+.upp-dialog {
+    position: absolute;
+    top: -115px;
+    left: 368px;
+    width: 458px;
+}
 
+.close-dialog {
+}
+
+@media screen and (max-width: 500px) {
+    .upp-dialog {
+        position: absolute;
+        top: 46px;
+        left: -52px;
+        width: 458px;
+    }
+
+    .close-dialog {
+        position: absolute;
+    }
+}
 
 
     
