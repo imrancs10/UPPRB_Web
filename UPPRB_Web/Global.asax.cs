@@ -50,26 +50,26 @@ namespace UPPRB_Web
         }
         protected void Session_Start()
         {
-            Application.Lock();
-            upprbDbEntities _db = new upprbDbEntities();
-            var totalUser = _db.Visitor_Detail.Count();
-            //GroupBy(x => new { x.Client_IP_Address, x.Device_Type }).Count();
-            Application["Totaluser"] = totalUser + 1;
-            var ipAddress = GetIPAddress();
-            //if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
-            {
-                var visitor = new Visitor_Detail()
-                {
-                    Client_IP_Address = ipAddress,
-                    Session_Start_Date = DateTime.UtcNow,
-                    Browser_Type = GetBrowserDetails(),
-                    Device_Type = GetDeviceType(),
-                    Operating_System = GetOperatingSystem()
-                };
-                _db.Entry(visitor).State = EntityState.Added;
-                _db.SaveChanges();
-            }
-            Application.UnLock();
+            //Application.Lock();
+            //upprbDbEntities _db = new upprbDbEntities();
+            //var totalUser = _db.Visitor_Detail.Count();
+            ////GroupBy(x => new { x.Client_IP_Address, x.Device_Type }).Count();
+            //Application["Totaluser"] = totalUser + 1;
+            //var ipAddress = GetIPAddress();
+            ////if (_db.Visitor_Detail.FirstOrDefault(x => x.Client_IP_Address == ipAddress) == null)
+            //{
+            //    var visitor = new Visitor_Detail()
+            //    {
+            //        Client_IP_Address = ipAddress,
+            //        Session_Start_Date = DateTime.UtcNow,
+            //        Browser_Type = GetBrowserDetails(),
+            //        Device_Type = GetDeviceType(),
+            //        Operating_System = GetOperatingSystem()
+            //    };
+            //    _db.Entry(visitor).State = EntityState.Added;
+            //    _db.SaveChanges();
+            //}
+            //Application.UnLock();
         }
         public string GetIPAddress()
         {
