@@ -82,13 +82,32 @@
             var d = new Date();
             var month = d.getMonth() + 1;
             var day = d.getDate();
+            var dayOfWeek = d.getDay();
             var output = (day < 10 ? '0' : '') + day + "-" + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
 
-            myClock.innerHTML = "Today:" + output + ' ' + " " + h + ":" + m + ":" + s + " " + diem;
+            myClock.innerHTML = getDayOfWeek(d) + ":" + output + ' ' + " " + h + ":" + m + ":" + s + " " + diem;
         }
         renderTime();
+        function getDayOfWeek(date) {
+            var day = date.getDay();
+            if (day == 0)
+                return "Sunday";
+            else if (day == 1)
+                return "Monday";
+            else if (day == 2)
+                return "Tuesday";
+            else if (day == 3)
+                return "Wednesday";
+            else if (day == 4)
+                return "Thursday";
+            else if (day == 5)
+                return "Friday";
+            else if (day == 6)
+                return "Saturday";
+        }
     </script>
     <script>
+
         function orangecolor() {
 
             $(".block-cmf-content").css("backgroundColor", "#b33d2f");
