@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -456,6 +455,7 @@
     <Content Include="Content\icon\tender.png" />
     <Content Include="Content\icon\teqp.png" />
     <Content Include="Content\icon\timetable.png" />
+    <Content Include="Content\icon\UPlogo.png" />
     <Content Include="Content\icon\upp.png" />
     <Content Include="Content\icon\usermanual.png" />
     <Content Include="Content\icon\usful.png" />
@@ -552,6 +552,7 @@
     <Content Include="Content\Images\logo1.png" />
     <Content Include="Content\Images\logo3.jpg" />
     <Content Include="Content\Images\new.gif" />
+    <Content Include="Content\Images\notification.jpg" />
     <Content Include="Content\Images\orange.png" />
     <Content Include="Content\Images\Org_chart.JPG" />
     <Content Include="Content\Images\org_chart.png" />
