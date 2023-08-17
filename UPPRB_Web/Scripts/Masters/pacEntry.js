@@ -28,6 +28,7 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                dropdown.append('<option value="">Select All</option>');
                 if (selectedRecruitementTypeId != null) {
                     dropdown.val(selectedRecruitementTypeId);
                 }
