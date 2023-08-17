@@ -75,6 +75,8 @@
                         &nbsp;&nbsp;*@
                     <button type="submit" id="btnReport" class="btn btn-success" style="float: right; margin-right: 3%;">Download Report</button>
                     &nbsp;&nbsp;
+                    <button type="submit" id="btnReportExcel" class="btn btn-success" style="float: right; margin-right: 3%;">Download Excel</button>
+                    &nbsp;&nbsp;
                     <button type="submit" id="btnSearch" class="btn btn-success" style="float: right; margin-right: 3%;">Search</button>
                     &nbsp;&nbsp;
                 </div>
@@ -90,6 +92,17 @@
 <!--main content end-->
 
 <script type="text/javascript">
+    $('#btnReportExcel').click(function () {
+        var filterBySolverName = "filterBySolverName";
+        var url = "/PAC/CreateExcel?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
+            "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
+            "&SolverName=" + filterBySolverName + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
+            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
+        window.location.href = url;
+        window.location.assign(url);
+        window.location = url;
+        window.location.replace = url;
+    });
     $('#btnReport').click(function () {
         var filterBySolverName = "filterBySolverName";
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
