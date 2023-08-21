@@ -164,6 +164,8 @@
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="Solver_Name" Type="nvarchar" MaxLength="500" />
           <Property Name="recruitement_type" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="CenterStatus" Type="int" />
         </EntityType>
         <EntityType Name="PACUser">
           <Key>
@@ -438,6 +440,8 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="Solver_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="recruitement_type" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CenterStatus" Type="Int32" />
         </EntityType>
         <EntityType Name="DirectRecruitementDetail">
           <Key>
@@ -682,6 +686,8 @@
           <EntitySetMapping Name="PACEntries">
             <EntityTypeMapping TypeName="upprbDbModel.PACEntry">
               <MappingFragment StoreEntitySet="PACEntry">
+                <ScalarProperty Name="CenterStatus" ColumnName="CenterStatus" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="recruitement_type" ColumnName="recruitement_type" />
                 <ScalarProperty Name="Solver_Name" ColumnName="Solver_Name" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />

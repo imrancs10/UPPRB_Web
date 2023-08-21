@@ -420,7 +420,7 @@ namespace UPPRB_Web.Controllers
         }
         [HttpPost]
         public ActionResult PACEntry(string hiddenId, HttpPostedFileBase postedFile, string State, string Zone,
-       string Range, string District, string PoliceStation, string ExamineCenterName, string Solver_Name, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL, string RecruitementType)
+       string Range, string District, string PoliceStation, string ExamineCenterName, string Solver_Name, string Address, string FIRNo, string FIRDate, string PublishDate, string AccusedName, string FIRDetails, string fileURL, string RecruitementType, string Remark)
         {
             State = "1";
             string filename = postedFile != null ? postedFile.FileName.Substring(0, postedFile.FileName.LastIndexOf('.')) + Guid.NewGuid().ToString() + "." + postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.') + 1, postedFile.FileName.Length - postedFile.FileName.LastIndexOf('.') - 1) : null;
@@ -445,7 +445,7 @@ namespace UPPRB_Web.Controllers
                 FIRDetails = FIRDetails,
                 FIRNo = FIRNo,
                 PS_Id = !string.IsNullOrEmpty(PoliceStation) ? (int?)Convert.ToInt32(PoliceStation) : null,
-
+                Remark = Remark
             };
             AdminDetails detail = new AdminDetails();
             bool isDuplicate = detail.IsDuplicateFIR(notice);

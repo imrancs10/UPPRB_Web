@@ -34,5 +34,7 @@ namespace DataLayer
         public Nullable<bool> IsDeleted { get; set; }
         public string Solver_Name { get; set; }
         public Nullable<int> recruitement_type { get; set; }
+        public string Remark { get; set; }
+        public Nullable<int> CenterStatus { get; set; }
     }
 }
