@@ -84,6 +84,7 @@ namespace UPPRB_Web.BAL.Masters
                     _deptRow.Zone_Id = notice.Zone_Id;
                     _deptRow.recruitement_type = notice.recruitement_type;
                     _deptRow.Remark = notice.Remark;
+                    _deptRow.CenterStatus = notice.CenterStatus;
                     _db.Entry(_deptRow).State = EntityState.Modified;
                     _effectRow = _db.SaveChanges();
                     return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;

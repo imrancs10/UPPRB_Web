@@ -8,6 +8,7 @@ $(document).ready(function () {
     FillState();
     FillDistrict(0);
     FillRecruitementType();
+    FillCenterStatus();
     $('[id*=customRadioInline2]').prop("checked", true);
     /*$('[name*=customRadioInline1]').change();*/
     $('[name*=fileURL]').prop("disabled", true);
@@ -251,6 +252,34 @@ function FillPoliceStation(districtId, selectedPoliceStationId = null) {
             }
         });
     }
+}
+
+function FillCenterStatus(selectedCenterStatusId = null) {
+    let dropdown = $('#CenterStatus');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        data: '{lookupTypeId: 0,lookupType: "CenterStatus" }',
+        url: '/Master/GetLookupDetail',
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+            });
+            if (selectedCenterStatusId != null) {
+                dropdown.val(selectedCenterStatusId);
+            }
+        },
+        failure: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log(response.responseText);
+        }
+    });
 }
 
 function formatDate(noticeDate) {
