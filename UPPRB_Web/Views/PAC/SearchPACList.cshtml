@@ -48,15 +48,20 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Examine Center Name</label>
-                            <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Examine Center Name" name="ExamineCenterName" />
+                            <label for="exampleInputPassword1">Center Status</label>
+                            <select class="form-control mb-3" id="CenterStatus" name="CenterStatus">
+                            </select>
                         </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1">Center Name</label>
+                            <input type="text" class="form-control" id="Exam_Center_Name" placeholder="Enter Center Name" name="ExamineCenterName" />
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6">
                             <label for="exampleInputEmail1">Solver Name</label>
                             <input type="text" class="form-control" id="Solver_Name" placeholder="Enter Solver Name" name="Solver_Name" />
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <label for="exampleInputEmail1">FIR No</label>
                             <input type="text" class="form-control" id="FIRNo" placeholder="Enter FIRNo" name="FIRNo" />
@@ -100,7 +105,7 @@
         var url = "/PAC/CreateExcel?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
             "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
-            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
+            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val() + "&CenterStatus=" + $('#CenterStatus').val();
         window.location.href = url;
         window.location.assign(url);
         window.location = url;
@@ -110,7 +115,7 @@
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
             "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
             "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
-            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val();
+            "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val() + "&CenterStatus=" + $('#CenterStatus').val();
         window.location.href = url;
         window.location.assign(url);
         window.location = url;
@@ -139,7 +144,7 @@
                 "url": "/PAC/SearchPAC?ZoneID=" + $('#Zone').val() + "&RangeID=" + $('#Range').val() +
                     "&DistrictID=" + $('#District').val() + "&PSID=" + $('#PoliceStation').val() + "&ExamineCenter=" + $('#Exam_Center_Name').val() +
                     "&SolverName=" + $('#Solver_Name').val() + "&FIRNo=" + $('#FIRNo').val() + "&FIRDateFrom=" + $('#FIRDateFrom').val() +
-                    "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val(),
+                    "&FIRDateTo=" + $('#FIRDateTo').val() + "&RecruitementType=" + $('#RecruitementType').val() + "&CenterStatus=" + $('#CenterStatus').val(),
                 "type": "POST",
                 "datatype": "json",
                 /*"data": requestData,*/
@@ -159,7 +164,8 @@
                 { "data": "District_Name", "name": "District_Name", "autoWidth": true, "title": "District" },
                 { "data": "PS_Name", "name": "PS_Name", "autoWidth": true, "title": "Police Station" },
                 { "data": "AccusedName", "name": "AccusedName", "autoWidth": true, "title": "Accused Name" },
-                { "data": "ExamineCenterName", "name": "ExamineCenterName", "autoWidth": true, "title": "Examine Center" },
+                { "data": "CenterStatus", "name": "CenterStatus", "autoWidth": true, "title": "Center Status" },
+                { "data": "ExamineCenterName", "name": "ExamineCenterName", "autoWidth": true, "title": "Center Name" },
                 { "data": "Solver_Name", "name": "Solver_Name", "autoWidth": true, "title": "Solver Name" },
 
                 { "data": "FIRNo", "name": "FIRNo", "autoWidth": true, "title": "FIR No" },

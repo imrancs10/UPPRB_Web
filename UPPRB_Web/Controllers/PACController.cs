@@ -46,7 +46,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType)
+        public JsonResult SearchPAC(string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType, string CenterStatus)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace UPPRB_Web.Controllers
                 int skip = start != null ? Convert.ToInt32(start) : 0;
                 int recordsTotal = 0;
                 string filterText = Request["search[value]"];
-                var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+                var result = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType, CenterStatus);
 
                 recordsTotal = result.Count();
                 var data = result.Skip(skip).Take(pageSize).ToList();
@@ -137,12 +137,12 @@ namespace UPPRB_Web.Controllers
         //        throw;
         //    }
         //}
-        public void CreateExcel(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
+        public void CreateExcel(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "", string CenterStatus = "")
         {
             var detail = new GeneralDetails();
             List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
             if (IsSearching)
-                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType, CenterStatus);
             else
                 pacDetailList = detail.GetAllPACDetail();
 
@@ -156,6 +156,7 @@ namespace UPPRB_Web.Controllers
                                  det.Range_Name,
                                  det.District_Name,
                                  det.PS_Name,
+                                 det.CenterStatus,
                                  det.ExamineCenterName,
                                  det.Solver_Name,
                                  det.Address,
@@ -198,7 +199,7 @@ namespace UPPRB_Web.Controllers
             //    Response.End();
             //}
         }
-        public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "")
+        public FileResult CreatePdf(bool IsSearching = false, string ZoneID = "", string RangeID = "", string DistrictID = "", string PSID = "", string ExamineCenter = "", string SolverName = "", string FIRNo = "", string FIRDateFrom = "", string FIRDateTo = "", string RecruitementType = "", string CenterStatus = "")
         {
             MemoryStream workStream = new MemoryStream();
             StringBuilder status = new StringBuilder("");
@@ -208,7 +209,7 @@ namespace UPPRB_Web.Controllers
             Document doc = new Document();
             doc.SetMargins(0f, 0f, 0f, 0f);
             //Create PDF Table with 12 columns  
-            PdfPTable tableLayout = new PdfPTable(13);
+            PdfPTable tableLayout = new PdfPTable(14);
             doc.SetMargins(0f, 0f, 0f, 0f);
             //Create PDF Table  
             doc.SetPageSize(PageSize.A4.Rotate());
@@ -231,7 +232,7 @@ namespace UPPRB_Web.Controllers
             doc.Add(jpg);
 
             //Add Content to PDF   
-            doc.Add(Add_Content_To_PDF(tableLayout, IsSearching, ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType));
+            doc.Add(Add_Content_To_PDF(tableLayout, IsSearching, ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType, CenterStatus));
 
             // Closing the document  
             doc.Close();
@@ -242,10 +243,10 @@ namespace UPPRB_Web.Controllers
             return File(workStream, "application/pdf", strPDFFileName);
         }
 
-        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, bool IsSearching, string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType)
+        protected PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, bool IsSearching, string ZoneID, string RangeID, string DistrictID, string PSID, string ExamineCenter, string SolverName, string FIRNo, string FIRDateFrom, string FIRDateTo, string RecruitementType, string CenterStatus)
         {
             var detail = new GeneralDetails();
-            float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
+            float[] headers = { 10, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 40 }; //Header Widths  
             tableLayout.SetWidths(headers); //Set the pdf headers  
             tableLayout.WidthPercentage = 95; //Set the PDF File witdh percentage  
             tableLayout.HeaderRows = 1;
@@ -253,7 +254,7 @@ namespace UPPRB_Web.Controllers
 
             List<PACEntryModel> pacDetailList = new List<PACEntryModel>();
             if (IsSearching)
-                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType);
+                pacDetailList = detail.SearchPACDetail(ZoneID, RangeID, DistrictID, PSID, ExamineCenter, SolverName, FIRNo, FIRDateFrom, FIRDateTo, RecruitementType, CenterStatus);
             else
                 pacDetailList = detail.GetAllPACDetail();
 
@@ -265,7 +266,7 @@ namespace UPPRB_Web.Controllers
 
             tableLayout.AddCell(new PdfPCell(new Phrase(pdfTitle, new Font(Font.FontFamily.HELVETICA, 14, 1, new iTextSharp.text.BaseColor(0, 0, 0))))
             {
-                Colspan = 13,
+                Colspan = 14,
                 Border = 0,
                 PaddingBottom = 10,
                 PaddingLeft = 5,
@@ -281,7 +282,8 @@ namespace UPPRB_Web.Controllers
             AddCellToHeader(tableLayout, "District");
             AddCellToHeader(tableLayout, "Police Station");
             AddCellToHeader(tableLayout, "Accused Name");
-            AddCellToHeader(tableLayout, "Examine Center");
+            AddCellToHeader(tableLayout, "Center Status");
+            AddCellToHeader(tableLayout, "Center Name");
             AddCellToHeader(tableLayout, "Solver Name");
             AddCellToHeader(tableLayout, "FIR No");
             AddCellToHeader(tableLayout, "FIR Date");
@@ -305,6 +307,7 @@ namespace UPPRB_Web.Controllers
                 AddCellToBody(tableLayout, emp.PS_Name);
 
                 AddCellToBody(tableLayout, emp.AccusedName);
+                AddCellToBody(tableLayout, emp.CenterStatus);
                 AddCellToBody(tableLayout, emp.ExamineCenterName);
                 AddCellToBody(tableLayout, emp.Solver_Name);
                 AddCellToBody(tableLayout, emp.FIRNo);

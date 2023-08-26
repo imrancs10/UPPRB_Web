@@ -63,7 +63,8 @@
                 { "data": "District_Name", "name": "District_Name", "autoWidth": true, "title": "District" },
                 { "data": "PS_Name", "name": "PS_Name", "autoWidth": true, "title": "Police Station" },
                 { "data": "AccusedName", "name": "AccusedName", "autoWidth": true, "title": "Accused Name" },
-                { "data": "ExamineCenterName", "name": "ExamineCenterName", "autoWidth": true, "title": "Examine Center" },
+                { "data": "CenterStatus", "name": "CenterStatus", "autoWidth": true, "title": "Center Status" },
+                { "data": "ExamineCenterName", "name": "ExamineCenterName", "autoWidth": true, "title": "Center Name" },
                 { "data": "Solver_Name", "name": "Solver_Name", "autoWidth": true, "title": "Solver Name" },
 
                 { "data": "FIRNo", "name": "FIRNo", "autoWidth": true, "title": "FIR No" },
@@ -189,7 +190,7 @@
         var url = "/PAC/CreatePdf?IsSearching=true&ZoneID=" + $('#tablePACDoc_filter').find('input').val() + "&RangeID=" + $('#tablePACDoc_filter').find('input').val() +
             "&DistrictID=" + $('#tablePACDoc_filter').find('input').val() + "&PSID=" + $('#tablePACDoc_filter').find('input').val() + "&ExamineCenter=" + $('#tablePACDoc_filter').find('input').val() +
             "&SolverName=" + $('#tablePACDoc_filter').find('input').val() + "&FIRNo=" + $('#tablePACDoc_filter').find('input').val() + "&FIRDateFrom=" + $('#tablePACDoc_filter').find('input').val() +
-            "&FIRDateTo=" + $('#tablePACDoc_filter').find('input').val();
+            "&FIRDateTo=" + $('#tablePACDoc_filter').find('input').val() + "&CenterStatus=" + $('#tablePACDoc_filter').find('input').val();
         window.location.href = url;
         window.location.assign(url);
         window.location = url;

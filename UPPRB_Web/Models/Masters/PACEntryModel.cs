@@ -19,6 +19,8 @@ namespace UPPRB_Web.Models.Masters
         public string District_Name { get; set; }
         public int? PS_Id { get; set; }
         public string PS_Name { get; set; }
+        public int? CenterStatusId { get; set; }
+        public string CenterStatus { get; set; }
         public string ExamineCenterName { get; set; }
         public string Solver_Name { get; set; }
         public string Address { get; set; }
