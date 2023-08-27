@@ -27,6 +27,7 @@ using System.Web.UI.WebControls;
 using UPPRB_Web.Infrastructure.Utility;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
+using OfficeOpenXml.Style;
 
 namespace UPPRB_Web.Controllers
 {
@@ -176,11 +177,41 @@ namespace UPPRB_Web.Controllers
             {
                 ExcelWorksheet workSheet = xlPackage.Workbook.Worksheets["PAC Detail"];
                 workSheet.Cells[4, 1].LoadFromCollection(exporData, false);
+                
                 using (var memoryStream = new MemoryStream())
                 {
                     Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     //here i have set filname as Students.xlsx
                     Response.AddHeader("content-disposition", "attachment;  filename=PAC_Details.xlsx");
+                    for (var i = 0; i < exporData.Count; i++)
+                    {
+                        if (exporData[i].CenterStatus == "Blacklist")
+                        {
+                            using (ExcelRange Rng = workSheet.Cells[i + 4, 1, i + 4, 17])
+                            {
+                                System.Drawing.Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#F51B00");
+                                Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                Rng.Style.Fill.BackgroundColor.SetColor(colFromHex);
+                            }
+                        }
+                        else if (exporData[i].CenterStatus == "Whitelist")
+                        {
+                            using (ExcelRange Rng = workSheet.Cells[i + 4, 1, i + 4, 17])
+                            {
+                                System.Drawing.Color colFromHex = System.Drawing.ColorTranslator.FromHtml("#26D826");
+                                Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                Rng.Style.Fill.BackgroundColor.SetColor(colFromHex);
+                            }
+                        }
+                        else if (exporData[i].CenterStatus == "Watchlist")
+                        {
+                            using (ExcelRange Rng = workSheet.Cells[i + 4, 1, i + 4, 17])
+                            {
+                                Rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                Rng.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Orange);
+                            }
+                        }
+                    }
                     xlPackage.SaveAs(memoryStream);
                     memoryStream.WriteTo(Response.OutputStream);
                     Response.Flush();
@@ -299,22 +330,22 @@ namespace UPPRB_Web.Controllers
             {
 
                 AddCellToBody(tableLayout, index.ToString());
-                AddCellToBody(tableLayout, emp.PACNumber);
+                AddCellToBody(tableLayout, emp.PACNumber, null, emp.CenterStatus);
                 //AddCellToBody(tableLayout, emp.State_Name);
-                AddCellToBody(tableLayout, emp.Zone_Name);
-                AddCellToBody(tableLayout, emp.Range_Name);
-                AddCellToBody(tableLayout, emp.District_Name);
-                AddCellToBody(tableLayout, emp.PS_Name);
+                AddCellToBody(tableLayout, emp.Zone_Name, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.Range_Name, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.District_Name, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.PS_Name, null, emp.CenterStatus);
 
-                AddCellToBody(tableLayout, emp.AccusedName);
-                AddCellToBody(tableLayout, emp.CenterStatus);
-                AddCellToBody(tableLayout, emp.ExamineCenterName);
-                AddCellToBody(tableLayout, emp.Solver_Name);
-                AddCellToBody(tableLayout, emp.FIRNo);
-                AddCellToBody(tableLayout, emp.FIRDate != null ? emp.FIRDate.Value.ToString("dd/MMM/yyyy") : "");
-                AddCellToBody(tableLayout, emp.Address);
+                AddCellToBody(tableLayout, emp.AccusedName, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.CenterStatus, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.ExamineCenterName, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.Solver_Name, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.FIRNo, null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.FIRDate != null ? emp.FIRDate.Value.ToString("dd/MMM/yyyy") : "", null, emp.CenterStatus);
+                AddCellToBody(tableLayout, emp.Address, null, emp.CenterStatus);
                 hasUnicode = ContainsUnicodeCharacter(emp.FIRDetails);
-                AddCellToBody(tableLayout, emp.FIRDetails, hasUnicode == true ? fontPath : null);
+                AddCellToBody(tableLayout, emp.FIRDetails, hasUnicode == true ? fontPath : null, emp.CenterStatus);
                 index++;
             }
 
@@ -339,7 +370,7 @@ namespace UPPRB_Web.Controllers
         }
 
         // Method to add single cell to the body  
-        private static void AddCellToBody(PdfPTable tableLayout, string cellText, string fontPath = null)
+        private static void AddCellToBody(PdfPTable tableLayout, string cellText, string fontPath = null, string CenterStatus = "")
         {
             if (fontPath == null)
             {
@@ -347,7 +378,7 @@ namespace UPPRB_Web.Controllers
                 {
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     Padding = 5,
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
+                    BackgroundColor = CenterStatus == "Blacklist" ? new iTextSharp.text.BaseColor(245, 27, 0) : CenterStatus == "Whitelist" ? new iTextSharp.text.BaseColor(38, 216, 38) : CenterStatus == "Watchlist" ? new iTextSharp.text.BaseColor(255, 165, 0) : new iTextSharp.text.BaseColor(255, 255, 255)
                 });
             }
             else
@@ -361,7 +392,7 @@ namespace UPPRB_Web.Controllers
                 {
                     HorizontalAlignment = Element.ALIGN_LEFT,
                     Padding = 5,
-                    BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
+                    BackgroundColor = CenterStatus == "Blacklist" ? new iTextSharp.text.BaseColor(245, 27, 0) : CenterStatus == "Whitelist" ? new iTextSharp.text.BaseColor(38, 216, 38) : CenterStatus == "Watchlist" ? new iTextSharp.text.BaseColor(255, 165, 0) : new iTextSharp.text.BaseColor(255, 255, 255)
                 });
             }
         }

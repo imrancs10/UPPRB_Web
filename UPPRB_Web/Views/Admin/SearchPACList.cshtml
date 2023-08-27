@@ -186,6 +186,14 @@
                 { "data": "FIRDetails", "name": "FIRDetails", "autoWidth": true, "title": "FIR Details" },
             ],
             "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                if (aData.CenterStatus == "Blacklist") {
+                    $('td', nRow).css('background-color', '#f51b00de');
+                } else if (aData.CenterStatus == "Whitelist") {
+                    $('td', nRow).css('background-color', '#26D826');
+                }
+                else if (aData.CenterStatus == "Watchlist") {
+                    $('td', nRow).css('background-color', 'Orange');
+                }
                 var pageNumber = 0;
                 $.each($('.paginate_button'), function (index, button) {
                     if ($(this).css('background-image') == 'linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%)') {
