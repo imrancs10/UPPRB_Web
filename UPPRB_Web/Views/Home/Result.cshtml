@@ -7,60 +7,74 @@
 }
 <script src="~/Scripts/Masters/noticePage.js"></script>
 <section class="blog-single section">
-    <div class="container wsh"style="min-height:500px">
+    <div class="container wsh" style="min-height:500px">
         <div class="row">
-            
-            <div class="col-lg-12 w_content pt-20 mt-0">                
-                    <div id="DivContent">
-                        <div id="Panel1">
-                            <h2 class="w-bgph "> Result</h2>
-                            <div id="divSearch" style="display:block;">
-                                <div class="dynamic_update pageheight">
-                                    <ul id="noticeList">
-                                        @foreach (var item in noticeData)
-                                        {
-                                            @*<span id="spnLink"></span>*@
-                                            if (!string.IsNullOrEmpty(item.filename))
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='~/FilesUploaded/Result/@item.filename' title='Click to view more' target='_blank' style="color:darkblue !important">
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    @if (item.IsNew == true)
-                                                    {
-                                                        <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
-                                                    }
-                                                    <a href='@item.fileURL' title='Click to view more' target='_blank'>
-                                                        @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
-                                                    </a>
-                                                    <p class="date">
-                                                        Date :
-                                                        @item.NoticeDate.Value.ToString("dd/MM/yyyy")
-                                                    </p>
-                                                </li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
+
+            <div class="col-lg-12 w_content pt-20 mt-0">
+                <div id="DivContent">
+                    <div id="Panel1">
+                        <h2 class="w-bgph "> Result</h2>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label id="lblPublishDate" for="exampleInputPassword1">Date From</label>
+                                <input type="date" class="form-control" id="DateFrom" placeholder="Date From" name="DateFrom">
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="col-lg-4">
+                                <label id="lblPublishDate" for="exampleInputPassword1">Date To</label>
+                                <input type="date" class="form-control" id="DateTo" placeholder="Date to" name="DateTo">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="button" class="btn btn-success" id="SearchDate" name="SearchDate" value="Search" style="margin-top: 30px;" />
+                                <input type="button" class="btn btn-warning" id="CancelSearch" name="CancelSearch" value="Cancel" style="margin-top: 30px;" />
+                            </div>
                         </div>
+                        <div id="divSearch" style="display:block;">
+                            <div class="dynamic_update pageheight">
+                                <ul id="noticeList">
+                                    @foreach (var item in noticeData)
+                                    {
+                                        @*<span id="spnLink"></span>*@
+                                        if (!string.IsNullOrEmpty(item.filename))
+                                        {
+                                            <li>
+                                                @if (item.IsNew == true)
+                                                {
+                                                    <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                }
+                                                <a href='~/FilesUploaded/Result/@item.filename' title='Click to view more' target='_blank' style="color:darkblue !important">
+                                                    @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                </a>
+                                                <p class="date">
+                                                    Date :
+                                                    @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </p>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                @if (item.IsNew == true)
+                                                {
+                                                    <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                }
+                                                <a href='@item.fileURL' title='Click to view more' target='_blank'>
+                                                    @item.Subject<span class='whatsnew' style="color:brown"> [ Notice Board ]</span>
+                                                </a>
+                                                <p class="date">
+                                                    Date :
+                                                    @item.NoticeDate.Value.ToString("dd/MM/yyyy")
+                                                </p>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                
+                </div>
+                <div class="clearfix"></div>
+
             </div>
         </div>
     </div>
@@ -77,5 +91,20 @@
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');
         $('a[href="/Home/Notice"]').parent().addClass('active')
+    });
+    $('#SearchDate').click(function () {
+        var dateFrom = new Date($('#DateFrom').val());
+        var dateTo = new Date($('#DateTo').val());
+        for (var i = $('.date').length - 1; i >= 0; i--) {
+            var element = $('.date').eq(i);
+            var noticeDate = $(element).html().replaceAll("\n", "").replaceAll(" ", "").replace("Date:", "");
+            var checkDate = new Date(noticeDate.split("-").reverse().join("-"));
+            if (checkDate < dateFrom || checkDate > dateTo) {
+                $(element).parent().remove();
+            }
+        }
+    });
+    $('#CancelSearch').click(function () {
+        location.reload();
     });
 </script>
