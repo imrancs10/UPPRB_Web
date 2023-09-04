@@ -14,7 +14,7 @@
                 <div id="DivContent">
                     <div id="Panel1">
                         <h2 class="w-bgph "> Result</h2>
-                        <div class="row">
+                        <div class="row" style="margin-bottom: 12px;">
                             <div class="col-lg-4">
                                 <label id="lblPublishDate" for="exampleInputPassword1">Date From</label>
                                 <input type="date" class="form-control" id="DateFrom" placeholder="Date From" name="DateFrom">
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <input type="button" class="btn btn-success" id="SearchDate" name="SearchDate" value="Search" style="margin-top: 30px;" />
-                                <input type="button" class="btn btn-warning" id="CancelSearch" name="CancelSearch" value="Cancel" style="margin-top: 30px;" />
+                                <input type="button" class="btn btn-warning" id="ResetSearch" name="ResetSearch" value="Reset" style="margin-top: 30px; background-color: orange;" />
                             </div>
                         </div>
                         <div id="divSearch" style="display:block;">
@@ -104,7 +104,7 @@
             }
         }
     });
-    $('#CancelSearch').click(function () {
+    $('#ResetSearch').click(function () {
         location.reload();
     });
 </script>
