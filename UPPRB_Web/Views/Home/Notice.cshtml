@@ -14,6 +14,20 @@
                 <div id="DivContent">
                     <div id="Panel1">
                         <h2 class="w-bgph ">Notice</h2>
+                        <div class="row" style="margin-bottom: 12px;">
+                            <div class="col-lg-4">
+                                <label id="lblPublishDate" for="exampleInputPassword1">Date From</label>
+                                <input type="date" class="form-control" id="DateFrom" placeholder="Date From" name="DateFrom">
+                            </div>
+                            <div class="col-lg-4">
+                                <label id="lblPublishDate" for="exampleInputPassword1">Date To</label>
+                                <input type="date" class="form-control" id="DateTo" placeholder="Date to" name="DateTo">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="button" class="btn btn-success" id="SearchDate" name="SearchDate" value="Search" style="margin-top: 30px;" />
+                                <input type="button" class="btn btn-warning" id="ResetSearch" name="ResetSearch" value="Reset" style="margin-top: 30px; background-color: orange;" />
+                            </div>
+                        </div>
                         <div id="divSearch" style="display:block;">
                             <div class="dynamic_update pageheight">
                                 <ul id="noticeList">
@@ -78,5 +92,20 @@
     $(document).ready(function () {
         $('.navbar-nav').find('li').removeClass('active');
         $('a[href="/Home/Notice"]').parent().addClass('active')
+    });
+    $('#SearchDate').click(function () {
+        var dateFrom = new Date($('#DateFrom').val());
+        var dateTo = new Date($('#DateTo').val());
+        for (var i = $('.date').length - 1; i >= 0; i--) {
+            var element = $('.date').eq(i);
+            var noticeDate = $(element).html().replaceAll("\n", "").replaceAll(" ", "").replace("Date:", "");
+            var checkDate = new Date(noticeDate.split("-").reverse().join("-"));
+            if (checkDate < dateFrom || checkDate > dateTo) {
+                $(element).parent().remove();
+            }
+        }
+    });
+    $('#ResetSearch').click(function () {
+        location.reload();
     });
 </script>
