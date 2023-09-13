@@ -28,6 +28,21 @@ namespace UPPRB_Web
             //restrict Click Jacking 
             //HttpContext.Current.Response.AddHeader("x-frame-options", "DENY");
         }
+        protected void Application_EndRequest()
+        {
+            // this code will mark the forms authentication cookie and the
+            // session cookie as Secure.
+            if (Response.Cookies.Count > 0)
+            {
+                foreach (string s in Response.Cookies.AllKeys)
+                {
+                    if (s == FormsAuthentication.FormsCookieName || s.ToLower() == "asp.net_sessionid")
+                    {
+                        Response.Cookies[s].Secure = true;
+                    }
+                }
+            }
+        }
         protected void Application_PreSendRequestHeaders()
         {
             HttpContext.Current.Response.Headers.Add("X-Frame-Options", "DENY");
@@ -50,6 +65,10 @@ namespace UPPRB_Web
         }
         protected void Session_Start()
         {
+            if (Request.IsSecureConnection)
+            {
+                Response.Cookies["ASP.NET_SessionId"].Secure = true;
+            }
             //Application.Lock();
             //upprbDbEntities _db = new upprbDbEntities();
             //var totalUser = _db.Visitor_Detail.Count();
