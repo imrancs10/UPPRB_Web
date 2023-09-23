@@ -107,9 +107,8 @@
         }
     </script>
     <script>
-
         function orangecolor() {
-
+            localStorage.setItem("color", "orange");
             $(".block-cmf-content").css("backgroundColor", "#b33d2f");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
@@ -137,6 +136,7 @@
         }
 
         function bluecolor() {
+            localStorage.setItem("color", "blue");
             $(".block-cmf-content").css("backgroundColor", "#1674AC");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
@@ -164,6 +164,7 @@
         }
 
         function teabluecolor() {
+            localStorage.setItem("color", "teablue");
             $(".block-cmf-content").css("backgroundColor", "#3AAFA9");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#3AAFA9), to(#266184))"
@@ -191,6 +192,7 @@
         }
 
         function pinkcolor() {
+            localStorage.setItem("color", "pink");
             $(".block-cmf-content").css("backgroundColor", "#F92C85");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#F92C85), to(#F92C85))"
@@ -218,6 +220,7 @@
         }
 
         function greencolor() {
+            localStorage.setItem("color", "green");
             $(".block-cmf-content").css("backgroundColor", "#378805");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#378805), to(#378805))"
@@ -373,10 +376,10 @@
                         <!--<li>
                             <p class="datep" style="color:black">
                                 | Visitors Count:-->
-                                @*<div id="sfcdgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" style="position: absolute; top: 23%; left: 99%; width: 53%;"></div>
-                                <script type="text/javascript" src="https://counter3.optistats.ovh/private/counter.js?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf&down=async" async></script>
-                                <noscript><a href="https://www.freecounterstat.com" title="free counter"><img src="https://counter3.optistats.ovh/private/freecounterstat.php?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" border="0" title="free counter" alt="free counter"></a></noscript>-->*@
-                                <!--@ApplicationInstance.Application["Totaluser"]
+                        @*<div id="sfcdgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" style="position: absolute; top: 23%; left: 99%; width: 53%;"></div>
+                            <script type="text/javascript" src="https://counter3.optistats.ovh/private/counter.js?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf&down=async" async></script>
+                            <noscript><a href="https://www.freecounterstat.com" title="free counter"><img src="https://counter3.optistats.ovh/private/freecounterstat.php?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" border="0" title="free counter" alt="free counter"></a></noscript>-->*@
+                        <!--@ApplicationInstance.Application["Totaluser"]
                             </p>
                         </li>-->
                     </ul>
@@ -427,19 +430,19 @@
                             </ul>
                         </li>
                         <!--<li class="ico-accessibility cf">
-    <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
-        <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
-    </a>
-    <ul style="visibility: hidden;">
-        <li>
-            <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
-                <img class="top " src="~/Content/images/orange.png" alt="Orange Theme">
-            </a>
-        </li>-->
+                        <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
+                            <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
+                        </a>
+                        <ul style="visibility: hidden;">
+                            <li>
+                                <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
+                                    <img class="top " src="~/Content/images/orange.png" alt="Orange Theme">
+                                </a>
+                            </li>-->
                         @*<li> <a onclick="blackcolor()" title="Black Theme" href="javascript:void(0);" class="alinktheme"> <img class="top" src="~/Content/images/black.png" alt="Black Theme">  </a> </li>*@
 
                         <!--</ul>
-    </li>-->
+                        </li>-->
 
                         <li class="ico-accessibility cf">
                             <a href="javascript:void(0);" id="toggleAccessibility" title="Accessibility Dropdown">
@@ -618,7 +621,7 @@
                         </div>
                         <!-- End Single Widget -->
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-10 col-12">                          
+                    <div class="col-lg-3 col-md-6 mb-10 col-12">
                         <div class="single-footer links">
                             <h4>Get In Touch</h4>
                             <ul>
@@ -628,7 +631,7 @@
                                 <li><a href="https://www.youtube.com/channel/UCGS-CVdV-Em0GYu7cIa-s7A">Youtube </a><i class=" ti-youtube"></i></li>
                                 <li><a href="#!">Instagram </a><i class=" ti-instagram"></i></li>
                             </ul>
-                        </div>                         
+                        </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-10 col-12">
@@ -659,7 +662,7 @@
                             </ul>
                         </div>
                         <!-- End Single Widget -->
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -684,12 +687,12 @@
                                     Designed Developed and Maintained by | <a href="http://spit-tech.com/" target="_blank">SHAURYAPRABHATINFRATECH</a>
                                 </p>
                                 @*<p class="datep" style="color:white; margin:0px; text-align:center;">
-        <b>Visitors Count:</b>
-        <div id="sfcdgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" style="text-align:center;"></div>
-        <script type="text/javascript" src="https://counter3.optistats.ovh/private/counter.js?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf&down=async" async></script>
-        <noscript><a href="https://www.freecounterstat.com" title="free counter"><img src="https://counter3.optistats.ovh/private/freecounterstat.php?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" border="0" title="free counter" alt="free counter"></a></noscript>
-        @ApplicationInstance.Application["Totaluser"]
-                                </p>*@
+                                    <b>Visitors Count:</b>
+                                    <div id="sfcdgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" style="text-align:center;"></div>
+                                    <script type="text/javascript" src="https://counter3.optistats.ovh/private/counter.js?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf&down=async" async></script>
+                                    <noscript><a href="https://www.freecounterstat.com" title="free counter"><img src="https://counter3.optistats.ovh/private/freecounterstat.php?c=dgtlzdk2ap8s7nzd3xbasl4uuanp8ssf" border="0" title="free counter" alt="free counter"></a></noscript>
+                                    @ApplicationInstance.Application["Totaluser"]
+                                                            </p>*@
 
                             </div>
                         </div>
@@ -767,6 +770,23 @@
     <script src="Jq/newssc.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var colorTheme = localStorage.getItem("color");
+            if (colorTheme == "orange") {
+                orangecolor();
+            }
+            else if (colorTheme == "blue") {
+                bluecolor();
+            }
+            else if (colorTheme == "teablue") {
+                teabluecolor();
+            }
+            else if (colorTheme == "pink") {
+                pinkcolor();
+            }
+            else if (colorTheme == "green") {
+                greencolor();
+            }
+
             //highlight main menu
             $('.nav-menu li.active').removeClass('active');
             $('.nav-menu a[href]').each(function (ind, ele) {
