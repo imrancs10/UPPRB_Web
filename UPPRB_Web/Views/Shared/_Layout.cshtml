@@ -400,35 +400,35 @@
                             <a href="#skipCont" title="">Screen Reader</a>
                         </li>
 
-                        <li class="ico-accessibility cf">                            
-                                <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
-                <img class="top" style="background-color: #1674AC; height: 2em; width: 2em;">
-            </a>
-                                <ul style="visibility: hidden;">
-                                    <li>
-                                        <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
-                                            <img class="top" style="background-color: #b33d2f; height: 2em; width: 2em;">
-                                @*<img class="top " src="~/Content/images/orange.png" alt="Orange Theme">*@
-                                </a>
-        </li>
-        <li>
-            <a onclick="teabluecolor()" title="TeaBlue Theme" href="javascript:void(0);" class="alinktheme">
-                <img class="top" style="background-color: #3AAFA9; height: 2em; width: 2em;">
-            </a>
-        </li>
-        <li>
-            <a onclick="pinkcolor()" title="Pink Theme" href="javascript:void(0);" class="alinktheme">
-                <img class="top" style="background-color: #F92C85; height: 2em; width: 2em;">
-            </a>
-        </li>
-        <li>
-            <a onclick="greencolor()" title="Green Theme" href="javascript:void(0);" class="alinktheme">
-                <img class="top" style="background-color: #378805; height: 2em; width: 2em;">
-            </a>
-        </li>
+                        <li class="ico-accessibility cf">
+                            <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
+                                <img class="top" style="background-color: #1674AC; height: 2em; width: 2em;">
+                            </a>
+                            <ul style="visibility: hidden;">
+                                <li>
+                                    <a onclick="orangecolor()" title="Orange Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top" style="background-color: #b33d2f; height: 2em; width: 2em;">
+                                        @*<img class="top " src="~/Content/images/orange.png" alt="Orange Theme">*@
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="teabluecolor()" title="TeaBlue Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top" style="background-color: #3AAFA9; height: 2em; width: 2em;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="pinkcolor()" title="Pink Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top" style="background-color: #F92C85; height: 2em; width: 2em;">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="greencolor()" title="Green Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top" style="background-color: #378805; height: 2em; width: 2em;">
+                                    </a>
+                                </li>
 
-    </ul>
-</li>
+                            </ul>
+                        </li>
                         <!--<li class="ico-accessibility cf">
                         <a href="javascript:void(0);" onclick="bluecolor()" title="Blue Theme">
                             <img class="top" src="~/Content/images/blue.png" alt="Blue theme">
@@ -770,22 +770,44 @@
     <script src="Jq/newssc.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            debugger
+            var urlStrings = getUrlVars();
             var colorTheme = localStorage.getItem("color");
-            if (colorTheme == "orange") {
-                orangecolor();
+            if (urlStrings["colorTheme"] != "" && urlStrings["colorTheme"] != null && urlStrings["colorTheme"] != undefined) {
+                if (urlStrings["colorTheme"] == "orange") {
+                    orangecolor();
+                }
+                else if (urlStrings["colorTheme"] == "blue") {
+                    bluecolor();
+                }
+                else if (urlStrings["colorTheme"] == "teablue") {
+                    teabluecolor();
+                }
+                else if (urlStrings["colorTheme"] == "pink") {
+                    pinkcolor();
+                }
+                else if (urlStrings["colorTheme"] == "green") {
+                    greencolor();
+                }
             }
-            else if (colorTheme == "blue") {
-                bluecolor();
+            else if (colorTheme != "" && colorTheme != null && colorTheme != undefined) {
+                if (colorTheme == "orange") {
+                    orangecolor();
+                }
+                else if (colorTheme == "blue") {
+                    bluecolor();
+                }
+                else if (colorTheme == "teablue") {
+                    teabluecolor();
+                }
+                else if (colorTheme == "pink") {
+                    pinkcolor();
+                }
+                else if (colorTheme == "green") {
+                    greencolor();
+                }
             }
-            else if (colorTheme == "teablue") {
-                teabluecolor();
-            }
-            else if (colorTheme == "pink") {
-                pinkcolor();
-            }
-            else if (colorTheme == "green") {
-                greencolor();
-            }
+
 
             //highlight main menu
             $('.nav-menu li.active').removeClass('active');
@@ -806,6 +828,18 @@
             //        $(ele).parent().parent().show();
             //    }
             //});
+
+            function getUrlVars() {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+
             function _getCookie(name) {
                 var arg = name + "=";
                 var alen = arg.length;
