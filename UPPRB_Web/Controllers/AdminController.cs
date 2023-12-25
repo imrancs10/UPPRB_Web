@@ -310,7 +310,6 @@ namespace UPPRB_Web.Controllers
                 RecruitmentEndDate = Convert.ToDateTime(EndDate),
                 RecruitmentName = RecruitmentName,
                 is_active = Active == "on" ? true : false,
-                is_published = true,
             };
             AdminDetails detail = new AdminDetails();
             var saveStatus = detail.SavePopularRecruitment(recruitment);
