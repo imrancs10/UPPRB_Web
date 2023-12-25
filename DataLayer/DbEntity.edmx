@@ -188,6 +188,20 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PermissionName" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="PopularRecruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecruitmentName" Type="nvarchar(max)" />
+          <Property Name="NoOfSeat" Type="int" />
+          <Property Name="RecruitmentStartDate" Type="datetime" />
+          <Property Name="RecruitmentEndDate" Type="datetime" />
+          <Property Name="fileURL" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="is_active" Type="bit" />
+        </EntityType>
         <EntityType Name="PromotionDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -271,6 +285,7 @@
           <EntitySet Name="PACEntry" EntityType="Self.PACEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACUser" EntityType="Self.PACUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PopularRecruitment" EntityType="Self.PopularRecruitment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromotionDetail" EntityType="Self.PromotionDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PSMaster" EntityType="Self.PSMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RangeMaster" EntityType="Self.RangeMaster" Schema="dbo" store:Type="Tables" />
@@ -307,6 +322,7 @@
           <EntitySet Name="Visitor_Detail" EntityType="upprbDbModel.Visitor_Detail" />
           <EntitySet Name="LoginDetails" EntityType="upprbDbModel.LoginDetail" />
           <EntitySet Name="AdminUsers" EntityType="upprbDbModel.AdminUser" />
+          <EntitySet Name="PopularRecruitments" EntityType="upprbDbModel.PopularRecruitment" />
         </EntityContainer>
         <EntityType Name="Lookup">
           <Key>
@@ -558,6 +574,20 @@
           <Property Name="UserType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="RoleId" Type="Int32" />
           <Property Name="otp_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PopularRecruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecruitmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfSeat" Type="Int32" />
+          <Property Name="RecruitmentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="RecruitmentEndDate" Type="DateTime" Precision="3" />
+          <Property Name="fileURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="is_active" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -834,6 +864,21 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PopularRecruitments">
+            <EntityTypeMapping TypeName="upprbDbModel.PopularRecruitment">
+              <MappingFragment StoreEntitySet="PopularRecruitment">
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="fileURL" ColumnName="fileURL" />
+                <ScalarProperty Name="RecruitmentEndDate" ColumnName="RecruitmentEndDate" />
+                <ScalarProperty Name="RecruitmentStartDate" ColumnName="RecruitmentStartDate" />
+                <ScalarProperty Name="NoOfSeat" ColumnName="NoOfSeat" />
+                <ScalarProperty Name="RecruitmentName" ColumnName="RecruitmentName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

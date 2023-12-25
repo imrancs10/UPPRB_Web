@@ -110,6 +110,9 @@
     <Compile Include="Permission.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="PopularRecruitment.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PromotionDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

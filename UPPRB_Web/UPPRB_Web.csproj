@@ -26,7 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -1111,6 +1112,8 @@
     <Content Include="Views\Home\Sitemap.cshtml" />
     <Content Include="Views\Home\Syllabus.cshtml" />
     <Content Include="Views\Shared\_Syllabus_SideMenu.cshtml" />
+    <Content Include="Views\Admin\PopularRecruitmentList.cshtml" />
+    <Content Include="Views\Admin\PopularRecruitment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

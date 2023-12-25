@@ -47,5 +47,6 @@ namespace DataLayer
         public virtual DbSet<Visitor_Detail> Visitor_Detail { get; set; }
         public virtual DbSet<LoginDetail> LoginDetails { get; set; }
         public virtual DbSet<AdminUser> AdminUsers { get; set; }
+        public virtual DbSet<PopularRecruitment> PopularRecruitments { get; set; }
     }
 }

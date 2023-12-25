@@ -1,0 +1,187 @@
+﻿@using UPPRB_Web.Models.Masters;
+@{
+    ViewBag.Title = "Popular Recruitment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
+}
+<script src="~/Scripts/Masters/noticeEntry.js"></script>
+@*<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />*@
+<link href="~/Content/css/design1.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+<section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="card">
+                <header class="card-header">
+                    All Notice Details
+                </header>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="table-responsive" style="overflow:auto!important;">
+                            <table class="table table-bordered" id="tableCity"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<!--main content end-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(location.search);
+        const entryTypeId = urlParams.get('entryTypeId');
+
+        var tableCity = $("#tableCity").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ordering": false,
+            "pageLength": 10,
+            "scrollX": true,
+            "scrollY": "250px",
+            "scrollCollapse": true,
+            "className": 'dt-body-nowrap',
+            "PaginationType": 'full_numbers',
+            "ajax": {
+                "url": "/Admin/GetAllNotice?entryTypeId=" + entryTypeId,
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                {
+                    "title": "Action",
+                    "render": function (data, type, full, meta) {
+                        var htmlDOM = "";
+                        htmlDOM = '<div class="form-group mt-lg">' +
+                            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
+                            "<a style='margin-left: 35%;' id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + ")'> <i class='fa fa-pencil' style='color:black;cursor: pointer;'></i></a>&nbsp;&nbsp;" +
+                            '<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeleteNotice(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>' +
+                            '</div>' +
+                            '</div>';
+                        return htmlDOM;
+                    }
+                },
+                { "data": "EntryTypeName", "name": "EntryTypeName", "autoWidth": true, "title": "Entry Type" },
+                { "data": "NoticeTypeName", "name": "NoticeTypeName", "autoWidth": true, "title": "Notice Type" },
+                { "data": "NoticeCategoryName", "name": "NoticeCategoryName", "autoWidth": true, "title": "Notice Category" },
+                { "data": "Subject", "name": "Subject", "autoWidth": true, "title": "Subject" },
+                {
+                    "title": "Notice Date",
+                    "render": function (data, type, full, meta) {
+                        return '<span>' + formatDate(full.NoticeDate) + '</span>';
+                    }
+                },
+                {
+                    "title": "File URL",
+                    "render": function (data, type, full, meta) {
+                        if (full.fileURL) {
+                            var truncatedFileName = (full.fileURL.length > 20) ? full.fileURL.substring(0, 20) + '...' : full.fileURL
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href="' + full.fileURL + '">' + truncatedFileName + '</a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
+                    "title": "File Name",
+                    "render": function (data, type, full, meta) {
+                        if (full.filename) {
+                            var truncatedFileName = (full.filename.length > 20) ? full.filename.substring(0, 20) + '...' : full.filename
+                            return '<a target="_blank" style=" color: blue;white-space: nowrap;" href=/FilesUploaded/' + full.EntryTypeName + '/' + encodeURIComponent(full.filename) + '>' + truncatedFileName + '</a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
+                    "title": "Created Date",
+                    "render": function (data, type, full, meta) {
+                        return '<span>' + formatDate(full.CreatedDate) + '</span>';
+                    }
+                },
+                { "data": "IsNew", "name": "IsNew", "autoWidth": true, "title": "Highlighted New" }
+
+            ],
+            //'columnDefs': [
+            //    {
+            //        'targets': 1,
+            //        'render': function (data, type, full, meta) {
+            //            if (type === 'display') {
+            //                data = strtrunc(data, 10);
+            //            }
+
+            //            return data;
+            //        }
+            //    }
+            //]
+            //"fnRowCallback": function (nRow, aData, iDisplayIndex) {
+            //    var pageNumber = 0;
+            //    $.each($('.paginate_button'), function (index, button) {
+            //        if ($(this).css('background-image') == 'linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%)') {
+            //            pageNumber = $(this).html()
+            //        }
+            //    });
+            //    if (pageNumber == 0) {
+            //        $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+            //    }
+            //    else {
+            //        pageNumber = pageNumber - 1;
+            //        $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+            //    }
+
+            //    return nRow;
+            //},
+        });
+        var info = tableCity.page.info();
+        $("#tableCity_filter input")
+            .unbind() // Unbind previous default bindings
+            .bind("input", function (e) { // Bind our desired behavior
+                // If the length is 2 or more characters, or the user pressed ENTER, search
+                if (this.value.length >= 2 || e.keyCode == 13) {
+                    // Call the API search function
+                    tableCity.search(this.value).draw();
+                }
+                // Ensure we clear the search if they backspace far enough
+                if (this.value == "") {
+                    tableCity.search("").draw();
+                }
+                return;
+            });
+    });
+    function strtrunc(str, max, add) {
+        add = add || '...';
+        return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+    };
+    function DeleteNotice(Id) {
+        if (confirm("Are you sure want to Delete") == true) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{Id: "' + Id + '" }',
+                url: '/Admin/DeleteNoticeEntry',
+                success: function (data) {
+                    utility.alert.setAlert("Delete", "Successfully Deleted");
+                    location.reload();
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        }
+    }
+</script>
+
+<style type="text/css">
+    #tableCity td, #tableCity th {
+        white-space: nowrap;
+    }
+</style>

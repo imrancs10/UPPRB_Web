@@ -291,6 +291,40 @@ namespace UPPRB_Web.Controllers
             SetAlertMessage("Notice Saved", "Success");
             return View();
         }
+        public ActionResult PopularRecruitment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PopularRecruitment(string RecruitmentName, int NoOfSeat,
+           string StartDate, string EndDate, string fileURL, string Active, string hiddenNoticeID)
+        {
+            PopularRecruitment recruitment = new PopularRecruitment()
+            {
+                Id = !string.IsNullOrEmpty(hiddenNoticeID) ? Convert.ToInt32(hiddenNoticeID) : 0,
+                CreatedBy = UserData.UserId,
+                CreatedDate = DateTime.Today,
+                fileURL = fileURL,
+                NoOfSeat = Convert.ToInt32(NoOfSeat),
+                RecruitmentStartDate = Convert.ToDateTime(StartDate),
+                RecruitmentEndDate = Convert.ToDateTime(EndDate),
+                RecruitmentName = RecruitmentName,
+                is_active = Active == "on" ? true : false,
+                is_published = true,
+            };
+            AdminDetails detail = new AdminDetails();
+            var saveStatus = detail.SavePopularRecruitment(recruitment);
+            if (saveStatus == Enums.CrudStatus.Saved || saveStatus == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Popular Recruitment Saved", "Success");
+            }
+            
+            return View();
+        }
+        public ActionResult PopularRecruitmentList(int Id)
+        {
+            return View();
+        }
         public ActionResult AddFAQ()
         {
             var detail = new AdminDetails();

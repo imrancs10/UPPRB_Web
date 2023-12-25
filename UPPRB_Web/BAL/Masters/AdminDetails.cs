@@ -13,7 +13,31 @@ namespace UPPRB_Web.BAL.Masters
     public class AdminDetails
     {
         upprbDbEntities _db = null;
-
+        public Enums.CrudStatus SavePopularRecruitment(PopularRecruitment recruitment)
+        {
+            _db = new upprbDbEntities();
+            int _effectRow = 0;
+            if (recruitment.Id == 0)
+                _db.Entry(recruitment).State = EntityState.Added;
+            else
+            {
+                var _deptRow = _db.PopularRecruitments.Where(x => x.Id.Equals(recruitment.Id)).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.fileURL = recruitment.fileURL;
+                    _deptRow.RecruitmentEndDate = recruitment.RecruitmentEndDate;
+                    _deptRow.RecruitmentStartDate = recruitment.RecruitmentStartDate;
+                    _deptRow.RecruitmentName = recruitment.RecruitmentName;
+                    _deptRow.NoOfSeat = recruitment.NoOfSeat;
+                    _deptRow.is_active = recruitment.is_active;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+            }
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
         public Enums.CrudStatus SaveNotice(Notice notice)
         {
             _db = new upprbDbEntities();
