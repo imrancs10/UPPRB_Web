@@ -43,6 +43,8 @@ namespace UPPRB_Web.Controllers
             ViewData["LatestEvent"] = latestEvent;
             var highlightedNotice = detail.GetHighlightedNoticeDetail();
             ViewData["HighlightedNotice"] = highlightedNotice;
+            var PopularRecruitment = detail.GetPopularRecruitmentDetail();
+            ViewData["PopularRecruitment"] = PopularRecruitment;
             return View();
         }
         public ActionResult About()

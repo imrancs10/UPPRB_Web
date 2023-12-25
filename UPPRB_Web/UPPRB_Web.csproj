@@ -308,6 +308,7 @@
     <Compile Include="Models\Masters\EventCalenderModel.cs" />
     <Compile Include="Models\Masters\AdminUserModel.cs" />
     <Compile Include="Models\Masters\MedalEntryModel.cs" />
+    <Compile Include="Models\Masters\PopularRecruitmentModel.cs" />
     <Compile Include="Models\Masters\UserRoleModel.cs" />
     <Compile Include="Models\Masters\PSEntryModel.cs" />
     <Compile Include="Models\Masters\PromotionModel.cs" />

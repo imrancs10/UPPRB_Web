@@ -143,6 +143,26 @@ namespace UPPRB_Web.BAL.Masters
             return _list != null ? _list : new NoticeModel();
         }
 
+        public List<PopularRecruitmentModel> GetPopularRecruitmentDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.PopularRecruitments
+                         where not.is_active == true
+                         select new PopularRecruitmentModel
+                         {
+                             CreatedBy = not.CreatedBy,
+                             CreatedDate = not.CreatedDate,
+                             fileURL = not.fileURL,
+                             Id = not.Id,
+                             is_active = not.is_active,
+                             NoOfSeat = not.NoOfSeat,
+                             RecruitmentEndDate = not.RecruitmentEndDate,
+                             RecruitmentName = not.RecruitmentName,
+                             RecruitmentStartDate = not.RecruitmentStartDate
+                         }).OrderByDescending(x => x.RecruitmentEndDate).ToList();
+            return _list != null ? _list : new List<PopularRecruitmentModel>();
+        }
+
         public List<NoticeTypeModel> GetNoticeHirarchyDetail()
         {
             _db = new upprbDbEntities();
