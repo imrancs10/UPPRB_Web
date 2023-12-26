@@ -136,7 +136,7 @@
                 $('#myModal').modal('show');
             }
         </script>*@
-    <script>
+<script>
         $('#btnSignIn').click(function () {
             var IsOTPEnable = $('#hdnIsOTPEnable').val();
             var otpNumber = IsOTPEnable == "True" ? $('#otpNumber').val() : "0";
@@ -155,7 +155,7 @@
                     success: function (data) {
                         if (data == "Success") {
                             //redirect to admin dashboard
-                            window.location.href = '/Admin/Dashboard';
+                            window.location.href = '@Url.Action("Dashboard", "Admin")';
                         }
                         else
                             utility.alert.setAlert("Login", data);
@@ -258,7 +258,7 @@
             else
                 $(id).get(0).type = 'text';
         }
-    </script>
+</script>
     @*Ajax Loader*@
 
     <div class="ajaxloader">
