@@ -10,6 +10,7 @@ namespace UPPRB_Web.Models.Masters
     {
         public int Id { get; set; }
         public string RecruitmentName { get; set; }
+        public string RecruitmentSubject { get; set; }
         public Nullable<int> NoOfSeat { get; set; }
         public Nullable<System.DateTime> RecruitmentStartDate { get; set; }
         public Nullable<System.DateTime> RecruitmentEndDate { get; set; }

@@ -296,7 +296,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult PopularRecruitment(string RecruitmentName, int NoOfSeat,
+        public ActionResult PopularRecruitment(string RecruitmentName, string RecruitmentSubject, int NoOfSeat,
            string StartDate, string EndDate, string fileURL, string Active, string hiddenNoticeID)
         {
             PopularRecruitment recruitment = new PopularRecruitment()
@@ -309,6 +309,7 @@ namespace UPPRB_Web.Controllers
                 RecruitmentStartDate = Convert.ToDateTime(StartDate),
                 RecruitmentEndDate = Convert.ToDateTime(EndDate),
                 RecruitmentName = RecruitmentName,
+                RecruitmentSubject = RecruitmentSubject,
                 is_active = Active == "on" ? true : false,
             };
             AdminDetails detail = new AdminDetails();
@@ -317,7 +318,7 @@ namespace UPPRB_Web.Controllers
             {
                 SetAlertMessage("Popular Recruitment Saved", "Success");
             }
-            
+
             return View();
         }
         public ActionResult PopularRecruitmentList(int Id)

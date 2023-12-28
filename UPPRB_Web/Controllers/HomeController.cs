@@ -78,10 +78,10 @@ namespace UPPRB_Web.Controllers
         public ActionResult DirectRecruitment(int? drId)
         {
             var detail = new GeneralDetails();
-            var noticeTypeDetail = detail.GetRecursiveDirectRecruitmentDetail();
+            var noticeTypeDetail = detail.GetAllPopularRecruitmentDetail();
             ViewData["DRType"] = noticeTypeDetail;
 
-            var allnotice = detail.GetDirectRecruitmentDetail(drId).ToList();
+            var allnotice = detail.GetPopularRecruitmentDetail(drId).ToList();
             ViewData["DRDetail"] = allnotice;
             return View();
         }

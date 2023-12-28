@@ -23,5 +23,6 @@ namespace DataLayer
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<bool> is_active { get; set; }
+        public string RecruitmentSubject { get; set; }
     }
 }

@@ -528,6 +528,44 @@ namespace UPPRB_Web.BAL.Masters
                          }).OrderByDescending(x => x.UpdatedDate).ToList();
             return _list != null ? _list : new List<DirectRecruitmentModel>();
         }
+        public List<PopularRecruitmentModel> GetPopularRecruitmentDetail(int? drId = null)
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.PopularRecruitments
+                         where ((drId == null) || (drId != null && not.Id == drId)) && not.is_active == true
+                         select new PopularRecruitmentModel
+                         {
+                             CreatedDate = not.CreatedDate,
+                             fileURL = not.fileURL,
+                             Id = not.Id,
+                             is_active = not.is_active,
+                             NoOfSeat = not.NoOfSeat,
+                             RecruitmentEndDate = not.RecruitmentEndDate,
+                             RecruitmentName = not.RecruitmentName,
+                             RecruitmentStartDate = not.RecruitmentStartDate,
+                             RecruitmentSubject = not.RecruitmentSubject
+                         }).OrderByDescending(x => x.RecruitmentEndDate).ToList();
+            return _list != null ? _list : new List<PopularRecruitmentModel>();
+        }
+        public List<PopularRecruitmentModel> GetAllPopularRecruitmentDetail()
+        {
+            _db = new upprbDbEntities();
+            var _list = (from not in _db.PopularRecruitments
+                         where not.is_active == true
+                         select new PopularRecruitmentModel
+                         {
+                             CreatedDate = not.CreatedDate,
+                             fileURL = not.fileURL,
+                             Id = not.Id,
+                             is_active = not.is_active,
+                             NoOfSeat = not.NoOfSeat,
+                             RecruitmentEndDate = not.RecruitmentEndDate,
+                             RecruitmentName = not.RecruitmentName,
+                             RecruitmentStartDate = not.RecruitmentStartDate,
+                             RecruitmentSubject = not.RecruitmentSubject
+                         }).OrderByDescending(x => x.RecruitmentEndDate).ToList();
+            return _list != null ? _list : new List<PopularRecruitmentModel>();
+        }
         public IEnumerable<DirectRecruitmentModel> GetRecursiveDirectRecruitmentDetail()
         {
             _db = new upprbDbEntities();

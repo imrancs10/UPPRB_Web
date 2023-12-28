@@ -201,6 +201,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="int" />
           <Property Name="is_active" Type="bit" />
+          <Property Name="RecruitmentSubject" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PromotionDetail">
           <Key>
@@ -588,6 +589,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="is_active" Type="Boolean" />
+          <Property Name="RecruitmentSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -871,6 +873,7 @@
           <EntitySetMapping Name="PopularRecruitments">
             <EntityTypeMapping TypeName="upprbDbModel.PopularRecruitment">
               <MappingFragment StoreEntitySet="PopularRecruitment">
+                <ScalarProperty Name="RecruitmentSubject" ColumnName="RecruitmentSubject" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
