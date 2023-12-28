@@ -87,7 +87,7 @@ namespace UPPRB_Web.BAL.Masters
                              EntryTypeName = lookEntry2 != null ? lookEntry2.LookupName : "",
                              NoticeCategoryName = lookNotCategory2 != null ? lookNotCategory2.LookupName : "",
                              NoticeTypeName = lookNoticeType2 != null ? lookNoticeType2.LookupName : ""
-                         }).OrderByDescending(x => x.NoticeDate).ToList();
+                         }).OrderByDescending(x => x.CreatedDate).ToList();
             return _list != null ? _list : new List<NoticeModel>();
         }
         public List<NoticeModel> GetLatestEventDetail()
