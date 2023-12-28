@@ -81,7 +81,7 @@
                 <div class="single-widget" style="padding:2px 10px 2px 10px">
                     <nav>
                         <div class="nav nav-tabs text-uppercase  d-flex bd-highlight" id="nav-tab" role="tablist">
-                            <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>प्रचलित भर्ती: आवेदन करें  </b></a>
+                            <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>प्रचलित भर्ती </b></a>
                         </div>
                     </nav>
                     @*<p style="text-align: justify;">
@@ -104,8 +104,11 @@
                                     <span style="color: #ff6600;">
                                         ►
                                         <span style="color: #000000;">
-                                            <a style="color: #000000;" href="#" target="_blank" rel="noopener noreferrer">
-                                                @item.RecruitmentName । [ पदों की संख्या: @item.NoOfSeat ] [ आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ]
+                                            <a style="color: #000000;">
+                                                @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
+                                            </a>
+                                            <a href="#" target="_blank" rel="noopener noreferrer">
+                                                <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
                                             </a>
                                         </span>
                                     </span>
@@ -190,7 +193,7 @@
             <div class="col-md-10 col-sm-12 col-lg-12 col-xs-12">
                 <div class="modern-ticker mt-round">
                     <div class="mt-body">
-                        <div class="mt-news">
+                        <div class="mt-news">                            
                             @if (HighlightedNotice != null)
                             {
                                 <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
