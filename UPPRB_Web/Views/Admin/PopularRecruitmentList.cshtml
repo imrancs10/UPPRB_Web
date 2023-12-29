@@ -53,19 +53,19 @@
                 "datatype": "json"
             },
             "columns": [
-                {
-                    "title": "Action",
-                    "render": function (data, type, full, meta) {
-                        var htmlDOM = "";
-                        htmlDOM = '<div class="form-group mt-lg">' +
-                            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
-                            "<a style='margin-left: 35%;' id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + ")'> <i class='fa fa-pencil' style='color:black;cursor: pointer;'></i></a>&nbsp;&nbsp;" +
-                            '<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeleteNotice(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>' +
-                            '</div>' +
-                            '</div>';
-                        return htmlDOM;
-                    }
-                },
+                //{
+                //    "title": "Action",
+                //    "render": function (data, type, full, meta) {
+                //        var htmlDOM = "";
+                //        htmlDOM = '<div class="form-group mt-lg">' +
+                //            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
+                //            "<a style='margin-left: 35%;' id='lnkEdit' onclick='javascript:EditNotice(" + full.Id + ")'> <i class='fa fa-pencil' style='color:black;cursor: pointer;'></i></a>&nbsp;&nbsp;" +
+                //            '<a style=" color: blue;white-space: nowrap;" onclick="javascript: DeleteNotice(' + full.Id + ')"><i class="fa fa-trash" style="color:red;cursor: pointer;"></i></a>' +
+                //            '</div>' +
+                //            '</div>';
+                //        return htmlDOM;
+                //    }
+                //},
                 { "data": "RecruitmentName", "name": "RecruitmentName", "autoWidth": true, "title": "Recruitment Name" },
                 { "data": "RecruitmentSubject", "name": "RecruitmentSubject", "autoWidth": true, "title": "Recruitment Subject" },
                 { "data": "NoOfSeat", "name": "NoOfSeat", "autoWidth": true, "title": "No Of Seat" },
