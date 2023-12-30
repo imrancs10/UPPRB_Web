@@ -28,6 +28,7 @@ namespace UPPRB_Web.BAL.Masters
                     _deptRow.RecruitmentEndDate = recruitment.RecruitmentEndDate;
                     _deptRow.RecruitmentStartDate = recruitment.RecruitmentStartDate;
                     _deptRow.RecruitmentName = recruitment.RecruitmentName;
+                    _deptRow.RecruitmentSubject = recruitment.RecruitmentSubject;
                     _deptRow.NoOfSeat = recruitment.NoOfSeat;
                     _deptRow.is_active = recruitment.is_active;
                     _db.Entry(_deptRow).State = EntityState.Modified;

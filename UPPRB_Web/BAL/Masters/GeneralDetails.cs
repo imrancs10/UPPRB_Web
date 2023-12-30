@@ -147,7 +147,6 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.PopularRecruitments
-                         where not.is_active == true
                          select new PopularRecruitmentModel
                          {
                              CreatedBy = not.CreatedBy,
