@@ -95,34 +95,31 @@
                         <p style="text-align: justify;"><img class="alignleft size-full wp-image-1229" src="wp-content/uploads/2018/12/2-8.jpg" alt="" width="263" height="42" /></p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>*@
-                    @if (PopularRecruitment != null)
-                    {
-                        foreach (var item in PopularRecruitment)
+                    <div style=" height: 217px; overflow: auto; overflow-x: hidden;">
+                        @if (PopularRecruitment != null)
                         {
-                            <p>
-                                <span style="color: #000000;">
-                                    <span style="color: #ff6600;">
-                                        ►
-                                        <span style="color: #000000;">
-                                            <a style="color: #000000;">
-                                                @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
-                                            </a>
-                                            <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
-                                                <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
-                                            </a>
+                            foreach (var item in PopularRecruitment)
+                            {
+                                <p style="margin-bottom:0px;">
+                                    <span style="color: #000000;">
+                                        <span style="color: #ff6600;">
+                                            ►
+                                            <span style="color: #000000;">
+                                                <a style="color: #000000;">
+                                                    @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
+                                                </a>
+                                                <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
+                                                    <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
+                                                </a>
+                                            </span>
                                         </span>
                                     </span>
-                                </span>
-                            </p>
+                                </p>
+                            }
                         }
-                    }
-
-
-
+                    </div>
 
                     @*<p style="text-align: justify;"><a href="news-updates/index.html"><span style="font-size: 14pt;"><strong><span style="color: #ff6600;">Read More</span></strong></span></a></p>*@
-
-
                 </div>
 
 
@@ -193,7 +190,7 @@
             <div class="col-md-10 col-sm-12 col-lg-12 col-xs-12">
                 <div class="modern-ticker mt-round">
                     <div class="mt-body">
-                        <div class="mt-news">                            
+                        <div class="mt-news">
                             @if (HighlightedNotice != null)
                             {
                                 <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
