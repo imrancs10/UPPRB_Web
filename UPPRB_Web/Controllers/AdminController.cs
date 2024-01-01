@@ -291,17 +291,17 @@ namespace UPPRB_Web.Controllers
             SetAlertMessage("Notice Saved", "Success");
             return View();
         }
-        public ActionResult PopularRecruitment()
+        public ActionResult PopularRecruitment(int? PRId)
         {
             return View();
         }
         [HttpPost]
         public ActionResult PopularRecruitment(string RecruitmentName, string RecruitmentSubject, int NoOfSeat,
-           string StartDate, string EndDate, string fileURL, string Active, string hiddenNoticeID)
+           string StartDate, string EndDate, string fileURL, string Active, string hiddenPRID)
         {
             PopularRecruitment recruitment = new PopularRecruitment()
             {
-                Id = !string.IsNullOrEmpty(hiddenNoticeID) ? Convert.ToInt32(hiddenNoticeID) : 0,
+                Id = !string.IsNullOrEmpty(hiddenPRID) ? Convert.ToInt32(hiddenPRID) : 0,
                 CreatedBy = UserData.UserId,
                 CreatedDate = DateTime.Today,
                 fileURL = fileURL,
@@ -348,6 +348,13 @@ namespace UPPRB_Web.Controllers
             recordsTotal = result.Count();
             var data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult GetPRForEdit(int? PRId = null)
+        {
+            var detail = new GeneralDetails();
+            var result = detail.GetPopularRecruitmentDetail(PRId).FirstOrDefault();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddFAQ()
         {

@@ -157,7 +157,8 @@ namespace UPPRB_Web.BAL.Masters
                              NoOfSeat = not.NoOfSeat,
                              RecruitmentEndDate = not.RecruitmentEndDate,
                              RecruitmentName = not.RecruitmentName,
-                             RecruitmentStartDate = not.RecruitmentStartDate
+                             RecruitmentStartDate = not.RecruitmentStartDate,
+                             RecruitmentSubject = not.RecruitmentSubject
                          }).OrderByDescending(x => x.RecruitmentEndDate).ToList();
             return _list != null ? _list : new List<PopularRecruitmentModel>();
         }
@@ -531,7 +532,7 @@ namespace UPPRB_Web.BAL.Masters
         {
             _db = new upprbDbEntities();
             var _list = (from not in _db.PopularRecruitments
-                         where ((drId == null) || (drId != null && not.Id == drId)) && not.is_active == true
+                         where ((drId == null) || (drId != null && not.Id == drId))
                          select new PopularRecruitmentModel
                          {
                              CreatedDate = not.CreatedDate,
