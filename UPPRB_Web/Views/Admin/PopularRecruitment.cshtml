@@ -22,15 +22,16 @@
         </a>*@
                     @using (Html.BeginForm("PopularRecruitment", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
+                        <input type="hidden" value="" name="hiddenPRID" />
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="exampleInputEmail1">Recruitment Name</label>
                                 <input type="text" class="form-control" id="RecruitmentName" placeholder="Recruitment Name" name="RecruitmentName">
                             </div>
-                           <div class="col-lg-6">
-                               <label for="exampleInputEmail1">Recruitment Subject</label>
-                               <textarea type="text" class="form-control" id="RecruitmentSubject" placeholder="Recruitment Subject" name="RecruitmentSubject"> </textarea>
-                           </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Recruitment Subject</label>
+                                <textarea type="text" class="form-control" id="RecruitmentSubject" placeholder="Recruitment Subject" name="RecruitmentSubject"> </textarea>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -88,50 +89,24 @@
 
 
         const urlParams = new URLSearchParams(location.search);
-        const noticeId = urlParams.get('noticeId');
+        const noticeId = urlParams.get('PRId');
         if (noticeId != null && noticeId != undefined) {
             $.ajax({
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 type: 'POST',
-                data: '{lookupTypeId: 0,lookupType: "UploadType" }',
-                url: '/Admin/GetNoticeForEdit?noticeId=' + noticeId,
+                //data: '{lookupTypeId: 0,lookupType: "UploadType" }',
+                url: '/Admin/GetPRForEdit?PRId=' + noticeId,
                 success: function (data) {
-                    $('#hiddenId').val(data.Id);
-                    $('[name*=EntryTypeName]').val(data.EntryTypeName);
-                    $('[name*=hiddenNoticeID]').val(data.Id);
-                    //$('#btnSave').val('Update');
-                    $('#EntryType').val(data.EntryTypeId);
-                    //$('#NoticeType').val(NoticeType);
-                    FillNoticeType(data.EntryTypeId, data.NoticeType)
-                    FillNoticeCategory(data.NoticeType, data.NoticeCategoryId);
-                    //$('#NoticeCategory').val(NoticeCategoryId);
-                    $('#Subject').val(data.Subject);
-                    $('#NoticeDate').val(formatDateyyyyMMdd(data.NoticeDate));
+                    $('[name*=hiddenPRID]').val(data.Id);
+                    $('[name*=RecruitmentName]').val(data.RecruitmentName);
+                    $('#RecruitmentSubject').val(data.RecruitmentSubject);
+                    $('#NoOfSeat').val(data.NoOfSeat);
+                    $('#StartDate').val(formatDateyyyyMMdd(data.RecruitmentStartDate));
+                    $('#EndDate').val(formatDateyyyyMMdd(data.RecruitmentEndDate));
                     $('#fileURL').val(data.fileURL != "null" ? data.fileURL : "");
-                    //$('#customFile').val(filename);
-                    $('#EntryType').change();
-                    //if (EntryTypeName == 'Notice')
-                    //    $('#divNotice').css('display', '');
-                    //$('#btnAddNotice')[0].click();
                     $('#myModal').modal('show');
-                    $('#highlightNew').prop('checked', data.IsNew)
-
-                    if (data.filename != null && data.filename != "" && data.filename != undefined && data.filename != "") {
-                        $('[id*=customRadioInline2]').prop("checked", true);
-                        //add upload document link
-                        $('#customFile').parent().find('a').remove();
-                        $('#customFile').addClass('hidden');
-                        var fileUrl = '/FilesUploaded/' + data.EntryTypeName + '/' + encodeURIComponent(data.filename);
-                        var truncatedFileName = (data.filename.length > 50) ? data.filename.substring(0, 50) + '...' : data.filename
-                        var html = "<a href='" + fileUrl + "' target='_blank'>" + truncatedFileName + "</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
-                        $(html).insertAfter('#customFile');
-                        $('#btnSave').val('Update');
-                        $('#customFile').removeAttr('required');
-                    }
-                    else
-                        $('[id*=customRadioInline1]').prop("checked", true);
-                    $('[name*=customRadioInline1]').change();
+                    $('#Active').prop('checked', data.is_active)
                 },
                 failure: function (response) {
                     console.log(response);

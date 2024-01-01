@@ -82,7 +82,7 @@ namespace UPPRB_Web.Controllers
             var noticeTypeDetail = detail.GetAllPopularRecruitmentDetail();
             ViewData["DRType"] = noticeTypeDetail;
 
-            var allnotice = detail.GetPopularRecruitmentDetail(drId).ToList();
+            var allnotice = detail.GetPopularRecruitmentDetail(drId).Where(not => not.is_active == true).ToList();
             ViewData["DRDetail"] = allnotice;
             return View();
         }
