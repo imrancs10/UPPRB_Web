@@ -43,8 +43,9 @@ namespace UPPRB_Web.Controllers
             ViewData["LatestEvent"] = latestEvent;
             var highlightedNotice = detail.GetHighlightedNoticeDetail();
             ViewData["HighlightedNotice"] = highlightedNotice;
-            var currentDate = DateTime.Now;
-            var PopularRecruitment = detail.GetPopularRecruitmentDetail().Where(x => currentDate.Date <= x.RecruitmentEndDate.Value.Date && x.is_active == true).ToList();
+            //var currentDate = DateTime.Now;
+            //currentDate.Date <= x.RecruitmentEndDate.Value.Date && 
+            var PopularRecruitment = detail.GetPopularRecruitmentDetail().Where(x => x.is_active == true).ToList();
             ViewData["PopularRecruitment"] = PopularRecruitment;
             return View();
         }

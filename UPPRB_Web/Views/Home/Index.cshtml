@@ -108,9 +108,12 @@
                                                 <a style="color: #000000;">
                                                     @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
                                                 </a>
-                                                <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
-                                                    <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
-                                                </a>
+                                                @if (DateTime.Now.Date <= item.RecruitmentEndDate.Value.Date)
+                                                {
+                                                    <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
+                                                        <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
+                                                    </a>
+                                                }
                                             </span>
                                         </span>
                                     </span>
