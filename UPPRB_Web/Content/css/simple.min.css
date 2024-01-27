@@ -36,11 +36,11 @@ background:url('../../images/themes/simple/ico.png')
 
 .ico-bar_edge { background-position: 0 -42px }
 
-.header { background: url('../../images/themes/simple/header.jpg') center no-repeat }
+.header { background: url('/Content/Images/loginbg.jpg') center no-repeat }
 
 .nav-main { background-color: #0f3fa1 }
 
-.nav-main ul.wrapper>li { background: url('../../images/themes/simple/nav_main-split.gif') center left no-repeat }
+.nav-main ul.wrapper>li { background: url('/Content/Images/loginbg.jpg') center left no-repeat }
 
 .nav-main ul.wrapper>li a { color: #757575 }
 
