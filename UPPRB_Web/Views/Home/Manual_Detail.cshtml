@@ -11,7 +11,7 @@
         <div class="row">
             @Html.Partial("_Manual_SideMenu", noticeType)
 
-            <div class="col-lg-9 w_content pt-20 mt-0">
+            <div class="col w_content pt-20 mt-0">
                 <h3 class="w-hd-u">
                     Manual:
                     @if (noticeData.Count > 0)
@@ -19,7 +19,7 @@
                         @noticeData[0].NoticeTypeName <span> | </span> @noticeData[0].NoticeCategoryName
                     }
                 </h3>
-                <ul class="w_ul">
+                <ul class="w_ul"style="display: flex;flex-wrap: wrap;">
                     @foreach (var item in noticeData)
                     {
                         <li>

@@ -1,4 +1,6 @@
-
+.goog-te-gadget-simple .VIpgJd-ZVi9od-xl07Ob-lTBxed {
+	display: none;
+}
 /* Tablet Screen */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 .section{
@@ -336,6 +338,7 @@
 }
 /* Mobile Screen */
 @media only screen and (max-width: 767px) {
+	
 .breadcrumbs {
 	padding: 90px 0 90px;
 }

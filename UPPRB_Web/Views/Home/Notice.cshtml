@@ -4,18 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var noticeData = ViewData["NoticeData"] as List<NoticeModel>;
     var noticeType = ViewData["NoticeType"] as List<NoticeTypeModel>;
+    int j=1;
 }
 <script src="~/Scripts/Masters/noticePage.js"></script>
 <section class="hero-slider">
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Notice_SideMenu", noticeType)
-            <div class="col-lg-9 w_content pt-20 mt-0">
+            <div class="col w_content pt-20 mt-0">
                 <div id="DivContent">
                     <div id="Panel1">
                         <h2 class="w-bgph ">Notice</h2>
                         <div class="row" style="margin-bottom: 12px;">
-                            <div class="col-lg-4">
+                            <div class="col">
                                 <label id="lblPublishDate" for="exampleInputPassword1">Date From</label>
                                 <input type="date" class="form-control" id="DateFrom" placeholder="Date From" name="DateFrom">
                             </div>
@@ -33,6 +34,7 @@
                                 <ul id="noticeList">
                                     @foreach (var item in noticeData)
                                     {
+                                        j = j + 1;
                                         @*<span id="spnLink"></span>*@
                                         if (!string.IsNullOrEmpty(item.filename))
                                         {
@@ -94,14 +96,18 @@
         $('a[href="/Home/Notice"]').parent().addClass('active')
     });
     $('#SearchDate').click(function () {
+        debugger
         var dateFrom = new Date($('#DateFrom').val());
         var dateTo = new Date($('#DateTo').val());
+        var k =@j;
+        alert(k);
         for (var i = $('.date').length - 1; i >= 0; i--) {
             var element = $('.date').eq(i);
             var noticeDate = $(element).html().replaceAll("\n", "").replaceAll(" ", "").replace("Date:", "");
             if (noticeDate.indexOf("/"))
                 noticeDate = noticeDate.replaceAll("/", "-");
             var checkDate = new Date(noticeDate.split("-").reverse().join("-"));
+            debugger
             if (checkDate < dateFrom || checkDate > dateTo) {
                 $(element).parent().remove();
             }

@@ -54,6 +54,7 @@
 
     <script type="text/javascript" language="javascript">
         function renderTime() {
+           
             var currentdate = new Date();
             var currentTime = new Date();
             var diem = "AM";
@@ -109,11 +110,15 @@
     <script>
         function orangecolor() {
             localStorage.setItem("color", "orange");
+            $(".goog-te-gadget-simple").css("backgroundColor", "#b33d2f");
+            $(".goog-te-gadget-simple").css("border", "none");
             $(".block-cmf-content").css("backgroundColor", "#b33d2f");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
-            });
 
+            });
+            $(".nav-tabs .nav-link.active").css("backgroundColor", "#b33d2f");
+            $(".w-bgph ").css("backgroundColor", "#b33d2f");
 
             //$(".menu-area, h4").css({
             //    background: "-webkit-gradient(linear, left top, left bottom, from(#ff7357), to(#b33d2f))"
@@ -136,7 +141,10 @@
         }
 
         function bluecolor() {
+
             localStorage.setItem("color", "blue");
+            $(".goog-te-gadget-simple").css("backgroundColor", "#1674AC");
+            $(".goog-te-gadget-simple").css("border", "none");
             $(".block-cmf-content").css("backgroundColor", "#1674AC");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
@@ -144,6 +152,9 @@
             $(".header.shop .header-inner").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
             });
+            $(".nav-tabs .nav-link.active").css("backgroundColor", "#1674AC");
+            $(".w-bgph ").css("backgroundColor", "#1674AC");
+            $("a.hover").css("backgroundColor", "#1674AC");
 
             //$(".menu-area, h4").css({
             //    background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
@@ -165,6 +176,8 @@
 
         function teabluecolor() {
             localStorage.setItem("color", "teablue");
+            $(".goog-te-gadget-simple").css("backgroundColor", "#3AAFA9");
+            $(".goog-te-gadget-simple").css("border", "none");
             $(".block-cmf-content").css("backgroundColor", "#3AAFA9");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#3AAFA9), to(#266184))"
@@ -172,7 +185,8 @@
             $(".header.shop .header-inner").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#3AAFA9), to(#266184))"
             });
-
+            $(".nav-tabs .nav-link.active").css("backgroundColor", "#3AAFA9");
+            $(".w-bgph ").css("backgroundColor", "#3AAFA9");
             //$(".menu-area, h4").css({
             //    background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
             //});
@@ -191,36 +205,41 @@
 
         }
 
-        function pinkcolor() {
-            localStorage.setItem("color", "pink");
-            $(".block-cmf-content").css("backgroundColor", "#F92C85");
+        function khadicolor() {
+            localStorage.setItem("color", "khadi");
+            $(".goog-te-gadget-simple").css("backgroundColor", "#ddbf64");
+            $(".goog-te-gadget-simple").css("border", "none");
+            $(".block-cmf-content").css("backgroundColor", "#ddbf64");
             $(".menu-area").css({
-                background: "-webkit-gradient(linear, left top, left bottom, from(#F92C85), to(#F92C85))"
+                background: "-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(221, 191, 100)), to(rgb(195 159 49)))"
             });
             $(".header.shop .header-inner").css({
-                background: "-webkit-gradient(linear, left top, left bottom, from(#F92C85), to(#F92C85))"
+                background: "-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(221, 191, 100)), to(rgb(195 159 49)))"
             });
-
+            $(".nav-tabs .nav-link.active").css("backgroundColor", "#ddbf64");
+            $(".w-bgph ").css("backgroundColor", "#ddbf64");
             //$(".menu-area, h4").css({
             //    background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
             //});
-            $(".headline").css("backgroundColor", "#F92C85");
-            $(".slogan-name").css("color", "#F92C85");
+            $(".headline").css("backgroundColor", "#ddbf64");
+            $(".slogan-name").css("color", "#ddbf64");
 
 
-            $(".themecolor").css("color", "#F92C85");
-            $(".stickysocial").css("backgroundColor", "#F92C85");
-            $(".section-title12 h1").css("backgroundColor", "#F92C85");
-            $(".footer").css("backgroundColor", "#F92C85");
-            $(".dropdown-menu").css("backgroundColor", "#F92C85");
-            $(".mainmenu .active a").css("backgroundColor", "#F92C85");
+            $(".themecolor").css("color", "#ddbf64");
+            $(".stickysocial").css("backgroundColor", "#ddbf64");
+            $(".section-title12 h1").css("backgroundColor", "#ddbf64");
+            $(".footer").css("backgroundColor", "#ddbf64");
+            $(".dropdown-menu").css("backgroundColor", "#ddbf64");
+            $(".mainmenu .active a").css("backgroundColor", "#ddbf64");
 
-            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#3AAFA9");
+            $(".dropdown-menu > li > a:hover").css("backgroundColor", "#ddbf64");
 
         }
 
         function greencolor() {
             localStorage.setItem("color", "green");
+            $(".goog-te-gadget-simple").css("backgroundColor", "#378805");
+            $(".goog-te-gadget-simple").css("border", "none");
             $(".block-cmf-content").css("backgroundColor", "#378805");
             $(".menu-area").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#378805), to(#378805))"
@@ -228,7 +247,8 @@
             $(".header.shop .header-inner").css({
                 background: "-webkit-gradient(linear, left top, left bottom, from(#378805), to(#378805))"
             });
-
+            $(".nav-tabs .nav-link.active").css("background-color", "#378805");
+            $(".w-bgph ").css("backgroundColor", "#378805");
             //$(".menu-area, h4").css({
             //    background: "-webkit-gradient(linear, left top, left bottom, from(#1674AC), to(#266184))"
             //});
@@ -371,7 +391,7 @@
                 <div class="common-left clearfix">
                     <ul>
                         <li>
-                            <p id="clockDisplay" class="datep"></p>
+                            <p id="clockDisplay" class="datep notranslate"></p>
                         </li>
                         <!--<li>
                             <p class="datep" style="color:black">
@@ -392,7 +412,7 @@
                         </li>
 
 
-                        <li class="ico-skip cf w-sm-hide">
+                        <li class="ico-skip cf">
                             <a href="#skipCont" title="">Skip to main content</a>
                         </li>
 
@@ -417,8 +437,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a onclick="pinkcolor()" title="Pink Theme" href="javascript:void(0);" class="alinktheme">
-                                        <img class="top" style="background-color: #F92C85; height: 2em; width: 2em;">
+                                    <a onclick="khadicolor()" title="khadi Theme" href="javascript:void(0);" class="alinktheme">
+                                        <img class="top" style="background-color: #ddbf64; height: 2em; width: 2em;">
                                     </a>
                                 </li>
                                 <li>
@@ -462,7 +482,7 @@
                         </li>
 
 
-                        <li class="ico-social cf w-sm-hide">
+                        <li class="ico-social cf">
                             <a href="javascript:void(0);" id="toggleSocial" title="Social Medias">
                                 <img class="top" src="~/Content/images/ico-social.png" alt="Social Medias">
                             </a>
@@ -483,9 +503,10 @@
                                 <img class="top" src="~/Content/images/ico-sitemap.png" alt="Sitemap">
                             </a>
                         </li>
-                        @*<li>
-                            <div id="google_translate_element"></div>
-                        </li>*@
+                        <li class="cf">
+                            <div id="google_translate_element" style="margin: 4px;">
+                            </div>
+                        </li>
 
                     </ul>
                 </div>
@@ -591,7 +612,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 mb-10 col-12">
                         <!-- Single Widget -->
-                        <div class="single-footer links">
+                        <div class="single-footer links ">
                             <h4>Contact Us</h4>
                             <ul>
                                 <li>
@@ -678,7 +699,7 @@
                                     This is the official Website of Uttar Pradesh Police Recruitment & Promotion Board. |
                                     Best viewed in 1366*768 pixel resolution.
                                 </p>
-                                <p style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">
+                                <p class="website-counter" style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">Visitor's count = </p><p style="margin-top: 0px; margin-bottom: 0px; font-size: 12px; text-align: center">
                                     &nbsp;<a href="/Home/Copyright_Statement">Copyright Statement </a>| <a href="/Home/Hyperlink_Policy">Hyperlinking Policy</a> | <a href="/Home/Terms_Conditions">
                                         Terms &amp; Conditions
                                     </a>|<a href="/Home/Privacy_Policy"> Privacy Policy </a>|<a href="/Home/Disclaimer"> Disclaimer </a>
@@ -770,7 +791,21 @@
     <script src="Jq/newssc.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            debugger
+            //$(".goog-te-gadget-simple  .VIpgJd-ZVi9od-xl07Ob-lTBxed ").css("display", "none");
+            //visitor count
+            var counterContainer = document.querySelector(".website-counter");
+            var visitCount = localStorage.getItem("page_view");
+
+            // Check if page_view entry is present
+            if (visitCount) {
+                visitCount = Number(visitCount) + 1;
+                localStorage.setItem("page_view", visitCount);
+            } else {
+                visitCount = 1;
+                localStorage.setItem("page_view", 1);
+            }
+            counterContainer.innerHTML = "Visitor's Count = "+ visitCount;
+
             var urlStrings = getUrlVars();
             var colorTheme = localStorage.getItem("color");
             if (urlStrings["colorTheme"] != "" && urlStrings["colorTheme"] != null && urlStrings["colorTheme"] != undefined) {
@@ -783,8 +818,8 @@
                 else if (urlStrings["colorTheme"] == "teablue") {
                     teabluecolor();
                 }
-                else if (urlStrings["colorTheme"] == "pink") {
-                    pinkcolor();
+                else if (urlStrings["colorTheme"] == "khadi") {
+                    khadicolor();
                 }
                 else if (urlStrings["colorTheme"] == "green") {
                     greencolor();
@@ -800,8 +835,8 @@
                 else if (colorTheme == "teablue") {
                     teabluecolor();
                 }
-                else if (colorTheme == "pink") {
-                    pinkcolor();
+                else if (colorTheme == "khadi") {
+                    khadicolor();
                 }
                 else if (colorTheme == "green") {
                     greencolor();
@@ -887,11 +922,14 @@
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
+
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
                 includedLanguages: 'hi,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
             }, 'google_translate_element');
+            //new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
         }
     </script>
 </body>

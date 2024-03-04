@@ -9,12 +9,12 @@
     <div class="pr-15 pl-15">
         <div class="row">
             @Html.Partial("_Manual_SideMenu", noticeType)
-            <div class="col-lg-9 w_content pt-20 mt-0">                
+            <div class="col w_content pt-20 mt-0">                
                 <h2 class="w-bgph">Recruitment Rules</h2>
                     @foreach (var item in noticeType)
                     {
                         <h3 class="w-hd-u">@item.LookupName</h3>
-                        <ul class="w_ul">
+                        <ul class="w_ul" style="display: flex;flex-wrap: wrap;">
                             @foreach (var category in item.NoticeCategories)
                             {
                                 <li>

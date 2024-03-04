@@ -5,8 +5,17 @@
     font-size: 14px;
 }
 
-
-
+/*google translate*/
+.goog-logo-link, .gskiptranslate, .goog-te-gadget span, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame, div#goog-gt- {
+    display: none !important;
+}
+.goog-te-gadget-simple .VIpgJd-ZVi9od-xl07Ob-lTBxed{
+    display:none;
+}
+.goog-te-gadget-simple{
+    background-color:inherit;
+    border:none;
+}
 p {
     margin-bottom: 15px;
 }
@@ -19,7 +28,10 @@ p {
     padding-top: 10px;
     padding-bottom: 0px;
 }
-
+.w-ul {
+    display: flex;
+    flex-wrap: wrap;
+}
 .padd123 {
     padding: 10px 30px;
 }
@@ -7777,7 +7789,6 @@ a {
 .headline {
     background-color: #f6f6f6;
     padding: 8px;
-    margin-top: -30px;
 }
 
 
@@ -7987,15 +7998,11 @@ nav1 {
         nav1 ul li {
             line-height: 30px;
         }
-
-           
-
-
-
-
-
+    .col-sm-9 {
+        width:100%;
+    }
     .text-blue {
-        color: white !important;
+        color: #173064 !important;
     }
 
     aside {
@@ -8006,7 +8013,7 @@ nav1 {
         float: left;
         padding-top: 10px;
         padding-bottom: 10px;
-        background-color: #173064;
+        background-color: #FFF;
     }
 
     header1 {
@@ -8021,7 +8028,7 @@ nav1 {
     }
 
     #nav-btn {
-        fill: white;
+        fill: #173064;
         height: 27px;
         width: 27px;
         position: absolute;
@@ -8050,8 +8057,8 @@ nav1 {
 
 
     .colorchange {
-        background-color: #173064;
-        color: white;
+            background-color: #fff;
+            color: #173064;
     }
 
         .colorchange:hover {
