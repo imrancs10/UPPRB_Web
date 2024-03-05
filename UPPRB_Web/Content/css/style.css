@@ -16,6 +16,9 @@
     background-color:inherit;
     border:none;
 }
+a.lb-next, a.lb-prev{
+    opacity:1
+}
 p {
     margin-bottom: 15px;
 }

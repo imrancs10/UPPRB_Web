@@ -52,6 +52,7 @@ a, a:hover, a:focus {
     background-color: #FFFFFF;
     background-image: url("/Content/Images/loginbg.jpg");
     background-repeat:no-repeat;
+    background-size:100%;
 }
 
 .form-signin {
