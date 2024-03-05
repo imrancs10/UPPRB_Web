@@ -19,6 +19,7 @@ using System.IO;
 using System.Net;
 using static System.Net.WebRequestMethods;
 using UPPRB_Web.BAL.Masters;
+using Twilio.Http;
 
 namespace UPPRB_Web.Controllers
 {
@@ -102,7 +103,7 @@ namespace UPPRB_Web.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult GetLogin(string username, string password, string otp)
+        public ActionResult GetLogin(string username, string password, string otp)
         {
             // Code for validating the CAPTCHA  
             bool isOTPENable = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);
@@ -120,22 +121,29 @@ namespace UPPRB_Web.Controllers
                     {
                         setUserClaim();
                         _details.InsertLoginDetail();
-                        return Json("Success", JsonRequestBehavior.AllowGet);
+                        return RedirectToAction("Dashboard", "Admin");
+                        //return Json("Success", JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
-                        return Json(_response, JsonRequestBehavior.AllowGet);
+                        SetAlertMessage(_response, "Login Fail");
+                        return RedirectToAction("index");
+                        //return Json(_response, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
                 {
-                    return Json("OTP is not valid", JsonRequestBehavior.AllowGet);
+                    SetAlertMessage("OTP is not valid", "Login Fail");
+                    return RedirectToAction("index");
+                    //return Json("OTP is not valid", JsonRequestBehavior.AllowGet);
                 }
 
             }
             else
             {
-                return Json("Captcha is not valid", JsonRequestBehavior.AllowGet);
+                SetAlertMessage("Captcha is not valid", "Login Fail");
+                return RedirectToAction("index");
+                //return Json("Captcha is not valid", JsonRequestBehavior.AllowGet);
             }
         }
 
