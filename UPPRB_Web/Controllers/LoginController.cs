@@ -121,6 +121,7 @@ namespace UPPRB_Web.Controllers
                     {
                         setUserClaim();
                         _details.InsertLoginDetail();
+                        //SetAlertMessage("Success", "Login Success");
                         return RedirectToAction("Dashboard", "Admin");
                         //return Json("Success", JsonRequestBehavior.AllowGet);
                     }

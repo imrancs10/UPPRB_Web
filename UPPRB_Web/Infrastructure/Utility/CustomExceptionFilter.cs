@@ -18,6 +18,8 @@ namespace UPPRB_Web.Infrastructure.Utility
             //{
             //    ViewName = "ExceptionPage"
             //};
+            while (e.InnerException != null) 
+                e = e.InnerException; 
             logger.Error(e.InnerException);
         }
     }
