@@ -36,6 +36,11 @@ namespace UPPRB_Web.Controllers
     {
         //Declaring Log4Net
         ILog logger = LogManager.GetLogger(typeof(HomeController));
+        public ActionResult Home()
+        {
+            return View();
+
+        }
         public ActionResult Index()
         {
             var detail = new GeneralDetails();

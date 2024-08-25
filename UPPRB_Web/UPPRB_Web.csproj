@@ -26,8 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -412,6 +411,120 @@
     <Content Include="Content\font\flaticon.css" />
     <Content Include="Content\font\Flaticon.svg" />
     <Content Include="Content\font\install-a-new-font.txt" />
+    <Content Include="Content\home\assets\ico\apple-touch-icon-114-precomposed.html" />
+    <Content Include="Content\home\assets\ico\apple-touch-icon-144-precomposed.html" />
+    <Content Include="Content\home\assets\ico\apple-touch-icon-57-precomposed.html" />
+    <Content Include="Content\home\assets\ico\apple-touch-icon-72-precomposed.html" />
+    <Content Include="Content\home\assets\ico\favicon.html" />
+    <Content Include="Content\home\css\bootstrap.css" />
+    <Content Include="Content\home\css\homestyle.css" />
+    <Content Include="Content\home\css\style.css" />
+    <Content Include="Content\home\css\type\fontello.css" />
+    <Content Include="Content\home\css\type\fontello\fontello-social.svg" />
+    <Content Include="Content\home\css\type\fontello\fontello.svg" />
+    <Content Include="Content\home\img\emblem-dark.png" />
+    <Content Include="Content\home\img\enter_mobile.jpg" />
+    <Content Include="Content\home\img\glyphicons-halflings-white.html" />
+    <Content Include="Content\home\img\glyphicons-halflings.html" />
+    <Content Include="Content\home\img\icon_new.gif" />
+    <Content Include="Content\home\img\LOGO.bmp" />
+    <Content Include="Content\home\img\NewIcon.gif" />
+    <Content Include="Content\home\img\news1.png" />
+    <Content Include="Content\home\img\nsdc.png" />
+    <Content Include="Content\home\img\siher.jpg" />
+    <Content Include="Content\home\img\skill.png" />
+    <Content Include="Content\home\img\skills.png" />
+    <Content Include="Content\home\img\slogan.jpg" />
+    <Content Include="Content\home\img\slogan.png" />
+    <Content Include="Content\home\img\Social.png" />
+    <Content Include="Content\home\img\upskillindia.png" />
+    <Content Include="Content\home\js\bootstrap.min.js" />
+    <Content Include="Content\home\js\FitVids.js" />
+    <Content Include="Content\home\js\forms.js" />
+    <Content Include="Content\home\js\img\1PK Panwar.png" />
+    <Content Include="Content\home\js\img\1slogan.png" />
+    <Content Include="Content\home\js\img\2inspi2.png" />
+    <Content Include="Content\home\js\img\7.jpg" />
+    <Content Include="Content\home\js\img\glyphicons-halflings-white.html" />
+    <Content Include="Content\home\js\img\glyphicons-halflings.html" />
+    <Content Include="Content\home\js\img\icon_new.gif" />
+    <Content Include="Content\home\js\img\inspi2.png" />
+    <Content Include="Content\home\js\img\ITOT.png" />
+    <Content Include="Content\home\js\img\NewIcon.gif" />
+    <Content Include="Content\home\js\img\news1.png" />
+    <Content Include="Content\home\js\img\nsdc.png" />
+    <Content Include="Content\home\js\img\Pervin.png" />
+    <Content Include="Content\home\js\img\PK Panwar.png" />
+    <Content Include="Content\home\js\img\PrincipleITOT.png" />
+    <Content Include="Content\home\js\img\Rahul_Sharma.jpg" />
+    <Content Include="Content\home\js\img\shu.png" />
+    <Content Include="Content\home\js\img\SIER.png" />
+    <Content Include="Content\home\js\img\siher.jpg" />
+    <Content Include="Content\home\js\img\sihergallery\404.php" />
+    <Content Include="Content\home\js\img\sihergallery\admin.php" />
+    <Content Include="Content\home\js\img\sihergallery\admin_categories.php" />
+    <Content Include="Content\home\js\img\sihergallery\admin_category_edit.php" />
+    <Content Include="Content\home\js\img\sihergallery\admin_edit_photos.php" />
+    <Content Include="Content\home\js\img\sihergallery\admin_regenerate_images.php" />
+    <Content Include="Content\home\js\img\sihergallery\category.php" />
+    <Content Include="Content\home\js\img\sihergallery\favicon.ico" />
+    <Content Include="Content\home\js\img\sihergallery\files\not_empty.txt" />
+    <Content Include="Content\home\js\img\sihergallery\footer.php" />
+    <Content Include="Content\home\js\img\sihergallery\header.php" />
+    <Content Include="Content\home\js\img\sihergallery\index.php" />
+    <Content Include="Content\home\js\img\sihergallery\layout\blue_pattern.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\button_110.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\button_190.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\cancel_button_24.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\cancel_button_30.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\cover_16x16.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\delete_16x16.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\folder.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\folder_2.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\lens_128x128.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\lens_48x48.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\liquid_button.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\liquid_button_red.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\loading_20x20.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\pixel.gif" />
+    <Content Include="Content\home\js\img\sihergallery\layout\plus.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\transparent_bg.png" />
+    <Content Include="Content\home\js\img\sihergallery\layout\_notes\dwsync.xml" />
+    <Content Include="Content\home\js\img\sihergallery\login.php" />
+    <Content Include="Content\home\js\img\sihergallery\logout.php" />
+    <Content Include="Content\home\js\img\sihergallery\query_photo_edit.php" />
+    <Content Include="Content\home\js\img\sihergallery\readme.txt" />
+    <Content Include="Content\home\js\img\sihergallery\settings.php" />
+    <Content Include="Content\home\js\img\sihergallery\style.css" />
+    <Content Include="Content\home\js\img\sihergallery\system.js" />
+    <Content Include="Content\home\js\img\sihergallery\system_functions.php" />
+    <Content Include="Content\home\js\img\sihergallery\system_header.php" />
+    <Content Include="Content\home\js\img\skill.png" />
+    <Content Include="Content\home\js\img\skills.png" />
+    <Content Include="Content\home\js\img\slogan.jpg" />
+    <Content Include="Content\home\js\img\slogan.png" />
+    <Content Include="Content\home\js\img\Social.png" />
+    <Content Include="Content\home\js\img\Surya_Prakash_Yadav.jpg" />
+    <Content Include="Content\home\js\img\syadwad5.jpg" />
+    <Content Include="Content\home\js\img\syadwad8.jpg" />
+    <Content Include="Content\home\js\img\syadwadsiher2.jpg" />
+    <Content Include="Content\home\js\img\upnsdclogo.png" />
+    <Content Include="Content\home\js\img\upskillindia.png" />
+    <Content Include="Content\home\js\jquery.dcflickr.1.0.js" />
+    <Content Include="Content\home\js\jquery.fh.portfolio.js" />
+    <Content Include="Content\home\js\jquery.gmap.js" />
+    <Content Include="Content\home\js\jquery.jribbble-0.11.0.ugly.js" />
+    <Content Include="Content\home\js\jquery.jscrollpane.min.js" />
+    <Content Include="Content\home\js\jquery.mousewheel.js" />
+    <Content Include="Content\home\js\jquery.overscroll.min.js" />
+    <Content Include="Content\home\js\jquery.themepunch.plugins.min.js" />
+    <Content Include="Content\home\js\jquery.themepunch.showbizpro.js" />
+    <Content Include="Content\home\js\mediaelement-and-player.min.js" />
+    <Content Include="Content\home\js\retina.js" />
+    <Content Include="Content\home\js\rs-plugin\css\settings.css" />
+    <Content Include="Content\home\js\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="Content\home\js\screen.js" />
+    <Content Include="Content\home\js\twitter.min.js" />
     <Content Include="Content\icon\academiccalendar.png" />
     <Content Include="Content\icon\accounts.png" />
     <Content Include="Content\icon\admission.png" />
@@ -563,6 +676,7 @@
     <Content Include="Content\Images\right-arrow.png" />
     <Content Include="Content\Images\search-icon-white.png" />
     <Content Include="Content\Images\search-icon.png" />
+    <Content Include="Content\Images\twitter.jpeg" />
     <Content Include="Content\Images\yogisir.png" />
     <Content Include="Content\js\active.js" />
     <Content Include="Content\js\advanced-form-components.js" />
@@ -878,6 +992,18 @@
     <Content Include="Content\MANGAL.TTF" />
     <Content Include="Content\Kruti_Dev_010.ttf" />
     <Content Include="Resource\PAC_Details.xlsx" />
+    <Content Include="Content\home\css\type\fontello\Descr.WD3" />
+    <Content Include="Content\home\css\type\fontello\fontello-social.eot" />
+    <Content Include="Content\home\css\type\fontello\fontello-social.eot%40" />
+    <Content Include="Content\home\css\type\fontello\fontello-social.ttf" />
+    <Content Include="Content\home\css\type\fontello\fontello-social.woff" />
+    <Content Include="Content\home\css\type\fontello\fontello.eot" />
+    <Content Include="Content\home\css\type\fontello\fontello.eot%40" />
+    <Content Include="Content\home\css\type\fontello\fontello.ttf" />
+    <Content Include="Content\home\css\type\fontello\fontello.woff" />
+    <Content Include="Content\home\js\img\sihergallery\.htaccess" />
+    <Content Include="Content\home\js\img\sihergallery\layout\folder.psd" />
+    <Content Include="Content\home\js\img\sihergallery\More Scripts and Components.url" />
     <None Include="Scripts\library\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.js" />
     <Content Include="Scripts\library\js\jquery-1.10.2.min.js" />
@@ -1116,6 +1242,7 @@
     <Content Include="Views\Admin\PopularRecruitmentList.cshtml" />
     <Content Include="Views\Admin\PopularRecruitment.cshtml" />
     <Content Include="Views\Shared\_PR_SideMenu.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
