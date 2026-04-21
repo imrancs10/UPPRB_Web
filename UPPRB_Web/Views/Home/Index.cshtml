@@ -106,20 +106,20 @@
                                             ►
                                             <span style="color: #000000;">
                                                 <a style="color: #000000;">
-                                                     @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat 
-                                                </a>                                                  
+                                                    @item.RecruitmentName । पदों की संख्या: @item.NoOfSeat
+                                                </a>
                                             </span>
                                             @*<span style="color: #000000;">
-            <a style="color: #000000;">
-                @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
-            </a>
-            @if (DateTime.Now.Date <= item.RecruitmentEndDate.Value.Date)
-            {
-                <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
-                    <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
-                </a>
-            }
-        </span>*@
+                                                    <a style="color: #000000;">
+                                                        @item.RecruitmentName ।  पदों की संख्या: @item.NoOfSeat । आवेदन की अंतिम तिथि: (@item.RecruitmentEndDate.Value.ToString("dd/MM/yyyy")) ।
+                                                    </a>
+                                                    @if (DateTime.Now.Date <= item.RecruitmentEndDate.Value.Date)
+                                                    {
+                                                        <a href="@item.fileURL" target="_blank" rel="noopener noreferrer">
+                                                            <img src="~/Content/images/AVEDAN-KAREN-GIFF.gif" alt="Avedan" style="width:10%; position:relative" />
+                                                        </a>
+                                                    }
+                                                </span>*@
                                         </span>
                                     </span>
                                 </p>
@@ -134,7 +134,7 @@
             </div>
 
 
-            <div class="col-xl-5 col-lg-12 pl-md-0 pr-md-0 pb-50  mb-30">
+            <div class="col-xl-6 col-lg-12 pl-md-0 pr-md-0 pb-50  mb-30">
                 <div class="single-widget" style="padding:2px 10px 2px 10px">
                     <!--<h3 class="title">Updates</h3>-->
 
@@ -143,44 +143,80 @@
                             <a class="nav-link active flex-fill bd-highlight col" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><b>TOP NOTICES / शीर्ष सूचनाएं </b></a>
                         </div>
                     </nav>
+                    @*<marquee scrollamount="3" direction="up" onmouseover="this.stop()" onmouseout="this.start()" style="height: 200px; display: block; overflow: hidden;">
+            <ul class="ultxt1 notranslate">
+                @if (LatestEvent != null)
+                {
+                    foreach (var item in LatestEvent)
+                    {
+                        <li class="p-10" style="width: 95%">
+                            <h6>
 
-                    <marquee scrollamount="5" direction="up" onmouseover="this.stop()" onmouseout="this.start()" style="height: 200px;">
-                        <ul class="ultxt1 notranslate">
+                                @if (item.IsNew == true)
+                                {
+                                    <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                }
+                                <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (@item.NoticeDate.Value.ToString("dd/MM/yyyy"))</span>
+                            </h6>
+                            @if (!string.IsNullOrEmpty(item.filename))
+                            {
+                                <p style="text-align: justify">
+                                    <a href='~/FilesUploaded/Notice/@item.filename' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                </p>
+                                <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
+                            }
+                            else
+                            {
+                                <p style="text-align: justify">
+                                    <a href='@item.fileURL' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
+                                </p>
+                                <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
+                            }
+                            <div class="clearfix">
+                            </div>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </marquee>*@
+                    <div class="scroll-box">
+                        <div class="scroll-content">
+
                             @if (LatestEvent != null)
                             {
                                 foreach (var item in LatestEvent)
                                 {
-                                    <li class="p-10" style="width: 95%">
+                                    <div class="item">
                                         <h6>
-
                                             @if (item.IsNew == true)
                                             {
-                                                <img id="Image1_0" class="w_fl_ico" src="~/Content/images/new.gif">
+                                                <img src="~/Content/images/new.gif" width="25" />
                                             }
                                             <span id="ContentPlaceHolder2_Repeater2_Label1_0">Notice/Release (@item.NoticeDate.Value.ToString("dd/MM/yyyy"))</span>
                                         </h6>
-                                        @if (!string.IsNullOrEmpty(item.filename))
-                                        {
-                                            <p style="text-align: justify">
-                                                <a href='~/FilesUploaded/Notice/@item.filename' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
-                                            </p>
-                                            <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
-                                        }
-                                        else
-                                        {
-                                            <p style="text-align: justify">
-                                                <a href='@item.fileURL' target="_blank"><span id="Label2_0" class="text"> @item.Subject</span></a>
-                                            </p>
-                                            <a id="HyperLink1_0" class="pull-right price-dec  hvr-float-shadow bg-info" href='/Home/Notice'><u>More..</u></a>
-                                        }
-                                        <div class="clearfix">
-                                        </div>
-                                    </li>
+
+                                        <p>
+                                            @if (!string.IsNullOrEmpty(item.filename))
+                                            {
+                                                <a href='~/FilesUploaded/Notice/@item.filename' target="_blank">
+                                                    @item.Subject
+                                                </a><a class="more-btn" href="/Home/Notice"><u>More..</u></a>
+                                            }
+                                            else
+                                            {
+                                                <a href='@item.fileURL' target="_blank">
+                                                    @item.Subject
+                                                </a><a class="more-btn" href="/Home/Notice"><u>More..</u></a>
+                                            }
+                                        </p>
+                                        
+                                    </div>
                                 }
                             }
 
-                        </ul>
-                    </marquee>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -197,41 +233,84 @@
             </div>
             <div class="col-md-10 col-sm-12 col-lg-12 col-xs-12">
                 <div class="modern-ticker mt-round">
-                    <div class="mt-body">
-                        <div class="mt-news">
+                    <div class="scroll-box-horizontal">
+                        <div class="scroll-content-horizontal">
+
                             @if (HighlightedNotice != null)
                             {
-                                <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
-                                    <p class="notranslate">
-                                        @*<a href="~/filesuploaded/photogalary/ethletic_event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>watch video || </span></a>*@
-                                        @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
-                                        {
-                                            <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank" style="color: #03749d">
-                                                <u>LATEST NOTICE: </u>
-                                                @if (HighlightedNotice.IsNew == true)
-                                                {
-                                                    <img src="~/Content/images/new.gif" alt="new" />
-                                                }
-                                                @HighlightedNotice.Subject
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a href='@HighlightedNotice.fileURL' target="_blank" style="color: #03749d">
-                                                <u>LATEST NOTICE: </u>
-                                                @if (HighlightedNotice.IsNew == true)
-                                                {
-                                                    <img src="~/Content/images/new.gif" alt="new" />
-                                                }
-                                                @HighlightedNotice.Subject
-                                            </a>
-                                        }
-                                    </p>
-                                </marquee>
+                                if (!string.IsNullOrEmpty(HighlightedNotice.filename))
+                                {
+                                    <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank">
+
+                                        <span class="notice-text">
+                                            <u>LATEST NOTICE:</u>
+
+                                            @if (HighlightedNotice.IsNew == true)
+                                            {
+                                                <img src="~/Content/images/new.gif" width="25" />
+                                            }
+
+                                            @HighlightedNotice.Subject
+                                        </span>
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href='@HighlightedNotice.fileURL' target="_blank">
+
+                                        <span class="notice-text">
+                                            <u>LATEST NOTICE:</u>
+
+                                            @if (HighlightedNotice.IsNew == true)
+                                            {
+                                                <img src="~/Content/images/new.gif" width="25" />
+                                            }
+
+                                            @HighlightedNotice.Subject
+                                        </span>
+
+                                    </a>
+                                }
                             }
 
                         </div>
                     </div>
+                    @*<div class="mt-body">
+            <div class="mt-news">
+                @if (HighlightedNotice != null)
+                {
+                    <marquee scrollamount="5" direction="left" onmouseover="this.stop()" onmouseout="this.start()">
+                        <p class="notranslate">
+                            <a href="~/filesuploaded/photogalary/ethletic_event.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>watch video || </span></a>
+                            @if (!string.IsNullOrEmpty(HighlightedNotice.filename))
+                            {
+                                <a href='~/FilesUploaded/Notice/@HighlightedNotice.filename' target="_blank" style="color: #03749d">
+                                    <u>LATEST NOTICE: </u>
+                                    @if (HighlightedNotice.IsNew == true)
+                                    {
+                                        <img src="~/Content/images/new.gif" alt="new" />
+                                    }
+                                    @HighlightedNotice.Subject
+                                </a>
+                            }
+                            else
+                            {
+                                <a href='@HighlightedNotice.fileURL' target="_blank" style="color: #03749d">
+                                    <u>LATEST NOTICE: </u>
+                                    @if (HighlightedNotice.IsNew == true)
+                                    {
+                                        <img src="~/Content/images/new.gif" alt="new" />
+                                    }
+                                    @HighlightedNotice.Subject
+                                </a>
+                            }
+                        </p>
+                    </marquee>
+                }
+
+            </div>
+        </div>*@
                 </div>
             </div>
         </div>
@@ -415,228 +494,228 @@
             </div>
             <div class="col-lg-12 pl-md-0 pr-md-0" style="margin-top: 0px;">
                 @*<div class="col-xl-4 col-lg-12 pl-md-0 pr-md-0" style="margin-top: 0px;">*@
-                    <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
-                        <div class="col-lg-12 ">
-                            <div class="single-widget">
-                                <!--<h1 class="news-title"><a href="news-single.html">Utility</a></h1>-->
-                                <div class="news-text">
-                                    <nav>
-                                        <center>
-                                            <div class="nav nav-tabs text-uppercase  d-flex bd-highlight" id="nav-tab" role="tablist">
+                <div class="collapse show  pt-2 pl-0 min-vh-100" id="sidebar">
+                    <div class="col-lg-12 ">
+                        <div class="single-widget">
+                            <!--<h1 class="news-title"><a href="news-single.html">Utility</a></h1>-->
+                            <div class="news-text">
+                                <nav>
+                                    <center>
+                                        <div class="nav nav-tabs text-uppercase  d-flex bd-highlight" id="nav-tab" role="tablist">
 
-                                                @*<a class="nav-link active flex-fill bd-highlight col" id="Students-tab" data-toggle="tab" href="#Students" role="tab" aria-controls="Students" aria-selected="false"><b>External / Internal Links</b></a>*@
-                                                @*<a class="nav-link active flex-fill bd-highlight col" id="Students-tab" data-toggle="tab" href="#Students" role="tab" aria-controls="Students" aria-selected="false"><b>UPPRPB on Twitter</b></a>*@
-                                                @*<a class="nav-link  flex-fill bd-highlight col" id="Admission-tab" data-toggle="tab" href="#Admission" role="tab" aria-controls="Admission" aria-selected="true"><b>Written Exam</b></a>*@
-                                            </div>
-                                        </center>
-                                    </nav>
+                                            @*<a class="nav-link active flex-fill bd-highlight col" id="Students-tab" data-toggle="tab" href="#Students" role="tab" aria-controls="Students" aria-selected="false"><b>External / Internal Links</b></a>*@
+                                            @*<a class="nav-link active flex-fill bd-highlight col" id="Students-tab" data-toggle="tab" href="#Students" role="tab" aria-controls="Students" aria-selected="false"><b>UPPRPB on Twitter</b></a>*@
+                                            @*<a class="nav-link  flex-fill bd-highlight col" id="Admission-tab" data-toggle="tab" href="#Admission" role="tab" aria-controls="Admission" aria-selected="true"><b>Written Exam</b></a>*@
+                                        </div>
+                                    </center>
+                                </nav>
 
-                                    <div class="tab-content p-10" id="myTabContent">
-                                        <div class="tab-pane fade  show active" id="Students" role="tabpanel" aria-labelledby="Students-tab">
-                                            <div class="row text-center wutil mx-0">
-                                                @*<div style="height: 434px; width:100%; overflow-y: auto;">
-                                                <a class="twitter-timeline" href="https://twitter.com/upprpb?ref_src=twsrc%5Etfw"></a>
-                                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                <div class="tab-content p-10" id="myTabContent">
+                                    <div class="tab-pane fade  show active" id="Students" role="tabpanel" aria-labelledby="Students-tab">
+                                        <div class="row text-center wutil mx-0">
+                                            @*<div style="height: 434px; width:100%; overflow-y: auto;">
+                                                    <a class="twitter-timeline" href="https://twitter.com/upprpb?ref_src=twsrc%5Etfw"></a>
+                                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="https://uppolice.gov.in/" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="UP Police" src="~/Content/icon/upp.png"><br />
-                                                        Uttar Pradesh Police
-                                                    </div>
-                                                </a>
-                                            </div>*@
-
-
-                                                <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                        <a href="/Home/SpecialDates">
-                                            <div class="icon-box iconbox-border p-5">
-                                                <img alt="" src="~/Content/icon/academiccalendar.png" class="fc-clear"><br />
-                                                Events Calendar-->
-                                                @*<img style="margin-left: 3px; padding-top: 0px; display: inline;" src="~/Content/Images/new.gif">*@
-                                                <!--</div>
-                                            </a>
-                                        </div>-->
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="https://jansunwai.up.nic.in/" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/Jansunwai.png">
-                                                        <br />
-                                                        IGRS
-                                                    </div>
-                                                </a>
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="/Home/MedalDetails">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/medal.png"><br />
-                                                        Medals
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                    <a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="https://uppolice.gov.in/" target="_blank">
                                                         <div class="icon-box iconbox-border p-5">
-                                                            <img alt="" src="~/Content/icon/download.png"><br />
-                                                            Forms
+                                                            <img alt="UP Police" src="~/Content/icon/upp.png"><br />
+                                                            Uttar Pradesh Police
                                                         </div>
                                                     </a>
                                                 </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="/Home/FAQ">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/tender.png"><br />
-                                                        FAQs
-                                                    </div>
-                                                </a>
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                                <a href="/Home/Feedback">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/grivance1.png"><br />
-                                                        Feedback
-                                                    </div>
-                                                </a>
 
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                                <a href="https://www.digilocker.gov.in/" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/DigiLocker.png"><br />
-                                                        DigiLocker
-                                                    </div>
-                                                </a>
-                                            </div>*@
 
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="/Home/Syllabus">
-                                                    <div class="icon-box iconbox-border p-5 ">
-                                                        <img alt="" src="~/Content/icon/Syllabus1.png"><br />
-                                                        Examination
-                                                    </div>
+                                            <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                            <a href="/Home/SpecialDates">
+                                                <div class="icon-box iconbox-border p-5">
+                                                    <img alt="" src="~/Content/icon/academiccalendar.png" class="fc-clear"><br />
+                                                    Events Calendar-->
+                                            @*<img style="margin-left: 3px; padding-top: 0px; display: inline;" src="~/Content/Images/new.gif">*@
+                                            <!--</div>
                                                 </a>
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                                <a>
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/broucher.png"><br />
-                                                        Sample Papers
-                                                    </div>
+                                            </div>-->
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="https://jansunwai.up.nic.in/" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/Jansunwai.png">
+                                                            <br />
+                                                            IGRS
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="/Home/MedalDetails">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/medal.png"><br />
+                                                            Medals
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                        <a>
+                                                            <div class="icon-box iconbox-border p-5">
+                                                                <img alt="" src="~/Content/icon/download.png"><br />
+                                                                Forms
+                                                            </div>
+                                                        </a>
+                                                    </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="/Home/FAQ">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/tender.png"><br />
+                                                            FAQs
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
+                                                    <a href="/Home/Feedback">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/grivance1.png"><br />
+                                                            Feedback
+                                                        </div>
+                                                    </a>
+
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
+                                                    <a href="https://www.digilocker.gov.in/" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/DigiLocker.png"><br />
+                                                            DigiLocker
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="/Home/Syllabus">
+                                                        <div class="icon-box iconbox-border p-5 ">
+                                                            <img alt="" src="~/Content/icon/Syllabus1.png"><br />
+                                                            Examination
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
+                                                    <a>
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/broucher.png"><br />
+                                                            Sample Papers
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
+                                            <a href="https://up.gov.in/" target="_blank">
+                                                <div class="icon-box iconbox-border p-5">
+                                                    <img alt="UP Govt." src="~/Content/icon/UPlogo.png"><br />
+                                                    Government of Uttar Pradesh-->
+                                            @*<img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">*@
+                                            <!--</div>
                                                 </a>
-                                            </div>*@
-                                                <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                        <a href="https://up.gov.in/" target="_blank">
-                                            <div class="icon-box iconbox-border p-5">
-                                                <img alt="UP Govt." src="~/Content/icon/UPlogo.png"><br />
-                                                Government of Uttar Pradesh-->
-                                                @*<img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">*@
-                                                <!--</div>
-                                            </a>
-                                        </div>-->
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="https://rtionline.up.gov.in/" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5 ">
-                                                        <img alt="RTI" src="~/Content/icon/rti.png"><br />
-                                                        RTI
-                                                    </div>
-                                                </a>
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="~/Content/Images/To_locate_your_Examination_Centre.pdf" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="GIS" src="~/Content/icon/gis.png"><br />
-                                                        Geographical Mapping System
-                                                    </div>
-                                                </a>
-                                            </div>*@
-                                                @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
-                                                <a href="/Login" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/ERP-Login.png"><br />
-                                                        Admin Login
-                                                    </div>
-                                                </a>
-                                            </div>*@
-                                            </div>
+                                            </div>-->
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="https://rtionline.up.gov.in/" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5 ">
+                                                            <img alt="RTI" src="~/Content/icon/rti.png"><br />
+                                                            RTI
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="~/Content/Images/To_locate_your_Examination_Centre.pdf" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="GIS" src="~/Content/icon/gis.png"><br />
+                                                            Geographical Mapping System
+                                                        </div>
+                                                    </a>
+                                                </div>*@
+                                            @*<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0  ">
+                                                    <a href="/Login" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/ERP-Login.png"><br />
+                                                            Admin Login
+                                                        </div>
+                                                    </a>
+                                                </div>*@
                                         </div>
-                                        @*<div class="tab-pane fade" id="Admission" role="tabpanel" aria-labelledby="Admission-tab">
-                                        <div class="row text-center wutil mx-0">
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-
-                                                <a href="#!" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5 ">
-                                                        <img alt="" src="~/Content/icon/Syllabus1.png"><br />
-                                                        Syllabus
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-
-                                                <a href="#!">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/press.png"><br />
-                                                        News
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="#!">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/broucher.png"><br />
-                                                        Sample Papers
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
-                                                <a href="#!" target="_blank">
-                                                    <div class="icon-box iconbox-border p-5">
-                                                        <img alt="" src="~/Content/icon/stat.png"><br />
-                                                        Statistics
-                                                        <img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">
-                                                    </div>
-                                                </a>
-
-                                            </div>
-                                          </div>
-                                    </div>*@
                                     </div>
+                                    @*<div class="tab-pane fade" id="Admission" role="tabpanel" aria-labelledby="Admission-tab">
+                                            <div class="row text-center wutil mx-0">
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+
+                                                    <a href="#!" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5 ">
+                                                            <img alt="" src="~/Content/icon/Syllabus1.png"><br />
+                                                            Syllabus
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+
+                                                    <a href="#!">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/press.png"><br />
+                                                            News
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="#!">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/broucher.png"><br />
+                                                            Sample Papers
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 col-4  p-0">
+                                                    <a href="#!" target="_blank">
+                                                        <div class="icon-box iconbox-border p-5">
+                                                            <img alt="" src="~/Content/icon/stat.png"><br />
+                                                            Statistics
+                                                            <img style="margin-left: 3px; display: inline-block; padding-top: 0px;" src="~/Content/Images/new.gif">
+                                                        </div>
+                                                    </a>
+
+                                                </div>
+                                              </div>
+                                        </div>*@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            @*<div class="twitter-section" style="padding-left:10px; margin-top:5px">
-                            <div style="height: 384px; overflow-y: auto;">
-                                <a class="twitter-timeline" href="https://twitter.com/upprpb?ref_src=twsrc%5Etfw">UPPRPB on Twitter</a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-                            </div>
-                        </div>*@
-                            <!--<li>
-                        <a>
-                            <iframe width="410" height="150" src="https://www.youtube.com/embed/y881t8ilMyc" frameborder="0" allowfullscreen></iframe>
-                        </a>
-                    </li>-->
-                            <ul class="nav flex-column flex-nowrap overflow-hidden">
-                                @*<li class="nav-item"><a class="nav-link text-truncate" href="/Login" target="_blank"><i class="fas fa-plus"></i> CMS based Admin Login</a></li>*@
-
-                                @*<li class="nav-item"><a class="nav-link text-truncate"><i class="fas fa-pen"></i> Online Application Forms </a></li>
-                                            <li class="nav-item"><a class="nav-link text-truncate" href="#!"><i class="fas fa-flag"></i> Geographical Mapping System of Examination Centers </a></li>
-
-                            <li class="nav-item"><a class="nav-link text-truncate" href="#!"> <i class="fas fa-joint"></i> Instructions for Use of Geographic Mapping System</a></li>*@
-                            </ul>
-                        </div>
                     </div>
+                    <div>
+                        @*<div class="twitter-section" style="padding-left:10px; margin-top:5px">
+                                <div style="height: 384px; overflow-y: auto;">
+                                    <a class="twitter-timeline" href="https://twitter.com/upprpb?ref_src=twsrc%5Etfw">UPPRPB on Twitter</a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+                                </div>
+                            </div>*@
+                        <!--<li>
+                            <a>
+                                <iframe width="410" height="150" src="https://www.youtube.com/embed/y881t8ilMyc" frameborder="0" allowfullscreen></iframe>
+                            </a>
+                        </li>-->
+                        <ul class="nav flex-column flex-nowrap overflow-hidden">
+                            @*<li class="nav-item"><a class="nav-link text-truncate" href="/Login" target="_blank"><i class="fas fa-plus"></i> CMS based Admin Login</a></li>*@
 
+                            @*<li class="nav-item"><a class="nav-link text-truncate"><i class="fas fa-pen"></i> Online Application Forms </a></li>
+                                                <li class="nav-item"><a class="nav-link text-truncate" href="#!"><i class="fas fa-flag"></i> Geographical Mapping System of Examination Centers </a></li>
+
+                                <li class="nav-item"><a class="nav-link text-truncate" href="#!"> <i class="fas fa-joint"></i> Instructions for Use of Geographic Mapping System</a></li>*@
+                        </ul>
+                    </div>
                 </div>
 
 
-
-
             </div>
+
+
+
+
         </div>
+    </div>
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -644,3 +723,82 @@
         $('a[href="/Home/Index"]').parent().addClass('active')
     });
 </script>
+<style>
+    .scroll-box {
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+        /*border: 1px solid #ccc;*/
+    }
+
+.scroll-content {
+    position: absolute;
+    width: 100%;
+    animation: scrollUp 12s linear infinite;
+}
+
+.scroll-box:hover .scroll-content {
+    animation-play-state: paused;
+}
+
+@@keyframes scrollUp {
+    0% { top: 100%; }
+    100% { top: -100%; }
+}
+
+.item {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+    /* More button */
+    .more-btn {
+        background: #e9f5ff;
+        color: #007bff;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        text-decoration: none;
+        border: 1px solid #007bff;
+    }
+
+        .more-btn:hover {
+            background: #007bff;
+            color: #fff;
+        }
+</style>
+<style>
+    .scroll-box-horizontal {
+        width: 100%;
+        overflow: hidden;
+        /*border: 1px solid #ccc;*/
+        white-space: nowrap;
+    }
+
+    .scroll-content-horizontal {
+        display: inline-block;
+        padding-left: 100%;
+        animation: scrollLeft 25s linear infinite;
+    }
+
+    /* Pause on hover */
+    .scroll-box-horizontal:hover .scroll-content-horizontal {
+        animation-play-state: paused;
+    }
+
+    /* Razor fix (IMPORTANT) */
+    @@keyframes scrollLeft {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .notice-text {
+        display: inline-block;
+        color: #03749d;
+        padding-right: 50px; /* spacing */
+    }
+</style>
