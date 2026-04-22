@@ -38,7 +38,8 @@ namespace UPPRB_Web.Global
             UserDeleted,
             UserInactive,
             UserBlocked,
-            NoResponse
+            NoResponse,
+            UserLocked
         }
 
         public enum CrudStatus

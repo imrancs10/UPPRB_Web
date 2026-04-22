@@ -127,7 +127,22 @@ namespace UPPRB_Web.Controllers
                     }
                     else
                     {
-                        SetAlertMessage(_response, "Login Fail");
+                        if (message == Enums.LoginMessage.UserLocked)
+                        {
+                            int remMinute = _details.getRemainingLockedTime(username);
+                            SetAlertMessage(_response, "User Locked, wait for "+ remMinute + " minute to relogin again");
+                            return RedirectToAction("index");
+                        }
+                        Enums.LoginMessage messageInvalidLogin = _details.updateLoginFail(username);
+                        if (messageInvalidLogin == Enums.LoginMessage.UserLocked)
+                        {
+                            int remMinute = _details.getRemainingLockedTime(username);
+                            SetAlertMessage(_response, "User Locked, wait for " + remMinute + " minute to relogin again");
+                        }
+                        else {
+                            SetAlertMessage(_response, "Login Fail");
+                        }
+                        
                         return RedirectToAction("index");
                         //return Json(_response, JsonRequestBehavior.AllowGet);
                     }

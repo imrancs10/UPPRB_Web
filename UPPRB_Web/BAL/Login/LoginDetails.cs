@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using DataLayer;
-using UPPRB_Web.Global;
+﻿using DataLayer;
+using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Web.UI.WebControls;
-using log4net.Appender;
+using UPPRB_Web.Global;
 
 namespace UPPRB_Web.BAL.Login
 {
@@ -27,6 +24,10 @@ namespace UPPRB_Web.BAL.Login
 
             var _userLogin = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
 
+            if (_userLogin!=null && _userLogin.userLockedDateTime != null && DateTime.Now < _userLogin.userLockedDateTime.Value.AddMinutes(30))
+            {
+                return Enums.LoginMessage.UserLocked;
+            }
             if (_userLogin != null)
             {
                 if (_userLogin != null)
@@ -40,13 +41,73 @@ namespace UPPRB_Web.BAL.Login
                 UserData.MobileNumber = Convert.ToString(_userLogin.MobileNumber);
                 UserData.Email = _userLogin.EmailID;
                 UserData.RoleId = _userLogin.RoleId;
+
+                //update failed login detail
+                _userLogin.loginfailed = 0;
+                _userLogin.userLockedDateTime = null;
+                _db.Entry(_userLogin).State = EntityState.Modified;
+                _db.SaveChanges();
+
                 return Enums.LoginMessage.Authenticated;
             }
             else
                 return Enums.LoginMessage.InvalidCreadential;
         }
 
-        public Enums.LoginMessage ValidateOTP(string UserName, string OTP)
+        public Enums.LoginMessage updateLoginFail(string UserName)
+        {
+            _db = new upprbDbEntities();
+
+            var _userLogin = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.IsActive == true).FirstOrDefault();
+
+            if (_userLogin != null)
+            {
+                if (_userLogin.loginfailed == 3)
+                {
+                    if (DateTime.Now < _userLogin.userLockedDateTime.Value.AddMinutes(30))
+                    {
+                        return Enums.LoginMessage.UserLocked;
+                    }
+                    else
+                    {
+                        //update failed login detail
+                        _userLogin.loginfailed = 0;
+                        _userLogin.userLockedDateTime = null;
+                        _db.Entry(_userLogin).State = EntityState.Modified;
+                        _db.SaveChanges();
+                    }
+
+                }
+                else
+                {
+                    _userLogin.loginfailed = _userLogin.loginfailed != null ? _userLogin.loginfailed + 1 : 1;
+                    if (_userLogin.loginfailed == 3)
+                    {
+                        _userLogin.userLockedDateTime = DateTime.Now;
+                    }
+                    _db.Entry(_userLogin).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    return Enums.LoginMessage.InvalidCreadential;
+                }
+
+            }
+            return Enums.LoginMessage.InvalidCreadential;
+        }
+
+        public int getRemainingLockedTime(string UserName)
+        {
+            _db = new upprbDbEntities();
+
+            var _userLogin = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.IsActive == true).FirstOrDefault();
+
+            if (_userLogin != null)
+            {
+                return (_userLogin.userLockedDateTime.Value.Minute+30)-DateTime.Now.Minute;
+            }
+            return 0;
+        }
+
+                public Enums.LoginMessage ValidateOTP(string UserName, string OTP)
         {
             _db = new upprbDbEntities();
             var _userLogin = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.otp_number == OTP).FirstOrDefault();

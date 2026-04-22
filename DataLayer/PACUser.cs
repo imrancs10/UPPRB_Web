@@ -23,5 +23,7 @@ namespace DataLayer
         public Nullable<bool> IsActive { get; set; }
         public string UserType { get; set; }
         public string otp_number { get; set; }
+        public Nullable<int> loginfailed { get; set; }
+        public Nullable<System.DateTime> userLockedDateTime { get; set; }
     }
 }
