@@ -56,6 +56,11 @@ namespace UPPRB_Web.Infrastructure.Utility
         {
             return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]);
         }
+
+        public virtual bool GetPACCaptchEnable()
+        {
+            return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptchaPAC"]);
+        }
         public virtual bool GetOTPEnable()
         {
             return Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);

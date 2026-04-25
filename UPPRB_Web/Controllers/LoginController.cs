@@ -107,7 +107,8 @@ namespace UPPRB_Web.Controllers
         {
             // Code for validating the CAPTCHA  
             bool isOTPENable = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
+            bool cpatchValid = this.IsCaptchaValid("Captcha is not valid");
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || cpatchValid)
             {
                 LoginDetails _details = new LoginDetails();
                 string _response = string.Empty;

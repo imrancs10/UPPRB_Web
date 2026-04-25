@@ -2,7 +2,7 @@
 @using CaptchaMvc;
 @{
     Layout = null;
-    bool IsCaptchaEnable = GetCaptchEnable();
+    bool IsCaptchaEnable = GetPACCaptchEnable();
     bool IsOTPEnable = GetOTPEnable();
 }
 
@@ -84,7 +84,7 @@
                                                 <div class="col-12">
                                                     @if (IsCaptchaEnable == true)
                                                     {
-                                                        @Html.Captcha(5)
+                                                        @Html.Captcha("Refresh", "Enter Captcha", 5)
                                                     }
                                                 </div>
                                                 <div class="col-12">
@@ -99,7 +99,8 @@
                                                     else
                                                     {
                                                         <input type="hidden" value="@IsOTPEnable.ToString()" id="hdnIsOTPEnable" name="hdnIsOTPEnable" />
-                                                        <button type="button" id="btnSignIn" class="btn  btn-lg btn-primary radius-30" style="width: 100px;">Sign in<i class="bx bx-right-arrow-alt"></i></button>
+                                                        <button class="btn btn-lg btn-login btn-block" style="background-color: #015f95; color: white;" id="btnSignIn1" type="submit">Sign in</button>
+                                                        @*<button type="submit" id="btnSignIn" class="btn  btn-lg btn-primary radius-30" style="width: 100px;">Sign in<i class="bx bx-right-arrow-alt"></i></button>*@
                                                     }
                                                 </div>
 
@@ -145,6 +146,7 @@
 
     <script>
         $('#btnSignIn').click(function () {
+            debugger
             var IsOTPEnable = $('#hdnIsOTPEnable').val();
             var otpNumber = IsOTPEnable == "True" ? $('#otpNumber').val() : "0";
             var username = $('#username').val();

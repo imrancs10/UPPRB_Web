@@ -28,6 +28,7 @@ using System.Data.Entity;
 using CaptchaMvc.HtmlHelpers;
 using System.Net;
 using JsonResult = System.Web.Mvc.JsonResult;
+using CaptchaMvc.Infrastructure;
 using static System.Net.WebRequestMethods;
 
 namespace UPPRB_Web.Controllers
@@ -368,11 +369,12 @@ namespace UPPRB_Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult PACLogin(string username, string password, string OTP)
+        public ActionResult PACLogin(string username, string password, string OTP)
         {
             // Code for validating the CAPTCHA  
             bool isOTPENable = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableOTPLogin"]);
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptcha"]) == false || this.IsCaptchaValid("Captcha is not valid"))
+            bool isCaptchaValid = this.IsCaptchaValid("Captcha is not valid");
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCaptchaPAC"]) == false || isCaptchaValid)
             {
                 LoginDetails _details = new LoginDetails();
                 string _response = string.Empty;
@@ -384,26 +386,30 @@ namespace UPPRB_Web.Controllers
                     if (message == Enums.LoginMessage.Authenticated)
                     {
                         setUserClaim();
-                        return Json("Success", JsonRequestBehavior.AllowGet);
+                        return RedirectToAction("PACDocument", "PAC");
+                        //return Json("Success", JsonRequestBehavior.AllowGet);
                         //return RedirectToAction("PACDocument", "PAC");
                     }
                     else
                     {
-                        //SetAlertMessage(_response, "Login Response");
-                        //return View("PACLogin");
-                        return Json(_response, JsonRequestBehavior.AllowGet);
+                        SetAlertMessage(_response, "Login Response");
+                        return View("PACLogin");
+                        //return Json(_response, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
                 {
-                    return Json("OTP is not valid", JsonRequestBehavior.AllowGet);
+                    SetAlertMessage("OTP is not valid", "Login Response");
+                    return View("PACLogin");
+                    //return Json("OTP is not valid", JsonRequestBehavior.AllowGet);
                 }
             }
             else
             {
                 //SetAlertMessage("Captcha is not valid", "Login Response");
                 //return View("PACLogin");
-                return Json("Captcha is not valid", JsonRequestBehavior.AllowGet);
+                SetAlertMessage("Captcha is not valid", "Login Fail");
+                return RedirectToAction("PACLogin");
             }
         }
         public ActionResult Manual()
